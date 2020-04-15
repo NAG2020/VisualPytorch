@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Index</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/templatesRes/img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../resources/templatesRes/venobox/venobox.css" type="text/css" media="screen"/>
+    <!-- nivo slider css -->
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/preview.css" type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../resources/templatesRes/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script type="text/javascript" src="../resources/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/jquery-ui.js"></script>
+    <link href="../resources/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/jquery-ui.css" rel="stylesheet">
+    <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../resources/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../css/buttons.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
+    <script type="text/javascript" src="../javascript/graph_action.js"></script>
+    <script type="text/javascript" src="../javascript/base_service.js"></script>
+
+</head>
+<nav id="header"></nav>
+<script>
+    $("#header").load("header_a.html");
+</script>
+<body>
+<!--海报-->
+<div class="slider-area">
+    <div class="bend niceties preview-1">
+        <div id="ensign-nivoslider" class="slides">
+            <img src="../img/4_a.jpg" alt="" title="#slider-direction-1"/>
+        </div>
+        <!-- direction 1 -->
+        <div id="slider-direction-1" class="text-center slider-direction">
+            <!-- layer 1 -->
+            <div class="layer-1">
+                <h2 class="title-1"></h2>
+            </div>
+            <!-- layer 2 -->
+            <div class="layer-2">
+                <p class="title-2"></p>
+            </div>
+            <!-- layer 3 -->
+            <div style="margin-top: 50px;" class="layer-3">
+<!--                <a href="#" class="title-3">SEE MORE</a>-->
+                <a  href="canvas.html"  style="width: 150px;" id="tourist_btn" class="title-3">游客游览</a>
+                <a  id="login_btn" data-toggle="modal"
+                    data-target="#loginModal" class="title-3" style="width: 150px;">登  录</a>
+            </div>
+            <!-- layer 4 -->
+<!--            <div class="layer-4">-->
+<!--                <form action="#" class="title-4">-->
+<!--                    <input type="text" placeholder="Enter your book title here">-->
+<!--                    <button type="submit"><i class="fa fa-search"></i></button>-->
+<!--                </form>-->
+<!--            </div>-->
+        </div>
+<!--        这里可以做多页，暂时没做-->
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width: 368px" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="logGet">
+                    <!-- 头部提示信息 -->
+                    <div class="logD logDtip">
+                        <p class="p1">登录</p>
+                    </div>
+                    <!-- 输入框 -->
+                    <div class="lgD">
+                        <img src="../img/person.png" width="20" height="20" alt=""/>
+                        <input id="username_log" type="text" placeholder=" 输入用户名或邮箱"/>
+                    </div>
+                    <div class="lgD">
+                        <img src="../img/lock.png" width="20" height="20" alt=""/>
+                        <input id="pwd_log" type="password" placeholder=" 输入用户密码"/>
+                    </div>
+                    <div class="lgD">
+                        <p class="p3">
+                            <a style="float: right" onclick="open_register()">立即注册</a>
+                        </p>
+                    </div>
+                    <div class="logC" style="margin-top: 70px">
+                        <a target="_self">
+                            <button onclick="login()">登 录</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width: 368px" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="logGet">
+                    <!-- 头部提示信息 -->
+                    <div class="logD logDtip">
+                        <p class="p1">注册</p>
+                    </div>
+                    <!-- 输入框 -->
+                    <div class="lgD">
+                        <img src="../img/person.png" width="20" height="20" alt=""/>
+                        <input id="username_reg" type="text" placeholder=" 输入用户名"/>
+                    </div>
+                    <div class="lgD">
+                        <img src="../img/lock.png" width="20" height="20" alt=""/>
+                        <input id="pwd_reg" type="password" placeholder=" 输入用户密码"/>
+                    </div>
+                    <div class="lgD">
+                        <img src="../img/lock.png" width="20" height="20" alt=""/>
+                        <input id="pwd_confirm_reg" type="password" placeholder=" 确认用户密码"/>
+                    </div>
+                    <div class="lgD">
+                        <img src="../img/e-mail.png" width="20" height="20" alt=""/>
+                        <input id="email_reg" type="text" placeholder=" 输入用户邮箱"/>
+                    </div>
+                    <div class="lgD">
+                        <p class="p3">
+                            <a onclick="open_login()" style="float: left">已有账户，立即登录</a>
+                        </p>
+                    </div>
+                    <div class="logC" style="margin-top: 70px">
+                        <a target="_self">
+                            <button onclick="register()">注册</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<!-- bootstrap js -->
+<script src="../resources/templatesRes/js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="../resources/templatesRes/js/owl.carousel.min.js"></script>
+<!-- jquery-ui js -->
+<script src="../resources/templatesRes/js/jquery-ui.min.js"></script>
+<!-- jquery Counterup js -->
+<script src="../resources/templatesRes/js/jquery.counterup.min.js"></script>
+<script src="../resources/templatesRes/js/waypoints.min.js"></script>
+<!-- jquery countdown js -->
+<script src="../resources/templatesRes/js/jquery.countdown.min.js"></script>
+<!-- jquery countdown js -->
+<script type="text/javascript" src="../resources/templatesRes/venobox/venobox.min.js"></script>
+<!-- jquery Meanmenu js -->
+<script src="../resources/templatesRes/js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="../resources/templatesRes/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<!-- scrollUp JS -->
+<script src="../resources/templatesRes/js/jquery.scrollUp.min.js"></script>
+<!-- plugins js -->
+<script src="../resources/templatesRes/js/plugins.js"></script>
+<!-- Nivo slider js -->
+<script src="../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="../resources/templatesRes/lib/home.js" type="text/javascript"></script>
+<!-- main js -->
+<script src="../resources/templatesRes/js/main.js"></script>
+</body>
+<nav id="footer"></nav>
+
+<script>
+    $("#footer").load("footer_a.html");
+</script>
+</html>
+
+<script>
+    function open_register() {
+        $("#loginModal").modal('hide');
+        $("#registerModal").modal('show');
+    }
+
+    function open_login() {
+
+        $("#registerModal").modal('hide');
+        $("#loginModal").modal('show');
+    }
+</script>

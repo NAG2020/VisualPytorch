@@ -51,8 +51,7 @@ function login() {
         },
         success: function (data_return) {
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
-             //window.location.href = "canvas.html"
-            window.location.href = "index.html"
+             window.location.href = "canvas.html"
         }
     });
 }

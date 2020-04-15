@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Statistics</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../resources/templatesRes/venobox/venobox.css" type="text/css" media="screen"/>
+    <!-- nivo slider css -->
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/preview.css" type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../resources/templatesRes/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script type="text/javascript" src="../resources/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/jquery-ui.js"></script>
+    <script type="text/javascript" src="../javascript/graph_action.js"></script>
+    <link href="../resources/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/jquery-ui.css" rel="stylesheet">
+    <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../css/layer.css" rel="stylesheet">
+</head>
+<nav id="header"></nav>
+
+<script>
+    $("#header").load("header_a.html");
+</script>
+<body>
+
+<div class="container" style="margin-top: 20px">
+    <!-- Counter Area Start -->
+    <div class="counter-area section-padding text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
+                        <div class="counter-info">
+								<span class="fcount">
+                                    <span class="counter" id="visit_count" ></span>
+								</span>
+                            <h3>历史访问量</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
+                        <div class="counter-info">
+								<span class="fcount">
+									<span class="counter" id="user_count"></span>
+								</span>
+                            <h3>注册用户数</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
+                        <div class="counter-info">
+								<span class="fcount">
+									<span class="counter" id="network_api_count"></span>
+								</span>
+                            <h3>生成模型数</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Counter Area End -->
+    <div class="shopping-cart-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="wishlist-table-area table-responsive">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="product-remove">序号</th>
+                                <th class="product-image">日期</th>
+                                <th class="product-edit">访问量</th>
+                            </tr>
+                            </thead>
+                            <tbody id="day_count">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--body最后的js载入-->
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<!-- bootstrap js -->
+<script src="../resources/templatesRes/js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="../resources/templatesRes/js/owl.carousel.min.js"></script>
+<!-- jquery-ui js -->
+<script src="../resources/templatesRes/js/jquery-ui.min.js"></script>
+<!-- jquery Counterup js -->
+<script src="../resources/templatesRes/js/jquery.counterup.min.js"></script>
+<script src="../resources/templatesRes/js/waypoints.min.js"></script>
+<!-- jquery countdown js -->
+<script src="../resources/templatesRes/js/jquery.countdown.min.js"></script>
+<!-- jquery countdown js -->
+<script type="text/javascript" src="../resources/templatesRes/venobox/venobox.min.js"></script>
+<!-- jquery Meanmenu js -->
+<script src="../resources/templatesRes/js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="../resources/templatesRes/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<!-- scrollUp JS -->
+<script src="../resources/templatesRes/js/jquery.scrollUp.min.js"></script>
+<!-- plugins js -->
+<script src="../resources/templatesRes/js/plugins.js"></script>
+<!-- Nivo slider js -->
+<script src="../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="../resources/templatesRes/lib/home.js" type="text/javascript"></script>
+<!-- main js -->
+<script src="../resources/templatesRes/js/main.js"></script>
+</body>
+<nav id="footer"></nav>
+
+<script>
+    $("#footer").load("footer_a.html");
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var user_info = window.sessionStorage.getItem('userinfo');
+            var user_id = JSON.parse(user_info).id;
+        } catch (e) {
+            alert("请登录");
+            window.location.href = "index.html";
+        }
+        $.ajax({
+            type: 'GET',
+            url: gobalConfig.base_url + 'api/journal/statistics/',
+            contentType: 'application/json; charset=UTF-8',
+            beforeSend: function (XMLHttpRequest) {
+                var token = window.sessionStorage.getItem('token');
+                if (token != null) {
+                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+                }
+            },
+            success: function (data) {
+                $("#visit_count").text(data["visit_count"]);
+                $("#network_api_count").text(data["network_api_count"]);
+                $("#user_count").text(data["user_count"]);
+                // document.getElementById("user_count").innerHTML=30;
+                // alert(document.getElementById("user_count").textContent);
+                var list = data["date_count_list"];
+                for (var i = 0; i < list.length; i++) {
+                    $("#day_count").append(
+                        "<tr><th scope=\"row\">" + (i + 1).toString() + "</th>" +
+                        "<td>" + list[i]["day"] + "</td>" +
+                        "<td>" + list[i]["count"].toString() + "</td></tr>"
+                    )
+                }
+            },
+            error: function (data_return) {
+                alert(data_return["responseText"])
+            }
+        })
+
+    })
+</script>
+
+</html>

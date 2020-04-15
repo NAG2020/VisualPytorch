@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from config import db
 import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
+#FONT_DIR = os.path.dirname(BASE_DIR) + r"\VisualPytorch\font"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'NeuralNetwork.apps.NeuralnetworkConfig',
     'journal.apps.JournalConfig',
     'user.apps.UserConfig',
+    'NormalUrls'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     # 配置jwt
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
 
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -130,11 +131,11 @@ WSGI_APPLICATION = 'VisualPytorch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': db.NAME,
-        'HOST': db.HOST,
-        'PORT': db.PORT,
-        'USER': db.USER,
-        'PASSWORD': db.PASSWORD
+        'NAME': 'visualpytorch',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '123456'
     }
 }
 
@@ -173,6 +174,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#STATICFILES_DIRS = (os.path.join(BASE_DIR, "font"),)
+STATICFILES_DIRS = (FONT_DIR,)
+STATIC_ROOT = BASE_DIR #os.path.join(BASE_DIR, 'font')
 
 AUTH_USER_MODEL = 'user.User'
 

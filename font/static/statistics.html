@@ -61,14 +61,7 @@
 </body>
 <script>
     $(document).ready(function () {
-        try{
-            var user_info = window.sessionStorage.getItem('userinfo');
-            var user_id = JSON.parse(user_info).id;
-        }
-        catch (e) {
-            alert("请登录");
-            window.location.href = "index.html";
-        }
+
         $.ajax({
             type: 'GET',
             url: gobalConfig.base_url + 'api/journal/statistics/',

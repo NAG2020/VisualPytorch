@@ -44,19 +44,8 @@
 
 <script>
     $(function () {
-        try{
-            var user_info = window.sessionStorage.getItem('userinfo');
-            var user_id = JSON.parse(user_info).id;
-        }
-        catch (e) {
-            alert("请登录");
-            window.location.href = "index.html";
-        }
-
-        //alert(JSON.parse(user_info).id);
-        //var query_object = getQueryObject(window.location.href)
-        //var user_id = query_object['id'];
-        //var user_id = JSON.parse(user_info).id;
+        var query_object = getQueryObject(window.location.href)
+        var user_id = query_object['id'];
         var data = {
             "id": user_id
         };
@@ -82,9 +71,7 @@
                 }
             },
             error: function (data_return) {
-                alert(data_return["responseText"]);
-                //window.location.href = "canvas.html";
-
+                alert(data_return["responseText"])
             }
         });
     })

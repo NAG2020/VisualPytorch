@@ -1,0 +1,626 @@
+/* Wide Desktop: 1170 px  */
+@media (min-width: 1170px) and (max-width: 1366px) {
+.container {
+    width: 1170px;
+}
+.nivo-caption {
+  top: 160px;
+}
+.layer-1 h2.title-1 {
+  font-size: 70px;
+}
+}
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+.mainmenu nav ul#nav li a {
+  padding: 30px 7px;
+}	
+.mainmenu nav ul#nav li {
+  margin: 0 0 0 10px;
+}    
+.header-logo > a {
+  padding: 20px 0;
+}
+.header-right li {
+  padding: 20px 4px;
+}
+.header-area .col-md-1 {
+  padding-left: 0;
+}
+.layer-1 h2.title-1 {
+  font-size: 60px;
+}
+.layer-2 p.title-2 {
+  padding: 25px 24% 35px;
+}
+.layer-4 {
+  margin-top: 55px;
+}
+.nivo-caption {
+  top: 80px;
+}
+.online-banner-area .single-banner .banner-bottom > a {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 23px 0;
+}
+.testmonial-info {
+  padding: 90px 10% 0;
+}
+.section-title::after {
+  left: 647px;
+}
+.section-title::before {
+  right: 648px;
+}
+.social-icon > li {
+  margin-right: 10px;
+}
+.footer-contact > li {
+  margin-bottom: 15px;
+}
+.single-footer {
+  padding-top: 25px;
+}
+.single-footer.footer-newsletter > form {
+  margin-bottom: 20px;
+}
+.about-title > h2 {
+  margin-bottom: 10px;
+}   
+.about-content > p:first-child {
+  margin-bottom: 10px;
+}
+.about-top-inner {
+  margin-bottom: 50px;
+}
+.product-tabs li a img {
+  width: 130px;
+} 
+.product-tabs li {
+  margin-right: 20px;
+  margin-top: 20px;
+}    
+.single-product-details > p , .single-product-price > h2 , .add-to-wishlist {
+  margin-bottom: 30px;
+}
+.collapse-title {
+  font-size: 15px;
+}    
+.collapse-sub-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}    
+    
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.mainmenu nav ul#nav li a {
+  padding: 20px 10px;
+}    
+.mainmenu nav ul#nav li {
+  margin: 0 0 0 5px;
+} 
+.header-logo > a {
+  padding: 20px 0;
+}    
+.header-right li {
+  padding: 20px 4px;
+}    
+.layer-1 h2.title-1 {
+  font-size: 50px;
+}    
+.layer-2 p.title-2 {
+  padding: 25px 13% 35px;
+}    
+.nivo-caption {
+  top: 50px;
+}  
+.layer-4 {
+  margin-top: 30px;
+}    
+.layer-4 .title-4 input {
+  height: 45px;
+  line-height: 45px;
+}    
+.layer-4 form.title-4 button {
+  height: 45px;
+}    
+.banner-title > p {
+  padding: 0 10px;
+} 
+.testimonial-title {
+  margin-bottom: 50px;
+}
+.testmonial-info {
+  padding: 67px 12% 0;
+  width: 85%;
+}
+.single-testimonial > img {
+  margin-bottom: -45px;
+}
+.counter-info::before {
+  left: 10px;
+  width: 90%;
+}
+.blog-info-bottom {
+  padding: 0 10px;
+}
+.search-box input {
+  height: 45px;
+}
+.btn-search {
+  height: 45px;
+}
+.footer-top-area .btn-small {
+  height: 25px;
+}
+.about-top-inner .about-content > p:last-child {
+  margin-bottom: 20px;
+}
+.about-top-inner {
+  margin-bottom: 20px;
+}  
+.about-image > img {
+  width: 100%;
+}    
+.about-image {
+  margin-bottom: 20px;
+}    
+.checkout-widget {
+  margin-top: 20px;
+}   
+.contact-form-left > input:last-child {
+  margin-bottom: 20px;
+}
+.create-account-form {
+  min-height: 360px;
+}   
+.form-row > input {
+  font-size: 12px;
+  padding-left: 10px;
+}    
+.shop-select select {
+  padding-left: 10px;
+}    
+.order-notes textarea {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 10px;
+}    
+.shop-tab-pill li#left, .shop-tab-pill li#left-top {
+  margin-right: 10px;
+}    
+.product-size-deatils {
+  margin-right: 20px;
+}    
+.widget-buttom input {
+  width: 100%;
+}   
+.price-slider-amount input:last-child {
+  margin-bottom: 0;
+}    
+.tag-list li {
+  width: 74px;
+}        
+.seller-img {
+  float: none;
+  text-align: center;
+  width: 100%;
+}    
+.seller-details {
+  padding: 0;
+  width: 100%;
+}    
+.breadcrumbs {
+  padding: 110px 0;
+}    
+.single-product-image-inner .product-tabs img {
+  width: 118px;
+}   
+.product-tabs li {
+  margin-right: 15px;
+  margin-top: 15px;
+}    
+.single-product-details > h2 {
+  font-size: 30px;
+}    
+.availability > span , .single-product-details > p {
+  margin-bottom: 10px;
+}   
+.single-product-price > h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}    
+#quantity-wanted-p input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none !important;
+  height: 36px;
+  line-height: 32px;
+  text-align: center;
+  width: 45px;
+}    
+.product-attributes span a {
+  margin-top: 0;
+}    
+.add-to-wishlist {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}    
+#product-comments-block-extra {
+  margin-top: 25px;
+}   
+.p-details-tab {
+  margin-top: 40px;
+}    
+.section-padding {
+  padding: 60px 0;
+}    
+.shopingcart-bottom-area .right-shoping-cart {
+  margin-left: 0;
+  padding: 10px 15px;
+}    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.container {width:300px} 
+.mobile-menu-area {
+  display: block;
+}    
+.banner-title > p {
+  padding: 0;
+}
+.banner-title {
+  margin-bottom: 20px;
+}
+.online-banner-area .single-banner .banner-bottom > a {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 16px 0;
+} 
+.add-to-cart-product {
+  top: 60px;
+}    
+.header-logo > a {
+  padding: 15px 0;
+}    
+.header-right li {
+  padding: 15px 5px;
+}    
+.nivo-caption {
+  top: 10px;
+}  
+.layer-1 h2.title-1 {
+  font-size: 25px;
+}
+.layer-2 p.title-2 {
+  display: none;
+}
+.layer-3 {
+  padding: 20px 0;
+}
+.layer-4 form.title-4 button {
+  font-size: 14px;
+  height: 30px;
+  line-height: 22px;
+  width: 35px;
+}    
+.nivo-controlNav {
+  display: none;
+} 
+.layer-3 a.title-3 {
+  padding: 8px 40px;
+}    
+.layer-4 .title-4 input {
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  padding-left: 9px;
+}
+.layer-4 {
+  margin-top: 0;
+  margin-left: -26px;
+}
+.nivo-directionNav a {
+  top: 35%;
+}   
+.preview-1 a.nivo-prevNav {
+  left: 5px;
+}  
+.preview-1 a.nivo-nextNav {
+  right: 5px;
+}    
+.shop-info-area {
+  background: rgba(0, 0, 0, 0) url("img/shop-info-bg.jpg") no-repeat scroll center center;
+  display: none;
+  padding: 0;
+}    
+.section-title::before {
+  height: 54px;
+  right: 54px;
+}    
+.section-title::after {
+  height: 54px;
+  left: 54px;
+}   
+.section-title {
+  font-size: 16px;
+}    
+.indicator-style.owl-theme .owl-controls .owl-buttons div.owl-next {
+  right: 5px;
+}
+.indicator-style.owl-theme .owl-controls .owl-buttons div {
+  left: 5px;
+}
+.testmonial-info {
+  border-radius: 50px;
+  padding: 80px 6% 0;
+  text-align: justify;
+  width: 80%;
+}
+.testimonial-title {
+  margin-bottom: 30px;
+}
+.testimonial-area {
+  padding-bottom: 50px;
+  padding-top: 50px;
+} 
+.counter-info::before {
+  bottom: 25px;
+  left: 11px;
+  width: 80%;
+}   
+.counter-info > h3 {
+  font-size: 16px;
+}    
+.fcount span.counter {
+  font-size: 40px;
+}
+.blog-area > p {
+  margin: 10px 0;
+}
+.newsletter-title > h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.search-box input {
+  width: 100%;
+}    
+.search-box input {
+  height: 35px;
+  padding-left: 14px;
+  width: 100%;
+}
+.btn-search {
+  float: right;
+  height: 35px;
+  margin-top: 10px;
+}
+.single-footer.footer-newsletter > form {
+  margin-bottom: 20px;
+}  
+.footer-bottom-right {
+  display: none;
+} 
+.footer-bottom-left > p {
+  text-align: center;
+}
+.breadcrumbs {
+  padding: 110px 0;
+}
+.checkout-widget {
+  margin-top: 20px;
+}
+.address-single {
+  margin-bottom: 20px;
+}
+.contact-form-left > input:last-child {
+  margin-bottom: 20px;
+}
+.create-account-form {
+  margin-bottom: 20px;
+  min-height: 220px;
+}
+.breadcrumbs {
+  padding: 100px 0;
+}
+.breadcrumbs > h2 {
+  font-size: 24px;
+}
+.addresses-lists .panel-title a {
+  font-size: 13px;
+}
+.addresses-lists .panel-heading a span {
+  margin-left: 20px;
+}
+.addresses-lists .panel-title a::before {
+  left: 24px;
+}
+.addresses-lists .panel-heading a i {
+  font-size: 16px;
+}
+.addresses-lists .panel-heading a span {
+  margin-left: 15px;
+  font-size: 13px;
+}
+.section-title2 > h2 {
+  font-size: 25px;
+}
+.section-padding {
+  padding: 40px 0;
+}
+.shop-tab-pill ul li a span {
+  display: none;
+} 
+.shop-tab-pill li#left, .shop-tab-pill li#left-top {
+  margin-right: 10px;
+}
+.shop-tab-pill ul li a > i {
+  margin-right: 0;
+}
+.shop-tab-pill li.product-size-deatils {
+  display: none;
+}
+.single-product-image-inner .product-tabs img {
+  width: 75px;
+}
+.product-tabs li {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.list-pro-rating {
+  display: none;
+}
+.single-product-details > h2 {
+  font-size: 30px;
+  margin-top: 20px;
+}
+.single-product-details > p {
+  margin-bottom: 20px;
+}
+.single-product-price > h2 {
+  margin-bottom: 30px;
+  font-size: 25px;
+} 
+#quantity-wanted-p input {
+  height: 36px;
+  line-height: 32px;
+  width: 35px;
+}
+.product-attributes span a {
+  margin-top: 0;
+}
+.cart-btn {
+  padding: 10px 18px;
+}
+.add-to-wishlist {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
+#product-comments-block-extra {
+  margin-top: 30px;
+}
+.p-details-tab {
+  margin-top: 30px;
+}
+.p-details-tab ul.p-details-nav-tab li a {
+  font-size: 18px;
+}
+.p-details-tab ul.p-details-nav-tab li {
+  margin-right: 10px;
+}
+.shopingcart-bottom-area .right-shoping-cart {
+  margin-left: 0;
+  margin-top: 10px;
+  width: 100%;
+}
+.wishlist-bottom-link {
+  text-align: center;
+}
+.shopingcart-bottom-area a {
+  text-align: center;
+  width: 100%;
+}
+.discount-middle {
+  padding: 52px 20px;
+}
+.subtotal-main-area {
+  margin-top: 20px;
+}
+.about-top-inner {
+  margin-bottom: 40px;
+}
+.about-top-inner .about-image {
+  margin-top: 10px;
+}
+.about-bottom-inner .about-image , .about-title > h2{
+  margin-bottom: 10px;
+}
+
+
+
+
+
+  
+}
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.section-title::before {
+  right: 140px;
+}
+.section-title::after {
+  left: 140px;
+}
+.single-product-image-inner .product-tabs img {
+  width: 125px;
+}
+.blog-area > p {
+  margin: 20px 0;
+}
+.blog-info a h2 {
+  font-size: 17px;
+}
+.blog-info-bottom {
+  padding: 0 10px;
+}
+.blog-info-bottom {
+  padding: 0 5px;
+}
+.single-banner img {
+  width: 100%;
+}
+.layer-2 p.title-2 {
+  display: block;
+  padding: 10px 30px;
+}
+}
+ 

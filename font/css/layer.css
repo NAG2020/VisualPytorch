@@ -3,13 +3,13 @@ body {
 }
 
 
-.orange {
+.lightblue {
     color: #fef4e9;
-    border: solid 1px #ffd267;
-    background: #ffd267;
-    background: -webkit-gradient(linear, left top, left bottom, from(#ffd267), to(#faa51a));
-    background: -moz-linear-gradient(top,  #ffd267,  #faa51a);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    border: solid 1px #67ffde;
+    background: #6797ff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#67ffde), to(#6797ff));
+    background: -moz-linear-gradient(top,  #67ffde,  #6797ff);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#67ffde', endColorstr='#6797ff');
 }
 
 .little_green {

@@ -10,7 +10,7 @@ pip install -r requirements.txt
 
 2、进入VisualPytorch/config/config.py下配置数据库设置
 
-3、启动后台服务器
+3、开启后台服务器
 
 ```
 python manage.py runserver 8000

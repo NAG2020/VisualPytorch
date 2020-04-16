@@ -4,6 +4,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../resources/templatesRes/venobox/venobox.css" type="text/css" media="screen"/>
+    <!-- nivo slider css -->
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/templatesRes/lib/css/preview.css" type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../resources/templatesRes/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../resources/templatesRes/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+<!--原有head-->
     <meta charset="UTF-8">
     <title>VisualPytorch</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,25 +62,27 @@
 </head>
 
 <body>
-<nav style="font-size:20px;text-align: center; top: 0; height: 50px" id="header"></nav>
+<nav id="header"></nav>
 
 <script>
     $("#header").load("header.html");
 </script>
 <!--解决在ie火狐浏览器等中不兼容出现布局错误的问题，暂时性解决方案-->
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;">
     <div id="content" class="row-fluid">
         <div class="col-md-3" id="element_list">
-
-            <button type="button" class="btn btn-warning" style="width: 180px" id="submit"
-                    onclick="translate_network()">生成代码
-            </button>
-
-
-            <button type="button" class="btn btn-warning" style="width: 180px;margin-top: 20px" id="save"
-                    onclick="open_save()">保存
-            </button>
-
+            <div class="container">
+                <div class="row">
+                    <button type="button" class="btn btn-primary" style="width: 180px" id="submit"
+                        onclick="translate_network()">生成代码
+                    </button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary" style="width: 180px;margin-top: 20px" id="save"
+                        onclick="open_save()">保存
+                    </button>
+                </div>
+            </div>
             <div class="modal fade" id="save_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -82,41 +123,41 @@
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="view_layer" type="button"
+                                <div class="node lightblue" id="view_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="linear_layer" type="button"
+                                <div class="node lightblue" id="linear_layer" type="button"
                                      data-container="body" data-toggle="popover" in_channel="" out_channel="">
                                     全连接层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="conv1d_layer" type="button"
+                                <div class="node lightblue" id="conv1d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     一维卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="conv2d_layer" type="button"
+                                <div class="node lightblue" id="conv2d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     二维卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="element_wise_add_layer" type="button"
+                                <div class="node lightblue" id="element_wise_add_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     元素级相加层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="concatenate_layer" type="button"
+                                <div class="node lightblue" id="concatenate_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     channel维度拼接层
                                 </div>
@@ -235,13 +276,18 @@
         </div>
     </div>
 </div>
+<nav id="footer"></nav>
+
+<script>
+    $("#footer").load("footer.html");
+</script>
 </body>
 
 <script>
     var my_end_point = {
         endpoint: ["Dot", {radius: 5}],
         connectorStyle: {
-            stroke: "#fc2f49",
+            stroke: "#cccccc",
             strokeWidth: 3,
 
         },

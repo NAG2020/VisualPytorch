@@ -34,7 +34,7 @@
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="../resources/templatesRes/css/owl.carousel.css">
     <!-- style css -->
-    <link rel="stylesheet" href="../resources/templatesRes/style.css">
+    <link rel="stylesheet" href="../resources/templatesRes/css/style.css">
     <!-- responsive css -->
     <link rel="stylesheet" href="../resources/templatesRes/css/responsive.css">
     <!-- modernizr css -->
@@ -52,12 +52,20 @@
     <script type="text/javascript" src="../javascript/graph_action.js"></script>
     <script type="text/javascript" src="../javascript/base_service.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $("#png1").attr("src","../resources/templatesRes/img/logo.png");
+        $("#png2").attr("src","../resources/templatesRes/img/logo-2.png");
+        $("#png3").attr("src","../resources/templatesRes/img/paypal.png");
+    });
+    </script>
 </head>
 <nav id="header"></nav>
 <script>
-    $("#header").load("header.html");
+    $("#header").load("base/header.html");
 </script>
 <body>
+
 <!--海报-->
 <div class="slider-area">
     <div class="bend niceties preview-1">
@@ -207,11 +215,12 @@
 <script src="../resources/templatesRes/lib/home.js" type="text/javascript"></script>
 <!-- main js -->
 <script src="../resources/templatesRes/js/main.js"></script>
+
 </body>
 <nav id="footer"></nav>
 
 <script>
-    $("#footer").load("footer.html");
+    $("#footer").load("base/footer.html");
 </script>
 </html>
 

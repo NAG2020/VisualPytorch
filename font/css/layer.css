@@ -39,12 +39,22 @@ body {
     cursor: pointer;
     height: 50px;
     line-height: 50px;
-
 }
 
+.little_word{
+    bottom: 20px;
+}
+
+.node_little{
+    width: 105px;
+    height: 35px;
+    line-height: 35px;
+}
+
+
 .start {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
 }
 

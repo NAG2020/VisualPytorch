@@ -1,6 +1,3 @@
-<!--author:mahaoxiang
-    time:2019-3-20
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,225 +59,164 @@
 </head>
 
 <body>
-<nav id="header"></nav>
-
-<script>
-    $("#header").load("../base/header.html");
-</script>
-<!--解决在ie火狐浏览器等中不兼容出现布局错误的问题，暂时性解决方案-->
-<div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;">
-    <div id="content" class="row-fluid">
-        <div class="col-md-3" id="element_list">
-            <div class="container">
-                <div class="row">
-                    <button type="button" class="btn btn-primary" style="width: 180px" id="submit"
-                        onclick="translate_network()">生成代码
-                    </button>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary" style="width: 180px;margin-top: 20px" id="save"
-                        onclick="open_save()">保存
-                    </button>
-                </div>
-            </div>
-            <div class="modal fade" id="save_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">保存您的模型</h4>
-                        </div>
-                        <div class="modal-body"><label class="control-label">模型名称</label>
-                            <div>
-                                <input type="text" class="form-control" placeholder="我的模型" id="model_name">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-warning" onclick="save_network()">提交</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal -->
-            </div>
-
-            <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#left_ele_collapse"
-                               href="#collapseOne">
-                                可选用网络层
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-
-                        <div class="panel-body">
-                            <div class="ele_in_list">
-                                <div class="node start little_green" id="start">
-                                    开始
-                                </div>
-                            </div>
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="view_layer" type="button"
-                                     data-container="body" data-toggle="popover">
-                                    reshape层
-                                </div>
-                            </div>
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="linear_layer" type="button"
-                                     data-container="body" data-toggle="popover" in_channel="" out_channel="">
-                                    全连接层
-                                </div>
-                            </div>
-
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="conv1d_layer" type="button"
-                                     data-container="body" data-toggle="popover">
-                                    一维卷积层
-                                </div>
-                            </div>
-
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="conv2d_layer" type="button"
-                                     data-container="body" data-toggle="popover">
-                                    二维卷积层
-                                </div>
-                            </div>
-
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="element_wise_add_layer" type="button"
-                                     data-container="body" data-toggle="popover">
-                                    元素级相加层
-                                </div>
-                            </div>
-
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="concatenate_layer" type="button"
-                                     data-container="body" data-toggle="popover">
-                                    channel维度拼接层
-                                </div>
-                            </div>
-
-                        </div>
+    <nav id="header"></nav>
+    <script>
+        $("#header").load("../base/header.html");
+    </script>
+    <!--解决在ie火狐浏览器等中不兼容出现布局错误的问题，暂时性解决方案-->
+    <div class="single-product-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-7" id="canvas">
+                    <div style="height:550px;border:0.5px solid black">
                     </div>
                 </div>
-                <!--<div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#left_ele_collapse"
-                               href="#collapseTwo">
-                                elements_group_2
-                            </a>
-                        </h4>
+                <div class="col-md-6 col-sm-5">       
+                    <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px; display: none;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseOne">
+                                        可选用网络层
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+        
+                                <div class="panel-body">
+                                    <div class="ele_in_list">
+                                        <div class="node node_little start little_green" id="start">
+                                            开始
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="view_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            reshape层
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="linear_layer" type="button"
+                                             data-container="body" data-toggle="popover" in_channel="" out_channel="">
+                                            全连接层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="conv1d_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            一维卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="conv2d_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            二维卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="element_wise_add_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            元素级相加层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node node_little lightblue" id="concatenate_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            channel维度拼接层
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseTwo">
+                                        elements_group_2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseThree">
+                                        elements_group_3
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
+                    <div class="single-product-details">
+                        <div style="margin-top:20px">
+                            <form class="form-horizontal" role="form">
+                                <h2 id="model_name">模型的名字</h2>
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">epoch(训练轮次)</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="1" id="epoch">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">optimizer(优化器)</label>
+                                    <div class="col-sm-5">
+                                        <select id="optimizer" class="form-control">
+                                            <option value="torch.optim.Adam">Adam</option>
+                                            <option value="torch.optim.Optimizer">Optimizer</option>
+                                            <option value="torch.optim.Adamax">Adamax</option>
+                                            <option value="torch.optim.ASGD">ASGD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">learning_rate(学习率)</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" id="learning_rate" class="form-control" placeholder="0.5">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">batch_size</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" id="batch_size" class="form-control" placeholder="1">
+                                    </div>
+                                </div>
+            
+                            </form>
+                        </div>
+                        <div class="product-attributes clearfix" style="text-align:center">
+                           <span>
+                           <a class="cart-btn btn-default" id="modify">
+                                    <i class="flaticon-arrows-1"></i>
+                                    编辑此模型
+                                </a>
+                           </span>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#left_ele_collapse"
-                               href="#collapseThree">
-                                elements_group_3
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                        <div class="panel-body">
-                        </div>
-                    </div>
-                </div>-->
-            </div>
-            <div>
-                <h4>训练参数配置</h4>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">epoch(训练轮次)</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" placeholder="1" id="epoch">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">optimizer(优化器)</label>
-                        <div class="col-sm-5">
-                            <select id="optimizer" class="form-control">
-                                <option value="torch.optim.Adam">Adam</option>
-                                <option value="torch.optim.Optimizer">Optimizer</option>
-                                <option value="torch.optim.Adamax">Adamax</option>
-                                <option value="torch.optim.ASGD">ASGD</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">learning_rate(学习率)</label>
-                        <div class="col-sm-5">
-                            <input type="text" id="learning_rate" class="form-control" placeholder="0.5">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">batch_size</label>
-                        <div class="col-sm-5">
-                            <input type="text" id="batch_size" class="form-control" placeholder="1">
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-        <div class="col-md-7" id="canvas">
-            <!--<div style="height:1000px;border:0.5px solid black;background:url(../img/grid.png) no-repeat;background-size:100%;opacity: .6">-->
-            <div style="height:1000px;border:0.5px solid black">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div id="parameters"
-                 style="white-space: nowrap; color: rgb(112, 112, 112); text-align: left; cursor: default;">
-                <form class="form-horizontal hidden" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">shape</label>
-                        <div class="col-sm-5">
-                            <input type="text" name='shape' class="form-control" placeholder="1">
-                        </div>
-                    </div>
-                </form>
-
-                <form class="form-horizontal hidden" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">dim</label>
-                        <div class="col-sm-5">
-                            <input type="text" name='dim' class="form-control" placeholder="1">
-                        </div>
-                    </div>
-                </form>
-
-                <form class="form-horizontal hidden" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">in_channels</label>
-                        <div class="col-sm-5">
-                            <input type="text" name='in_channels' class="form-control">
-                        </div>
-                        <label class="col-sm-5 control-label">out_channels</label>
-                        <div class="col-sm-5">
-                            <input type="text" name='out_channels' class="form-control">
-                        </div>
-                    </div>
-
-                </form>
-
             </div>
         </div>
     </div>
-</div>
-<nav id="footer"></nav>
 
-<script>
-    $("#footer").load("../base/footer.html");
-</script>
+    <nav id="footer"></nav>
+    <script>
+        $("#footer").load("../base/footer.html");
+    </script>
 </body>
 
 <script>
@@ -303,48 +239,48 @@
 
 <script>
     var canvas_cnt = 0;
-    $("#view_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#linear_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#conv1d_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#conv2d_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#element_wise_add_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#concatenate_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#start").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
+    // $("#view_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#linear_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#conv1d_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#conv2d_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#element_wise_add_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#concatenate_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#start").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
 
     var no_popover = ["start", "element_wise_add_layer"];
 
@@ -364,12 +300,12 @@
             $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
                 " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
             $("#" + id).css("left", left).css("top", top);
-            jsPlumb.draggable(id);
-            $("#" + id).draggable({containment: "parent"});
-            jsPlumb.addEndpoint(id, {anchor: 'Top'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Left'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Right'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Bottom'}, my_end_point);
+            //jsPlumb.draggable(id);
+            //$("#" + id).draggable({containment: "parent"});
+            // jsPlumb.addEndpoint(id, {anchor: 'Top'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Left'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Right'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Bottom'}, my_end_point);
             /*doubleclick("#" + id);*/
             /*$("#" + id).on("click", function () {
                 if (confirm("确定要删除吗?")) {
@@ -472,19 +408,21 @@
                     }
                 },
                 success: function (net_work) {
+                    var name = net_work["name"];
                     var structure = eval('(' + net_work["structure"] + ')');
                     var nets = structure['nets'];
                     var nets_conn = structure['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
+                    $("#model_name").text(name);
                     jQuery.each(nets, function (id, val) {
 
                         jsPlumb.ready(function () {
                             var ui = {
                                 'offset': {
-                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
-                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
+                                    'left': parseInt(val['left'].split('px')) * 0.6 + $("#canvas").offset().left + 10,
+                                    'top': parseInt(val['top'].split('px')) * 0.5 + $("#canvas").offset().top + 10
                                 },
                                 'draggable': [{
                                     "id": val['name'],
@@ -502,7 +440,7 @@
                                 "source": val['source']['id'],
                                 "target": val['target']['id'],
                                 "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
-                                "endpoint": ["Dot", {radius: 5}],
+                                "endpoint": ["Dot", {radius: 1}],
                                 "paintStyle": {
                                     stroke: "#cccccc",
                                     strokeWidth: 3,
@@ -559,11 +497,11 @@
 
         $("#parameters").children().remove();
         if(no_popover.includes(name)){
-            $("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
+            //$("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
             return;
         }
         $("#parameters").append(get_content(name, id));
-        $("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
+        //$("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
 
         if (name == "conv1d_layer") {
             var data = eval('(' + window.sessionStorage.getItem(id) + ')');
@@ -587,6 +525,9 @@
                 $(this).parent().parent().find("[name='pool_padding']").removeAttr("disabled");
             }
         });
+
+        $("input").attr("disabled", "disabled");
+        $("select").attr("disabled", "disabled");
 
         $("#parameters").find("input,select").change(function () {
             switch ($("#form" + id).attr("name")) {
@@ -622,4 +563,21 @@
     }
 </script>
 
+<script>
+    $(document).ready(function () {
+        var query_object = getQueryObject(window.location.href);
+        if (query_object.hasOwnProperty("id")) {
+            var net_id = query_object["id"];
+        }
+        $("#modify").attr("onclick", "open_model("+net_id+")");
+        $("input").attr("disabled", "disabled");
+        $("select").attr("disabled", "disabled");
+    });
+</script>
+
+<script>
+    function open_model(id) {
+        window.location.href="canvas.html?id="+id;
+    }
+</script>
 </html>

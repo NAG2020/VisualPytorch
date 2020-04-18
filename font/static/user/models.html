@@ -119,7 +119,7 @@
                 for (var i = 0; i < data_return.length; i++) {
                     $("#user_models").append(
                         "<tr><th scope=\"row\">" + (i + 1).toString() + "</th>" +
-                        "<td><button style=\"width: 150px\" type=\"button\" onclick='open_model(" + data_return[i]["id"] + ")' class=\"btn btn btn-info btn-sm\">" + data_return[i]["name"] + "</button>\n" + "</td>" +
+                        "<td><button style=\"width: 150px\" type=\"button\" onclick='open_model_detail(" + data_return[i]["id"] + ")' class=\"btn btn btn-info btn-sm\" title=\"预览模型\">" + data_return[i]["name"] + "</button>\n" + "</td>" +
                         "<td><button style=\"width: 150px\" type=\"button\" onclick='delete_model(" + data_return[i]["id"] + ")' class=\"btn btn-danger btn-sm\">删除</button></td></tr>"
                     )
                 }
@@ -135,13 +135,17 @@
 
 <script>
     function open_model(id) {
-        window.location.href = "../models/canvas.html?id=" + id
+        window.location.href="../models/canvas.html?id="+id
+    }
+
+    function open_model_detail(id) {
+        window.location.href="../models/models_detail.html?id="+id
     }
 
     function delete_model(id) {
         $.ajax({
             type: 'DELETE',
-            url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + id,
+            url: gobalConfig.base_url + 'api/NeuralNetwork/network/'+id,
             contentType: 'application/json; charset=UTF-8',
             beforeSend: function (XMLHttpRequest) {
                 var token = window.sessionStorage.getItem('token');
@@ -152,9 +156,9 @@
             success: function (data) {
                 location.reload()
             },
-            error: function (data_return) {
-                alert(data_return["responseText"])
-            }
+            error:function (data_return) {
+            alert(data_return["responseText"])
+        }
         })
     }
 </script>

@@ -52,7 +52,10 @@ function login() {
         success: function (data_return) {
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
              //window.location.href = "canvas.html"
-            window.location.href = "index.html"
+            if (window.location.href.includes("index") == true){
+                window.location.href = "index.html"
+            }else  window.location.href = "../index.html"
+
         }
     });
 }

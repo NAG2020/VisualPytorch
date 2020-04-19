@@ -53,11 +53,42 @@
     <script type="text/javascript" src="../javascript/base_service.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-        $("#png1").attr("src","../resources/templatesRes/img/logo.png");
-        $("#png2").attr("src","../resources/templatesRes/img/logo-2.png");
-        $("#png3").attr("src","../resources/templatesRes/img/paypal.png");
-    });
+        $(document).ready(function () {
+            $("#header_index").attr("href", "index.html");
+            $("#header_create_models").attr("href", "models/create_models.html");
+            $("#header_manage_models").attr("href", "models/manage_models.html");
+
+            $("#header_help1").attr("href", "help.html");
+            $("#header_help2").attr("href", "help.html");
+            $("#header_about").attr("href", "feedback/about.html");
+
+            $("#header_statistics").attr("href", "statistics.html");
+            $("#header_feedback").attr("href", "feedback/feedback.html");
+            //css
+            $("#css1").attr("src", "../resources/bootstrap.min.css");
+            $("#css2").attr("src", "../resources/jquery-ui.css");
+            $("#css3").attr("src", "../resources/jquery-ui.structure.css");
+            $("#css4").attr("src", "../resources/jquery-ui.theme.css");
+            $("#css5").attr("src", "../css/buttons.css");
+            $("#css6").attr("src", "../css/login.css");
+            //js
+            $("#js1").attr("src", "../resources/jquery-3.3.1.js");
+            $("#js2").attr("src", "../resources/bootstrap.min.js");
+            $("#js3").attr("src", "../resources/jquery-ui.js");
+            $("#js4").attr("src", "../javascript/graph_action.js");
+            $("#js5").attr("src", "../javascript/base_service.js");
+
+            $("#png1").attr("src", "../resources/templatesRes/img/logo.png");
+            $("#png2").attr("src", "../resources/templatesRes/img/logo-2.png");
+            $("#png3").attr("src", "../resources/templatesRes/img/paypal.png");
+            $("#login_pic_1").attr("src", "../img/person.png");
+            $("#login_pic_2").attr("src", "../img/lock.png");
+            $("#reg_pic_1").attr("src", "../img/person.png");
+            $("#reg_pic_2").attr("src", "../img/lock.png");
+            $("#reg_pic_3").attr("src", "../img/lock.png");
+            $("#reg_pic_4").attr("src", "../img/e-mail.png");
+
+        });
     </script>
 </head>
 <nav id="header"></nav>
@@ -84,102 +115,20 @@
             </div>
             <!-- layer 3 -->
             <div style="margin-top: 50px;" class="layer-3">
-<!--                <a href="#" class="title-3">SEE MORE</a>-->
-                <a  href="models/canvas.html"  style="width: 150px;" id="tourist_btn" class="title-3">游客游览</a>
-                <a  id="login_btn" data-toggle="modal"
-                    data-target="#loginModal" class="title-3" style="width: 150px;">登  录</a>
+                <!--                <a href="#" class="title-3">SEE MORE</a>-->
+                <a href="models/create_models.html" style="width: 150px;" id="tourist_btn" class="title-3">游客游览</a>
+                <!--                <a  id="login_btn" data-toggle="modal"-->
+                <!--                    data-target="#loginModal" class="title-3" style="width: 150px;">登  录</a>-->
             </div>
             <!-- layer 4 -->
-<!--            <div class="layer-4">-->
-<!--                <form action="#" class="title-4">-->
-<!--                    <input type="text" placeholder="Enter your book title here">-->
-<!--                    <button type="submit"><i class="fa fa-search"></i></button>-->
-<!--                </form>-->
-<!--            </div>-->
+            <!--            <div class="layer-4">-->
+            <!--                <form action="#" class="title-4">-->
+            <!--                    <input type="text" placeholder="Enter your book title here">-->
+            <!--                    <button type="submit"><i class="fa fa-search"></i></button>-->
+            <!--                </form>-->
+            <!--            </div>-->
         </div>
-<!--        这里可以做多页，暂时没做-->
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" style="width: 368px" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="logGet">
-                    <!-- 头部提示信息 -->
-                    <div class="logD logDtip">
-                        <p class="p1">登录</p>
-                    </div>
-                    <!-- 输入框 -->
-                    <div class="lgD">
-                        <img src="../img/person.png" width="20" height="20" alt=""/>
-                        <input id="username_log" type="text" placeholder=" 输入用户名或邮箱"/>
-                    </div>
-                    <div class="lgD">
-                        <img src="../img/lock.png" width="20" height="20" alt=""/>
-                        <input id="pwd_log" type="password" placeholder=" 输入用户密码"/>
-                    </div>
-                    <div class="lgD">
-                        <p class="p3">
-                            <a style="float: right" onclick="open_register()">立即注册</a>
-                        </p>
-                    </div>
-                    <div class="logC" style="margin-top: 70px">
-                        <a target="_self">
-                            <button onclick="login()">登 录</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" style="width: 368px" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="logGet">
-                    <!-- 头部提示信息 -->
-                    <div class="logD logDtip">
-                        <p class="p1">注册</p>
-                    </div>
-                    <!-- 输入框 -->
-                    <div class="lgD">
-                        <img src="../img/person.png" width="20" height="20" alt=""/>
-                        <input id="username_reg" type="text" placeholder=" 输入用户名"/>
-                    </div>
-                    <div class="lgD">
-                        <img src="../img/lock.png" width="20" height="20" alt=""/>
-                        <input id="pwd_reg" type="password" placeholder=" 输入用户密码"/>
-                    </div>
-                    <div class="lgD">
-                        <img src="../img/lock.png" width="20" height="20" alt=""/>
-                        <input id="pwd_confirm_reg" type="password" placeholder=" 确认用户密码"/>
-                    </div>
-                    <div class="lgD">
-                        <img src="../img/e-mail.png" width="20" height="20" alt=""/>
-                        <input id="email_reg" type="text" placeholder=" 输入用户邮箱"/>
-                    </div>
-                    <div class="lgD">
-                        <p class="p3">
-                            <a onclick="open_login()" style="float: left">已有账户，立即登录</a>
-                        </p>
-                    </div>
-                    <div class="logC" style="margin-top: 70px">
-                        <a target="_self">
-                            <button onclick="register()">注册</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <!--        这里可以做多页，暂时没做-->
     </div>
 </div>
 
@@ -224,15 +173,3 @@
 </script>
 </html>
 
-<script>
-    function open_register() {
-        $("#loginModal").modal('hide');
-        $("#registerModal").modal('show');
-    }
-
-    function open_login() {
-
-        $("#registerModal").modal('hide');
-        $("#loginModal").modal('show');
-    }
-</script>

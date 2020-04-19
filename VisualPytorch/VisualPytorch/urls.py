@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/NeuralNetwork/',include('NeuralNetwork.urls')),
     path('api/journal/',include('journal.urls')),
     path('api/user/',include('user.urls')),
+    path('api/', include('comments.urls')),
 ]

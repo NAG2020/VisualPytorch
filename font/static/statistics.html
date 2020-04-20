@@ -50,7 +50,7 @@
     <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
     <link href="../css/layer.css" rel="stylesheet">
 
-        <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             $("#header_index").attr("href", "index.html");
             $("#header_create_models").attr("href", "models/create_models.html");
@@ -99,42 +99,26 @@
 
 <div class="container" style="margin-top: 20px">
     <!-- Counter Area Start -->
-    <div class="counter-area section-padding text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-6">
-                    <div class="single-counter wow" data-wow-duration="1s" data-wow-delay=".2s">
-                        <div class="counter-info">
-								<span class="fcount">
-                                    <span class="counter" id="visit_count" ></span>
-								</span>
-                            <h3>历史访问量</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6">
-                    <div class="single-counter wow" data-wow-duration="1s" data-wow-delay=".2s">
-                        <div class="counter-info">
-								<span class="fcount">
-									<span class="counter" id="user_count"></span>
-								</span>
-                            <h3>注册用户数</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6">
-                    <div class="single-counter wow" data-wow-duration="1s" data-wow-delay=".2s">
-                        <div class="counter-info">
-								<span class="fcount">
-									<span class="counter" id="network_api_count"></span>
-								</span>
-                            <h3>生成模型数</h3>
-                        </div>
-                    </div>
-                </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">历史访问量</label>
+            <div class="col-sm-10">
+                <p class="form-control-static" id="visit_count"></p>
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">注册用户数</label>
+            <div class="col-sm-10">
+                <p class="form-control-static" id="user_count"></p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">生成模型数</label>
+            <div class="col-sm-10">
+                <p class="form-control-static" id="network_api_count"></p>
+            </div>
+        </div>
+    </form>
     <!-- Counter Area End -->
     <div class="shopping-cart-area section-padding">
         <div class="container">

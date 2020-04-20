@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'NeuralNetwork.apps.NeuralnetworkConfig',
     'journal.apps.JournalConfig',
     'user.apps.UserConfig',
+    'comments.apps.CommentsConfig'
 ]
 
 MIDDLEWARE = [

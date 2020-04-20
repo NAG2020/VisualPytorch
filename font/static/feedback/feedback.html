@@ -9,44 +9,44 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Place favicon.ico in the root directory -->
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
 
-<!-- all css here -->
-<!-- bootstrap v3.3.6 css -->
-<!--<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <!--<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
 
-<link rel="stylesheet" href="../../resources/bootstrap.min.css">
-<!-- animate css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
-<!-- jquery-ui.min css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
-<!-- meanmenu css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
-<!-- Font-Awesome css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
-<!-- pe-icon-7-stroke css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
-<!-- Flaticon css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
-<!-- venobox css -->
-<link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
-<!-- nivo slider css -->
-<link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
-<link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" />
-<!-- owl.carousel css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
-<!-- style css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
-<!-- responsive css -->
-<link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+    <link rel="stylesheet" href="../../resources/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen"/>
+    <!-- nivo slider css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css"/>
+    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
 
-<!--原有head-->
+    <!--原有head-->
     <meta charset="UTF-8">
     <title>feedback</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <script type="text/javascript" src="../../resources/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
@@ -54,28 +54,91 @@
     <link href="../../resources/bootstrap.min.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../../resources/pagination.css" rel="stylesheet">
 
     <style type="text/css">
         input::-webkit-input-placeholder { /* WebKit browsers */
-            font-size:10px;
+            font-size: 10px;
         }
+
         input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            font-size:10px;
+            font-size: 10px;
         }
+
         input::-moz-placeholder { /* Mozilla Firefox 19+ */
-            font-size:10px;
+            font-size: 10px;
         }
+
         input:-ms-input-placeholder { /* Internet Explorer 10+ */
-            font-size:10px;
+            font-size: 10px;
         }
-        textarea{
+
+        textarea {
             resize: none;
         }
     </style>
+    <script type="text/javascript">
+        data = {}
+        try {
+            var user_info = window.sessionStorage.getItem('userinfo');
+            var user_id = JSON.parse(user_info).id;
+        } catch (e) {
+            alert("请登录");
+            window.location.href = "../index.html";
+        }
+
+        function simpleTemplating(data) {
+            var html = '<ul class="list-group">';
+            $.each(data, function (index, item) {
+                html += '<a style=" word-wrap:break-word; word-break:break-all;" href=\"#\" class=\"list-group-item\">' + item + '</a>';
+            });
+            html += '</ul>';
+            return html;
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: gobalConfig.base_url + 'api/comments/',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                beforeSend: function (XMLHttpRequest) {
+                    var token = window.sessionStorage.getItem('token');
+                    if (token != null) {
+                        XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+                    }
+                },
+                success: function (data_return) {
+                    var data = [];
+                    for (var i = 0; i < data_return.length; i++) {
+                        data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"]);
+                    }
+                    $('#pagination-container').pagination({
+                        dataSource: data,
+                        pageSize: 5,
+                        autoHidePrevious: true,
+                        autoHideNext: true,
+                        callback: function (data, pagination) {
+                            // template method of yourself
+                            var html = simpleTemplating(data);
+                            $('#data-container').html(html);
+                        }
+                    })
+                },
+                error: function (data_return) {
+                    alert("error");
+
+                    //window.location.href = "canvas.html";
+                }
+            });
+
+
+        });
+    </script>
 </head>
 
 <body style="background-color:#F5F5F5">
-<nav id="header" ></nav>
+<nav id="header"></nav>
 <script>
     $("#header").load("../base/header.html")
 </script>
@@ -90,19 +153,9 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item">1</a>
-                        <a href="#" class="list-group-item">2</a>
-                        <a href="#" class="list-group-item">3</a>
-                        <a href="#" class="list-group-item">4</a>
-                        <a href="#" class="list-group-item">5</a>
-                        <a href="#" class="list-group-item">6</a>
-                        <a href="#" class="list-group-item">7</a>
-                    </ul>
-                    <ul class="pager">
-                        <li class="previous"><a href="#">上一页</a></li>
-                        <li class="next"><a href="#">下一页</a></li>
-                    </ul>
+                    <div id="data-container"></div>
+                    <div id="pagination-container"></div>
+
                 </div>
             </div>
         </div>
@@ -116,35 +169,34 @@
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="question-describe" class="col-sm-4 control-label">问题描述：</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" rows="5" id="question-describe" placeholder="请输入问题描述"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputfile" class="col-sm-4 control-label">上传图片：</label>
-                    <div class="col-sm-8">
-                        <input type="file" id="inputfile">
-                        <span class="help-block ">  帮助您更好的解决问题！</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="contact-info" class="col-sm-4 control-label">联系方式：</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="contact-info" placeholder="请输入邮箱、手机和QQ任一种联系方式">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit"  class="btn btn-primary" style="float:right;">提交</button>
-                    </div>
-                </div>
-            </form>
+                        <div class="form-group">
+                            <label for="contact-info" class="col-sm-4 control-label">标题：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="contact-info"
+                                       placeholder="请填写标题">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question-describe" class="col-sm-4 control-label">问题描述：</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="4" id="question-describe"
+                                          placeholder="请输入问题描述"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button onclick="add_comment()" type="submit" class="btn btn-primary" style="float:right;">提交</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+
     </div>
+
 </div>
 
 <nav id="footer"></nav>

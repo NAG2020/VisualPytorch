@@ -12,11 +12,9 @@
     <!-- Place favicon.ico in the root directory -->
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
-
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
-    <!--<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
-
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
     <link rel="stylesheet" href="../../resources/bootstrap.min.css">
     <!-- animate css -->
     <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
@@ -110,7 +108,7 @@
                 },
                 success: function (data_return) {
                     var data = [];
-                    for (var i = 0; i < data_return.length; i++) {
+                    for (var i = data_return.length - 1; i >= 0; i--) {
                         data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"]);
                     }
                     $('#pagination-container').pagination({
@@ -187,7 +185,9 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button onclick="add_comment()" type="submit" class="btn btn-primary" style="float:right;">提交</button>
+                                <button onclick="add_comment()" type="submit" class="btn btn-primary"
+                                        style="float:right;">提交
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -203,5 +203,36 @@
 <script>
     $("#footer").load("../base/footer.html");
 </script>
+<script src="../../resources/jquery.min.js"></script>
+<!-- bootstrap js -->
+<script src="../../resources/templatesRes/js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="../../resources/templatesRes/js/owl.carousel.min.js"></script>
+<!-- jquery-ui js -->
+<script src="../../resources/templatesRes/js/jquery-ui.min.js"></script>
+<!-- jquery Counterup js -->
+<script src="../../resources/templatesRes/js/jquery.counterup.min.js"></script>
+<script src="../../resources/templatesRes/js/waypoints.min.js"></script>
+<!-- jquery countdown js -->
+<script src="../../resources/templatesRes/js/jquery.countdown.min.js"></script>
+<!-- jquery countdown js -->
+<script type="text/javascript" src="../../resources/templatesRes/venobox/venobox.min.js"></script>
+<!-- jquery Meanmenu js -->
+<script src="../../resources/templatesRes/js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="../../resources/templatesRes/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<!-- scrollUp JS -->
+<script src="../../resources/templatesRes/js/jquery.scrollUp.min.js"></script>
+<!-- plugins js -->
+<script src="../../resources/templatesRes/js/plugins.js"></script>
+<!-- Nivo slider js -->
+<script src="../../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="../../resources/templatesRes/lib/home.js" type="text/javascript"></script>
+<!-- main js -->
+<script src="../../resources/templatesRes/js/main.js"></script>
+<script type="text/javascript" src="../../resources/pagination.js"></script>
 </body>
 </html>

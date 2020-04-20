@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <title>Model Details</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,25 +32,16 @@
     <!-- venobox css -->
     <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
     <!-- nivo slider css -->
-    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
-    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" />
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
     <!-- style css -->
     <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
     <!-- responsive css -->
     <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
-    <!--原有head-->
-        <meta charset="UTF-8">
-        <title>VisualPytorch</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--原有head-->    
         <script type="text/javascript" src="../../resources/jquery.min.js"></script>
         <script type="text/javascript" src="../../resources/bootstrap.min.js"></script>
         <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
-        <link href="../../resources/bootstrap.min.css" rel="stylesheet">
-        <link href="../../resources/jquery-ui.css" rel="stylesheet">
-        <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
-        <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
         <link href="../../css/layer.css" rel="stylesheet">
         <link href="../../css/buttons.css" rel="stylesheet">
         <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
@@ -57,6 +49,7 @@
         <script type="text/javascript" src="../../javascript/layer_form.js"></script>
         <script type="text/javascript" src="../../javascript/base_service.js"></script>
     </head>
+
 
 <body>
     <nav id="header"></nav>
@@ -392,7 +385,13 @@
 </script>
 <script>
     $(document).ready(function () {
-
+        var query_object = getQueryObject(window.location.href);
+        if (query_object.hasOwnProperty("id")) {
+            var net_id = query_object["id"];
+        }
+        $("#modify").attr("onclick", "open_model("+net_id+")");
+        $("input").attr("disabled", "disabled");
+        $("select").attr("disabled", "disabled");
         //根据解析页面传参
 
         var query_object = getQueryObject(window.location.href);
@@ -561,18 +560,6 @@
         });
         $("#parameters").children().remove();
     }
-</script>
-
-<script>
-    $(document).ready(function () {
-        var query_object = getQueryObject(window.location.href);
-        if (query_object.hasOwnProperty("id")) {
-            var net_id = query_object["id"];
-        }
-        $("#modify").attr("onclick", "open_model("+net_id+")");
-        $("input").attr("disabled", "disabled");
-        $("select").attr("disabled", "disabled");
-    });
 </script>
 
 <script>

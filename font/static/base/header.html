@@ -12,7 +12,19 @@
 <link id="css4" href="../../resources/jquery-ui.theme.css" rel="stylesheet">
 <link id="css5" href="../../css/buttons.css" rel="stylesheet">
 <link id="css6" href="../../css/login.css" rel="stylesheet">
+<script type="text/javascript">
+    try {
+        var user_info = window.sessionStorage.getItem('userinfo');
+        var user_id = JSON.parse(user_info).id;
+        var name = JSON.parse(user_info).username;
+        $("#login_btn").hide();
+        $("#register_btn").hide();
+        $("#user_btn").text(name);
+        $("#user_btn").show();
+    } catch (e) {
 
+    }
+</script>>
 <div class="header-area">
     <div class="container">
         <div class="row">
@@ -40,10 +52,11 @@
                                 </ul>
                             </li>
                             <li><a id="header_feedback" href="../feedback/feedback.html">问 题 反 馈 </a></li>
-<!--                            <li style="text-align: left;"><a id="header_statistics" href="../statistics.html"> 站 点 数-->
-<!--                                据 </a></li>-->
+                            <!--                            <li style="text-align: left;"><a id="header_statistics" href="../statistics.html"> 站 点 数-->
+                            <!--                                据 </a></li>-->
                             <li><a id="login_btn" data-toggle="modal" data-target="#loginModal">登录</a></li>
                             <li><a id="register_btn" data-toggle="modal" data-target="#registerModal">注册</a>
+                            <li><a style="display: none" id="user_btn" ></a>
                         </ul>
                     </nav>
                 </div>
@@ -82,11 +95,11 @@
                             <img id="login_pic_2" src="../../img/lock.png" width="20" height="20" alt=""/>
                             <input id="pwd_log" type="password" placeholder=" 输入用户密码"/>
                         </div>
-<!--                        <div class="lgD">-->
-<!--                            <p class="p3">-->
-<!--                                <a style="float: right" onclick="open_register()">立即注册</a>-->
-<!--                            </p>-->
-<!--                        </div>-->
+                        <!--                        <div class="lgD">-->
+                        <!--                            <p class="p3">-->
+                        <!--                                <a style="float: right" onclick="open_register()">立即注册</a>-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
                         <div class="logC" style="margin-top: 70px">
                             <a target="_self">
                                 <button onclick="login()">登 录</button>
@@ -127,11 +140,11 @@
                             <img id="reg_pic_4" src="../../img/e-mail.png" width="20" height="20" alt=""/>
                             <input id="email_reg" type="text" placeholder=" 输入用户邮箱"/>
                         </div>
-<!--                        <div class="lgD">-->
-<!--                            <p class="p3">-->
-<!--                                <a onclick="open_login()" style="float: left">已有账户，立即登录</a>-->
-<!--                            </p>-->
-<!--                        </div>-->
+                        <!--                        <div class="lgD">-->
+                        <!--                            <p class="p3">-->
+                        <!--                                <a onclick="open_login()" style="float: left">已有账户，立即登录</a>-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
                         <div class="logC" style="margin-top: 70px">
                             <a target="_self">
                                 <button onclick="register()">注册</button>

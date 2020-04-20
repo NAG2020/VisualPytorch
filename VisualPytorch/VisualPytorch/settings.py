@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from config import db
-import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +42,7 @@ INSTALLED_APPS = [
     'NeuralNetwork.apps.NeuralnetworkConfig',
     'journal.apps.JournalConfig',
     'user.apps.UserConfig',
-    'comments.apps.CommentsConfig'
+    'comments.apps.CommentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +61,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     # 配置jwt
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
 
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -181,9 +180,3 @@ AUTHENTICATION_BACKENDS = [
     'user.utils.UserAuthBackend',  # 修改auth认证后端类
 ]
 
-JWT_AUTH = {
-        # timedelta 时间差
-        'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=10),
-}
-
-FILE_DIR = os.path.dirname(BASE_DIR) + r"\files"

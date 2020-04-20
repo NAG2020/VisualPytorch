@@ -86,7 +86,9 @@ function register() {
             var token = data_return["token"];
             window.sessionStorage.setItem('token', token);
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
-            window.location.href = "canvas.html"
+            if (window.location.href.includes("index") == true) {
+                window.location.href = "index.html"
+            } else window.location.href = "../index.html"
         },
         error: function (data_return) {
             alert("用户名或邮箱已被注册")

@@ -101,9 +101,9 @@ function register() {
 function logout() {
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('userinfo');
-    $("#user_nav").hide();
-    $("#login_nav").show();
-    alert("用户已登出")
+    if (window.location.href.includes("index") == true) {
+        window.location.href = "index.html"
+    } else window.location.href = "../index.html"
 
 }
 

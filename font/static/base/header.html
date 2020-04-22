@@ -17,10 +17,13 @@
         var user_info = window.sessionStorage.getItem('userinfo');
         var user_id = JSON.parse(user_info).id;
         var name = JSON.parse(user_info).username;
+        var is_staff = JSON.parse(user_info).is_staff;
         $("#login_btn").hide();
         $("#register_btn").hide();
         $("#user_btn").text(name);
         $("#user_btn").show();
+        if (is_staff == true)
+            $("#header_statistics").show();
     } catch (e) {
 
     }
@@ -54,9 +57,14 @@
                             <li><a id="header_feedback" href="../feedback/feedback.html">问 题 反 馈 </a></li>
                             <!--                            <li style="text-align: left;"><a id="header_statistics" href="../statistics.html"> 站 点 数-->
                             <!--                                据 </a></li>-->
+
                             <li><a id="login_btn" data-toggle="modal" data-target="#loginModal">登录</a></li>
                             <li><a id="register_btn" data-toggle="modal" data-target="#registerModal">注册</a>
-                            <li><a style="display: none" id="user_btn" ></a>
+                            <li><a style="display: none" id="user_btn"></a>
+                                <ul class="sub-menu">
+                                    <li><a style="display: none" id="header_statistics" href="../statistics.html">访问数据</a></li>
+                                </ul>
+
                         </ul>
                     </nav>
                 </div>

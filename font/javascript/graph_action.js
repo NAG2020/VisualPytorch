@@ -488,3 +488,130 @@ function save_attr_conv2d_layer_from(id) {
         "\"pool_stride\":\"" + pool_stride.val() + "\",\"pool_padding\":\"" + pool_padding.val() + "\"}");
     $("#" + id).popover('hide');
 }
+
+function save_attr_softmax_layer_form(id){
+    var form = $("#form" + id).parent();
+    var dim = form.find("[name = \"dim\"]");
+    form.find("[name='input_error']").remove();
+    var reg = /^\s*\d+\s*$/;
+    if (!reg.test(dim.val())) {
+        dim.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+        return;
+    }
+    window.sessionStorage.setItem(id, "{\"dim\":\"" + dim.val() + "\"}");
+    $("#" + id).popover('hide');
+}
+
+function save_attr_dropout_layer_form(id){
+    var form = $("#form" + id).parent();
+    var p = form.find("[name = \"p\"]");
+    var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
+    form.find("[name='input_error']").remove();
+    var reg = /^\s*\d+\s*$/;
+    if (!reg.test(p.val())) {
+        p.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+        return;
+    }
+
+    window.sessionStorage.setItem(id, "{\"type\":\"" + type +" \",\"p\":\"" + p.val() + "\"}");
+    $("#" + id).popover('hide');
+}
+
+function save_attr_conv_layer_form(id){
+    //这里是硬编码，考虑在b版本优化
+    var form = $("#form" + id).parent();
+    var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
+    var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
+    var in_channels = form.find("[name = \"in_channels\"]");
+    var out_channels = form.find("[name = \"out_channels\"]");
+    var kernel_size = form.find("[name = \"kernel_size\"]");
+    var stride = form.find("[name = \"stride\"]");
+    var padding = form.find("[name = \"padding\"]");
+
+//in_channel(int):输入通道数 非0正数 无默认值
+
+// out_channel(int):输出通道数 非0正数 无默认值
+
+// kernel_size (int) : 卷积核的尺寸 非0正数 无默认值
+
+// stride (int) : 卷积步长 非0正数 默认值为1
+
+// padding (int) : 补充0的层数 非负整数 默认值为0
+    //todo:加入更精确的正则判断
+    form.find("[name='input_error']").remove();
+    var reg = /^\s*[1-9]\d*\s*$/;
+    var reg_zero = /^\s*\d+\s*$/;
+    var flag = true;
+    var check_array1 = [in_channels, out_channels, kernel_size, stride];
+    check_array1.forEach(function (value, index, array) {
+        if (!reg.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    var check_array2 = [padding];
+    check_array2.forEach(function (value, index, array) {
+        if (!reg_zero.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+    //var activity = form.find("[name = \"activity\"]").val();
+    //var pool_way = form.find("[name = \"pool_way\"]").val();
+    window.sessionStorage.setItem(id, "{ \"layer_type\":\""+layer_type+"\",\"type\":\""+ type +"\",\"in_channels\":\"" + in_channels.val() + "\", \"out_channels\":\"" + out_channels.val() + "\", \"kernel_size\":\"" + kernel_size.val() + "\", " +
+        "\"stride\":\"" + stride.val() + "\", \"padding\":\"" + padding.val() + "\"}");
+    $("#" + id).popover('hide');
+}
+
+function save_attr_pool_layer_form(id){
+    var form = $("#form" + id).parent();
+    var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
+    var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
+    var kernel_size = form.find("[name = \"kernel_size\"]");
+    var stride = form.find("[name = \"stride\"]");
+    var padding = form.find("[name = \"padding\"]");
+    var ceil_mode = form.find("[id=\"" + id + "ceil_mode\"]").find("option:selected").val();
+    var count_include_pad = form.find("[id=\"" + id + "count_include_pad\"]").find("option:selected").val();
+//layer_type:下拉框三选一，选项包括max_pool/avg_pool/max_unpool 无默认值
+// type:下拉框三选一，选项包括1d/2d/3d 无默认值
+
+// kernel_size (int) : 卷积核的尺寸 非0正数 无默认值
+
+// stride (int) : 卷积步长 非0正数 无默认值
+
+// padding (int) : 补充0的层数 非负整数 默认值为0
+
+// ceil_mode:下拉框二选一，ceil/floor 默认值为floor
+
+// count_include_pad:下拉框二选一,true/false 默认值为true
+    //todo:加入更精确的正则判断
+    form.find("[name='input_error']").remove();
+    var reg = /^\s*[1-9]\d*\s*$/;
+    var reg_zero = /^\s*\d+\s*$/;
+    var flag = true;
+    var check_array1 = [kernel_size, stride];
+    check_array1.forEach(function (value, index, array) {
+        if (!reg.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    var check_array2 = [padding];
+    check_array2.forEach(function (value, index, array) {
+        if (!reg_zero.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+    //var activity = form.find("[name = \"activity\"]").val();
+    //var pool_way = form.find("[name = \"pool_way\"]").val();
+    window.sessionStorage.setItem(id, "{ \"layer_type\":\""+ layer_type + "\",\"type\":\""+ type +"\",\"kernel_size\":\"" + kernel_size.val() + "\", " + "\"stride\":\"" + stride.val() + "\", \"padding\":\"" + padding.val() + "\",\"ceil_mode\":\""+ ceil_mode + "\",\"count_include_pad\":\"" + count_include_pad + "\"}");
+    $("#" + id).popover('hide');
+
+}

@@ -54,7 +54,6 @@
 
 
 
-
 </head>
 
 <body>
@@ -155,54 +154,54 @@
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
+                                <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="linear_layer" type="button"
+                                <div class="node lightblue" id="linear_layer" type="button"
                                      data-container="body" data-toggle="popover" in_channel="" out_channel="">
                                     全连接层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="conv1d_layer" type="button"
+                                <div class="node lightblue" id="conv1d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     一维卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="conv2d_layer" type="button"
+                                <div class="node lightblue" id="conv2d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     二维卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="element_wise_add_layer" type="button"
+                                <div class="node lightblue" id="element_wise_add_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     元素级相加层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="concatenate_layer" type="button"
+                                <div class="node lightblue" id="concatenate_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     channel维度拼接层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="softmax_layer" type="button"
+                                <div class="node lightblue" id="softmax_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     softmax层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="dropout_layer" type="button"
+                                <div class="node lightblue" id="dropout_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     dropout层
                                 </div>
@@ -210,21 +209,21 @@
 
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="conv_layer" type="button"
+                                <div class="node lightblue" id="conv_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="pool_layer" type="button"
+                                <div class="node lightblue" id="pool_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     最大池化层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="activation_layer" type="button"
+                                <div class="node lightblue" id="activation_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     激活层
                                 </div>
@@ -662,23 +661,23 @@
 
 
 
-<script>
-    var my_end_point = {
-        endpoint: ["Dot", {radius: 5}],
-        connectorStyle: {
-            stroke: "#fc2f49",
-            strokeWidth: 3,
-
-        },
-        isSource: true,
-        isTarget: true,
-        maxConnections: -1,
-        connector: ["Flowchart", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
-        connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
-        connectionsDetachable: true,
-
-    };
-</script>
+    <script>
+        var my_end_point = {
+            endpoint: ["Dot", {radius: 5}],
+            connectorStyle: {
+                stroke: "#cccccc",
+                strokeWidth: 3,
+    
+            },
+            isSource: true,
+            isTarget: true,
+            maxConnections: -1,
+            connector: ["Flowchart", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
+            connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
+            connectionsDetachable: true,
+    
+        };
+    </script>
 
 <script>
     var canvas_cnt = 0;

@@ -272,6 +272,7 @@ function save_attr_conv1d_layer(button) {
     var padding = form.find("[name = \"padding\"]");
     var activity = form.find("[id=\"" + id + "activity\"]").find("option:selected").val();
     var pool_way = form.find("[id=\"" + id + "pool_way\"]").find("option:selected").val();
+    //console.log(pool_way);
     var pool_kernel_size = form.find("[name = \"pool_kernel_size\"]");
     var pool_stride = form.find("[name = \"pool_stride\"]");
     var pool_padding = form.find("[name = \"pool_padding\"]");
@@ -416,6 +417,7 @@ function save_attr_conv1d_layer_form(id) {
     var padding = form.find("[name = \"padding\"]");
     var activity = form.find("[id=\"" + id + "activity\"]").find("option:selected").val();
     var pool_way = form.find("[id=\"" + id + "pool_way\"]").find("option:selected").val();
+    //console.log(pool_way);
     var pool_kernel_size = form.find("[name = \"pool_kernel_size\"]");
     var pool_stride = form.find("[name = \"pool_stride\"]");
     var pool_padding = form.find("[name = \"pool_padding\"]");
@@ -438,9 +440,9 @@ function save_attr_conv1d_layer_form(id) {
             flag = false;
         }
     });
-    if (!flag) {
-        return;
-    }
+    // if (!flag) {
+    //     return;
+    // }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{\"in_channels\":\"" + in_channels.val() + "\", \"out_channels\":\"" + out_channels.val() + "\", \"kernel_size\":\"" + kernel_size.val() + "\", " +
@@ -506,11 +508,12 @@ function save_attr_dropout_layer_form(id){
     var form = $("#form" + id).parent();
     var p = form.find("[name = \"p\"]");
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
+    //console.log(type);
     form.find("[name='input_error']").remove();
     var reg = /^\s*\d+\s*$/;
     if (!reg.test(p.val())) {
         p.after("<p name='input_error' class='alert_font'>输入不合法</p>");
-        return;
+        //return;
     }
 
     window.sessionStorage.setItem(id, "{\"type\":\"" + type +" \",\"p\":\"" + p.val() + "\"}");
@@ -556,9 +559,9 @@ function save_attr_conv_layer_form(id){
             flag = false;
         }
     });
-    if (!flag) {
-        return;
-    }
+    // if (!flag) {
+    //     return;
+    // }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{ \"layer_type\":\""+layer_type+"\",\"type\":\""+ type +"\",\"in_channels\":\"" + in_channels.val() + "\", \"out_channels\":\"" + out_channels.val() + "\", \"kernel_size\":\"" + kernel_size.val() + "\", " +
@@ -606,9 +609,9 @@ function save_attr_pool_layer_form(id){
             flag = false;
         }
     });
-    if (!flag) {
-        return;
-    }
+    // if (!flag) {
+    //     return;
+    // }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{ \"layer_type\":\""+ layer_type + "\",\"type\":\""+ type +"\",\"kernel_size\":\"" + kernel_size.val() + "\", " + "\"stride\":\"" + stride.val() + "\", \"padding\":\"" + padding.val() + "\",\"ceil_mode\":\""+ ceil_mode + "\",\"count_include_pad\":\"" + count_include_pad + "\"}");

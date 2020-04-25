@@ -19,12 +19,13 @@ class Global:
         self.dict_number=0
         self.model=np.array([])
         self.para_str={'ceil_mode','count_include_pad','nonlinearity'}
-        self.para_group={'shape','in_channel','out_channel','dim','type','p','layer_type',
+        self.para_group={'shape','in_channels','out_channels','dim','type','p','layer_type',
                          'kernel_size','stride','padding','ceil_mode','count_include_pad',
                          'negative_slope','weight','lower','upper','input_size',
-                         'hidden_size','num_layers','nonlinearity','num_features','num_groups','num_channel'}
-        self.inttype={'in_channel','out_channel','dim','kernel_size','stride','padding','input_size','hidden_size','num_layers',
-                      'num_features','num_groups','num_channel'}
+                         'hidden_size','num_layers','nonlinearity','num_features','num_groups','num_channel','in_features',
+                         'out_features'}
+        self.inttype={'in_channels','out_channels','dim','kernel_size','stride','padding','input_size','hidden_size','num_layers',
+                      'num_features','num_groups','num_channel','in_features','out_features'}
         self.doubletype={'p','negative_slope','weight','loser','upper'}
         self.type={'1d','2d','3d'}
         self.notzero={'in_channel','out_channel','kernel_size','stride','weight','lower','upper','negative_slope',

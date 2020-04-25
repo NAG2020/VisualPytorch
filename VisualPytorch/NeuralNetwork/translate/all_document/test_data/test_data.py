@@ -1,5 +1,3 @@
-
-
 base_start={
   "type": "base",
   "name": "base_start",

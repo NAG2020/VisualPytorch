@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
         <!-- venobox css -->
         <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
+        <!-- nivo slider css -->
+<!--         <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
+        <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" /> -->
         <!-- owl.carousel css -->
         <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
         <!-- style css -->
@@ -45,6 +48,7 @@
     <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
     <link href="../../css/layer.css" rel="stylesheet">
     <link href="../../css/buttons.css" rel="stylesheet">
+
 
 
 
@@ -151,25 +155,25 @@
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
+                                <div class="node orange" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node lightblue" id="linear_layer" type="button"
+                                <div class="node orange" id="linear_layer" type="button"
                                      data-container="body" data-toggle="popover" in_channel="" out_channel="">
                                     全连接层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list hidden">
                                 <div class="node lightblue" id="conv1d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     一维卷积层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list hidden">
                                 <div class="node lightblue" id="conv2d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     二维卷积层
@@ -227,6 +231,35 @@
                             </div>
 
 
+
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="RNN_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    递归神经网络
+                                </div>
+                            </div>
+
+
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="LSTM_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    长周期神经网络
+                                </div>
+                            </div>
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="norm_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    标准化层
+                                </div>
+                            </div>
+
+                            <div class="ele_in_list">
+                                <div class="node end little_green" id="end">
+                                    结束
+                                </div>
+                            </div>
                         </div>
 
 
@@ -235,28 +268,28 @@
                             <h4>基本参数配置</h4>
                             <form class="form-horizontal" role="form" id="static_form">
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">epoch(训练轮次)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="10" id="epoch" name="epoch">
+                                    <label class="col-sm-4 control-label">epoch<br/>(训练轮次)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为10" id="epoch" name="epoch">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">learning_rate</br>(学习率)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.01" id="learning_rate" name="learning_rate">
+                                    <label class="col-sm-4 control-label">learning_rate</br>(学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0-1]实数，默认为0.01" id="learning_rate" name="learning_rate">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">batch_size</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="1" id="batch_size" name="batch_size">
+                                    <label class="col-sm-4 control-label">batch_size<br/>(每次训练个数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数,默认为1" id="batch_size" name="batch_size">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">dataset(数据)</label>
-                                    <div class="col-sm-7">
+                                    <label class="col-sm-4 control-label">dataset<br/>(数据)</label>
+                                    <div class="col-sm-8">
                                         <select class="form-control" id="dataset" name="data">
-                                            <option value="mnist">mnist</option>
+                                            <option value="mnist" selected>mnist</option>
                                             <option value="cifar10">cifar10</option>
                                             <option value="stl10">stl10</option>
                                             <option value="svhn">svhn</option>
@@ -264,16 +297,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-7 control-label">ifshuffle(数据集是否打乱)</label>
-                                    <div class="col-sm-3 checkbox">
-                                            <input type="checkbox" id="ifshuffle" name="ifshuffle" checked>
+                                    <label class="col-sm-4 control-label">ifshuffle<br/>(数据集是否打乱)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="ifshuffle" name="ifshuffle" checked></center>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">platform(运行平台)</label>
-                                    <div class="col-sm-7">
+                                    <label class="col-sm-4 control-label">platform<br/>(运行平台)</label>
+                                    <div class="col-sm-8">
                                         <select class="form-control" id="platform" name="data">
-                                            <option value="cpu">cpu</option>
+                                            <option value="cpu" selected>cpu</option>
                                             <option value="gpu">gpu</option>
                                         </select>
                                     </div>
@@ -282,10 +315,10 @@
 
 
                                 <div class="form-group">
-                                        <label class="col-sm-5 control-label">learning_rate_scheduler</br>(学习速率调节器)</label>
-                                        <div class="col-sm-7">
+                                        <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
+                                        <div class="col-sm-8">
                                             <select id="learning_rate_scheduler" name="learning_rate_scheduler" class="form-control">
-                                                <option value="None">None</option>
+                                                <option value="None" selected>None</option>
                                                 <option value="StepLR">StepLR</option>
                                                 <option value="MultiStepLR">MultiStepLR</option>
                                                 <option value="ExponentialLR">ExponentialLR</option>
@@ -295,75 +328,72 @@
                                         </div>
                                 </div>
                                 <div class="form-group hidden" id="step_size_form_group">
-                                    <label class="col-sm-5 control-label">step_size(衰减周期)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="step_size" name="step_size">
+                                    <label class="col-sm-4 control-label">step_size<br/>(衰减周期)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为50" id="step_size" name="step_size">
                                     </div>
                                 </div>
 
                                 <div class="form-group hidden" id="gamma_form_group">
-                                    <label class="col-sm-5 control-label">gamma(衰减幅度)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="gamma" name="gamma">
+                                    <label class="col-sm-4 control-label">gamma<br/>(衰减幅度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认为0.1" id="gamma" name="gamma">
                                     </div>
                                 </div>
 
                                 <div class="form-group hidden" id="milestones_form_group">
-                                    <label class="col-sm-5 control-label">milestones(衰减时间点)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="milestones" name="milestones">
+                                    <label class="col-sm-4 control-label">milestones<br/>(衰减时间点)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负整数序列，默认为50" id="milestones" name="milestones">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="T_max_form_group">
-                                    <label class="col-sm-5 control-label">T_max(下降周期)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="T_max" name="T_max">
+                                    <label class="col-sm-4 control-label">T_max<br/>(下降周期)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为50" id="T_max" name="T_max">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="eta_min_form_group">
-                                    <label class="col-sm-5 control-label">eta_min(最小学习率)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="eta_min" name="eta_min">
+                                    <label class="col-sm-4 control-label">eta_min<br/>(最小学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数，默认为0" id="eta_min" name="eta_min">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="factor_form_group">
-                                    <label class="col-sm-5 control-label">factor(调整系数)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.1" id="factor" name="factor">
+                                    <label class="col-sm-4 control-label">factor<br/>(调整系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.1" id="factor" name="factor">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="patience_form_group">
-                                    <label class="col-sm-5 control-label">patience(最小学习率)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="10" id="patience" name="patience">
+                                    <label class="col-sm-4 control-label">patience<br/>(最小学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为10" id="patience" name="patience">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="cooldown_form_group">
-                                    <label class="col-sm-5 control-label">cooldown(冷却时间)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="10" id="cooldown" name="cooldown">
+                                    <label class="col-sm-4 control-label">cooldown<br/>(冷却时间)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为10" id="cooldown" name="cooldown">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="verbose_form_group">
-                                    <label class="col-sm-5 control-label">verbose(打印日志)</label>
-                                        <div class="col-sm-7">
-                                            <select id="verbose" name="verbose" class="form-control">
-                                                <option value="True" selected>True</option>
-                                                <option value="False">False</option>
-                                            </select>
+                                    <label class="col-sm-4 control-label">verbose<br/>(打印日志)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="verbose" name="verbose" checked></center>
                                         </div>
                                 </div>
                                 <div class="form-group hidden" id="min_lr_form_group">
-                                    <label class="col-sm-5 control-label">min_lr(学习率下限)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="1e-4" id="min_lr" name="min_lr">
+                                    <label class="col-sm-4 control-label">min_lr<br/>(学习率下限)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-4" id="min_lr" name="min_lr">
                                     </div>
                                 </div>
                                 <hr/>
 <!-- optimizer start ==========================================-->
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">optimizer(优化器)</label>
-                                    <div class="col-sm-7">
+                                    <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
+                                    <div class="col-sm-8">
                                         <select class="form-control" id="optimizer" name="optimizer">
                                             <option value="Adam" selected>Adam</option>
                                             <option value="SGD">SGD</option>
@@ -374,86 +404,77 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="beta1_form_group">
-                                    <label class="col-sm-5 control-label">beta1(梯度移动平均值的系数)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.9" id="beta1" name="beta1">
+                                    <label class="col-sm-4 control-label">beta1<br/>(梯度移动平均值的系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.9" id="beta1" name="beta1">
                                     </div>
                                 </div>
 
                                 <div class="form-group" id="beta2_form_group">
-                                    <label class="col-sm-5 control-label">beta2(梯度平方移动平均值的系数)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="beta2" name="beta2">
+                                    <label class="col-sm-4 control-label">beta2<br/>(梯度平方移动平均值的系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.999" id="beta2" name="beta2">
                                     </div>
                                 </div>
 
                                 <div class="form-group" id="eps_form_group">
-                                    <label class="col-sm-5 control-label">eps(分母稳定项)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="eps" name="eps">
+                                    <label class="col-sm-4 control-label">eps<br/>(分母稳定项)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-8" id="eps" name="eps">
                                     </div>
                                 </div>
                                 <div class="form-group" id="weight_decay_form_group">
-                                    <label class="col-sm-5 control-label">weight_decay(L2正则项系数)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="weight_decay" name="weight_decay">
+                                    <label class="col-sm-4 control-label">weight_decay<br/>(L2正则项系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="weight_decay" name="weight_decay">
                                     </div>
                                 </div>
                                 <div class="form-group" id="amsgrad_form_group">
-                                    <label class="col-sm-5 control-label">amsgrad(使用AMSGrad变体)</label>
-                                    <div class="col-sm-7">
-                                        <select id="amsgrad" name="amsgrad" class="form-control">
-                                                <option value="True">True</option>
-                                                <option value="False" selected>False</option>
-                                        </select>
+                                    <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="momentum_form_group">
-                                    <label class="col-sm-5 control-label">momentum(调整系数)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.1" id="momentum" name="momentum">
+                                    <label class="col-sm-4 control-label">momentum<br/>(调整系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="momentum" name="momentum">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="dampening_form_group">
-                                    <label class="col-sm-5 control-label">dampening(动量衰减)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="10" id="dampening" name="dampening">
+                                    <label class="col-sm-4 control-label">dampening<br/>(动量衰减)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数，默认值为10" id="dampening" name="dampening">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="nesterov_form_group">
-                                    <label class="col-sm-5 control-label">nesterov(冷却时间)</label>
-                                    <div class="col-sm-7">
-                                        <select id="nesterov" name="nesterov" class="form-control">
-                                                <option value="True">True</option>
-                                                <option value="False" selected>False</option>
-                                        </select>
+                                    <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
+                                    <div class="col-sm-8">
+                                        <center><input type="nesterov" id="nesterov" name="amsgrad" checked></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="lambd_form_group">
-                                    <label class="col-sm-5 control-label">lambd(衰减项)</label>
-                                        <div class="col-sm-7">
-                                            <input type="text" class="form-control" placeholder="1e-4" id="lambd" name="lambd">
+                                    <label class="col-sm-4 control-label">lambd<br/>(衰减项)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为1e-4" id="lambd" name="lambd">
                                         </div>
                                 </div>
                                 <div class="form-group hidden" id="alpha_form_group">
-                                    <label class="col-sm-5 control-label">alpha(eta更新幂)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.75" id="alpha" name="alpha">
+                                    <label class="col-sm-4 control-label">alpha<br/>(eta更新幂)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0.75" id="alpha" name="alpha">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="t0_form_group">
-                                    <label class="col-sm-5 control-label">t0(开始平均的点)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="1e6" id="t0" name="t0">
+                                    <label class="col-sm-4 control-label">t0<br/>(开始平均的点)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为1e6" id="t0" name="t0">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="centered_form_group">
-                                    <label class="col-sm-5 control-label">centered(梯度通过方差归一化)</label>
-                                    <div class="col-sm-7">
-                                        <select id="centered" name="centered" class="form-control">
-                                                <option value="True">True</option>
-                                                <option value="False" selected>False</option>
-                                        </select>
+                                    <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="centered" name="centered" checked></center>
                                     </div>
                                 </div>
                                 <hr/>
@@ -462,8 +483,8 @@
 
 
                                 <div class="form-group">
-                                    <label class="col-sm-5 control-label">loss(损失函数)</label>
-                                    <div class="col-sm-7">
+                                    <label class="col-sm-4 control-label">loss<br/>(损失函数)</label>
+                                    <div class="col-sm-8">
                                         <select class="form-control" id="loss" name="loss">
                                             <option value="MSELoss" selected>MSELoss</option>
                                             <option value="CrossEntropyLoss">CrossEntropyLoss</option>
@@ -474,8 +495,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="reduction_form_group">
-                                    <label class="col-sm-5 control-label">reduction(输出的缩减)</label>
-                                    <div class="col-sm-7">
+                                    <label class="col-sm-4 control-label">reduction<br/>(输出的缩减)</label>
+                                    <div class="col-sm-8">
                                         <select id="reduction" name="reduction" class="form-control">
                                                 <option value="mean" selected>mean</option>
                                                 <option value="sum" >sum</option>
@@ -485,15 +506,15 @@
                                 </div>
 
                                 <div class="form-group hidden" id="weight_form_group">
-                                    <label class="col-sm-5 control-label">weight(每个分类损失的权重)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="weight" name="weight">
+                                    <label class="col-sm-4 control-label">weight<br/>(每个分类损失的权重)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数序列，默认为None" id="weight" name="weight">
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="ignore_index_form_group">
-                                    <label class="col-sm-5 control-label">ignore_index(忽略的目标)</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="0.5" id="ignore_index" name="ignore_index">
+                                    <label class="col-sm-4 control-label">ignore_index<br/>(忽略的目标)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="整数，默认为None" id="ignore_index" name="ignore_index">
                                     </div>
                                 </div>
 
@@ -647,8 +668,8 @@
     <!-- plugins js -->
     <script src="../../resources/templatesRes/js/plugins.js"></script>
     <!-- Nivo slider js -->
-    <script src="../../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
-    <script src="../../resources/templatesRes/lib/home.js" type="text/javascript"></script>
+<!--     <script src="../../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script src="../../resources/templatesRes/lib/home.js" type="text/javascript"></script> -->
     <!-- main js -->
     <script src="../../resources/templatesRes/js/main.js"></script>
 
@@ -658,23 +679,23 @@
 
 
 
-    <script>
-        var my_end_point = {
-            endpoint: ["Dot", {radius: 5}],
-            connectorStyle: {
-                stroke: "#cccccc",
-                strokeWidth: 3,
-    
-            },
-            isSource: true,
-            isTarget: true,
-            maxConnections: -1,
-            connector: ["Flowchart", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
-            connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
-            connectionsDetachable: true,
-    
-        };
-    </script>
+<script>
+    var my_end_point = {
+        endpoint: ["Dot", {radius: 5}],
+        connectorStyle: {
+            stroke: "#cccccc",
+            strokeWidth: 3,
+
+        },
+        isSource: true,
+        isTarget: true,
+        maxConnections: -1,
+        connector: ["Flowchart", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
+        connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
+        connectionsDetachable: true,
+
+    };
+</script>
 
 <script>
     var canvas_cnt = 0;
@@ -722,6 +743,12 @@
             scope: "ss",
         }
     );
+    $("#end").draggable(
+        {
+            helper: "clone",
+            scope: "ss",
+        }
+    );
 //==========================================以下是新增的
     $("#softmax_layer").draggable(
         {
@@ -755,6 +782,29 @@
             scope:"ss"
         }
     );
+    $("#RNN_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+    $("#LSTM_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+    $("#norm_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+
+
+
     var no_popover = ["start", "element_wise_add_layer"];
 
     $("#canvas").droppable({
@@ -798,17 +848,20 @@
             if (name == "start") {
                 window.sessionStorage.setItem(id, "{\"start\":\"true\"}");
             }
+            if (name == "end") {
+                window.sessionStorage.setItem(id, "{\"end\":\"true\"}");
+            }
             if (name == "element_wise_add_layer") {
                 window.sessionStorage.setItem(id, "{\"element_wise_add_layer\":\"true\"}");
             }
             if (name == "view_layer") {
-                window.sessionStorage.setItem(id, "{\"shape\":\"1\",\"unknown_temp1\":\"1\"}");
+                window.sessionStorage.setItem(id, "{\"shape\":\"None\"}");
             }
             if (name == "linear_layer") {
-                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\"}");
+                window.sessionStorage.setItem(id, "{\"in_features\":\"1\",\"out_features\":\"1\"}");
             }
             if (name == "concatenate_layer") {
-                window.sessionStorage.setItem(id, "{\"dim\":\"1\"}");
+                window.sessionStorage.setItem(id, "{\"dim\":\"0\"}");
             }
             if (name == "conv1d_layer") {
                 window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
@@ -818,10 +871,10 @@
             }
 
             if(name == "softmax_layer"){
-                window.sessionStorage.setItem(id,"{\"dim\":\"1\"}");
+                window.sessionStorage.setItem(id,"{\"dim\":\"None\"}");
             }
             if(name == "dropout_layer"){
-                window.sessionStorage.setItem(id,"{\"type\":\"None\",\"p\":\"0.5\"}");
+                window.sessionStorage.setItem(id,"{\"type\":\"2d\",\"p\":\"0.5\"}");
             }
 
 // layer_type:下拉框二选一，conv/conv_transpose 无默认值
@@ -838,7 +891,7 @@
 
 //         padding (int) : 补充0的层数 非负整数 默认值为0
             if(name == "conv_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"None\",\"type\":\"None\",\"in_channels\":\"0\",\"out_channels\":\"0\",\"kernel_size\":\"0\",\"stride\":\"0\",\"padding\":\"0\"}");
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"conv\",\"type\":\"2d\",\"in_channels\":\"None\",\"out_channels\":\"None\",\"kernel_size\":\"3\",\"stride\":\"1\",\"padding\":\"0\"}");
             }
 
 //layer_type:下拉框三选一，选项包括max_pool/avg_pool/max_unpool 无默认值
@@ -854,10 +907,10 @@
 
 // count_include_pad:下拉框二选一,true/false 默认值为true
             if(name == "pool_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"None\",\"type\":\"None\",\"kernel_size\":\"0\",\"stride\":\"0\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"true\"}");
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"max_pool\",\"type\":\"2d\",\"kernel_size\":\"2\",\"stride\":\"2\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"True\"}");
             }
 
-// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/elu 无默认值
+// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/PRelu/RRelu 默认值为relu
 
 // relu：无参数
 
@@ -867,19 +920,34 @@
 
 // leaky relu:
 
-// negative_slope(double) 非0正实数 默认值为0.01
+// negative_slope<正数> 默认值为0.01
 
-// PReLU: 类似leaky relu, 但是负数部分斜率可学习
+// PRelu: 类似leaky relu, 但是负数部分斜率可学习
 
-// weight(double) 权重初始化 非0正实数 默认值为0.25
-// RReLU: 类似leaky relu, 但是负数部分斜率为随机均匀分布
+// weight<正数>权重初始化 非0正实数 默认值为0.25
+// RRelu: 类似leaky relu, 但是负数部分斜率为随机均匀分布
 
-// lower(double)：均匀分布下限 非0正实数 默认值为1./8
+// lower<正数>：均匀分布下限 默认值为0.125
 
-// upper(double)：均匀分布上限 非0正实数 默认值为1./3
+// upper<正数>：均匀分布上限 默认值为0.333
             if(name == "activation_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"None\",\"type\":\"None\",\"kernel_size\":\"0\",\"stride\":\"0\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"true\"}");
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"relu\",\"negative_slope\":\"0.01\",\"weight\":\"0.25\",\"lower\":\"0.125\",\"upper\":\"0.333\"}");
             }
+
+
+            if(name == "RNN_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\",\"nonlinearity\":\"tanh\"}");
+            }
+
+
+
+            if(name == "LSTM_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\"}");
+            }
+            if(name == "norm_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"batch_norm\",\"type\":\"2d\",\"num_features\":\"None\",\"num_groups\":\"None\",\"num_channel\":\"None\"}");
+            }
+
 
             $("#" + id).bind("contextmenu", function () {
                 return false;
@@ -974,6 +1042,9 @@
             if(val == "ExponentialLR"){
                 $("#step_size_form_group").attr("class","form-group hidden");
                 $("#gamma_form_group").attr("class","form-group");
+                if( $("#gamma").val() == "" ){
+                    $("#gamma").attr("value",0.95);
+                }
                 $("#milestones_form_group").attr("class","form-group hidden");
                 $("#T_max_form_group").attr("class","form-group hidden");
                 $("#eta_min_form_group").attr("class","form-group hidden");
@@ -1135,56 +1206,209 @@
                 },
                 fields: {
                     epoch: {
-                        message: '全数据集训练次数必须为非0正整数',
+                        message: '正整数',
                         validators: {
                             regexp:{
                                 regexp: /^[1-9][0-9]*$/,
-                                message: '全数据集训练次数必须为非0正整数'
+                                message: '<b>正整数</b>'
                             }
                         }
                     },
                     learning_rate: {
-                        message: '学习率必须为大于0的实数',
+                        message: '0-1内实数',
                         validators: {
                             regexp:{
-                                regexp: /^[1-9][0-9]*$/,
-                                message: '学习率必须为大于0的实数'
-                            }
-                        }
-                    },
-                    step_size: {
-                        message: '步数必须为大于0的实数',
-                        validators: {
-                            regexp:{
-                                regexp: /^[1-9][0-9]*$/,
-                                message: '步数必须为大于0的实数'
-                            }
-                        }
-                    },
-                    gamma: {
-                        message: '这个玩意必须是小数么',
-                        validators: {
-                            regexp:{
-                                regexp: /^[0]\.\d$/,
-                                message: '这个玩意必须是小数么'
-                            }
-                        }
-                    },
-                    momentum: {
-                        message: '这个玩意必须是小数么',
-                        validators: {
-                            regexp:{
-                                regexp: /^[0]\.\d$/,
-                                message: '这个玩意必须是小数么'
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
                             }
                         }
                     },
                     batch_size: {
-                        message: '必须为非0正整数',
+                        message: '正整数',
                         validators: {
                             regexp:{
                                 regexp: /^[1-9][0-9]*$/,
-                                message: '必须为非0正整数'
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    step_size: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    gamma: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    milestones: {
+                        message: '非负整数序列',
+                        validators: {
+                            regexp:{
+                                regexp: /^<+?\d+>(\s+,\s+<+?\d+>)*$/,
+                                message: '<b>非负整数序列</b>'
+                            }
+                        }
+                    },
+                    T_max: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    eta_min: {
+                        message: '正数',
+                        validators: {
+                            regexp:{
+                                regexp: /^([1-9][0-9]*(\.\d+)?)|(0\.\d+)$/,
+                                message: '<b>正数</b>'
+                            }
+                        }
+                    },
+                    factor: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    patience: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    cooldown: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    min_lr: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    momentum: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    weight_decay: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    dampening: {
+                        message: '正数',
+                        validators: {
+                            regexp:{
+                                regexp: /^([1-9][0-9]*(\.\d+)?)|(0\.\d+)$/,
+                                message: '<b>正数</b>'
+                            }
+                        }
+                    },
+                    lambd: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    alpha: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    t0: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    beta1: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    beta2: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    eps: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    weight: {
+                        message: '正数序列',
+                        validators: {
+                            regexp:{
+                                regexp: /^<([1-9][0-9]*(\.\d+)?)|(0\.\d+)>(\s+,\s+<([1-9][0-9]*(\.\d+)?)|(0\.\d+)>)*$/,
+                                message: '<b>正数序列</b>'
+                            }
+                        }
+                    },
+                    ignore_index: {
+                        message: '整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^-?[1-9]\d*$/,
+                                message: '<b>整数</b>'
                             }
                         }
                     }
@@ -1352,6 +1576,18 @@
                 case "pool_layer":
                     save_attr_pool_layer_form(id);
                     break;
+                case "activation_layer":
+                    save_attr_activation_layer_form(id);
+                    break;
+                case "RNN_layer":
+                    save_attr_RNN_layer_form(id);
+                    break;
+                case "LSTM_layer":
+                    save_attr_LSTM_layer_form(id);
+                    break;
+                case "norm_layer":
+                    save_attr_norm_layer_form(id);
+                    break;
                 default:
                     return;
             }
@@ -1366,6 +1602,7 @@
             $("#" + layer_id).remove();
         });
         $("#parameters").children().remove();
+        window.sessionStorage.removeItem(layer_id);
     }
 
 

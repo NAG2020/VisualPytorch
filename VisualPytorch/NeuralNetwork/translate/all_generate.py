@@ -316,6 +316,3 @@ data={
   "static": test_data
 }
 
-main,model=all_generate(data)
-main_output(main)
-module_output(model)

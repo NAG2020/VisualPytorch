@@ -538,7 +538,8 @@ function save_attr_view_layer_form(id) {
     var shape = form.find("[name = \"shape\"]");
     form.find("[name='input_error']").remove();
     //匹配符合要求的数组
-    var reg = /^((\s*[1-9]\d*\s*)|-1)+(,(\s*[1-9]\d*\s*)|-1)*$/;
+    //var reg = /^((\s*[1-9]\d*\s*)|(\-1))+((,\s*[1-9]\d*\s*)|(,\-1))*$/;
+    var reg = /^(\+?\d+|\-1)(\s*,\s*(\+?\d+|\-1))*$/;
     if (!reg.test(shape.val())) {
         shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
         return;

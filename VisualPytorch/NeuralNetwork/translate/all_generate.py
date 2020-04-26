@@ -5,12 +5,14 @@ Created on Fri Apr 24 12:05:24 2020
 @author: HP
 """
 import numpy as np
-import model_generate as mog
-import main_generate as mag
+# import model_generate as mog
+# import main_generate as mag
+from .model_generate import  add_main_net_info
+from .main_generate import add_main_info
 def all_generate(dict_input):
     main=None
-    module=mog.add_main_net_info(dict_input["canvas"][0])
-    main=mag.add_main_info(dict_input["static"])
+    module=add_main_net_info(dict_input["canvas"][0])
+    main=add_main_info(dict_input["static"])
     return main,module
 '''
 def main_output(main):

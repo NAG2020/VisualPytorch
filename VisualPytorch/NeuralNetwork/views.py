@@ -8,7 +8,7 @@ from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .translate import ops
+from .translate import all_generate
 from rest_framework import permissions
 import os
 import zipfile
@@ -83,7 +83,7 @@ class NetworkDetail(APIView):
 def gen_code(request):
     result = {}
     try:
-        result["Main"], result["Model"], result["Ops"] = ops.main_func(request.data)
+        result["Main"], result["Model"], result["Ops"] = all_generate.main_func(request.data)
     except Exception as e:
         return Response({str(e)}, status=status.HTTP_400_BAD_REQUEST)
     else:

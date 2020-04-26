@@ -6,9 +6,10 @@ Created on Mon Apr 20 15:22:36 2020
 """
 import numpy as np
 import queue
-from relate_para import Node
-from relate_para import Global
-from relate_para import ModelError
+from .relate_para import Node
+from .relate_para import Global
+from .relate_para import ModelError
+
 GL=Global()
 def layer_change(layer):
     if(layer=='leaky relu'):

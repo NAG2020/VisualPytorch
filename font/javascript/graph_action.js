@@ -440,9 +440,9 @@ function save_attr_conv1d_layer_form(id) {
             flag = false;
         }
     });
-    // if (!flag) {
-    //     return;
-    // }
+    if (!flag) {
+        return;
+    }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{\"in_channels\":\"" + in_channels.val() + "\", \"out_channels\":\"" + out_channels.val() + "\", \"kernel_size\":\"" + kernel_size.val() + "\", " +
@@ -513,7 +513,7 @@ function save_attr_dropout_layer_form(id){
     var reg = /^\s*\d+\s*$/;
     if (!reg.test(p.val())) {
         p.after("<p name='input_error' class='alert_font'>输入不合法</p>");
-        //return;
+        return;
     }
 
     window.sessionStorage.setItem(id, "{\"type\":\"" + type +" \",\"p\":\"" + p.val() + "\"}");
@@ -559,9 +559,9 @@ function save_attr_conv_layer_form(id){
             flag = false;
         }
     });
-    // if (!flag) {
-    //     return;
-    // }
+    if (!flag) {
+        return;
+    }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{ \"layer_type\":\""+layer_type+"\",\"type\":\""+ type +"\",\"in_channels\":\"" + in_channels.val() + "\", \"out_channels\":\"" + out_channels.val() + "\", \"kernel_size\":\"" + kernel_size.val() + "\", " +
@@ -609,12 +609,58 @@ function save_attr_pool_layer_form(id){
             flag = false;
         }
     });
-    // if (!flag) {
-    //     return;
-    // }
+    if (!flag) {
+        return;
+    }
     //var activity = form.find("[name = \"activity\"]").val();
     //var pool_way = form.find("[name = \"pool_way\"]").val();
     window.sessionStorage.setItem(id, "{ \"layer_type\":\""+ layer_type + "\",\"type\":\""+ type +"\",\"kernel_size\":\"" + kernel_size.val() + "\", " + "\"stride\":\"" + stride.val() + "\", \"padding\":\"" + padding.val() + "\",\"ceil_mode\":\""+ ceil_mode + "\",\"count_include_pad\":\"" + count_include_pad + "\"}");
     $("#" + id).popover('hide');
+
+}
+
+function save_attr_activation_layer_form(id){
+    var form = $("#form" + id).parent();
+    var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
+    var negative_slope = form.find("[name = \"negative_slope\"]");
+    var weight = form.find("[name = \"weight\"]");
+    var lower = form.find("[name = \"lower\"]");
+    var upper = form.find("[name = \"upper\"]");
+    form.find("[name='input_error']").remove();
+// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/PRelu/RRelu 默认值为relu
+
+// relu：无参数
+
+// sigmoid:无参数
+
+// tanh:无参数
+
+// leaky relu:
+
+// negative_slope<正数> 默认值为0.01
+
+// PRelu: 类似leaky relu, 但是负数部分斜率可学习
+
+// weight<正数>权重初始化 非0正实数 默认值为0.25
+// RRelu: 类似leaky relu, 但是负数部分斜率为随机均匀分布
+
+// lower<正数>：均匀分布下限 默认值为0.125
+
+// upper<正数>：均匀分布上限 默认值为0.333
+//
+//
+    var positive = /^([1-9][0-9]*(\.\d+)?)|(0\.\d+)$/;
+    var flag = true;
+    var check_array1 = [negative_slope, weight,lower,upper];
+    check_array1.forEach(function (value, index, array) {
+        if (!positive.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+    window.sessionStorage.setItem(id,"{\"layer_type\":\""+ layer_type +"\",\"negative_slope\":\""+ negative_slope.val() +"\",\"weight\":\""+ weight.val() +"\",\"lower\":\""+ lower.val() +"\",\"upper\":\"" + upper.val()+ "\"}");
 
 }

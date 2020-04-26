@@ -10,6 +10,20 @@ from relate_para import Node
 from relate_para import Global
 from relate_para import ModelError
 GL=Global()
+def layer_change(layer):
+    if(layer=='leaky relu'):
+        return 'leakyrelu'
+    else: return layer
+def para_change(key):
+    if(key=='num_channel'):
+        return 'num_channels'
+    else: return key
+def true_false(key,input):
+    if(input=='true'):
+        return 'True'
+    elif(input=='false'):
+        return 'False'
+    else: return input
 def para_check(key,value):
     if(key in GL.inttype):
         try:
@@ -103,7 +117,7 @@ def add_element_wise_add_layer(init_func, forward_func, node, out_data,layer_num
     forward_func=np.append(forward_func,forward)
     return init_func,forward_func
 def add_concatenate_layer(init_func, forward_func, node, out_data,layer_number,graph,nets):
-    init=generate_n_tap(2) +'self.layer_'+str(layer_number)+'=CHANNEL('+nets['attribute']['attribute']['dim']+')'
+    init=generate_n_tap(2) +'self.layer_'+str(layer_number)+'=CHANNEL('+nets['attribute']['dim']+')'
     forward=generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '(' 
     if len(node.fa) == 0:
         raise ModelError('concatenate layer has no inputs')
@@ -130,17 +144,23 @@ def generate_n_tap(n):
         ans = ans + ' '
     return ans
 def attribute_generate(modulelist):
-    output=''
+    output=' '
     for i in modulelist.keys():
-        if i not in GL.para_group:
-            print(modulelist)
-            raise ModelError('in attribute_generate %s: No such attribute' % i)
-        if(i=='type'or i=='layer_type'):
+        tempkey=para_change(i)
+        if 'layer_type' in modulelist:
+            layer_type=layer_change(modulelist['layer_type'])       
+            if(layer_type in GL.special_layer.keys() and tempkey not in GL.special_layer[layer_type]):
+                continue
+        if tempkey not in GL.para_group:
+            raise ModelError('in attribute_generate %s: No such attribute' % tempkey)
+        if(tempkey=='type'or tempkey=='layer_type'):
             continue
-        para_check(i,modulelist[i])
-        if(i in GL.para_str):
-            output+=i+'=\''+modulelist[i]+'\','  
-        else :output+=i+'='+modulelist[i]+','
+        result=modulelist[i]
+        result=true_false(tempkey,result)
+        para_check(tempkey,result)
+        if(tempkey in GL.para_str):
+            output+=tempkey+'=\''+result+'\','  
+        else :output+=tempkey+'='+result+','
     output=output[0:-1]
     return output
 def pool_layer_generate(modulelist):
@@ -153,10 +173,10 @@ def pool_layer_generate(modulelist):
         head+='MaxUnpool'
     else:
         raise ModelError('in pool_layer_generate %s: No such pool layer' % modulelist['layer_type'])
-    if(modulelist['attribute']['type'] not in GL.type):
+    if(modulelist['type'] not in GL.type):
         raise ModelError('in pool_layer_generate %s: No such type' % modulelist['attribute']['type'])
-    head+=modulelist['attribute']['type']+'('
-    head+=attribute_generate(modulelist['attribute'])+')'
+    head+=modulelist['type']+'('
+    head+=attribute_generate(modulelist)+')'
     return head
 def linear_layer_generate(modulelist):
     head='nn.Linear('
@@ -174,10 +194,10 @@ def conv_layer_generate(modulelist):
         head+='ConvTranspose'
     else:
         raise ModelError('in conv_layer_generate %s: No such conv layer' % modulelist['layer_type'])
-    if(modulelist['attribute']['type'] not in GL.type):
+    if(modulelist['type'] not in GL.type):
         raise ModelError('in conv_layer_generate %s: No such type' % modulelist['attribute']['type'])
-    head+=modulelist['attribute']['type']+'('
-    head+=attribute_generate(modulelist['attribute'])+')'
+    head+=modulelist['type']+'('
+    head+=attribute_generate(modulelist)+')'
     return head
 def element_layer_generate(modulelist):
     head='WISE_ADD()'
@@ -205,8 +225,8 @@ def activation_layer_generate(modulelist):
     else:
         raise ModelError('in activation_layer_generate %s: No such activate layer' % modulelist['layer_type'])
     head+='('
-    if 'attribute' in modulelist:
-        head+=attribute_generate(modulelist['attribute'])
+    if modulelist['layer_type']=='leaky relu' or modulelist['layer_type']=='PRelu' or modulelist['layer_type']=='RRelu' :
+        head+=attribute_generate(modulelist)
     head+=')'
     return head
 def softmax_layer_generate(modulelist):
@@ -230,12 +250,12 @@ def norm_layer_generate(modulelist):
     elif(modulelist['layer_type']=='instance_norm'):
         head+='InstanceNorm'
     if(modulelist['layer_type']!='group_norm'):
-        if(modulelist['attribute']['type'] not in GL.type):
+        if(modulelist['type'] not in GL.type):
                 raise ModelError('in norm_layer_generate %s: No such type' % modulelist['attribute']['type'])
-        head+=modulelist['attribute']['type']
+        head+=modulelist['type']
     else:
         raise ModelError('in norm_layer_generate %s: No such norm layer' % modulelist['layer_type'])
-    head+='('+attribute_generate(modulelist['attribute'])+')'
+    head+='('+attribute_generate(modulelist)+')'
     return head
 def dropout_layer_generate(modulelist):
     head='nn.Dropout'
@@ -246,32 +266,31 @@ def dropout_layer_generate(modulelist):
     head+='('+attribute_generate(modulelist)+')'
     return head
 def generate_base_info(modulelist):
-    type=modulelist['attribute']['layer_type']
-    
+    type=modulelist['name']
     if(type=='pool_layer'):
-        return pool_layer_generate(modulelist['attribute']['attribute'])
+        return pool_layer_generate(modulelist['attribute'])
     elif(type=='linear_layer'):
-        return linear_layer_generate(modulelist['attribute']['attribute'])
+        return linear_layer_generate(modulelist['attribute'])
     elif(type=='view_layer'):
-        return view_layer_generate(modulelist['attribute']['attribute'])
+        return view_layer_generate(modulelist['attribute'])
     elif(type=='conv_layer'):
-        return conv_layer_generate(modulelist['attribute']['attribute'])
+        return conv_layer_generate(modulelist['attribute'])
     elif(type=='element_wise_add_layer'):
-        return element_layer_generate(modulelist['attribute']['attribute'])
+        return element_layer_generate(modulelist['attribute'])
     elif(type=='concatenate_layer'):
-        return concatenate_layer_generate(modulelist['attribute']['attribute'])
+        return concatenate_layer_generate(modulelist['attribute'])
     elif(type=='activation_layer'):
-        return activation_layer_generate(modulelist['attribute']['attribute'])
+        return activation_layer_generate(modulelist['attribute'])
     elif(type=='softmax_layer'):
-        return softmax_layer_generate(modulelist['attribute']['attribute'])
+        return softmax_layer_generate(modulelist['attribute'])
     elif(type=='RNN_layer'):
-        return RNN_layer_generate(modulelist['attribute']['attribute'])
+        return RNN_layer_generate(modulelist['attribute'])
     elif(type=='LSTM_layer'):
-        return LSTM_layer_generate(modulelist['attribute']['attribute'])
+        return LSTM_layer_generate(modulelist['attribute'])
     elif(type=='norm_layer'):
-        return norm_layer_generate(modulelist['attribute']['attribute'])
+        return norm_layer_generate(modulelist['attribute'])
     elif(type=='dropout_layer'):
-        return dropout_layer_generate(modulelist['attribute']['attribute'])
+        return dropout_layer_generate(modulelist['attribute'])
     else:
         raise ModelError('in generate_base_info %s: No such layer' % type)
         
@@ -308,7 +327,7 @@ def get_next_nodes_and_update_pre_nodes(nets, nets_conn, cur_id,graph,done):
                 graph[edge['target']['id']] = Node(id = edge['target']['id'])
                 graph[edge['target']['id']].name = nets[edge['target']['id']]['type']
                 if(nets[edge['target']['id']]['type']=='base'):
-                    graph[edge['target']['id']].detailed_type=nets[edge['target']['id']]['attribute']['layer_type']
+                    graph[edge['target']['id']].detailed_type=nets[edge['target']['id']]['name']
                 done[edge['target']['id']] = False
         if edge['target']['id'] == cur_id:
             fa_nodes = np.append(fa_nodes, edge['source']['id'])
@@ -317,7 +336,7 @@ def get_next_nodes_and_update_pre_nodes(nets, nets_conn, cur_id,graph,done):
     graph[cur_id].next = next_nodes
     graph[cur_id].fa = fa_nodes
     if(nets[cur_id]['type']=='base'):
-        temp_type=nets[cur_id]['attribute']['layer_type']
+        temp_type=nets[cur_id]['name']
         if temp_type in GL.start_layer or temp_type not in GL.multi_layer:
             if temp_type == 'start' and len(graph[cur_id].fa) != 0:
                 raise ModelError('start: can not have father nodes')
@@ -326,8 +345,16 @@ def get_next_nodes_and_update_pre_nodes(nets, nets_conn, cur_id,graph,done):
     return next_nodes, flag
 
 def make_graph(nets, nets_conn, init_func, forward_func):
+    if('in' not in nets or nets['in']=='' or nets['in']==None):
+        raise ModelError('must have one start_layer' ) 
     start_id=nets['in']
+    if(nets['nets'][nets['in']]['name']!='start'):
+        raise ModelError('must start with start_layer')
+    if('out' not in nets or nets['out']=='' or nets['out']==None):
+        raise ModelError('must have one end_layer' ) 
     end_id=nets['out']
+    if(nets['nets'][nets['out']]['name']!='end'):
+        raise ModelError('must end with end_layer')
     layer_number=0
     graph={}
     done={}
@@ -366,13 +393,13 @@ def make_graph(nets, nets_conn, init_func, forward_func):
             in_data = graph[graph[cur_id].fa[0]].data
             add_moduledict_net_info(nets['nets'][cur_id]) 
             init_func,forward_func=add_moduledict_layer(init_func,forward_func,out_data,layer_number,in_data,moduledict_number)
-        elif nets['nets'][cur_id]['attribute']['layer_type'] == 'concatenate_layer':
+        elif nets['nets'][cur_id]['name'] == 'concatenate_layer':
             init_func, forward_func = add_concatenate_layer(init_func, forward_func, graph[cur_id], out_data,layer_number,graph,nets['nets'][cur_id])
-        elif nets['nets'][cur_id]['attribute']['layer_type'] == 'element_wise_add_layer':
+        elif nets['nets'][cur_id]['name'] == 'element_wise_add_layer':
             init_func, forward_func = add_element_wise_add_layer(init_func, forward_func, graph[cur_id], out_data,layer_number,graph)
-        elif nets['nets'][cur_id]['attribute']['layer_type'] == 'start':
-            break
-        elif nets['nets'][cur_id]['attribute']['layer_type'] == 'end':
+        elif nets['nets'][cur_id]['name'] == 'start':
+            raise ModelError(' only one start layer is permitted')
+        elif nets['nets'][cur_id]['name']== 'end':
             break
         else:
             in_data = graph[graph[cur_id].fa[0]].data

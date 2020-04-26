@@ -175,7 +175,7 @@ function get_content(name, parid) {
                 "       <label class=\"control-label\">type</label> " +
                 "           <select id=\"" + parid + "type\" class=\"form-control\">\n"+
                 "               <option value=\"1d\">1d</option>\n"+
-                "               <option value=\"2d\" selected >2d</option>\n"+
+                "               <option value=\"2d\">2d</option>\n"+
                 "               <option value=\"3d\">3d</option>\n"+
                 "           </select> "+
                 "    </div> "+
@@ -200,7 +200,7 @@ function get_content(name, parid) {
             "           <label class=\"control-label\">type</label> " +
             "               <select id=\"" + parid + "type\" class=\"form-control\">\n"+
             "                   <option value=\"1d\">1d</option>\n"+
-            "                   <option value=\"2d\" selected>2d</option>\n"+
+            "                   <option value=\"2d\">2d</option>\n"+
             "                   <option value=\"3d\">3d</option>\n"+
             "               </select> "+
             "       </div> "+
@@ -245,14 +245,14 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"max_pool\" selected >max_pool</option>\n" +
+            "               <option value=\"max_pool\">max_pool</option>\n" +
             "               <option value=\"avg_pool\">avg_pool</option>\n" +
             "               <option value=\"max_unpool\">max_unpool</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">type</label> " +
             "               <select id=\"" + parid + "type\" class=\"form-control\">\n"+
             "                   <option value=\"1d\">1d</option>\n"+
-            "                   <option value=\"2d\" selected>2d</option>\n"+
+            "                   <option value=\"2d\">2d</option>\n"+
             "                   <option value=\"3d\">3d</option>\n"+
             "               </select> "+
             "       </div> "+
@@ -311,7 +311,7 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"relu\" selected >relu</option>\n" +
+            "               <option value=\"relu\" >relu</option>\n" +
             "               <option value=\"sigmoid\">sigmoid</option>\n" +
             "               <option value=\"tanh\">tanh</option>\n" +
             "               <option value=\"leaky relu\">leaky relu</option>\n" +
@@ -369,7 +369,7 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">nonlinearity</label>" +
             "           <select id=\"" + parid + "nonlinearity\" class=\"form-control\">\n" +
-            "               <option value=\"tanh\" selected>tanh</option>\n" +
+            "               <option value=\"tanh\">tanh</option>\n" +
             "               <option value=\"relu\">relu</option>\n" +
             "           </select>" +
             "       </div> "+
@@ -402,14 +402,14 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"batch_norm\" selected>batch_norm</option>\n" +
+            "               <option value=\"batch_norm\">batch_norm</option>\n" +
             "               <option value=\"group_norm\">group_norm</option>\n" +
             "               <option value=\"instance_norm\">instance_norm</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">type</label>" +
             "           <select id=\"" + parid + "type\" class=\"form-control\">\n" +
             "               <option value=\"1d\">1d</option>\n" +
-            "               <option value=\"2d\" selected >2d</option>\n" +
+            "               <option value=\"2d\">2d</option>\n" +
             "               <option value=\"3d\">3d</option>\n" +
             "           </select>" +
             "       </div> "+

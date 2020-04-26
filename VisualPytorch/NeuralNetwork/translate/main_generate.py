@@ -14,14 +14,14 @@ def add_main_info(load_dict):
     code_str = np.append(code_str,'epoch = %s\n' % load_dict['epoch'])
     code_str = np.append(code_str,'learning_rate = %s\n' % load_dict['learning_rate'])
     code_str = np.append(code_str,'batch_size = %s\n' % load_dict['batch_size'])
-    if load_dict['if_shuffle'] == 'False':
-        code_str = np.append(code_str,'if_shuffle=False')
-    else:
+    if 'if_shuffle' not in load_dict.keys() or load_dict['if_shuffle'] == 'True' or load_dict['if_shuffle'] == 'None':
         code_str = np.append(code_str,'if_shuffle=True')
-    if load_dict['platform'] == 'gpu':
-        code_str = np.append(code_str,'if_gpu=True\n')
     else:
+        code_str = np.append(code_str,'if_shuffle=False')
+    if 'platform' not in load_dict or load_dict['platform'] == 'cpu' or load_dict['platform'] == 'None':
         code_str = np.append(code_str,'if_gpu=False\n')
+    else:
+        code_str = np.append(code_str,'if_gpu=True\n')
     code_str =np.concatenate((code_str,
     np.array(['train_loader=None',
     'test_loader=None',
@@ -36,46 +36,113 @@ def add_main_info(load_dict):
     'var = None',
     'device = torch.device("cuda:0" if torch.cuda.is_available() and if_gpu else "cpu")',
     'net = NET().to(device)'])))
-    
-    
-    optimizer = load_dict['optimizer']['name']
-    optimizer_attr = load_dict['optimizer']['attribute']
+    optimizer=None
+    optimizer_attr=None
+    if('optimizer' in load_dict.keys() and load_dict['optimizer']!='None' and load_dict['optimizer']['name']!='None'):
+        optimizer = load_dict['optimizer']['name']
+        optimizer_attr = load_dict['optimizer']['attribute']    
     if optimizer == 'Adam':
         temp_str=''
-        temp_str+='optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(%s' % optimizer_attr['beta1']
-        temp_str+= ',%s)' % optimizer_attr['beta2']
-        temp_str+= ', eps=%s' % optimizer_attr['eps']
-        temp_str+= ', weight_decay=%s' % optimizer_attr['weight_decay']
-        temp_str+= ', amsgrad=%s)\n' % optimizer_attr['amsgrad']
+        if('beta1' in optimizer_attr.keys() and optimizer_attr['beta1']!='None'):
+            temp_str+='optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(%s' % optimizer_attr['beta1']
+        else:
+            temp_str+='optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.9'
+        if('beta2' in optimizer_attr.keys() and optimizer_attr['beta2']!='None'):
+            temp_str+= ',%s)' % optimizer_attr['beta2']
+        else:
+            temp_str+= ',0.999)'
+        if('eps' in optimizer_attr.keys() and optimizer_attr['eps']!='None'):
+            temp_str+= ', eps=%s' % optimizer_attr['eps']
+        else:
+            temp_str+= ', eps=0.000001' 
+        if('weight_decay' in optimizer_attr.keys() and optimizer_attr['weight_decay']!='None'):
+            temp_str+= ', weight_decay=%s' % optimizer_attr['weight_decay']
+        else:
+            temp_str+= ', weight_decay=0'
+        if('amsgrad' in optimizer_attr.keys() and optimizer_attr['amsgrad']!='None'):
+            temp_str+= ', amsgrad=%s)\n' % optimizer_attr['amsgrad']
+        else:
+            temp_str+= ', amsgrad=False)\n'
         code_str=np.append(code_str,temp_str)
     elif optimizer == 'SGD':
         temp_str=''
-        temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=%s' % optimizer_attr['momentum']
-        temp_str+= ', weight_decay=%s' % optimizer_attr['weight_decay']
-        temp_str+= ', dampening=%s' % optimizer_attr['dampening']
-        temp_str+= ', nesterov=%s)\n' % optimizer_attr['nesterov']
+        if('momentum' in optimizer_attr.keys() and optimizer_attr['momentum']!=None):
+            temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=%s' % optimizer_attr['momentum']
+        else:
+            temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0'
+        if('weight_decay' in optimizer_attr.keys() and optimizer_attr['weight_decay']!='None'):
+            temp_str+= ', weight_decay=%s' % optimizer_attr['weight_decay']
+        else:
+            temp_str+= ', weight_decay=0'
+        if('dampening' in optimizer_attr.keys() and optimizer_attr['dampening']!='None'):
+            temp_str+= ', dampening=%s' % optimizer_attr['dampening']
+        else:
+            temp_str+= ', dampening=0'
+        if('nesterov' in optimizer_attr.keys() and optimizer_attr['nesterov']!='None'):
+            temp_str+= ', nesterov=%s)\n' % optimizer_attr['nesterov']
+        else:
+            temp_str+= ', nesterov=False)\n'
         code_str=np.append(code_str,temp_str)
     elif optimizer == 'ASGD':
         temp_str=''
-        temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, lambd=%s' % optimizer_attr['lambd']
-        temp_str+= ', alpha=%s' % optimizer_attr['alpha']
-        temp_str+= ', t0=%s' % optimizer_attr['t0']
-        temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        if('lambd' in optimizer_attr.keys() and optimizer_attr['lambd']!='None'):
+            temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, lambd=%s' % optimizer_attr['lambd']
+        else:
+            temp_str+= 'optimizer = optim.SGD(net.parameters(), lr=learning_rate, lambd=0.0001'
+        if('alpha' in optimizer_attr.keys() and optimizer_attr['alpha']!='None'):
+            temp_str+= ', alpha=%s' % optimizer_attr['alpha']
+        else:
+            temp_str+= ', alpha=0.75' 
+        if('t0' in optimizer_attr.keys()  and optimizer_attr['t0']!='None'):
+            temp_str+= ', t0=%s' % optimizer_attr['t0']
+        else:
+            temp_str+= ', t0=100000'
+        if('weight_decay' in optimizer_attr.keys()  and optimizer_attr['weight_decay']!='None'):
+            temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        else:
+            temp_str+= ', weight_decay=0)\n' 
         code_str=np.append(code_str,temp_str)
     elif optimizer == 'RMSprop':
         temp_str=''
-        temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, momentum=%s' % optimizer_attr['momentum']
-        temp_str+= code_str,', alpha=%s' % optimizer_attr['alpha']
-        temp_str+= code_str,', eps=%s' % optimizer_attr['eps']
-        temp_str+= ', centered=%s' % optimizer_attr['centered']
-        temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        if('momentum' in optimizer_attr.keys() and optimizer_attr['momentum']!='None'):
+            temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, momentum=%s' % optimizer_attr['momentum']
+        else:
+            temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, momentum=0' 
+        if('alpha' in optimizer_attr.keys() and optimizer_attr['alpha']!='None'):
+            temp_str+= ', alpha=%s' % optimizer_attr['alpha']
+        else:
+            temp_str+= ', alpha=0.99' 
+        if('eps' in optimizer_attr.keys() and optimizer_attr['eps']!='None'):
+            temp_str+= ', eps=%s' % optimizer_attr['eps']
+        else:
+            temp_str+= ', eps=0.0000001' 
+        if('centered' in optimizer_attr.keys() and optimizer_attr['centered']!='None'):
+            temp_str+= ', centered=%s' % optimizer_attr['centered']
+        else:
+            temp_str+= ', centered=False'
+        if('weight_decay' in optimizer_attr.keys() and optimizer_attr['weight_decay']!='None'):
+            temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        else:
+            temp_str+= ', weight_decay=0)\n' 
         code_str=np.append(code_str,temp_str)
     elif optimizer == 'Adammax':
         temp_str=''
-        temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, beta1=%s' % optimizer_attr['beta1']
-        temp_str+= ', beta2=%s' % optimizer_attr['beta2']
-        temp_str+= ', eps=%s' % optimizer_attr['eps']
-        temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        if('beta1' in optimizer_attr.keys() and optimizer_attr['beta1']!='None'):
+            temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, beta1=%s' % optimizer_attr['beta1']
+        else:
+            temp_str+= 'optimizer = optim.RMSprop(net.parameters(), lr=learning_rate, beta1=0.9'
+        if('beta2' in optimizer_attr.keys()  and optimizer_attr['beta2']!='None'):
+            temp_str+= ', beta2=%s' % optimizer_attr['beta2']
+        else:
+            temp_str+= ', beta2=0.99'
+        if('eps' in optimizer_attr.keys() and optimizer_attr['eps']!='None'):
+            temp_str+= ', eps=%s' % optimizer_attr['eps']
+        else:
+            temp_str+= ', eps=0.000001'
+        if('weight_decay' in optimizer_attr.keys() and optimizer_attr['weight_decay']!='None' ):
+            temp_str+= ', weight_decay=%s)\n' % optimizer_attr['weight_decay']
+        else:
+            temp_str+= ', weight_decay=0)\n'
         code_str=np.append(code_str,temp_str)
     lr_scheduler=None
     lr_scheduler_attr=None
@@ -87,47 +154,104 @@ def add_main_info(load_dict):
     if lr_scheduler == 'stepLR':
         temp_str=''
         temp_str+='scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
-        temp_str+='(optimizer, step_size=%s' % lr_scheduler_attr['step_size'] + ', gamma=%s)\n' % lr_scheduler_attr['gamma']
+        if('step_size' in lr_scheduler_attr.keys() and lr_scheduler_attr['step_size']!='None'):
+            temp_str+='(optimizer, step_size=%s' % lr_scheduler_attr['step_size'] 
+        else:
+            temp_str+='(optimizer, step_size=50'
+        if('gamma' in lr_scheduler_attr.keys() and lr_scheduler_attr['gamma']!='None'):
+            temp_str+=', gamma=%s)\n' % lr_scheduler_attr['gamma']
+        else:
+            temp_str+=', gamma=0.1)\n'
         code_str=np.append(code_str,temp_str)
     elif lr_scheduler == 'MultiStepLR':
         temp_str=''
         temp_str+= 'scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
-        temp_str+= '(optimizer, milestones=%s' % lr_scheduler_attr['milestones'] + ', gamma=%s)\n' % lr_scheduler_attr['gamma']
+        if('milestones' in lr_scheduler_attr.keys() and  lr_scheduler_attr['milestones']!='None'):
+            temp_str+= '(optimizer, milestones=%s' % lr_scheduler_attr['milestones'] 
+        else:
+            temp_str+= '(optimizer, milestones=50' 
+        if('gamma' in lr_scheduler_attr.keys() and lr_scheduler_attr['gamma']!='None'):
+            temp_str+=', gamma=%s)\n' % lr_scheduler_attr['gamma']
+        else:
+            temp_str+=', gamma=0.1)\n' 
         code_str=np.append(code_str,temp_str)
     elif lr_scheduler == 'ExponentialLR':
         temp_str=''
         temp_str+= 'scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
-        temp_str+= '(gamma=%s)\n' % lr_scheduler_attr['gamma']
+        if('gamma' in lr_scheduler_attr.keys() and lr_scheduler_attr['gamma']!='None'):
+            temp_str+= '(gamma=%s)\n' % lr_scheduler_attr['gamma']
+        else:
+            temp_str+= '(gamma=0.95)\n'
         code_str=np.append(code_str,temp_str)
     elif lr_scheduler == 'CosineAnnealingLR':
         temp_str=''
         temp_str+= 'scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
-        temp_str+= '(optimizer, T_max=%s' % lr_scheduler_attr['T_max'] + ', eta_min=%s)\n' % lr_scheduler_attr['eta_min']
+        if('T_max' in lr_scheduler_attr.keys() and lr_scheduler_attr['T_max']!='None'):
+            temp_str+= '(optimizer, T_max=%s' % lr_scheduler_attr['T_max'] 
+        else:
+            temp_str+= '(optimizer, T_max=50' 
+        if('eta_min' in lr_scheduler_attr.keys() and lr_scheduler_attr['eta_min']!='None'):
+            temp_str+=', eta_min=%s)\n' % lr_scheduler_attr['eta_min']
+        else:
+            temp_str+=', eta_min=0)\n'
         code_str=np.append(code_str,temp_str)
     elif lr_scheduler == 'ReduceLROnPleateau':
         temp_str=''
         temp_str+= 'scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
-        temp_str+= '(optimizer, factor=%s' % lr_scheduler_attr['factor'] + ', patience=%s' % lr_scheduler_attr['patience']
-        temp_str+= ', cooldown=%s' % lr_scheduler_attr['cooldown']
-        temp_str+= ', verbose=%s' % lr_scheduler_attr['verbose']
-        temp_str+= ', min_lr=%s)\n' % lr_scheduler_attr['min_lr']
+        if('factor' in lr_scheduler_attr.keys() and lr_scheduler_attr['factor']!='None'):
+            temp_str+= '(optimizer, factor=%s' % lr_scheduler_attr['factor'] 
+        else:
+            temp_str+= '(optimizer, factor=0.1' 
+        if('patience' in lr_scheduler_attr.keys() and lr_scheduler_attr['patience']!='None'):
+            temp_str+=', patience=%s' % lr_scheduler_attr['patience']
+        else:
+            temp_str+=', patience=10' 
+        if('cooldown' in lr_scheduler_attr.keys() and lr_scheduler_attr['cooldown']!='None'):
+            temp_str+= ', cooldown=%s' % lr_scheduler_attr['cooldown']
+        else:
+            temp_str+= ', cooldown=10'
+        if('verbose' in lr_scheduler_attr.keys()  and lr_scheduler_attr['verbose']!='None'):
+            temp_str+= ', verbose=%s' % lr_scheduler_attr['verbose']
+        else:
+            temp_str+= ', verbose=True' 
+        if('min_lr' in lr_scheduler_attr.keys() and lr_scheduler_attr['min_lr']!='None'):
+            temp_str+= ', min_lr=%s)\n' % lr_scheduler_attr['min_lr']
+        else:
+            temp_str+= ', min_lr=0.0001)\n'
         code_str=np.append(code_str,temp_str)
-    
-    loss = load_dict['loss']['name']
-    loss_attr = load_dict['loss']['attribute']
+    loss=None
+    loss_attr=None
+    if('loss' in load_dict.keys() and load_dict['loss']!='None' and load_dict['loss']['name']!='None'):
+        loss = load_dict['loss']['name']
+        loss_attr = load_dict['loss']['attribute']
     if loss in ['MSELoss', 'L1Loss']:
-        code_str = np.append(code_str,'loss_func = torch.nn.%s' % loss + '(reduction = \"%s\")\n' % loss_attr['reduction'])
+        temp_str='loss_func = torch.nn.%s' % loss 
+        if('reduction' in loss_attr.keys() and loss_attr['reduction']!='None'):
+            temp_str+= '(reduction = \"%s\")\n' % loss_attr['reduction']
+        else:
+            temp_str+= '(reduction = \"mean\")\n' 
+        code_str=np.append(code_str,temp_str)
     elif loss in ['CrossEntropyLoss', 'NLLLoss']:
-        temp_str=''
-        temp_str+='loss_func = torch.nn.%s' % loss + '(reduction = \"%s\"' % loss_attr['reduction']
-        if loss_attr['ignore_index'] != 'None':
+        temp_str='loss_func = torch.nn.%s' % loss
+        if('reduction' in loss_attr.keys() and loss_attr['reduction']!='None'):
+            temp_str+='(reduction = \"%s\"' % loss_attr['reduction']
+        else:
+            temp_str+= '(reduction = \"mean\"' 
+        if 'ignore_index' in loss_attr.keys() and loss_attr['ignore_index'] != 'None':
             temp_str+=', ignore_index = %s)' % loss_attr['ignore_index']
         temp_str+= ')\n'
         code_str=np.append(code_str,temp_str)
     elif loss == 'BCELoss':
-        code_str = np.append(code_str,'loss_func = torch.nn.%s' % loss + '(reduction = \"%s\")\n' % loss_attr['reduction'])
-    
-    dataset = load_dict['dataset']
+        temp_str='loss_func = torch.nn.%s' % loss
+        if('reduction' in loss_attr.keys() and loss_attr['reduction']!='None'):
+            temp_str+='(reduction = \"%s\")\n' % loss_attr['reduction']
+        else:
+            temp_str+='(reduction = \"mean\")\n'
+        code_str=np.append(code_str,temp_str)
+    if('data' not in load_dict.keys()):
+        dataset='mnist'
+    else:
+        dataset = load_dict['data']
     if dataset == 'mnist' or dataset=='jena' or dataset=='glove':
         code_str = np.concatenate((code_str,
 np.array(['def dataset_prepare():',
@@ -183,9 +307,9 @@ np.array(['def dataset_prepare():',
 '    transforms.ToTensor(),',
 '    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),',
 '    ])',
-'    trainset=torchvision.datasets.STL10(root=\'./stl10/\', split=\'train\', download=True,transform=transform_train)',
+'    trainset=torchvision.datasets.STL10(root=\'./stl/\', split=\'train\', download=True,transform=transform_train)',
 '    train_loader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=if_shuffle, num_workers=num_work)',
-'    testset=torchvision.datasets.STL10(root=\'./stl10/\', split=\'test\', download=True,transform=transform_test)',
+'    testset=torchvision.datasets.STL10(root=\'./stl/\', split=\'test\', download=True,transform=transform_test)',
 '    test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=num_work)'
 ])))
     elif dataset == 'svhn':

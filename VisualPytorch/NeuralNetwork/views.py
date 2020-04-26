@@ -8,7 +8,7 @@ from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .translate import main_func
+from .translate import all_generate
 from rest_framework import permissions
 import os
 import zipfile

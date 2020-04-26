@@ -9,7 +9,7 @@ import numpy as np
 # import main_generate as mag
 from .model_generate import  add_main_net_info
 from .main_generate import add_main_info
-def all_generate(dict_input):
+def main_func(dict_input):
     main=None
     module=add_main_net_info(dict_input["canvas"][0])
     main=add_main_info(dict_input["static"])

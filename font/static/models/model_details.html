@@ -77,53 +77,118 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
         
-                                <div class="panel-body">
+                                <div class="panel-body" id="simple_network_layer">
                                     <div class="ele_in_list">
-                                        <div class="node node_little start little_green" id="start">
+                                        <div class="node start little_green" id="start">
                                             开始
                                         </div>
                                     </div>
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="view_layer" type="button"
-                                             data-container="body" data-toggle="popover">
+                                        <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
                                             reshape层
                                         </div>
                                     </div>
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="linear_layer" type="button"
-                                             data-container="body" data-toggle="popover" in_channel="" out_channel="">
+                                        <div class="node lightblue" id="linear_layer" type="button"
+                                             data-container="body" data-toggle="popover">
                                             全连接层
                                         </div>
                                     </div>
         
-                                    <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="conv1d_layer" type="button"
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv1d_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             一维卷积层
                                         </div>
                                     </div>
         
-                                    <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="conv2d_layer" type="button"
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv2d_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             二维卷积层
                                         </div>
                                     </div>
         
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="element_wise_add_layer" type="button"
+                                        <div class="node lightblue" id="element_wise_add_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             元素级相加层
                                         </div>
                                     </div>
         
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="concatenate_layer" type="button"
+                                        <div class="node lightblue" id="concatenate_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             channel维度拼接层
                                         </div>
                                     </div>
         
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="softmax_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            softmax层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="dropout_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            dropout层
+                                        </div>
+                                    </div>
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="conv_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="pool_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            池化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="activation_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            激活层
+                                        </div>
+                                    </div>
+        
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="RNN_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            递归神经网络
+                                        </div>
+                                    </div>
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="LSTM_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            长周期神经网络
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="norm_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            标准化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node start little_green" id="end">
+                                            结束
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

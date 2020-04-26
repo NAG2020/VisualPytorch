@@ -29,15 +29,123 @@ var gobalConfig = {
         });
     });
 });*/
+// function get_network() {
+//     var conn_list;
+//     var nets_conn = [];
+//     var nets = {};
+//     $("#canvas").find(".node").each(function (index, element) {
+//         var id = $(element).attr('id');
+//         nets[id] = {
+//             "type": 'base',
+//             "name": $(element).attr('name'),
+//             "attribute": eval('(' + window.sessionStorage.getItem(id) + ')'),
+//             "left": $(element).css('left'),
+//             "top": $(element).css('top')
+//         }
+//     });
+//     conn_list = jsPlumb.getAllConnections();
+//     console.log(conn_list);
+
+//     for (var i = 0; i < conn_list.length; i++) {
+//         var source_id = conn_list[i]["sourceId"];
+//         var target_id = conn_list[i]["targetId"];
+//         var conn = {
+//             "source": {
+//                 "id": source_id,
+//                 "anchor_position": conn_list[i]["endpoints"][0]["anchor"]["type"]
+//             },
+//             "target": {
+//                 "id": target_id,
+//                 "anchor_position": conn_list[i]["endpoints"][1]["anchor"]["type"]
+//             }
+//         };
+//         nets_conn.push(conn);
+//     }
+//     var epoch = $("#epoch").val();
+//     if (epoch == "") {
+//         epoch = "1";
+//     }
+//     var learning_rate = $("#learning_rate").val();
+//     if (learning_rate == "") {
+//         learning_rate = "0.5";
+//     }
+//     var batch_size = $("#batch_size").val();
+//     if (batch_size == "") {
+//         batch_size = "1";
+//     }
+//     var static = {
+//         "epoch": epoch,
+//         "optimizer": $("#optimzier").find("option:selected").val(),
+//         "learning_rate": learning_rate,
+//         "batch_size": batch_size
+//     };
+//     var data = {
+//         "name": $("#model_name").val(),
+//         "structure": {
+//             "nets": nets,
+//             "nets_conn": nets_conn,
+//             "static": static
+//         }
+//     };
+//     return data;
+// }
+
+// {
+//   "type": "sequential",
+//   //sequential表示嵌套模型，base表示单个网络层
+//   "name": "sequential 01",
+//   //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
+//   "attribute": {
+//     "in": "canvas_%d",
+//     //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
+//     "out": "canvas_%d",
+//     //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
+//     //对于Sequential attribute的结构
+//     "nets": {
+//       "canvas_%d": "sequential1.json",
+//       //这里可以是sequential.json或者base.json,modulelist.json,moduledict.json，可以有多个
+//       "canvas_2": "base1.json"
+//     },
+//     "nets_conn": [
+//       //描述每个Sequential内部的连通情况,base层没有该属性
+//       "connection1.json",
+//       "connection2.json"
+//     ]
+//   }
+// }
+//
+
+function saveJSON(data, filename){
+    if(!data) {
+        alert('保存的数据为空');
+        return;
+    }
+    if(!filename)
+        filename = 'json.json'
+    if(typeof data === 'object'){
+        data = JSON.stringify(data, undefined, 4)
+    }
+    var blob = new Blob([data], {type: 'text/json'}),
+    e = document.createEvent('MouseEvents'),
+    a = document.createElement('a')
+    a.download = filename
+    a.href = window.URL.createObjectURL(blob)
+    a.dataset.downloadurl = ['text/json', a.download, a.href].join(':')
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+    a.dispatchEvent(e)
+}
+
 
 
 function get_network() {
     var conn_list;
     var nets_conn = [];
+    var sequential = [];
     var nets = {};
     $("#canvas").find(".node").each(function (index, element) {
         var id = $(element).attr('id');
         nets[id] = {
+            "type": 'base',
             "name": $(element).attr('name'),
             "attribute": eval('(' + window.sessionStorage.getItem(id) + ')'),
             "left": $(element).css('left'),
@@ -45,8 +153,6 @@ function get_network() {
         }
     });
     conn_list = jsPlumb.getAllConnections();
-    console.log(conn_list);
-
     for (var i = 0; i < conn_list.length; i++) {
         var source_id = conn_list[i]["sourceId"];
         var target_id = conn_list[i]["targetId"];
@@ -62,33 +168,79 @@ function get_network() {
         };
         nets_conn.push(conn);
     }
-    var epoch = $("#epoch").val();
-    if (epoch == "") {
-        epoch = "1";
+    var startid = $("#canvas").find(".start").attr("id");
+    var endid = $("#canvas").find(".end").attr("id");
+
+    sequential.push({
+      "type": "sequential",
+      //sequential表示嵌套模型，base表示单个网络层
+      "name": "sequential_" + $("#model_name").val(),
+      //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
+      "attribute": {
+        "in": startid,
+        //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
+        "out": endid,
+        //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
+        //对于Sequential attribute的结构
+        "nets": nets
+        },
+        "nets_conn": nets_conn
+      }
+    );
+
+    //
+
+    var epoch = $("#epoch").val()==""?10:$("#epoch").val();
+
+    var learning_rate = $("#learning_rate").val()==""?0.01:$("#learning_rate").val();
+    // if (learning_rate == "") {
+    //     learning_rate = "0.01";
+    // }
+    var batch_size = $("#batch_size").val()==""?1:$("#batch_size").val();
+    // if (batch_size == "") {
+    //     batch_size = "1";
+    // }
+    var learning_rate_scheduler = {
+        "name": $("#learning_rate_scheduler").find("option:selected").val(),
+        "attribute": {
+            "step_size" : $("#step_size").val()==""?50:$("#step_size").val(),
+            "gramma" : $("#gamma").val()==""?0.1:$("#gamma").val()
+        }
     }
-    var learning_rate = $("#learning_rate").val();
-    if (learning_rate == "") {
-        learning_rate = "0.5";
-    }
-    var batch_size = $("#batch_size").val();
-    if (batch_size == "") {
-        batch_size = "1";
-    }
-    var static = {
-        "epoch": epoch,
-        "optimizer": $("#optimzier").find("option:selected").val(),
-        "learning_rate": learning_rate,
-        "batch_size": batch_size
-    };
-    var data = {
-        "name": $("#model_name").val(),
-        "structure": {
-            "nets": nets,
-            "nets_conn": nets_conn,
-            "static": static
+
+    var platform = $("#platform").find("option:selected").val();
+    var dataset = $("#dataset").find("option:selected").val();
+    var optimizer = {
+        "name": $("#optimizer").find("option:selected").val(),
+        "attribute" :{
+            "momentum": $("#momentum").val()==""?0:$("#momentum").val()
         }
     };
-    return data;
+
+    var loss = {
+        "name": $("#loss").find("option:selected").val(),
+        "attribute" :{
+            "reduction": $("#reduction").find("option:selected").val()
+        }
+    };
+
+
+    var static = {
+        "epoch": epoch,
+        "learning_rate": learning_rate,
+        "batch_size": batch_size,
+        "learning_rate_scheduler":learning_rate_scheduler,
+        "device":platform,
+        "data":dataset,
+        "optimizer":optimizer,
+        "loss":loss
+    };
+    var ret = {
+        "canvas": sequential,
+        "static": static
+    };
+    saveJSON(ret,"a.json");
+    return ret;
 }
 
 function translate_network() {
@@ -158,10 +310,10 @@ function translate_network() {
 
 function save_network() {
     $("#save_modal").modal('hide');
-    if (!window.sessionStorage.hasOwnProperty("userinfo")) {
-        jump_to_login();
-        return
-    }
+    // if (!window.sessionStorage.hasOwnProperty("userinfo")) {
+    //     jump_to_login();
+    //     return
+    // }
     var data = get_network();
     console.log(data);
     var query_object = getQueryObject(window.location.href);
@@ -179,9 +331,10 @@ function save_network() {
                 }
             },
             success: function (data_return) {
+                alert("保存成功！");
             },
             error: function (data_return) {
-                alert(data_return["responseText"])
+                alert(data_return["responseText"]);
             }
         });
     } else {
@@ -197,6 +350,7 @@ function save_network() {
                 }
             },
             success: function (data_return) {
+                alert("保存成功！");
             },
             error: function (data_return) {
                 alert(data_return["responseText"])
@@ -209,14 +363,14 @@ function save_attr_linear_layer(button) {
     //这里是硬编码，考虑在b版本优化
     var id = button["id"].split("popover_")[1];
     var form = $("#" + button["id"]).parent();
-    var in_channel = form.find("[name = \"in_channels\"]");
-    var out_channel = form.find("[name = \"out_channels\"]");
+    var in_features = form.find("[name = \"in_features\"]");
+    var out_features = form.find("[name = \"out_features\"]");
     //todo:加入更精确的正则判断
     form.find("[name='input_error']").remove();
     //正整数
     var reg = /^\s*[1-9]\d*\s*$/;
     var flag = true;
-    var check_array = [in_channel, out_channel];
+    var check_array = [in_features, out_features];
     check_array.forEach(function (value, index, array) {
         if (!reg.test(value.val())) {
             value.after("<p name='input_error' class='alert_font'>请输入正整数</p>");
@@ -226,7 +380,7 @@ function save_attr_linear_layer(button) {
     if (!flag) {
         return;
     }
-    window.sessionStorage.setItem(id, "{\"in_channels\":\"" + in_channel.val() + "\", \"out_channels\":\"" + out_channel.val() + "\"}");
+    window.sessionStorage.setItem(id, "{\"in_features\":\"" + in_features.val() + "\", \"out_features\":\"" + out_features.val() + "\"}");
     $("#" + id).popover('hide');
 }
 
@@ -357,14 +511,14 @@ function save_attr_linear_layer_form(id) {
     //这里是硬编码，考虑在b版本优化
 
     var form = $("#form" + id).parent();
-    var in_channel = form.find("[name = \"in_channels\"]");
-    var out_channel = form.find("[name = \"out_channels\"]");
+    var in_features = form.find("[name = \"in_features\"]");
+    var out_features = form.find("[name = \"out_features\"]");
     //todo:加入更精确的正则判断
     form.find("[name='input_error']").remove();
     //正整数
     var reg = /^\s*[1-9]\d*\s*$/;
     var flag = true;
-    var check_array = [in_channel, out_channel];
+    var check_array = [in_features, out_features];
     check_array.forEach(function (value, index, array) {
         if (!reg.test(value.val())) {
             value.after("<p name='input_error' class='alert_font'>请输入正整数</p>");
@@ -374,7 +528,7 @@ function save_attr_linear_layer_form(id) {
     if (!flag) {
         return;
     }
-    window.sessionStorage.setItem(id, "{\"in_channels\":\"" + in_channel.val() + "\", \"out_channels\":\"" + out_channel.val() + "\"}");
+    window.sessionStorage.setItem(id, "{\"in_features\":\"" + in_features.val() + "\", \"out_features\":\"" + out_features.val() + "\"}");
     $("#" + id).popover('hide');
 }
 
@@ -384,7 +538,7 @@ function save_attr_view_layer_form(id) {
     var shape = form.find("[name = \"shape\"]");
     form.find("[name='input_error']").remove();
     //匹配符合要求的数组
-    var reg = /^(\s*[1-9]\d*\s*)+(,\s*[1-9]\d*\s*)*$/;
+    var reg = /^((\s*[1-9]\d*\s*)|-1)+(,(\s*[1-9]\d*\s*)|-1)*$/;
     if (!reg.test(shape.val())) {
         shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
         return;
@@ -662,5 +816,113 @@ function save_attr_activation_layer_form(id){
         return;
     }
     window.sessionStorage.setItem(id,"{\"layer_type\":\""+ layer_type +"\",\"negative_slope\":\""+ negative_slope.val() +"\",\"weight\":\""+ weight.val() +"\",\"lower\":\""+ lower.val() +"\",\"upper\":\"" + upper.val()+ "\"}");
+    $("#" + id).popover('hide');
 
 }
+function save_attr_RNN_layer_form(id){
+    var form = $("#form" + id).parent();
+    var input_size = form.find("[name = \"input_size\"]");
+    var hidden_size = form.find("[name = \"hidden_size\"]");
+    var num_layers = form.find("[name = \"num_layers\"]");
+    var nonlinearity = form.find("[id=\"" + id + "nonlinearity\"]").find("option:selected").val();
+    form.find("[name='input_error']").remove();
+// RNN_layer:递归神经网络(新增网络层)#
+// input_size<正整数>：输入特征数 无默认值
+
+// hidden_size<正整数>:隐藏层个数 无默认值
+
+// num_layers<正整数>:递归层层数 默认值为1
+
+// nonlinearity(二选一,tanh/relu):非线性激活 默认为tanh
+    var positive_integer = /^[1-9]\d*$/;
+    var flag = true;
+    var check_array1 = [input_size, hidden_size,num_layers];
+    check_array1.forEach(function (value, index, array) {
+        if (!positive_integer.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+
+    window.sessionStorage.setItem(id,"{\"input_size\":\""+input_size.val()+"\",\"hidden_size\":\""+input_size.val()+"\",\"num_layers\":\""+num_layers.val()+"\",\"nonlinearity\":\""+nonlinearity+"\"}");
+    $("#" + id).popover('hide');
+}
+
+function save_attr_LSTM_layer_form(id){
+    var form = $("#form" + id).parent();
+    var input_size = form.find("[name = \"input_size\"]");
+    var hidden_size = form.find("[name = \"hidden_size\"]");
+    var num_layers = form.find("[name = \"num_layers\"]");
+    form.find("[name='input_error']").remove();
+// input_size<正整数>:输入特征数 无默认值
+
+// hidden_size<正整数> :隐藏层个数 无默认值
+
+// num_layers<正整数>:递归层层数 默认值为1
+    var positive_integer = /^[1-9]\d*$/;
+    var flag = true;
+    var check_array1 = [input_size, hidden_size,num_layers];
+    check_array1.forEach(function (value, index, array) {
+        if (!positive_integer.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+
+    window.sessionStorage.setItem(id,"{\"input_size\":\""+input_size.val()+"\",\"hidden_size\":\""+input_size.val()+"\",\"num_layers\":\""+num_layers.val()+"\"}");
+    $("#" + id).popover('hide');
+}
+
+
+function save_attr_norm_layer_form(id){
+    var form = $("#form" + id).parent();
+    var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
+    var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
+    var num_features = form.find("[name = \"num_features\"]");
+    var num_groups = form.find("[name = \"num_groups\"]");
+    var num_channel = form.find("[name = \"num_channel\"]");
+    form.find("[name='input_error']").remove();
+// 下拉框,选项包括batch_norm/group_norm/instance_norm 默认值为batch_norm
+
+// batch_norm参数:
+
+// type:下拉框，包括1d/2d/3d 默认值为2d
+
+// num_features<正整数>:输入特征数 无默认值
+
+// group_norm参数:
+
+// num_groups<正整数>:input_channel分组数 无默认值
+
+// num_channel<正整数>:input_channel个数无默认值
+
+// instance_norm参数:
+
+// type:下拉框，包括1d/2d/3d 默认值为2d
+
+// num_features<正整数>:输入特征数 无默认值
+    var positive_integer = /^[1-9]\d*$/;
+    var flag = true;
+    var check_array1 = [num_features, num_groups,num_channel];
+    check_array1.forEach(function (value, index, array) {
+        if (!positive_integer.test(value.val())) {
+            value.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+            flag = false;
+        }
+    });
+    if (!flag) {
+        return;
+    }
+
+    window.sessionStorage.setItem(id,"{\"layer_type\":\""+layer_type+"\",\"type\":\""+type+"\",\"num_features\":\""+num_features.val()+"\",\"num_groups\":\""+num_groups.val()+"\",\"num_channel\":\""+num_channel.val()+"\"}");
+    $("#" + id).popover('hide');
+}
+
+
+

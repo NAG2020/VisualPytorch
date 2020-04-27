@@ -11,12 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import datetime
+from config import db
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
-#FONT_DIR = os.path.dirname(BASE_DIR) + r"\VisualPytorch\font"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -43,7 +42,7 @@ INSTALLED_APPS = [
     'NeuralNetwork.apps.NeuralnetworkConfig',
     'journal.apps.JournalConfig',
     'user.apps.UserConfig',
-    'NormalUrls'
+    'comments.apps.CommentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,11 +130,11 @@ WSGI_APPLICATION = 'VisualPytorch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'visualpytorch',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '123456'
+        'NAME': db.NAME,
+        'HOST': db.HOST,
+        'PORT': db.PORT,
+        'USER': db.USER,
+        'PASSWORD': db.PASSWORD
     }
 }
 
@@ -175,19 +174,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#STATICFILES_DIRS = (os.path.join(BASE_DIR, "font"),)
-STATICFILES_DIRS = (FONT_DIR,)
-STATIC_ROOT = BASE_DIR #os.path.join(BASE_DIR, 'font')
-
 AUTH_USER_MODEL = 'user.User'
 
 AUTHENTICATION_BACKENDS = [
     'user.utils.UserAuthBackend',  # 修改auth认证后端类
 ]
 
-JWT_AUTH = {
-        # timedelta 时间差
-        'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=10),
-}
-
-FILE_DIR = os.path.dirname(BASE_DIR) + r"\files"

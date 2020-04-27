@@ -3,13 +3,13 @@ body {
 }
 
 
-.orange {
+.lightblue {
     color: #fef4e9;
-    border: solid 1px #ffd267;
-    background: #ffd267;
-    background: -webkit-gradient(linear, left top, left bottom, from(#ffd267), to(#faa51a));
-    background: -moz-linear-gradient(top,  #ffd267,  #faa51a);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    border: solid 1px #67ffde;
+    background: #6797ff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#67ffde), to(#6797ff));
+    background: -moz-linear-gradient(top,  #67ffde,  #6797ff);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#67ffde', endColorstr='#6797ff');
 }
 
 .little_green {
@@ -39,12 +39,28 @@ body {
     cursor: pointer;
     height: 50px;
     line-height: 50px;
-
 }
 
+.little_word{
+    bottom: 20px;
+}
+
+.node_little{
+    width: 105px;
+    height: 35px;
+    line-height: 35px;
+}
+
+
 .start {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.end {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 

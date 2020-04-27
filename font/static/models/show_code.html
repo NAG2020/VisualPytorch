@@ -4,30 +4,75 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>show code</title>
-    <script type="text/javascript" src="../resources/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/jquery-ui.js"></script>
-    <link href="../resources/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.theme.css" rel="stylesheet">
-    <link href="../css/layer.css" rel="stylesheet">
-    <script type="text/javascript" src="../resources/jsplumb.min.js"></script>
-    <script type="text/javascript" src="../javascript/graph_action.js"></script>
-    <script type="text/javascript" src="../javascript/layer_popover.js"></script>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <!--<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+
+    <link rel="stylesheet" href="../../resources/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen"/>
+    <!-- nivo slider css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css"/>
+    <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script type="text/javascript" src="../../resources/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
+    <link href="../../resources/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../../css/layer.css" rel="stylesheet">
+    <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
+    <script type="text/javascript" src="../../javascript/graph_action.js"></script>
+    <script type="text/javascript" src="../../javascript/layer_popover.js"></script>
+    <script type="text/javascript" src="../../javascript/base_service.js"></script>
 
 </head>
-<nav style="font-size:20px;text-align: center; top: 0; height: 50px" id="header"></nav>
+<!--<nav style="font-size:20px;text-align: center; top: 0; height: 50px" id="header"></nav>-->
+<!--<script>-->
+<!--    $("#header").load("header.html")-->
+<!--</script>-->
+<nav id="header"></nav>
 <script>
-    $("#header").load("header.html")
+    $("#header").load("../base/header.html")
 </script>
 <body>
 <div class="container-fluid">
     <div>
-        <button type="button" class="btn btn-warning" style="margin-top: 30px;margin-left: 130px"
+        <button type="button" class="btn btn-warning"
+                style="margin-top: 30px;margin-left: 130px;background-color: #1B9AF7;border-color: #1B9AF7"
                 onclick="downloadCode()">downloadtest
         </button>
     </div>
@@ -35,7 +80,7 @@
     <ul class="nav nav-tabs" id="codeTab" style="margin: 0 auto;margin-top: 30px; width: 80%">
         <li class="active"><a href="#Main" data-toggle="tab">Main.py</a></li>
         <li><a href="#Model" data-toggle="tab">Model.py</a></li>
-        <li><a href="#Ops" data-toggle="tab">Ops.py</a></li>
+        <!-- <li><a href="#Ops" data-toggle="tab">Ops.py</a></li> -->
     </ul>
 
     <div id="code_content" class="tab-content" style="width: 80%;margin: 0 auto">
@@ -45,7 +90,7 @@
         <div class="tab-pane fade" id="Model">
             <pre id="model_code"></pre>
         </div>
-        <div class="tab-pane fade" id="Ops">
+        <div class="tab-pane fade hidden " id="Ops">
             <pre id="ops_code"></pre>
         </div>
     </div>
@@ -53,7 +98,10 @@
 
 
 </body>
-
+<nav id="footer"></nav>
+<script>
+    $("#footer").load("../base/footer.html");
+</script>
 <script>
     $('#codeTab a').click(function (e) {
         e.preventDefault();
@@ -82,30 +130,30 @@
         var form = $('<form method="POST" action="' + gobalConfig.base_url + 'api/NeuralNetwork/download/' + '">');
         $.each(data, function (k, v) {
             var input = $('<input type="hidden">');
-            input.attr("name",k);
-            input.attr("value",v);
+            input.attr("name", k);
+            input.attr("value", v);
             form.append(input)
             //form.append($('<input type="text">'));
         });
         $('body').append(form);
         form.submit();
-       /* $.ajax({
-            type: "POST",
-            url: gobalConfig.base_url + 'api/NeuralNetwork/download/',
-            data: JSON.stringify(data),
-            contentType: 'application/json; charset=UTF-8',
-            beforeSend: function (XMLHttpRequest) {
-                var token = window.sessionStorage.getItem('token');
-                if (token != null) {
-                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
-                }
-            },
-            success: function (response, status, request) {
+        /* $.ajax({
+             type: "POST",
+             url: gobalConfig.base_url + 'api/NeuralNetwork/download/',
+             data: JSON.stringify(data),
+             contentType: 'application/json; charset=UTF-8',
+             beforeSend: function (XMLHttpRequest) {
+                 var token = window.sessionStorage.getItem('token');
+                 if (token != null) {
+                     XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+                 }
+             },
+             success: function (response, status, request) {
 
 
-            }
+             }
 
-        });*/
+         });*/
     }
 
     /*function downloadCode() {

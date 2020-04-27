@@ -7,31 +7,65 @@
     <meta charset="UTF-8">
     <title>VisualPytorch</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script type="text/javascript" src="../resources/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/jquery-ui.js"></script>
-    <link href="../resources/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
-    <link href="../resources/jquery-ui.theme.css" rel="stylesheet">
-    <link href="../css/layer.css" rel="stylesheet">
-    <link href="../css/buttons.css" rel="stylesheet">
-    <script type="text/javascript" src="../resources/jsplumb.min.js"></script>
-    <script type="text/javascript" src="../javascript/graph_action.js"></script>
-    <script type="text/javascript" src="../javascript/layer_form.js"></script>
-    <script type="text/javascript" src="../javascript/base_service.js"></script>
+
+
+        <!-- all css here -->
+
+        <link rel="stylesheet" href="../../resources/bootstrap.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+        <!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+        <!-- meanmenu css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+        <!-- Font-Awesome css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
+        <!-- pe-icon-7-stroke css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+        <!-- Flaticon css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+        <!-- venobox css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
+        <!-- nivo slider css -->
+<!--         <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
+        <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" /> -->
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+
+        <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+
+        <!-- modernizr css 这个比较特殊不知道为啥 -->
+        <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+    <link href="../../resources/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../../css/layer.css" rel="stylesheet">
+    <link href="../../css/buttons.css" rel="stylesheet">
+
+
+
+
+
+
+
 </head>
 
 <body>
-<nav style="font-size:20px;text-align: center; top: 0; height: 50px" id="header"></nav>
+<div id="header">
+</div>
 
-<script>
-    $("#header").load("header.html");
-</script>
+
 <!--解决在ie火狐浏览器等中不兼容出现布局错误的问题，暂时性解决方案-->
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container" style="margin-top: 20px; margin-bottom: 60px;">
     <div id="content" class="row-fluid">
-        <div class="col-md-3" id="element_list">
+        <div class="col-md-4" id="element_list">
 
             <button type="button" class="btn btn-warning" style="width: 180px" id="submit"
                     onclick="translate_network()">生成代码
@@ -64,64 +98,430 @@
             </div>
 
             <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
+                <div class="panel panel-info">
+
+                        <!-- <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#left_ele_collapse"
                                href="#collapseOne">
                                 可选用网络层
                             </a>
-                        </h4>
+                        </h4> -->
+
+
+
+
+                    <div class="panel-title dropdown" data-parent="#left_ele_collapse">
+
+
+                        <div class="btn-group">
+
+                            <button type="button" class="btn btn-danger" onclick="load_static()">
+                                <span class="glyphicon glyphicon-pencil">&nbsp;全局参数</span>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success">
+                                <span class="glyphicon glyphicon-eur">&nbsp;经典模型</span>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                你是第几层&nbsp;&nbsp;<span class="caret"></span>
+                            </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0);" onclick="load_simple_network_layer()">简单网络层</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </div>
+
+
+
                     </div>
+<!--                     <div class="panel-heading">
+
+
+                    </div> -->
                     <div id="collapseOne" class="panel-collapse collapse in">
 
-                        <div class="panel-body">
+
+
+                        <div class="hidden panel-body" id="simple_network_layer">
                             <div class="ele_in_list">
                                 <div class="node start little_green" id="start">
                                     开始
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="view_layer" type="button"
-                                     data-container="body" data-toggle="popover">
+                                <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node orange" id="linear_layer" type="button"
-                                     data-container="body" data-toggle="popover" in_channel="" out_channel="">
+                                <div class="node lightblue" id="linear_layer" type="button"
+                                     data-container="body" data-toggle="popover">
                                     全连接层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
-                                <div class="node orange" id="conv1d_layer" type="button"
+                            <div class="ele_in_list hidden">
+                                <div class="node lightblue" id="conv1d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     一维卷积层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
-                                <div class="node orange" id="conv2d_layer" type="button"
+                            <div class="ele_in_list hidden">
+                                <div class="node lightblue" id="conv2d_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     二维卷积层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="element_wise_add_layer" type="button"
+                                <div class="node lightblue" id="element_wise_add_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     元素级相加层
                                 </div>
                             </div>
 
                             <div class="ele_in_list">
-                                <div class="node orange" id="concatenate_layer" type="button"
+                                <div class="node lightblue" id="concatenate_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     channel维度拼接层
                                 </div>
                             </div>
 
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="softmax_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    softmax层
+                                </div>
+                            </div>
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="dropout_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    dropout层
+                                </div>
+                            </div>
+
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="conv_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    卷积层
+                                </div>
+                            </div>
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="pool_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    池化层
+                                </div>
+                            </div>
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="activation_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    激活层
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="RNN_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    递归神经网络
+                                </div>
+                            </div>
+
+
+
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="LSTM_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    长周期神经网络
+                                </div>
+                            </div>
+                            <div class="ele_in_list">
+                                <div class="node lightblue" id="norm_layer" type="button"
+                                     data-container="body" data-toggle="popover">
+                                    标准化层
+                                </div>
+                            </div>
+
+                            <div class="ele_in_list">
+                                <div class="node end little_green" id="end">
+                                    结束
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel-body" id="static_form_parent">
+                            <h4>基本参数配置</h4>
+                            <form class="form-horizontal" role="form" id="static_form">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">epoch<br/>(训练轮次)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为10" id="epoch" name="epoch">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">learning_rate</br>(学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0-1]实数，默认为0.01" id="learning_rate" name="learning_rate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">batch_size<br/>(每次训练个数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数,默认为1" id="batch_size" name="batch_size">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">dataset<br/>(数据)</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="dataset" name="data">
+                                            <option value="mnist" selected>mnist</option>
+                                            <option value="cifar10">cifar10</option>
+                                            <option value="stl10">stl10</option>
+                                            <option value="svhn">svhn</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">ifshuffle<br/>(数据集是否打乱)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="ifshuffle" name="ifshuffle" checked></center>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">platform<br/>(运行平台)</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="platform" name="data">
+                                            <option value="cpu" selected>cpu</option>
+                                            <option value="gpu">gpu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr/>
+
+
+                                <div class="form-group">
+                                        <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
+                                        <div class="col-sm-8">
+                                            <select id="learning_rate_scheduler" name="learning_rate_scheduler" class="form-control">
+                                                <option value="None" selected>None</option>
+                                                <option value="StepLR">StepLR</option>
+                                                <option value="MultiStepLR">MultiStepLR</option>
+                                                <option value="ExponentialLR">ExponentialLR</option>
+                                                <option value="CosineAnnealingLR">CosineAnnealingLR</option>
+                                                <option value="ReduceLROnPleateau">ReduceLROnPleateau</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="form-group hidden" id="step_size_form_group">
+                                    <label class="col-sm-4 control-label">step_size<br/>(衰减周期)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为50" id="step_size" name="step_size">
+                                    </div>
+                                </div>
+
+                                <div class="form-group hidden" id="gamma_form_group">
+                                    <label class="col-sm-4 control-label">gamma<br/>(衰减幅度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认为0.1" id="gamma" name="gamma">
+                                    </div>
+                                </div>
+
+                                <div class="form-group hidden" id="milestones_form_group">
+                                    <label class="col-sm-4 control-label">milestones<br/>(衰减时间点)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负整数序列，默认为50" id="milestones" name="milestones">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="T_max_form_group">
+                                    <label class="col-sm-4 control-label">T_max<br/>(下降周期)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认为50" id="T_max" name="T_max">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="eta_min_form_group">
+                                    <label class="col-sm-4 control-label">eta_min<br/>(最小学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数，默认为0" id="eta_min" name="eta_min">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="factor_form_group">
+                                    <label class="col-sm-4 control-label">factor<br/>(调整系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.1" id="factor" name="factor">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="patience_form_group">
+                                    <label class="col-sm-4 control-label">patience<br/>(最小学习率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为10" id="patience" name="patience">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="cooldown_form_group">
+                                    <label class="col-sm-4 control-label">cooldown<br/>(冷却时间)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为10" id="cooldown" name="cooldown">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="verbose_form_group">
+                                    <label class="col-sm-4 control-label">verbose<br/>(打印日志)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="verbose" name="verbose" checked></center>
+                                        </div>
+                                </div>
+                                <div class="form-group hidden" id="min_lr_form_group">
+                                    <label class="col-sm-4 control-label">min_lr<br/>(学习率下限)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-4" id="min_lr" name="min_lr">
+                                    </div>
+                                </div>
+                                <hr/>
+<!-- optimizer start ==========================================-->
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="optimizer" name="optimizer">
+                                            <option value="Adam" selected>Adam</option>
+                                            <option value="SGD">SGD</option>
+                                            <option value="RMSprop">RMSprop</option>
+                                            <option value="Adammax">Adammax</option>
+                                            <option value="ASGD">ASGD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="beta1_form_group">
+                                    <label class="col-sm-4 control-label">beta1<br/>(梯度移动平均值的系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.9" id="beta1" name="beta1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="beta2_form_group">
+                                    <label class="col-sm-4 control-label">beta2<br/>(梯度平方移动平均值的系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.999" id="beta2" name="beta2">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="eps_form_group">
+                                    <label class="col-sm-4 control-label">eps<br/>(分母稳定项)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-8" id="eps" name="eps">
+                                    </div>
+                                </div>
+                                <div class="form-group" id="weight_decay_form_group">
+                                    <label class="col-sm-4 control-label">weight_decay<br/>(L2正则项系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="weight_decay" name="weight_decay">
+                                    </div>
+                                </div>
+                                <div class="form-group" id="amsgrad_form_group">
+                                    <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="momentum_form_group">
+                                    <label class="col-sm-4 control-label">momentum<br/>(调整系数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="momentum" name="momentum">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="dampening_form_group">
+                                    <label class="col-sm-4 control-label">dampening<br/>(动量衰减)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数，默认值为10" id="dampening" name="dampening">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="nesterov_form_group">
+                                    <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
+                                    <div class="col-sm-8">
+                                        <center><input type="checkbox" id="nesterov" name="amsgrad" checked></center>
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="lambd_form_group">
+                                    <label class="col-sm-4 control-label">lambd<br/>(衰减项)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为1e-4" id="lambd" name="lambd">
+                                        </div>
+                                </div>
+                                <div class="form-group hidden" id="alpha_form_group">
+                                    <label class="col-sm-4 control-label">alpha<br/>(eta更新幂)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="0-1间实数，默认值为0.75" id="alpha" name="alpha">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="t0_form_group">
+                                    <label class="col-sm-4 control-label">t0<br/>(开始平均的点)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，默认值为1e6" id="t0" name="t0">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="centered_form_group">
+                                    <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="centered" name="centered" checked></center>
+                                    </div>
+                                </div>
+                                <hr/>
+<!-- optimizer end ==========================================-->
+<!-- loss start ==========================================-->
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">loss<br/>(损失函数)</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="loss" name="loss">
+                                            <option value="MSELoss" selected>MSELoss</option>
+                                            <option value="CrossEntropyLoss">CrossEntropyLoss</option>
+                                            <option value="L1Loss">L1Loss</option>
+                                            <option value="NLLLoss">NLLLoss</option>
+                                            <option value="BCELoss">BCELoss</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="reduction_form_group">
+                                    <label class="col-sm-4 control-label">reduction<br/>(输出的缩减)</label>
+                                    <div class="col-sm-8">
+                                        <select id="reduction" name="reduction" class="form-control">
+                                                <option value="mean" selected>mean</option>
+                                                <option value="sum" >sum</option>
+                                                <option value="none" >none</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group hidden" id="weight_form_group">
+                                    <label class="col-sm-4 control-label">weight<br/>(每个分类损失的权重)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正数序列，默认为None" id="weight" name="weight">
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="ignore_index_form_group">
+                                    <label class="col-sm-4 control-label">ignore_index<br/>(忽略的目标)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="整数，默认为None" id="ignore_index" name="ignore_index">
+                                    </div>
+                                </div>
+
+<!-- loss end ==========================================-->
+
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -154,56 +554,27 @@
                     </div>
                 </div>-->
             </div>
-            <div>
-                <h4>训练参数配置</h4>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">epoch(训练轮次)</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" placeholder="1" id="epoch">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">optimizer(优化器)</label>
-                        <div class="col-sm-5">
-                            <select id="optimizer" class="form-control">
-                                <option value="torch.optim.Adam">Adam</option>
-                                <option value="torch.optim.Optimizer">Optimizer</option>
-                                <option value="torch.optim.Adamax">Adamax</option>
-                                <option value="torch.optim.ASGD">ASGD</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">learning_rate(学习率)</label>
-                        <div class="col-sm-5">
-                            <input type="text" id="learning_rate" class="form-control" placeholder="0.5">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-5 control-label">batch_size</label>
-                        <div class="col-sm-5">
-                            <input type="text" id="batch_size" class="form-control" placeholder="1">
-                        </div>
-                    </div>
 
-                </form>
-            </div>
 
         </div>
-        <div class="col-md-7" id="canvas">
+        <div class="col-md-6" id="canvas">
             <!--<div style="height:1000px;border:0.5px solid black;background:url(../img/grid.png) no-repeat;background-size:100%;opacity: .6">-->
             <div style="height:1000px;border:0.5px solid black">
             </div>
         </div>
         <div class="col-md-2">
-            <div id="parameters"
-                 style="white-space: nowrap; color: rgb(112, 112, 112); text-align: left; cursor: default;">
-                <form class="form-horizontal hidden" role="form">
+            <div id="parameters" style="white-space: nowrap; color: rgb(112, 112, 112); text-align: left; cursor: default;">
+
+
+            </div>
+        </div>
+ <!--        <div>
+                <form class="form-horizontal hidden" role="form" id="shape_form">
                     <div class="form-group">
                         <label class="col-sm-5 control-label">shape</label>
                         <div class="col-sm-5">
                             <input type="text" name='shape' class="form-control" placeholder="1">
+                            <input type="text" name='unknown_temp1' class="form-control" placeholder="1">
                         </div>
                     </div>
                 </form>
@@ -231,17 +602,88 @@
 
                 </form>
 
-            </div>
-        </div>
+
+        </div> -->
     </div>
 </div>
+
+<div id="footer">
+</div>
+
 </body>
+
+    <script src="../../resources/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="../../resources/jquery-3.3.1.js"></script> -->
+
+<!--     <script type="text/javascript" src="../../resources/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
+    <script type="text/javascript" src="../../javascript/graph_action.js"></script>
+    <script type="text/javascript" src="../../javascript/layer_form.js"></script>
+    <script type="text/javascript" src="../../javascript/base_service.js"></script>
+
+
+    <script type="text/javascript">
+        function load_static(){
+            $("#simple_network_layer").attr("class","hidden panel-body");
+            $("#static_form_parent").attr("class","panel-body");
+            // alert();
+            // document.getElementById("body1").class
+        }
+
+        function load_classical_model(){
+
+        }
+        function load_simple_network_layer(){
+            $("#simple_network_layer").attr("class","panel-body");
+            $("#static_form_parent").attr("class","hidden panel-body");
+        }
+    </script>
+    <!-- bootstrap js -->
+    <script src="../../resources/templatesRes/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+    <!-- owl.carousel js -->
+    <script src="../../resources/templatesRes/js/owl.carousel.min.js"></script>
+    <!-- jquery-ui js -->
+    <!-- <script src="../../resources/templatesRes/js/jquery-ui.min.js"></script> -->
+    <!-- jquery Counterup js -->
+    <script src="../../resources/templatesRes/js/jquery.counterup.min.js"></script>
+    <script src="../../resources/templatesRes/js/waypoints.min.js"></script>
+    <!-- jquery countdown js -->
+    <script src="../../resources/templatesRes/js/jquery.countdown.min.js"></script>
+    <!-- jquery countdown js -->
+    <script type="text/javascript" src="../../resources/templatesRes/venobox/venobox.min.js"></script>
+    <!-- jquery Meanmenu js -->
+    <script src="../../resources/templatesRes/js/jquery.meanmenu.js"></script>
+    <!-- wow js -->
+    <script src="../../resources/templatesRes/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- scrollUp JS -->
+    <script src="../../resources/templatesRes/js/jquery.scrollUp.min.js"></script>
+    <!-- plugins js -->
+    <script src="../../resources/templatesRes/js/plugins.js"></script>
+    <!-- Nivo slider js -->
+<!--     <script src="../../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script src="../../resources/templatesRes/lib/home.js" type="text/javascript"></script> -->
+    <!-- main js -->
+    <script src="../../resources/templatesRes/js/main.js"></script>
+
+
+
+
+
+
 
 <script>
     var my_end_point = {
         endpoint: ["Dot", {radius: 5}],
         connectorStyle: {
-            stroke: "#fc2f49",
+            stroke: "#cccccc",
             strokeWidth: 3,
 
         },
@@ -269,6 +711,8 @@
             scope: "ss",
         }
     );
+
+
     $("#conv1d_layer").draggable(
         {
             helper: "clone",
@@ -299,6 +743,67 @@
             scope: "ss",
         }
     );
+    $("#end").draggable(
+        {
+            helper: "clone",
+            scope: "ss",
+        }
+    );
+//==========================================以下是新增的
+    $("#softmax_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+    $("#dropout_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+    $("#conv_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+    $("#pool_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+    $("#activation_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+    $("#RNN_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+    $("#LSTM_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+    $("#norm_layer").draggable(
+        {
+            helper:"clone",
+            scope:"ss"
+        }
+    );
+
+
+
 
     var no_popover = ["start", "element_wise_add_layer"];
 
@@ -307,7 +812,10 @@
         drop: function (event, ui) {
             var left = parseInt(ui.offset.left - $("#canvas").offset().left);
             var top = parseInt(ui.offset.top - $("#canvas").offset().top);
-            var name = ui.draggable[0].id;
+            //alert(ui.draggable.attr("id"));//这么获取是可以的
+            //这里的ui是移动的控件，有可能有多个，ui.draggable[0]应该就是第一个，
+            //var name = ui.draggable[0].id;
+            var name = ui.draggable.attr("id");
             canvas_cnt++;
             var id = "canvas_" + canvas_cnt;
             if (ui.hasOwnProperty('id')) {
@@ -331,20 +839,29 @@
                     $(this).remove();
                 }
             });*/
+
+
+            //先构造原始json
+
+
+
             if (name == "start") {
                 window.sessionStorage.setItem(id, "{\"start\":\"true\"}");
+            }
+            if (name == "end") {
+                window.sessionStorage.setItem(id, "{\"end\":\"true\"}");
             }
             if (name == "element_wise_add_layer") {
                 window.sessionStorage.setItem(id, "{\"element_wise_add_layer\":\"true\"}");
             }
             if (name == "view_layer") {
-                window.sessionStorage.setItem(id, "{\"shape\":\"1\"}");
-            }
-            if (name == "concatenate_layer") {
-                window.sessionStorage.setItem(id, "{\"dim\":\"1\"}");
+                window.sessionStorage.setItem(id, "{\"shape\":\"None\"}");
             }
             if (name == "linear_layer") {
-                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\"}");
+                window.sessionStorage.setItem(id, "{\"in_features\":\"1\",\"out_features\":\"1\"}");
+            }
+            if (name == "concatenate_layer") {
+                window.sessionStorage.setItem(id, "{\"dim\":\"0\"}");
             }
             if (name == "conv1d_layer") {
                 window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
@@ -352,6 +869,86 @@
             if (name == "conv2d_layer") {
                 window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
             }
+
+            if(name == "softmax_layer"){
+                window.sessionStorage.setItem(id,"{\"dim\":\"None\"}");
+            }
+            if(name == "dropout_layer"){
+                window.sessionStorage.setItem(id,"{\"type\":\"2d\",\"p\":\"0.5\"}");
+            }
+
+// layer_type:下拉框二选一，conv/conv_transpose 无默认值
+
+//             type:下拉框三选一，选项包括1d/2d/3d
+
+//         in_channels(int):输入通道数 非0正数 默认值0//加了个s
+
+//         out_channels(int):输出通道数 非0正数 默认值0//加了个s
+
+//         kernel_size (int) : 卷积核的尺寸 非零正数 默认值0
+
+//         stride (int) : 卷积步长 非零正数 默认值为1
+
+//         padding (int) : 补充0的层数 非负整数 默认值为0
+            if(name == "conv_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"conv\",\"type\":\"2d\",\"in_channels\":\"None\",\"out_channels\":\"None\",\"kernel_size\":\"3\",\"stride\":\"1\",\"padding\":\"0\"}");
+            }
+
+//layer_type:下拉框三选一，选项包括max_pool/avg_pool/max_unpool 无默认值
+// type:下拉框三选一，选项包括1d/2d/3d 无默认值
+
+// kernel_size (int) : 卷积核的尺寸 非0正数 无默认值
+
+// stride (int) : 卷积步长 非0正数 无默认值
+
+// padding (int) : 补充0的层数 非负整数 默认值为0
+
+// ceil_mode:下拉框二选一，ceil/floor 默认值为floor
+
+// count_include_pad:下拉框二选一,true/false 默认值为true
+            if(name == "pool_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"max_pool\",\"type\":\"2d\",\"kernel_size\":\"2\",\"stride\":\"2\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"True\"}");
+            }
+
+// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/PRelu/RRelu 默认值为relu
+
+// relu：无参数
+
+// sigmoid:无参数
+
+// tanh:无参数
+
+// leaky relu:
+
+// negative_slope<正数> 默认值为0.01
+
+// PRelu: 类似leaky relu, 但是负数部分斜率可学习
+
+// weight<正数>权重初始化 非0正实数 默认值为0.25
+// RRelu: 类似leaky relu, 但是负数部分斜率为随机均匀分布
+
+// lower<正数>：均匀分布下限 默认值为0.125
+
+// upper<正数>：均匀分布上限 默认值为0.333
+            if(name == "activation_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"relu\",\"negative_slope\":\"0.01\",\"weight\":\"0.25\",\"lower\":\"0.125\",\"upper\":\"0.333\"}");
+            }
+
+
+            if(name == "RNN_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\",\"nonlinearity\":\"tanh\"}");
+            }
+
+
+
+            if(name == "LSTM_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\"}");
+            }
+            if(name == "norm_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"batch_norm\",\"type\":\"2d\",\"num_features\":\"None\",\"num_groups\":\"None\",\"num_channel\":\"None\"}");
+            }
+
+
             $("#" + id).bind("contextmenu", function () {
                 return false;
             });
@@ -413,87 +1010,493 @@
 
         //根据解析页面传参
 
-        var query_object = getQueryObject(window.location.href);
-        if (query_object.hasOwnProperty("id")) {
-            var net_id = query_object["id"];
-            $.ajax({
-                type: 'GET',
-                url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + net_id + '/',
-                beforeSend: function (XMLHttpRequest) {
-                    var token = window.sessionStorage.getItem('token');
-                    if (token != null) {
-                        XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
-                    }
+        $("#header").load("../base/header.html");
+        $("#footer").load("../base/footer.html");
+
+        $("#learning_rate_scheduler").change(function(event) {
+            var val = $("#learning_rate_scheduler").find("option:selected").val();
+            if(val == "StepLR"){
+                $("#step_size_form_group").attr("class","form-group");
+                $("#gamma_form_group").attr("class","form-group");
+                $("#milestones_form_group").attr("class","form-group hidden");
+                $("#T_max_form_group").attr("class","form-group hidden");
+                $("#eta_min_form_group").attr("class","form-group hidden");
+                $("#factor_form_group").attr("class","form-group hidden");
+                $("#patience_form_group").attr("class","form-group hidden");
+                $("#cooldown_form_group").attr("class","form-group hidden");
+                $("#verbose_form_group").attr("class","form-group hidden");
+                $("#min_lr_form_group").attr("class","form-group hidden");
+            }
+            if(val == "MultiStepLR"){
+               $("#step_size_form_group").attr("class","form-group hidden");
+                $("#gamma_form_group").attr("class","form-group");
+                $("#milestones_form_group").attr("class","form-group");
+                $("#T_max_form_group").attr("class","form-group hidden");
+                $("#eta_min_form_group").attr("class","form-group hidden");
+                $("#factor_form_group").attr("class","form-group hidden");
+                $("#patience_form_group").attr("class","form-group hidden");
+                $("#cooldown_form_group").attr("class","form-group hidden");
+                $("#verbose_form_group").attr("class","form-group hidden");
+                $("#min_lr_form_group").attr("class","form-group hidden");
+            }
+            if(val == "ExponentialLR"){
+                $("#step_size_form_group").attr("class","form-group hidden");
+                $("#gamma_form_group").attr("class","form-group");
+                if( $("#gamma").val() == "" ){
+                    $("#gamma").attr("value",0.95);
+                }
+                $("#milestones_form_group").attr("class","form-group hidden");
+                $("#T_max_form_group").attr("class","form-group hidden");
+                $("#eta_min_form_group").attr("class","form-group hidden");
+                $("#factor_form_group").attr("class","form-group hidden");
+                $("#patience_form_group").attr("class","form-group hidden");
+                $("#cooldown_form_group").attr("class","form-group hidden");
+                $("#verbose_form_group").attr("class","form-group hidden");
+                $("#min_lr_form_group").attr("class","form-group hidden");
+            }
+            if(val == "CosineAnnealingLR"){
+                $("#step_size_form_group").attr("class","form-group hidden");
+                $("#gamma_form_group").attr("class","form-group hidden");
+                $("#milestones_form_group").attr("class","form-group hidden");
+                $("#T_max_form_group").attr("class","form-group");
+                $("#eta_min_form_group").attr("class","form-group");
+                $("#factor_form_group").attr("class","form-group hidden");
+                $("#patience_form_group").attr("class","form-group hidden");
+                $("#cooldown_form_group").attr("class","form-group hidden");
+                $("#verbose_form_group").attr("class","form-group hidden");
+                $("#min_lr_form_group").attr("class","form-group hidden");
+            }
+            if(val == "ReduceLROnPleateau"){
+                $("#step_size_form_group").attr("class","form-group hidden");
+                $("#gamma_form_group").attr("class","form-group hidden");
+                $("#milestones_form_group").attr("class","form-group hidden");
+                $("#T_max_form_group").attr("class","form-group hidden");
+                $("#eta_min_form_group").attr("class","form-group hidden");
+                $("#factor_form_group").attr("class","form-group");
+                $("#patience_form_group").attr("class","form-group");
+                $("#cooldown_form_group").attr("class","form-group");
+                $("#verbose_form_group").attr("class","form-group");
+                $("#min_lr_form_group").attr("class","form-group");
+            }
+            if(val == "None"){
+                $("#step_size_form_group").attr("class","form-group hidden");
+                $("#gamma_form_group").attr("class","form-group hidden");
+                $("#milestones_form_group").attr("class","form-group hidden");
+                $("#T_max_form_group").attr("class","form-group hidden");
+                $("#eta_min_form_group").attr("class","form-group hidden");
+                $("#factor_form_group").attr("class","form-group hidden");
+                $("#patience_form_group").attr("class","form-group hidden");
+                $("#cooldown_form_group").attr("class","form-group hidden");
+                $("#verbose_form_group").attr("class","form-group hidden");
+                $("#min_lr_form_group").attr("class","form-group hidden");
+            }
+        });
+
+        $("#optimizer").change(function(event) {
+            var val = $("#optimizer").find("option:selected").val();
+            if(val == "Adam"){
+                $("#beta1_form_group").attr("class","form-group");
+                $("#beta2_form_group").attr("class","form-group ");
+                $("#eps_form_group").attr("class","form-group");
+                $("#weight_decay_form_group").attr("class","form-group");
+                $("#amsgrad_form_group").attr("class","form-group");
+                $("#momentum_form_group").attr("class","form-group hidden");
+                $("#dampening_form_group").attr("class","form-group hidden");
+                $("#nesterov_form_group").attr("class","form-group hidden");
+                $("#lambd_form_group").attr("class","form-group hidden");
+                $("#alpha_form_group").attr("class","form-group hidden");
+                $("#t0_form_group").attr("class","form-group hidden");
+                $("#centered_form_group").attr("class","form-group hidden");
+            }
+            if(val == "SGD"){
+                $("#beta1_form_group").attr("class","form-group hidden");
+                $("#beta2_form_group").attr("class","form-group hidden");
+                $("#eps_form_group").attr("class","form-group hidden");
+                $("#weight_decay_form_group").attr("class","form-group");
+                $("#amsgrad_form_group").attr("class","form-group hidden");
+                $("#momentum_form_group").attr("class","form-group");
+                $("#dampening_form_group").attr("class","form-group");
+                $("#nesterov_form_group").attr("class","form-group");
+                $("#lambd_form_group").attr("class","form-group hidden");
+                $("#alpha_form_group").attr("class","form-group hidden");
+                $("#t0_form_group").attr("class","form-group hidden");
+                $("#centered_form_group").attr("class","form-group hidden");
+            }
+            if(val == "ASGD"){
+                $("#beta1_form_group").attr("class","form-group hidden");
+                $("#beta2_form_group").attr("class","form-group hidden");
+                $("#eps_form_group").attr("class","form-group hidden");
+                $("#weight_decay_form_group").attr("class","form-group");
+                $("#amsgrad_form_group").attr("class","form-group hidden");
+                $("#momentum_form_group").attr("class","form-group hidden");
+                $("#dampening_form_group").attr("class","form-group hidden");
+                $("#nesterov_form_group").attr("class","form-group hidden");
+                $("#lambd_form_group").attr("class","form-group");
+                $("#alpha_form_group").attr("class","form-group");
+                $("#t0_form_group").attr("class","form-group");
+                $("#centered_form_group").attr("class","form-group hidden");
+            }
+            if(val == "RMSprop"){
+                $("#beta1_form_group").attr("class","form-group hidden");
+                $("#beta2_form_group").attr("class","form-group hidden");
+                $("#eps_form_group").attr("class","form-group");
+                $("#weight_decay_form_group").attr("class","form-group");
+                $("#amsgrad_form_group").attr("class","form-group hidden");
+                $("#momentum_form_group").attr("class","form-group");
+                $("#dampening_form_group").attr("class","form-group hidden");
+                $("#nesterov_form_group").attr("class","form-group hidden");
+                $("#lambd_form_group").attr("class","form-group hidden");
+                $("#alpha_form_group").attr("class","form-group");
+                $("#t0_form_group").attr("class","form-group hidden");
+                $("#centered_form_group").attr("class","form-group");
+            }
+            if(val == "Adammax"){
+                $("#beta1_form_group").attr("class","form-group");
+                $("#beta2_form_group").attr("class","form-group");
+                $("#eps_form_group").attr("class","form-group");
+                $("#weight_decay_form_group").attr("class","form-group");
+                $("#amsgrad_form_group").attr("class","form-group hidden");
+                $("#momentum_form_group").attr("class","form-group hidden");
+                $("#dampening_form_group").attr("class","form-group hidden");
+                $("#nesterov_form_group").attr("class","form-group hidden");
+                $("#lambd_form_group").attr("class","form-group hidden");
+                $("#alpha_form_group").attr("class","form-group hidden");
+                $("#t0_form_group").attr("class","form-group hidden");
+                $("#centered_form_group").attr("class","form-group hidden");
+            }
+        });
+
+        $("#loss").change(function(event) {
+            var val = $("#loss").find("option:selected").val();
+            if(val == "MSELoss"){
+                $("#reduction_form_group").attr("class","form-group");
+                $("#weight_form_group").attr("class","form-group hidden");
+                $("#ignore_index_form_group").attr("class","form-group hidden");
+            }
+            if(val == "CrossEntropyLoss"){
+                $("#reduction_form_group").attr("class","form-group");
+                $("#weight_form_group").attr("class","form-group");
+                $("#ignore_index_form_group").attr("class","form-group");
+            }
+            if(val == "L1Loss"){
+                $("#reduction_form_group").attr("class","form-group");
+                $("#weight_form_group").attr("class","form-group hidden");
+                $("#ignore_index_form_group").attr("class","form-group hidden");
+            }
+            if(val == "NLLLoss"){
+                $("#reduction_form_group").attr("class","form-group");
+                $("#weight_form_group").attr("class","form-group");
+                $("#ignore_index_form_group").attr("class","form-group");
+            }
+            if(val == "BCELoss"){
+                $("#reduction_form_group").attr("class","form-group");
+                $("#weight_form_group").attr("class","form-group");
+                $("#ignore_index_form_group").attr("class","form-group hidden");
+            }
+        });
+
+        //static参数检查
+        $('#static_form').bootstrapValidator({
+                message: 'This value is not valid',
+                //提供输入验证图标提示
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
                 },
-                success: function (net_work) {
-                    var structure = eval('(' + net_work["structure"] + ')');
-                    var nets = structure['nets'];
-                    var nets_conn = structure['nets_conn'];
-                    var static_val = structure['static'];
-                    var drop_function = $("#canvas").droppable('option', 'drop');
-                    var event;
-                    jQuery.each(nets, function (id, val) {
-
-                        jsPlumb.ready(function () {
-                            var ui = {
-                                'offset': {
-                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
-                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
-                                },
-                                'draggable': [{
-                                    "id": val['name'],
-                                    "innerHTML": $("#" + val['name'])[0].innerHTML
-                                }],
-                                'id': id
-                            };
-                            drop_function(event, ui);
-                        });
-                        window.sessionStorage.setItem(id, JSON.stringify(val['attribute']));
-                    });
-                    jQuery.each(nets_conn, function (id, val) {
-                        jsPlumb.ready(function () {
-                            jsPlumb.connect({
-                                "source": val['source']['id'],
-                                "target": val['target']['id'],
-                                "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
-                                "endpoint": ["Dot", {radius: 5}],
-                                "paintStyle": {
-                                    stroke: "#fc2f49",
-                                    strokeWidth: 3,
-
-                                },
-                                "maxConnections": -1,
-                                "connector": ["Flowchart", {
-                                    stub: [40, 60],
-                                    gap: 5,
-                                    cornerRadius: 5,
-                                    alwaysRespectStubs: true
-                                }],
-                                "overlays": [["Arrow", {width: 10, length: 10, location: 1}]],
-                                "connectionsDetachable": true,
-                            })
-                        });
-                    });
-                    $("#epoch").val(static_val['epoch']);
-                    $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
-                    $('#learning_rate').val(static_val['learning_rate']);
-                    $('#batch_size').val(static_val['batch_size'])
+                fields: {
+                    epoch: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    learning_rate: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    batch_size: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    step_size: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    gamma: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    milestones: {
+                        message: '非负整数序列',
+                        validators: {
+                            regexp:{
+                                regexp: /^(\+?\d+|\-1)(\s*,\s*(\+?\d+|\-1))*$/,
+                                message: '<b>非负整数序列</b>'
+                            }
+                        }
+                    },
+                    T_max: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    eta_min: {
+                        message: '正数',
+                        validators: {
+                            regexp:{
+                                regexp: /^([1-9][0-9]*(\.\d+)?)|(0\.\d+)$/,
+                                message: '<b>正数</b>'
+                            }
+                        }
+                    },
+                    factor: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    patience: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    cooldown: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    min_lr: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    momentum: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    weight_decay: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    dampening: {
+                        message: '非负数',
+                        validators: {
+                            regexp:{
+                                regexp: /^(0|[1-9][0-9]*)(\.\d+)?$/,
+                                message: '<b>非负数</b>'
+                            }
+                        }
+                    },
+                    lambd: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    alpha: {
+                        message: '0-1间实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0(.\d+)?|1$/,
+                                message: '<b>0-1间实数</b>'
+                            }
+                        }
+                    },
+                    t0: {
+                        message: '正整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^[1-9][0-9]*$/,
+                                message: '<b>正整数</b>'
+                            }
+                        }
+                    },
+                    beta1: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    beta2: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    eps: {
+                        message: '0-1内实数',
+                        validators: {
+                            regexp:{
+                                regexp: /^0.\d+$/,
+                                message: '<b>0-1内实数</b>'
+                            }
+                        }
+                    },
+                    weight: {
+                        message: '正数序列',
+                        validators: {
+                            regexp:{
+                                regexp: /^(([1-9][0-9]*(\.\d+)?)|(0\.\d+))(\s*,\s*(([1-9][0-9]*(\.\d+)?)|(0\.\d+)))*$/,
+                                message: '<b>正数序列</b>'
+                            }
+                        }
+                    },
+                    ignore_index: {
+                        message: '整数',
+                        validators: {
+                            regexp:{
+                                regexp: /^-?[1-9]\d*$/,
+                                message: '<b>整数</b>'
+                            }
+                        }
+                    }
                 }
             });
 
+
+        var query_object = getQueryObject(window.location.href);
+        if (query_object.hasOwnProperty("id")) {
+            var net_id = query_object["id"];
+            // $.ajax({
+            //     type: 'GET',
+            //     url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + net_id + '/',
+            //     beforeSend: function (XMLHttpRequest) {
+            //         var token = window.sessionStorage.getItem('token');
+            //         if (token != null) {
+            //             XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+            //         }
+            //     },
+            //     success: function (net_work) {
+            //         var structure = eval('(' + net_work["structure"] + ')');
+            //         var nets = structure['nets'];
+            //         var nets_conn = structure['nets_conn'];
+            //         var static_val = structure['static'];
+            //         var drop_function = $("#canvas").droppable('option', 'drop');
+            //         var event;
+            //         jQuery.each(nets, function (id, val) {
+
+            //             jsPlumb.ready(function () {
+            //                 var ui = {
+            //                     'offset': {
+            //                         'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
+            //                         'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
+            //                     },
+            //                     'draggable': [{
+            //                         "id": val['name'],
+            //                         "innerHTML": $("#" + val['name'])[0].innerHTML
+            //                     }],
+            //                     'id': id
+            //                 };
+            //                 drop_function(event, ui);
+            //             });
+            //             window.sessionStorage.setItem(id, JSON.stringify(val['attribute']));
+            //         });
+            //         jQuery.each(nets_conn, function (id, val) {
+            //             jsPlumb.ready(function () {
+            //                 jsPlumb.connect({
+            //                     "source": val['source']['id'],
+            //                     "target": val['target']['id'],
+            //                     "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
+            //                     "endpoint": ["Dot", {radius: 5}],
+            //                     "paintStyle": {
+            //                         stroke: "#fc2f49",
+            //                         strokeWidth: 3,
+
+            //                     },
+            //                     "maxConnections": -1,
+            //                     "connector": ["Flowchart", {
+            //                         stub: [40, 60],
+            //                         gap: 5,
+            //                         cornerRadius: 5,
+            //                         alwaysRespectStubs: true
+            //                     }],
+            //                     "overlays": [["Arrow", {width: 10, length: 10, location: 1}]],
+            //                     "connectionsDetachable": true,
+            //                 })
+            //             });
+            //         });
+            //         $("#epoch").val(static_val['epoch']);
+            //         $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+            //         $('#learning_rate').val(static_val['learning_rate']);
+            //         $('#batch_size').val(static_val['batch_size'])
+            //     }
+            // });
+
         }
-        $.ajax({
-            type: 'POST',
-            data: "{\"name\":\"index\"}",
-            url: gobalConfig.base_url + 'api/journal/visit/',
-            contentType: 'application/json; charset=UTF-8',
-            beforeSend: function (XMLHttpRequest) {
-                var token = window.sessionStorage.getItem('token');
-                if (token != null) {
-                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
-                }
-            },
-        })
+        // $.ajax({
+        //     type: 'POST',
+        //     data: "{\"name\":\"index\"}",
+        //     url: gobalConfig.base_url + 'api/journal/visit/',
+        //     contentType: 'application/json; charset=UTF-8',
+        //     beforeSend: function (XMLHttpRequest) {
+        //         var token = window.sessionStorage.getItem('token');
+        //         if (token != null) {
+        //             XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+        //         }
+        //     },
+        // })
 
     });
 </script>
@@ -517,30 +1520,32 @@
             return;
         }
         $("#parameters").append(get_content(name, id));
+        set_content(name, id);
         $("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
 
-        if (name == "conv1d_layer") {
-            var data = eval('(' + window.sessionStorage.getItem(id) + ')');
-            $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
-            $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
-        }
-        if (name == "conv2d_layer") {
-            var data = eval('(' + window.sessionStorage.getItem(id) + ')');
-            $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
-            $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
-        }
-        $("[name='pool_way']").bind('change', function () {
-            if ($(this).val() == 'None') {
-                $(this).parent().parent().find("[name='pool_kernel_size']").attr("disabled", true);
-                $(this).parent().parent().find("[name='pool_stride']").attr("disabled", true);
-                $(this).parent().parent().find("[name='pool_padding']").attr("disabled", true);
-            }
-            else {
-                $(this).parent().parent().find("[name='pool_kernel_size']").removeAttr("disabled");
-                $(this).parent().parent().find("[name='pool_stride']").removeAttr("disabled");
-                $(this).parent().parent().find("[name='pool_padding']").removeAttr("disabled");
-            }
-        });
+
+        // if (name == "conv1d_layer") {
+        //     var data = eval('(' + window.sessionStorage.getItem(id) + ')');
+        //     $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
+        //     $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
+        // }
+        // if (name == "conv2d_layer") {
+        //     var data = eval('(' + window.sessionStorage.getItem(id) + ')');
+        //     $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
+        //     $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
+        // }
+        // $("[name='pool_way']").bind('change', function () {
+        //     if ($(this).val() == 'None') {
+        //         $(this).parent().parent().find("[name='pool_kernel_size']").attr("disabled", true);
+        //         $(this).parent().parent().find("[name='pool_stride']").attr("disabled", true);
+        //         $(this).parent().parent().find("[name='pool_padding']").attr("disabled", true);
+        //     }
+        //     else {
+        //         $(this).parent().parent().find("[name='pool_kernel_size']").removeAttr("disabled");
+        //         $(this).parent().parent().find("[name='pool_stride']").removeAttr("disabled");
+        //         $(this).parent().parent().find("[name='pool_padding']").removeAttr("disabled");
+        //     }
+        // });
 
         $("#parameters").find("input,select").change(function () {
             switch ($("#form" + id).attr("name")) {
@@ -559,6 +1564,30 @@
                 case "conv2d_layer":
                     save_attr_conv2d_layer_from(id);
                     break;
+                case "softmax_layer":
+                    save_attr_softmax_layer_form(id);
+                    break;
+                case "dropout_layer":
+                    save_attr_dropout_layer_form(id);
+                    break;
+                case "conv_layer":
+                    save_attr_conv_layer_form(id);
+                    break;
+                case "pool_layer":
+                    save_attr_pool_layer_form(id);
+                    break;
+                case "activation_layer":
+                    save_attr_activation_layer_form(id);
+                    break;
+                case "RNN_layer":
+                    save_attr_RNN_layer_form(id);
+                    break;
+                case "LSTM_layer":
+                    save_attr_LSTM_layer_form(id);
+                    break;
+                case "norm_layer":
+                    save_attr_norm_layer_form(id);
+                    break;
                 default:
                     return;
             }
@@ -573,7 +1602,10 @@
             $("#" + layer_id).remove();
         });
         $("#parameters").children().remove();
+        window.sessionStorage.removeItem(layer_id);
     }
+
+
 </script>
 
 </html>

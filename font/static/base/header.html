@@ -1,102 +1,71 @@
 <!--Header Area Start-->
+<!-- <link id="icon" rel="shortcut icon" type="image/x-icon" href="../../resources/templatesRes/img/favicon.ico">
+<script id="js1" type="text/javascript" src="../../resources/jquery-3.3.1.js"></script>
+<script id="js2" type="text/javascript" src="../../resources/bootstrap.min.js"></script>
+<script id="js3" type="text/javascript" src="../../resources/jquery-ui.js"></script>
+<script id="js4" type="text/javascript" src="../../javascript/graph_action.js"></script>
+<script id="js5" type="text/javascript" src="../../javascript/base_service.js"></script>
+<script type="text/javascript" src="../../resources/pagination.js"></script>
+<link id="css1" href="../../resources/bootstrap.min.css" rel="stylesheet">
+<link id="css2" href="../../resources/jquery-ui.css" rel="stylesheet">
+<link id="css3" href="../../resources/jquery-ui.structure.css" rel="stylesheet">
+<link id="css4" href="../../resources/jquery-ui.theme.css" rel="stylesheet"> -->
+<link id="css5" href="../../css/buttons.css" rel="stylesheet">
+<link id="css6" href="../../css/login.css" rel="stylesheet">
+<script type="text/javascript">
+    try {
+        var user_info = window.sessionStorage.getItem('userinfo');
+        var user_id = JSON.parse(user_info).id;
+        var name = JSON.parse(user_info).username;
+        var is_staff = JSON.parse(user_info).is_staff;
+        $("#login_btn").hide();
+        $("#register_btn").hide();
+        $("#user_btn").text(name);
+        $("#user_btn").show();
+        if (is_staff == true)
+            $("#header_statistics").show();
+    } catch (e) {
+
+    }
+</script>
 <div class="header-area">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-sm-6 col-xs-6">
+            <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="header-logo">
-                    <a href="index.html">
-                        <img src="../../resources/templatesRes/img/logo.png" alt="">
+                    <a href="../index.html">
+                        <img id="png1" src="../../resources/templatesRes/img/logo.png" alt="">
                     </a>
-                </div>
-            </div>
-            <div class="col-md-1 col-sm-6 visible-sm  col-xs-6">
-                <div class="header-right">
-                    <ul>
-                        <li>
-                            <a href="my-account.html"><i class="flaticon-people"></i></a>
-                        </li>
-                        <li class="shoping-cart">
-                            <a href="#">
-                                <i class="flaticon-shop"></i>
-                                <span>2</span>
-                            </a>
-                            <div class="add-to-cart-product">
-                                <div class="cart-product">
-                                    <div class="cart-product-image">
-                                        <a href="single-product.html">
-                                            <img src="../../resources/templatesRes/img/shop/1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.html">East of eden</a>
-                                        </p>
-                                        <a href="single-product.html">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </div>
-                                <div class="cart-product">
-                                    <div class="cart-product-image">
-                                        <a href="single-product.html">
-                                            <img src="img/shop/1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.html">East of eden</a>
-                                        </p>
-                                        <a href="single-product.html">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </div>
-                                <div class="total-cart-price">
-                                    <div class="cart-product-line fast-line">
-                                        <span>Shipping</span>
-                                        <span class="free-shiping">$10.50</span>
-                                    </div>
-                                    <div class="cart-product-line">
-                                        <span>Total</span>
-                                        <span class="total">$ 140.00</span>
-                                    </div>
-                                </div>
-                                <div class="cart-checkout">
-                                    <a href="checkout.html">
-                                        Check out
-                                        <i class="fa fa-chevron-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12 hidden-xs">
                 <div class="mainmenu text-center">
                     <nav>
                         <ul id="nav">
-                            <li><a href="index.html">主 页</a></li>
-                            <li><a href="shop.html">创 建 模 型</a></li>
-                            <li><a href="shop.html">模 型 管 理</a></li>
-                            <li><a href="about.html">经 典 模 型 模 板</a></li>
+                            <li><a id="header_index" href="../index.html">主 页</a></li>
+                            <li><a id="header_create_models" href="../models/create_models.html">创 建 模 型</a></li>
+                            <li><a id="header_manage_models" href="../models/manage_models.html">模 型 管 理</a></li>
                             <li><a href="#">其 他 菜 单</a>
                                 <ul class="sub-menu">
-                                    <li style="text-align: left;"><a href="about.html"> 优 秀 博 客 </a></li>
-                                    <li style="text-align: left;"><a href="cart.html"> 问 题 反 馈 </a></li>
-                                    <li style="text-align: left;"><a href="checkout.html"> 关 于 我 们 </a></li>
-                                    <li style="text-align: left;"><a href="contact.html"> 帮 助 文 档 </a></li>
+                                    <li><a id="header_help1" href="../help.html">经 典 模 型</a></li>
+                                    <li style="text-align: left;"><a id="header_about" href="../feedback/about.html"> 关
+                                        于 我 们 </a></li>
+                                    <li style="text-align: left;"><a id="header_help2" href="../help.html"> 帮 助 文 档 </a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">联 系 我 们 </a></li>
+                            <li><a id="header_feedback" href="../feedback/feedback.html">问 题 反 馈 </a></li>
+                            <!--                            <li style="text-align: left;"><a id="header_statistics" href="../statistics.html"> 站 点 数-->
+                            <!--                                据 </a></li>-->
+
+                            <li><a id="login_btn" data-toggle="modal" data-target="#loginModal">登录</a></li>
+                            <li><a id="register_btn" data-toggle="modal" data-target="#registerModal">注册</a>
+                            <li><a style="display: none" id="user_btn"></a>
+                                <ul class="sub-menu">
+                                    <li><a style="display: none" id="header_statistics" href="../statistics.html">访问数据</a></li>
+                                    <li> <a onclick="logout()">注销</a></li>
+                                </ul>
+
                         </ul>
                     </nav>
                 </div>
@@ -105,70 +74,7 @@
                 <div class="header-right">
                     <ul>
                         <li>
-                            <a href="my-account.html">登录<i class="flaticon-people"></i></a>
 
-                        </li>
-                        <li class="shoping-cart">
-                            <a href="#">
-                                <i class="flaticon-shop"></i>
-                                <span>2</span>
-                            </a>
-                            <div class="add-to-cart-product">
-                                <div class="cart-product">
-                                    <div class="cart-product-image">
-                                        <a href="single-product.html">
-                                            <img src="img/shop/1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.html">East of eden</a>
-                                        </p>
-                                        <a href="single-product.html">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </div>
-                                <div class="cart-product">
-                                    <div class="cart-product-image">
-                                        <a href="single-product.html">
-                                            <img src="img/shop/1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.html">East of eden</a>
-                                        </p>
-                                        <a href="single-product.html">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </div>
-                                <div class="total-cart-price">
-                                    <div class="cart-product-line fast-line">
-                                        <span>Shipping</span>
-                                        <span class="free-shiping">$10.50</span>
-                                    </div>
-                                    <div class="cart-product-line">
-                                        <span>Total</span>
-                                        <span class="total">$ 140.00</span>
-                                    </div>
-                                </div>
-                                <div class="cart-checkout">
-                                    <a href="checkout.html">
-                                        Check out
-                                        <i class="fa fa-chevron-right"></i>
-                                    </a>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -176,4 +82,101 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+
+<div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" style="width: 368px" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div class="logGet">
+                        <!-- 头部提示信息 -->
+                        <div class="logD logDtip">
+                            <p class="p1">登录</p>
+                        </div>
+                        <!-- 输入框 -->
+                        <div class="lgD">
+                            <img id="login_pic_1" src="../../img/person.png" width="20" height="20" alt=""/>
+                            <input id="username_log" type="text" placeholder=" 输入用户名或邮箱"/>
+                        </div>
+                        <div class="lgD">
+                            <img id="login_pic_2" src="../../img/lock.png" width="20" height="20" alt=""/>
+                            <input id="pwd_log" type="password" placeholder=" 输入用户密码"/>
+                        </div>
+                        <!--                        <div class="lgD">-->
+                        <!--                            <p class="p3">-->
+                        <!--                                <a style="float: right" onclick="open_register()">立即注册</a>-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
+                        <div class="logC" style="margin-top: 70px">
+                            <a target="_self">
+                                <button onclick="login()">登 录</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" style="width: 368px" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div class="logGet">
+                        <!-- 头部提示信息 -->
+                        <div class="logD logDtip">
+                            <p class="p1">注册</p>
+                        </div>
+                        <!-- 输入框 -->
+                        <div class="lgD">
+                            <img id="reg_pic_1" src="../../img/person.png" width="20" height="20" alt=""/>
+                            <input id="username_reg" type="text" placeholder=" 输入用户名"/>
+                        </div>
+                        <div class="lgD">
+                            <img id="reg_pic_2" src="../../img/lock.png" width="20" height="20" alt=""/>
+                            <input id="pwd_reg" type="password" placeholder=" 输入用户密码"/>
+                        </div>
+                        <div class="lgD">
+                            <img id="reg_pic_3" src="../../img/lock.png" width="20" height="20" alt=""/>
+                            <input id="pwd_confirm_reg" type="password" placeholder=" 确认用户密码"/>
+                        </div>
+                        <div class="lgD">
+                            <img id="reg_pic_4" src="../../img/e-mail.png" width="20" height="20" alt=""/>
+                            <input id="email_reg" type="text" placeholder=" 输入用户邮箱"/>
+                        </div>
+                        <!--                        <div class="lgD">-->
+                        <!--                            <p class="p3">-->
+                        <!--                                <a onclick="open_login()" style="float: left">已有账户，立即登录</a>-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
+                        <div class="logC" style="margin-top: 70px">
+                            <a target="_self">
+                                <button onclick="register()">注册</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function open_register() {
+        $("#loginModal").modal("hide");
+        $("#registerModal").modal('show');
+    }
+
+    function open_login() {
+        $("#registerModal").modal('hide');
+        $("#loginModal").modal('show');
+
+    }
+</script>
 <!--Header Area End-->

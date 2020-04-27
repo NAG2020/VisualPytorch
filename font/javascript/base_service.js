@@ -27,12 +27,12 @@ function login() {
     $.ajax({
         type: 'POST',
         url: gobalConfig.base_url + 'api/user/login/',
-        async:false,//note：这里ajax必须为同步请求，两个ajax必须先拿token,再拿用户信息
+        async: false,//note：这里ajax必须为同步请求，两个ajax必须先拿token,再拿用户信息
         data: JSON.stringify(data),
         contentType: 'application/json; charset=UTF-8',
         success: function (data_return) {
-                var token = data_return["token"];
-                window.sessionStorage.setItem('token', token)
+            var token = data_return["token"];
+            window.sessionStorage.setItem('token', token)
         },
         error: function (data_return) {
             alert("账号密码错误，请重新登录");
@@ -41,7 +41,7 @@ function login() {
     });
     $.ajax({
         type: 'GET',
-        async:false,
+        async: false,
         url: gobalConfig.base_url + 'api/user/info/',
         beforeSend: function (XMLHttpRequest) {
             var token = window.sessionStorage.getItem('token');
@@ -51,7 +51,11 @@ function login() {
         },
         success: function (data_return) {
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
-             window.location.href = "canvas.html"
+            //window.location.href = "canvas.html"
+            if (window.location.href.includes("index") == true) {
+                window.location.href = "index.html"
+            } else window.location.href = "../index.html"
+
         }
     });
 }
@@ -79,10 +83,12 @@ function register() {
         data: JSON.stringify(data),
         contentType: 'application/json; charset=UTF-8',
         success: function (data_return) {
-                var token = data_return["token"];
-                window.sessionStorage.setItem('token', token);
-                window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
-                window.location.href = "canvas.html"
+            var token = data_return["token"];
+            window.sessionStorage.setItem('token', token);
+            window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
+            if (window.location.href.includes("index") == true) {
+                window.location.href = "index.html"
+            } else window.location.href = "../index.html"
         },
         error: function (data_return) {
             alert("用户名或邮箱已被注册")
@@ -95,8 +101,36 @@ function register() {
 function logout() {
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('userinfo');
-    $("#user_nav").hide();
-    $("#login_nav").show();
-    alert("用户已登出")
+    if (window.location.href.includes("index") == true) {
+        window.location.href = "index.html"
+    } else window.location.href = "../index.html"
 
+}
+
+function add_comment() {
+    var title = $("#contact-info").val();
+    var context = $("#question-describe").val();
+    var data = {
+        "title": title,
+        "context": context,
+    };
+    $.ajax({
+        type: 'POST',
+        url: gobalConfig.base_url + 'api/comments/',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=UTF-8',
+        beforeSend: function (XMLHttpRequest) {
+            var token = window.sessionStorage.getItem('token');
+            if (token != null) {
+                XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+            }
+        },
+        success: function (data_return) {
+            //alert("success");
+            window.location.href = "feedback.html"
+        },
+        error: function (data_return) {
+            //alert("error")
+        }
+    });
 }

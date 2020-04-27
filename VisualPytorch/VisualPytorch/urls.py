@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from NeuralNetwork import views
 from django.conf.urls import url
 from rest_framework.documentation import include_docs_urls
 
@@ -25,5 +26,5 @@ urlpatterns = [
     path('api/NeuralNetwork/',include('NeuralNetwork.urls')),
     path('api/journal/',include('journal.urls')),
     path('api/user/',include('user.urls')),
-    path('api/NormalUrls/',include('NormalUrls.urls'))
+    path('api/', include('comments.urls')),
 ]

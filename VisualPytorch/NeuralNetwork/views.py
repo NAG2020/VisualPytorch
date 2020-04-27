@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from NeuralNetwork.models import Network
-from NeuralNetwork.serializers import NetworkSerializer
-from NeuralNetwork.permissions import ChangeModel
+from .models import Network
+from .serializers import NetworkSerializer
+from .permissions import ChangeModel
 from BaseApiView.views import APIView
 from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .translate import ops
+from .translate import all_generate
 from rest_framework import permissions
 import os
 import zipfile
@@ -83,7 +83,7 @@ class NetworkDetail(APIView):
 def gen_code(request):
     result = {}
     try:
-        result["Main"], result["Model"], result["Ops"] = ops.main_func(request.data)
+        result["Main"], result["Model"] = all_generate.main_func(request.data)
     except Exception as e:
         return Response({str(e)}, status=status.HTTP_400_BAD_REQUEST)
     else:
@@ -135,3 +135,4 @@ def write_file(data):
     file_main.write(data['main'])
     file_model.write(data['model'])
     file_ops.write(data['ops'])
+##

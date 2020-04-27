@@ -1027,7 +1027,7 @@ body {
 /*  13.	About Page CSS
 /*----------------------------------------*/
 .breadcrumbs-area {
-  background: rgba(0, 0, 0, 0) url("img/header-bg.jpg") no-repeat scroll center center;
+  background: rgba(0, 0, 0, 0) url("../img/header-bg.jpg") no-repeat scroll center center;
   color: #fefefe;
   text-align: center;
   text-transform: capitalize;

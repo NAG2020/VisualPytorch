@@ -35,8 +35,7 @@ class NetworkList(APIView):
 
         creator = request.user.id
         data = {
-            "name": request.data["name"],
-            "creator": creator,
+            "name": request.data['structure']['canvas']['name'],
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(data=data)
@@ -64,7 +63,7 @@ class NetworkDetail(APIView):
     def put(self, request, pk):
         net = self.get_object(pk)
         data = {
-            "name": request.data["name"],
+            "name": request.data["structure"]['canvas']['name'],
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(net, data=data)

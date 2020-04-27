@@ -83,7 +83,7 @@ class NetworkDetail(APIView):
 def gen_code(request):
     result = {}
     try:
-        result["Main"], result["Model"], result["Ops"] = all_generate.main_func(request.data)
+        result["Main"], result["Model"] = all_generate.main_func(request.data)
     except Exception as e:
         return Response({str(e)}, status=status.HTTP_400_BAD_REQUEST)
     else:

@@ -39,7 +39,7 @@ def para_check(key,value):
             if((key in GL.notzero and temp==0) or temp<0):
                 raise ModelError('%s should be bigger than 0' % key)
         except:
-            raise ModelError('%s should be double' % key)  
+            raise ModelError('%s should be double' % key)
     if(key=='shape'):
         try:
             temp1 = list(map(int, value.split(',')))
@@ -107,29 +107,29 @@ def add_moduledict_layer(init_func,forward_func,out_data,layer_number,in_data,mo
     return init_func,forward_func
 def add_element_wise_add_layer(init_func, forward_func, node, out_data,layer_number,graph):
     init=generate_n_tap(2) +'self.layer_'+str(layer_number)+'= WISE_ADD()'
-    forward=generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '(' 
+    forward=generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '('
     if len(node.fa) == 0:
         raise ModelError('element_wise_add_layer has no inputs')
     parameter=graph[node.fa[0]].data
     for i in range(1, len(node.fa)):
-         parameter = parameter + ', ' + graph[node.fa[i]].data 
+         parameter = parameter + ', ' + graph[node.fa[i]].data
     forward+=parameter+')'
     init_func=np.append(init_func,init)
     forward_func=np.append(forward_func,forward)
     return init_func,forward_func
 def add_concatenate_layer(init_func, forward_func, node, out_data,layer_number,graph,nets):
     init=generate_n_tap(2) +'self.layer_'+str(layer_number)+'=CHANNEL('+nets['attribute']['dim']+')'
-    forward=generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '(' 
+    forward=generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '('
     if len(node.fa) == 0:
         raise ModelError('concatenate layer has no inputs')
     parameter=graph[node.fa[0]].data
     for i in range(1, len(node.fa)):
-         parameter = parameter + ', ' + graph[node.fa[i]].data 
+         parameter = parameter + ', ' + graph[node.fa[i]].data
     forward+=parameter+')'
     init_func=np.append(init_func,init)
     forward_func=np.append(forward_func,forward)
     return init_func,forward_func
-    
+
 def add_layer_except_add_and_concate(init_func, forward_func, in_data, out_data, nets,layer_number):
     init=generate_n_tap(2) +'self.layer_'+str(layer_number)+'='+generate_base_info(nets)
     forward= generate_n_tap(2) + out_data + ' = ' + 'self.layer_'+str(layer_number) + '(' + in_data + ')'
@@ -149,7 +149,7 @@ def attribute_generate(modulelist):
     for i in modulelist.keys():
         tempkey=para_change(i)
         if 'layer_type' in modulelist:
-            layer_type=layer_change(modulelist['layer_type'])       
+            layer_type=layer_change(modulelist['layer_type'])
             if(layer_type in GL.special_layer.keys() and tempkey not in GL.special_layer[layer_type]):
                 continue
         if tempkey not in GL.para_group:
@@ -160,7 +160,7 @@ def attribute_generate(modulelist):
         result=true_false(tempkey,result)
         para_check(tempkey,result)
         if(tempkey in GL.para_str):
-            output+=tempkey+'=\''+result+'\','  
+            output+=tempkey+'=\''+result+'\','
         else :output+=tempkey+'='+result+','
     output=output[0:-1]
     return output
@@ -294,7 +294,7 @@ def generate_base_info(modulelist):
         return dropout_layer_generate(modulelist['attribute'])
     else:
         raise ModelError('in generate_base_info %s: No such layer' % type)
-        
+
 def add_main_init_info():
     ans = np.array(['class NET(torch.nn.Module):', generate_n_tap(1) + 'def __init__(self):',
                     generate_n_tap(2) + 'super(NET, self).__init__()'])
@@ -342,17 +342,17 @@ def get_next_nodes_and_update_pre_nodes(nets, nets_conn, cur_id,graph,done):
             if temp_type == 'start' and len(graph[cur_id].fa) != 0:
                 raise ModelError('start: can not have father nodes')
             elif temp_type != 'start' and len(graph[cur_id].fa) != 1:
-                raise ModelError('%s: should have one and only one father node' % temp_type) 
+                raise ModelError('%s: should have one and only one father node' % temp_type)
     return next_nodes, flag
 
 def make_graph(nets, nets_conn, init_func, forward_func):
     if('in' not in nets or nets['in']=='' or nets['in']==None):
-        raise ModelError('must have one start_layer' ) 
+        raise ModelError('must have one start_layer' )
     start_id=nets['in']
     if(nets['nets'][nets['in']]['name']!='start'):
         raise ModelError('must start with start_layer')
     if('out' not in nets or nets['out']=='' or nets['out']==None):
-        raise ModelError('must have one end_layer' ) 
+        raise ModelError('must have one end_layer' )
     end_id=nets['out']
     if(nets['nets'][nets['out']]['name']!='end'):
         raise ModelError('must end with end_layer')
@@ -382,17 +382,17 @@ def make_graph(nets, nets_conn, init_func, forward_func):
         if (nets['nets'][cur_id]['type']=='sequential'):
             sequential_number=GL.s_number+1
             in_data = graph[graph[cur_id].fa[0]].data
-            add_sequential_net_info(nets['nets'][cur_id])     
+            add_sequential_net_info(nets['nets'][cur_id])
             init_func,forward_func=add_sequential_layer(init_func,forward_func,out_data,layer_number,in_data,sequential_number)
         elif nets['nets'][cur_id]['type']=='modulelist':
             modulelist_number=GL.ml_number+1
             in_data = graph[graph[cur_id].fa[0]].data
-            add_modulelist_net_info(nets['nets'][cur_id])   
+            add_modulelist_net_info(nets['nets'][cur_id])
             init_func,forward_func=add_modulelist_layer(init_func,forward_func,out_data,layer_number,in_data,modulelist_number)
         elif nets['nets'][cur_id]['type']=='moduledict':
             moduledict_number=GL.dict_number+1
             in_data = graph[graph[cur_id].fa[0]].data
-            add_moduledict_net_info(nets['nets'][cur_id]) 
+            add_moduledict_net_info(nets['nets'][cur_id])
             init_func,forward_func=add_moduledict_layer(init_func,forward_func,out_data,layer_number,in_data,moduledict_number)
         elif nets['nets'][cur_id]['name'] == 'concatenate_layer':
             init_func, forward_func = add_concatenate_layer(init_func, forward_func, graph[cur_id], out_data,layer_number,graph,nets['nets'][cur_id])
@@ -408,7 +408,7 @@ def make_graph(nets, nets_conn, init_func, forward_func):
         layer_number+=1
         done[cur_id] = True
     forward_func=np.append(forward_func,generate_n_tap(2)+'return '+graph[graph[end_id].fa[0]].data)
-    return init_func, forward_func   
+    return init_func, forward_func
 def add_main_net_info(canvas):
     GL.Model=generate_model_static()
     init_func = add_main_init_info()
@@ -420,7 +420,7 @@ def add_main_net_info(canvas):
     for i in GL.Model:
         result=np.append(result,i)
     return result
-    
+
 def add_sequential_net_info(canvas):
     GL.s_number+=1
     init_func = add_other_init_info('sequential')
@@ -493,8 +493,8 @@ def moduledict_form(attribute,init_func,forward_func):
     temp_count=0
     for i in canvas_name.keys():
         if(temp_count==len(canvas_name.keys())-1):
-           temp=np.array([generate_n_tap(3)+'\''+canvas_name[i]+'\':'+canvas_inform[i]]) 
-        else: 
+           temp=np.array([generate_n_tap(3)+'\''+canvas_name[i]+'\':'+canvas_inform[i]])
+        else:
             temp=np.array([generate_n_tap(3)+'\''+canvas_name[i]+'\':'+canvas_inform[i]+','])
         init_head=np.concatenate((init_head,temp))
         temp_count+=1
@@ -503,7 +503,7 @@ def moduledict_form(attribute,init_func,forward_func):
     line_second=np.array([generate_n_tap(2)+'return x_data'])
     forward_func=np.concatenate((forward_func,line_first,line_second))
     return init_func,forward_func
-    
+
 def add_modulelist_net_info(canvas):
     GL.ml_number+=1
     init_func = add_other_init_info('modulelist')

@@ -55,6 +55,15 @@ body {
 .start {
     width: 40px;
     height: 40px;
+<<<<<<< HEAD
+=======
+    border-radius: 50%;
+}
+
+.end {
+    width: 40px;
+    height: 40px;
+>>>>>>> feature-wf
     border-radius: 50%;
 }
 

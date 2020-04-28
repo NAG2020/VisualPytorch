@@ -28,7 +28,7 @@ class NetworkList(APIView):
         user_id = request.GET['id']
         if user_id is None:
             return Response("need user id", status=status.HTTP_400_NOT_FOUND)
-        network_list = Network.objects.filter(creator=user_id).values('id', 'time', 'creator_id', 'name')
+        network_list = Network.objects.values('id', 'time', 'creator_id', 'name')
         return Response(list(network_list), status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -36,6 +36,7 @@ class NetworkList(APIView):
         creator = request.user.id
         data = {
             "name": request.data["name"],
+			"creator": creator,
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(data=data)

@@ -52,10 +52,7 @@ function login() {
         success: function (data_return) {
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
             //window.location.href = "canvas.html"
-            if (window.location.href.includes("index") == true) {
-                window.location.href = "index.html"
-            } else window.location.href = "../index.html"
-
+            window.location.reload();
         }
     });
 }
@@ -86,13 +83,12 @@ function register() {
             var token = data_return["token"];
             window.sessionStorage.setItem('token', token);
             window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
-            if (window.location.href.includes("index") == true) {
-                window.location.href = "index.html"
-            } else window.location.href = "../index.html"
+            window.location.reload();
         },
         error: function (data_return) {
             alert("用户名或邮箱已被注册")
-            console.log(data_return["responseText"])
+            //iconsole.log(data_return["responseText"])
+     	    window.location.reload();
         }
     })
 
@@ -101,10 +97,7 @@ function register() {
 function logout() {
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('userinfo');
-    if (window.location.href.includes("index") == true) {
-        window.location.href = "index.html"
-    } else window.location.href = "../index.html"
-
+    window.location.reload();
 }
 
 function add_comment() {

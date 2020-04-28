@@ -13,10 +13,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from config import db
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
-
+FONT_DIR = os.path.dirname(BASE_DIR) + r"/font"
+STATIC_ROOT = os.path.join(FONT_DIR, 'static/')
+STATICFILES_DIR = [os.path.join(FONT_DIR,''),]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -24,8 +26,7 @@ FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
 SECRET_KEY = '*g#d#gg8t##7*fy^q7%=+#*6cn5#7_zzj7v&#+kj)%xj%rez=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = False
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -50,7 +51,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # 新增
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    #'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -73,11 +75,11 @@ REST_FRAMEWORK = {
 }
 
 # 跨域增加忽略
+#CORS_ALLOW_HEADERS = ('*')
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = (
-#     '*'
-# )
+#CSRF_TRUSTED_ORIGINS=['*',]
+#CORS_ORIGIN_WHITELIST = ('*')
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',

@@ -235,11 +235,16 @@ function get_network() {
         "optimizer":optimizer,
         "loss":loss
     };
-    var ret = {
+    var structure = {
         "canvas": sequential,
         "static": static
     };
-    saveJSON(ret,"a.json");
+
+    var ret = {
+        "name" : $("#model_name").val(),
+        "structure":structure
+    }
+    //saveJSON(ret,"a.json");
     return ret;
 }
 
@@ -264,8 +269,8 @@ function translate_network() {
                 var main_print = "";
                 var model = "";
                 var model_print = "";
-                var ops = "";
-                var ops_print = "";
+                //var ops = "";
+                //var ops_print = "";
                 for (var i = 0; i < data_return["Main"].length; i++) {
                     main = main + data_return["Main"][i] + "<br>";
                     main_print=main_print+data_return["Main"][i] + "\n";
@@ -274,19 +279,19 @@ function translate_network() {
                     model = model + data_return["Model"][i] + "<br>";
                     model_print=model_print+data_return["Model"][i] + "\n";
                 }
-                for (var i = 0; i < data_return["Ops"].length; i++) {
-                    ops = ops + data_return["Ops"][i] + "<br>";
-                    ops_print=ops_print+data_return["Ops"][i] + "\n";
-                }
+                //for (var i = 0; i < data_return["Ops"].length; i++) {
+                //    ops = ops + data_return["Ops"][i] + "<br>";
+                //    ops_print=ops_print+data_return["Ops"][i] + "\n";
+                //}
                 var code = {
                     "model": model,
                     "main": main,
-                    "ops": ops
+                //    "ops": ops
                 };
                 var code_print = {
                     "model": model_print,
                     "main": main_print,
-                    "ops": ops_print
+                //    "ops": ops_print
                 };
                 window.sessionStorage.setItem("code", JSON.stringify(data_return));
                 window.sessionStorage.setItem("code_print", JSON.stringify(code_print));

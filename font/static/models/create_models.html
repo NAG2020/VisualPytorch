@@ -1418,71 +1418,71 @@
 
         var query_object = getQueryObject(window.location.href);
         if (query_object.hasOwnProperty("id")) {
-            var net_id = query_object["id"];
-            $.ajax({
-                type: 'GET',
-                url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + net_id + '/',
-                beforeSend: function (XMLHttpRequest) {
-                    var token = window.sessionStorage.getItem('token');
-                    if (token != null) {
-                        XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
-                    }
-                },
-                success: function (net_work) {
-                    var structure = eval('(' + net_work["structure"] + ')');
-                    var nets = structure['nets'];
-                    var nets_conn = structure['nets_conn'];
-                    var static_val = structure['static'];
-                    var drop_function = $("#canvas").droppable('option', 'drop');
-                    var event;
-                    jQuery.each(nets, function (id, val) {
+//             var net_id = query_object["id"];
+//             $.ajax({
+//                 type: 'GET',
+//                 url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + net_id + '/',
+//                 beforeSend: function (XMLHttpRequest) {
+//                     var token = window.sessionStorage.getItem('token');
+//                     if (token != null) {
+//                         XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+//                     }
+//                 },
+//                 success: function (net_work) {
+//                     var structure = eval('(' + net_work["structure"] + ')');
+//                     var nets = structure['nets'];
+//                     var nets_conn = structure['nets_conn'];
+//                     var static_val = structure['static'];
+//                     var drop_function = $("#canvas").droppable('option', 'drop');
+//                     var event;
+//                     jQuery.each(nets, function (id, val) {
 
-                        jsPlumb.ready(function () {
-                            var ui = {
-                                'offset': {
-                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
-                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
-                                },
-                                'draggable': [{
-                                    "id": val['name'],
-                                    "innerHTML": $("#" + val['name'])[0].innerHTML
-                                }],
-                                'id': id
-                            };
-                            drop_function(event, ui);
-                        });
-                        window.sessionStorage.setItem(id, JSON.stringify(val['attribute']));
-                    });
-                    jQuery.each(nets_conn, function (id, val) {
-                        jsPlumb.ready(function () {
-                            jsPlumb.connect({
-                                "source": val['source']['id'],
-                                "target": val['target']['id'],
-                                "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
-                                "endpoint": ["Dot", {radius: 5}],
-                                "paintStyle": {
-                                    stroke: "#fc2f49",
-                                    strokeWidth: 3,
+//                         jsPlumb.ready(function () {
+//                             var ui = {
+//                                 'offset': {
+//                                     'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
+//                                     'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
+//                                 },
+//                                 'draggable': [{
+//                                     "id": val['name'],
+//                                     "innerHTML": $("#" + val['name'])[0].innerHTML
+//                                 }],
+//                                 'id': id
+//                             };
+//                             drop_function(event, ui);
+//                         });
+//                         window.sessionStorage.setItem(id, JSON.stringify(val['attribute']));
+//                     });
+//                     jQuery.each(nets_conn, function (id, val) {
+//                         jsPlumb.ready(function () {
+//                             jsPlumb.connect({
+//                                 "source": val['source']['id'],
+//                                 "target": val['target']['id'],
+//                                 "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
+//                                 "endpoint": ["Dot", {radius: 5}],
+//                                 "paintStyle": {
+//                                     stroke: "#fc2f49",
+//                                     strokeWidth: 3,
 
-                                },
-                                "maxConnections": -1,
-                                "connector": ["Flowchart", {
-                                    stub: [40, 60],
-                                    gap: 5,
-                                    cornerRadius: 5,
-                                    alwaysRespectStubs: true
-                                }],
-                                "overlays": [["Arrow", {width: 10, length: 10, location: 1}]],
-                                "connectionsDetachable": true,
-                            })
-                        });
-                    });
-                    $("#epoch").val(static_val['epoch']);
-                    $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
-                    $('#learning_rate').val(static_val['learning_rate']);
-                    $('#batch_size').val(static_val['batch_size'])
-                }
-            });
+//                                 },
+//                                 "maxConnections": -1,
+//                                 "connector": ["Flowchart", {
+//                                     stub: [40, 60],
+//                                     gap: 5,
+//                                     cornerRadius: 5,
+//                                     alwaysRespectStubs: true
+//                                 }],
+//                                 "overlays": [["Arrow", {width: 10, length: 10, location: 1}]],
+//                                 "connectionsDetachable": true,
+//                             })
+//                         });
+//                     });
+//                     $("#epoch").val(static_val['epoch']);
+//                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+//                     $('#learning_rate').val(static_val['learning_rate']);
+//                     $('#batch_size').val(static_val['batch_size'])
+//                 }
+//             });
 
         }
         // $.ajax({

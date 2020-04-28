@@ -149,7 +149,7 @@ data={
                         "type": "base",
                         "name": "view_layer",
                         "attribute": {
-                            "shape": "64,-1"
+                            "shape": "1,-1"
                         },
                         "left": "101px",
                         "top": "809px"
@@ -321,7 +321,7 @@ data={
     "static": {
         "epoch": "1",
         "learning_rate": "0.01",
-        "batch_size": "64",
+        "batch_size": "1",
         "learning_rate_scheduler": {
             "name": "None",
             "attribute": {

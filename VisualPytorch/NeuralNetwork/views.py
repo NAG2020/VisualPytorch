@@ -35,7 +35,7 @@ class NetworkList(APIView):
 
         creator = request.user.id
         data = {
-            "name": request.data['structure']['canvas']['name'],
+            "name": request.data['name'],
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(data=data)
@@ -63,7 +63,7 @@ class NetworkDetail(APIView):
     def put(self, request, pk):
         net = self.get_object(pk)
         data = {
-            "name": request.data["structure"]['canvas']['name'],
+            "name": request.data['name'],
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(net, data=data)
@@ -123,15 +123,13 @@ def write_file(data):
         os.remove(os.path.join(settings.FILE_DIR,"project/Main.py"))
     if os.path.exists(os.path.join(settings.FILE_DIR,"project/Model.py")):
         os.remove(os.path.join(settings.FILE_DIR,"project/Model.py"))
-    if os.path.exists(os.path.join(settings.FILE_DIR,"project/Ops.py")):
-        os.remove(os.path.join(settings.FILE_DIR,"project/Ops.py"))
     if os.path.exists("project_VisualPytorch.zip"):
         os.remove("project_VisualPytorch.zip")
     root_dir = os.path.join(settings.FILE_DIR, "project")
     file_main = open(os.path.join(root_dir, "Main.py"), "w")
     file_model = open(os.path.join(root_dir, "Model.py"), "w")
-    file_ops = open(os.path.join(root_dir, "Ops.py"), "w")
+ 
     file_main.write(data['main'])
     file_model.write(data['model'])
-    file_ops.write(data['ops'])
-##
+
+###

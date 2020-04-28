@@ -149,7 +149,7 @@ data={
                         "type": "base",
                         "name": "view_layer",
                         "attribute": {
-                            "shape": "64,40"
+                            "shape": "32,40"
                         },
                         "left": "262px",
                         "top": "823px"

@@ -268,7 +268,7 @@ np.array(['def dataset_prepare():',
 '     transform=transform,', 
 '     download=DOWNLOAD_MNIST'
 '     )',
-'     test_data = torchvision.datasets.MNIST(root=\'./mnist/\', train=False,download=True)',
+'     test_data = torchvision.datasets.MNIST(root=\'./mnist/\', train=False,download=True,transform=transform)',
 '     train_loader = Data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=if_shuffle)',
 '     test_loader = Data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)'
     ])))

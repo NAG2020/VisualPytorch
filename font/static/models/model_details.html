@@ -61,7 +61,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-7" id="canvas">
-                    <div style="height:550px;border:0.5px solid black">
+                    <div style="height:1000px;border:0.5px solid black">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-5">       
@@ -705,8 +705,8 @@
                         jsPlumb.ready(function () {
                             var ui = {
                                 'offset': {
-                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left + 10,
-                                    'top': parseInt(val['top'].split('px')) * 0.5 + $("#canvas").offset().top + 10
+                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
+                                    'top': parseInt(val['top'].split('px'))  + $("#canvas").offset().top
                                 },
                                 'draggable': [{
                                     "id": val['name'],

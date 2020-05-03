@@ -67,12 +67,12 @@
     <div id="content" class="row-fluid">
         <div class="col-md-4" id="element_list">
 
-            <button type="button" class="btn btn-warning" style="width: 180px" id="submit"
+            <button type="button" class="btn btn-primary" style="width: 180px" id="submit"
                     onclick="translate_network()">生成代码
             </button>
 
 
-            <button type="button" class="btn btn-warning" style="width: 180px;margin-top: 20px" id="save"
+            <button type="button" class="btn btn-primary" style="width: 180px;margin-top: 20px" id="save"
                     onclick="open_save()">保存
             </button>
 
@@ -91,7 +91,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-warning" onclick="save_network()">提交</button>
+                            <button type="button" class="btn btn-primary" onclick="save_network()">提交</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
@@ -812,10 +812,10 @@
         drop: function (event, ui) {
             var left = parseInt(ui.offset.left - $("#canvas").offset().left);
             var top = parseInt(ui.offset.top - $("#canvas").offset().top);
-            //alert(ui.draggable.attr("id"));//这么获取是可以的
+            //alert(ui.draggable.attr("id"));//这么获取是有问题的
             //这里的ui是移动的控件，有可能有多个，ui.draggable[0]应该就是第一个，
-            //var name = ui.draggable[0].id;
-            var name = ui.draggable.attr("id");
+            var name = ui.draggable[0].id;
+            //var name = ui.draggable.attr("id");
             canvas_cnt++;
             var id = "canvas_" + canvas_cnt;
             if (ui.hasOwnProperty('id')) {
@@ -1489,8 +1489,8 @@
                     $("#dataset").find("[value = \"" + static_val['data'] + "\"]").attr("selected", "selected");
                     $("#optimzier").find("option").removeAttr("selected");
                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
-                    //$("#loss").find("option").removeAttr("selected");
-                    //$("#reduction").find("option").removeAttr("selected");
+                    $("#loss").find("option").removeAttr("selected");
+                    $("#reduction").find("option").removeAttr("selected");
 
                 }
             });

@@ -216,8 +216,8 @@
                                 <li><a href="#section-0-1">界面介绍</a></li>
                                 <li><a href="#section-0-2">组件框</a></li>
                                 <li><a href="#section-0-3">生成和下载代码</a></li>
-                                <li><a href="#section-0-4">保存代码</a></li>
-                                <li><a href="#section-0-5">一个简单的例子</a></li>
+                                <li><a href="#section-0-4">保存模型</a></li>
+                                <!-- <li><a href="#section-0-5">一个简单的例子</a></li> -->
                             </ul>
                         </li>
                         <li>
@@ -235,7 +235,7 @@
                             <ul class="nav">
                                 <li><a href="#section-4-1">VGG_16_layers</a></li>
                                 <li><a href="#section-4-2">AlexNet</a></li>
-                                <li><a href="#section-4-3">ImageNet</a></li>
+                                <li><a href="#section-4-3">Network in Network(NIN)</a></li>
                             </ul>
                         </li>
                         <li>
@@ -252,7 +252,8 @@
                                                 <li><a href="#section-2-3-1-2">LeakyReLU</a></li>
                                                 <li><a href="#section-2-3-1-3">Sigmoid</a></li>
                                                 <li><a href="#section-2-3-1-4">Tanh</a></li>
-                                                <li><a href="#section-2-3-1-5">Softmax</a></li>
+                                                <li><a href="#section-2-3-1-5">PRelu</a></li>
+                                                <li><a href="#section-2-3-1-6">RRelu</a></li>
                                             </ul>
 
                                         </li>
@@ -267,7 +268,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="#section-2-3-3">一维卷积层</a></li>
-                                        <li><a href="#section-2-3-4">二维卷基层</a></li>
+                                        <li><a href="#section-2-3-4">二维卷积层</a></li>
 
                                     </ul>
                                 </li>
@@ -291,22 +292,22 @@
                 <p>页面头部有三个选项，分别为VisualPytorch,
                     帮助和联系我们，VisualPytorch就是主页面，可以进行模型的搭建，帮助页面是本网站的简单教程以及相关知识的讲解，在联系我们界面，可以给我们反馈你在使用过程中的遇到的问题，帮助我们进步呀。</p>
                 <p>
-                    <img src='../img/登录_新.gif' width="800" height="380"></p>
+                    <img src='https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123431927-2008737090.gif' width="800" height="380"></p>
                 <h2 id="section-0-2">组件框</h2>
                 <p>
                     在VisualPytorch界面左侧有可选择的网络层，这些层就是用来搭建神经网络模型的基本组件，在网络层的下面还有训练参数配置，主要用于确定模型的全局训练参数。下面给大家简单展示一下如何拖拽和删除这些组件框，以及组件框参数的位置。</p>
                 <p>
-                    <img src='../img/组件框_新.gif' width="800" height="380"></p>
+                    <img src='https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123445038-49377170.gif' width="800" height="380"></p>
                 <h2 id="section-0-3">生成和下载代码</h2>
                 <p>
                     在VisualPytorch界面左上角有生成代码按钮，当你搭建好自己的神经网络模型之后，就可以点击这个按钮，然后会跳转到代码页面，你也就可以看到生成的代码啦，然后再点击下载代码，就可以把代码下载到本地，畅快的玩耍一番啦。</p>
                 <p>
-                    <img src='../img/生成代码_新.gif' width="800" height="380"></p>
-                <h2 id="section-0-4">保存代码</h2>
+                    <img src='https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123505464-813892057.gif' width="800" height="380"></p>
+                <h2 id="section-0-4">保存模型</h2>
                 <p>
                     考虑到也许后续还要用自己搭建过的模型，所以我们实现了保存模型这一功能（贴心的团队，有木有），当你搭建好一个模型之后，可以直接选择保存，然后模型就会保存到你的账号啦，下次你登录还可以查看自己之前的模型。</p>
                 <p>
-                    <img src='../img/保存代码_新.gif' width="800" height="380"></p>
+                    <img src='https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123524526-212528083.gif' width="800" height="380"></p>
                 <!-- <h2 id="section-0-5">一个简单的例子</h2>
                 <p>
                     这里我将会搭建一个简单的卷积神经网络CNN，分别有reshape层，一维卷积层，二维卷积层和全连接层。首先我们把相关的网络层拖入到画布中，然后分别设置各个层的参数，紧接着我们去设置一下训练参数，最后我们可以点击生成代码，一个简单的CNN就搭建完成啦，是不是十分简单呀。</p>
@@ -320,8 +321,7 @@
                 <h2 id="section-1-2">搭建模型</h2>
                 <p>模型的搭建通过将左侧的各类层模块拖入右侧画布并连线来完成。</p>
                 <ul>
-                    <li><p>首先要将左侧的 开始
-                        按钮拖到右侧画布开始模型的搭建，然后一次将你想加入的层模块拖入到右侧画布中，之后点击模块四周的黑点并拖动至其他模块的黑点位置即可完成层模块的连接，支持层模块的并联。</p>
+                    <li><p>首先要将左侧的“开始”按钮拖到右侧画布开始模型的搭建，然后一次将你想加入的层模块拖入到右侧画布中，之后点击模块四周的黑点并拖动至其他模块的黑点位置即可完成层模块的连接，支持层模块的并联。</p>
                     </li>
                     <li><p>
                         在各个层模块中，其中一些层需要填入相应参数，需要参数的层模块在点击之后会弹出该层需要的具体参数，填写之后点击确认即可保存该层参数。参数均有输入限制，若存在不合规范的参数输入在点击确认时会显示错误提示，详细的参数要求及层的功能介绍会在下文中介绍。</p>
@@ -333,7 +333,6 @@
                 <h2 id="section-1-3">生成的代码介绍</h2>
                 <p><strong>main.py</strong>里的代码主要是涉及全局的参数以及训练部分，目前该部分还有待完善。</p>
                 <p><strong>model.py</strong>里则主要是搭建的模型代码，整个模型我们封装成了一个类，类名是 NET。</p>
-                <p><strong>ops.py</strong>里则是可能会用到的全局函数，由于目前是beta版本，该部分以后会实现更多功能。</p>
                 <h2 id="section-1-4">模型管理</h2>
                 <p>注册用户拥有保存自己搭建的模型并管理的权限，用户可以通过点击页面上显示的用户名，弹出 模型查看 和 登出
                     选项，点击模型查看即可进入模型管理的页面，该页面会显示用户曾搭建并保存的所有模型，每个模型都有对应的
@@ -487,7 +486,7 @@ torch.Size([2, 8])
                     <li>inplace – 可以选择的进行操作-可选参数，默认为False</li>
                 </ul>
                 <p><strong>对应图像：</strong></p>
-                <p><img src="image/ReLU.png" alt="ReLU函数图像"></p>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123601602-2097303677.png" alt="ReLU函数图像"></p>
                 <p><strong>例子：</strong></p>
                 <pre><code class="lang-python">  &gt;&gt;&gt; m = nn.ReLU()
   &gt;&gt;&gt; input = torch.randn(2)
@@ -647,7 +646,7 @@ torch.Size([2, 8])
                     <li><strong>inplace</strong> - 可以选择的进行操作-可选参数。默认：<code>False</code></li>
                 </ul>
                 <p><strong>对应图像：</strong></p>
-                <p><img src="image/LeakyReLU.png" alt="LeakyReLU函数图像"></p>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123612588-236245090.png" alt="LeakyReLU函数图像"></p>
                 <p><strong>例子：</strong></p>
                 <pre><code class="lang-python">&gt;&gt;&gt; m = nn.LeakyReLU(0.1)
 &gt;&gt;&gt; input = torch.randn(2)
@@ -749,7 +748,7 @@ torch.Size([2, 8])
                     </div>
                 </div>
                 <strong>函数图像：</strong></p>
-                <p><img src="image/Sigmoid.png" alt="Sigmoid函数图像"></p>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123622598-667745885.png" alt="Sigmoid函数图像"></p>
                 <p><strong>例子：</strong></p>
                 <pre><code class="lang-python">&gt;&gt;&gt; m = nn.Sigmoid()
 &gt;&gt;&gt; input = torch.randn(2)
@@ -855,134 +854,34 @@ torch.Size([2, 8])
                     </div>
                 </div>
                 <strong>函数图像：</strong></p>
-                <p><img src="image/Tanh.png" alt="Tanh函数图像"></p>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503123632264-1362818503.png" alt="Tanh函数图像"></p>
                 <p><strong>例子：</strong></p>
                 <pre><code class="lang-python">&gt;&gt;&gt; m = nn.Tanh()
 &gt;&gt;&gt; input = torch.randn(2)
 &gt;&gt;&gt; output = m(input)
 </code></pre>
-                <h4 id="section-2-3-1-5">Softmax</h4>
-                <pre><code class="lang-python">class torch.nn.Softmax(dim=None)
+
+<h4 id="section-2-3-1-5">Prelu</h4>
+<pre><code class="lang-python">torch.nn.PReLU(num_parameters=1, init=0.25)
 </code></pre>
-                <p>将Softmax函数应用于n维输入Tensor，对它们进行重新缩放，使得n维输出Tensor的元素位于[0,1]范围内并且总和为1。</p>
-                <p><strong>函数表达式：</strong>
-                    <!--softmax activity-->
-                <div contenteditable="false" spellcheck="false"
-                     class="mathjax-block md-end-block md-math-block md-rawblock"
-                     id="mathjax-n90" cid="n90" mdtype="math_block">
-                    <div class="md-rawblock-container md-math-container" tabindex="-1">
-                        <div class="MathJax_SVG_Display"><span class="MathJax_SVG" id="MathJax-Element-4-Frame"
-                                                               tabindex="-1"
-                                                               style="font-size: 100%; display: inline-block;"><svg
-                                xmlns:xlink="http://www.w3.org/1999/xlink" width="724.306px" height="55.0232px"
-                                viewBox="0 -1610.3 36437.9 2768.3" role="img" focusable="false"
-                                style="vertical-align: -2.689ex; max-width: 100%;"><defs><path stroke-width="0"
-                                                                                               id="E4-MJMAIN-28"
-                                                                                               d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path
-                                stroke-width="0" id="E4-MJMAIN-34"
-                                d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path
-                                stroke-width="0" id="E4-MJMAIN-29"
-                                d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-53"
-                                d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-6F"
-                                d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-66"
-                                d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-74"
-                                d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-6D"
-                                d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-61"
-                                d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-78"
-                                d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-69"
-                                d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path
-                                stroke-width="0" id="E4-MJMAIN-3D"
-                                d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-65"
-                                d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-70"
-                                d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path
-                                stroke-width="0" id="E4-MJSZ1-2211"
-                                d="M61 748Q64 750 489 750H913L954 640Q965 609 976 579T993 533T999 516H979L959 517Q936 579 886 621T777 682Q724 700 655 705T436 710H319Q183 710 183 709Q186 706 348 484T511 259Q517 250 513 244L490 216Q466 188 420 134T330 27L149 -187Q149 -188 362 -188Q388 -188 436 -188T506 -189Q679 -189 778 -162T936 -43Q946 -27 959 6H999L913 -249L489 -250Q65 -250 62 -248Q56 -246 56 -239Q56 -234 118 -161Q186 -81 245 -11L428 206Q428 207 242 462L57 717L56 728Q56 744 61 748Z"></path><path
-                                stroke-width="0" id="E4-MJMATHI-6A"
-                                d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g
-                                stroke="currentColor" fill="currentColor" stroke-width="0"
-                                transform="matrix(1 0 0 -1 0 0)"><g
-                                transform="translate(35159,0)"><g id="mjx-eqn-4" transform="translate(0,89)"><use
-                                xlink:href="#E4-MJMAIN-28"></use><use xlink:href="#E4-MJMAIN-34" x="389" y="0"></use><use
-                                xlink:href="#E4-MJMAIN-29" x="889" y="0"></use></g></g><g
-                                transform="translate(12157,0)"><g
-                                transform="translate(-15,0)"><g transform="translate(0,89)"><use
-                                xlink:href="#E4-MJMATHI-53"
-                                x="0" y="0"></use><use
-                                xlink:href="#E4-MJMATHI-6F" x="645" y="0"></use><use xlink:href="#E4-MJMATHI-66"
-                                                                                     x="1130"
-                                                                                     y="0"></use><use
-                                xlink:href="#E4-MJMATHI-74" x="1680" y="0"></use><use xlink:href="#E4-MJMATHI-6D"
-                                                                                      x="2041"
-                                                                                      y="0"></use><use
-                                xlink:href="#E4-MJMATHI-61" x="2919" y="0"></use><use xlink:href="#E4-MJMATHI-78"
-                                                                                      x="3448"
-                                                                                      y="0"></use><use
-                                xlink:href="#E4-MJMAIN-28" x="4020" y="0"></use><use xlink:href="#E4-MJMATHI-78"
-                                                                                     x="4409"
-                                                                                     y="0"></use><use
-                                xlink:href="#E4-MJMATHI-69" x="4981" y="0"></use><use xlink:href="#E4-MJMAIN-29"
-                                                                                      x="5492"
-                                                                                      y="0"></use><use
-                                xlink:href="#E4-MJMAIN-3D" x="6159" y="0"></use><g transform="translate(6937,0)"><g
-                                transform="translate(397,0)"><rect stroke="none" width="5016" height="60" x="0"
-                                                                   y="220"></rect><g transform="translate(890,715)"><use
-                                xlink:href="#E4-MJMATHI-65" x="0" y="0"></use><use xlink:href="#E4-MJMATHI-78" x="466"
-                                                                                   y="0"></use><use
-                                xlink:href="#E4-MJMATHI-70" x="1038" y="0"></use><use xlink:href="#E4-MJMAIN-28"
-                                                                                      x="1541"
-                                                                                      y="0"></use><g
-                                transform="translate(1930,0)"><use xlink:href="#E4-MJMATHI-78" x="0" y="0"></use><use
-                                transform="scale(0.707)" xlink:href="#E4-MJMATHI-69" x="808" y="-213"></use></g><use
-                                xlink:href="#E4-MJMAIN-29" x="2845" y="0"></use></g><g transform="translate(60,-716)"><use
-                                xlink:href="#E4-MJSZ1-2211" x="0" y="0"></use><use transform="scale(0.707)"
-                                                                                   xlink:href="#E4-MJMATHI-6A" x="1493"
-                                                                                   y="-404"></use><use
-                                xlink:href="#E4-MJMATHI-65" x="1613" y="0"></use><use xlink:href="#E4-MJMATHI-78"
-                                                                                      x="2079"
-                                                                                      y="0"></use><use
-                                xlink:href="#E4-MJMATHI-70" x="2651" y="0"></use><use xlink:href="#E4-MJMAIN-28"
-                                                                                      x="3154"
-                                                                                      y="0"></use><g
-                                transform="translate(3543,0)"><use xlink:href="#E4-MJMATHI-78" x="0" y="0"></use><use
-                                transform="scale(0.707)" xlink:href="#E4-MJMATHI-6A" x="808" y="-213"></use></g><use
-                                xlink:href="#E4-MJMAIN-29" x="4507"
-                                y="0"></use></g></g></g></g></g></g></g></svg></span>
-                        </div>
-                        <script type="math/tex; mode=display" id="MathJax-Element-4">
-                        Softmax(xi​)=\frac{exp(x_i)}{∑_jexp(x_j)}
+<p><strong>函数表达式：</strong>PReLU(x)=max(0,x)+a∗min(0,x)
+<p>类似leaky relu, 但是负数部分斜率可学习</p>
+<strong>函数图像：</strong></p>
+<p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503155400513-1924409172.png" alt="PRelu函数图像"></p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><strong>weight</strong>&lt;正数&gt; - 权重初始化 <strong>非0正实数</strong> <strong>默认值为0.25</strong></li>
+</ul>
 
-
-
-
-
-
-
-                        </script>
-                    </div>
-                </div>
-                <strong>返回：</strong></p>
-                <ul>
-                    <li>一个和输入相同尺寸和形状的张量，其值在[0,1]范围内</li>
-                </ul>
-                <p><strong>参数：</strong></p>
-                <ul>
-                    <li>dim – Softmax将要计算的维度</li>
-                </ul>
-                <p><strong>例子：</strong></p>
-                <pre><code class="lang-python">&gt;&gt;&gt; m = nn.Softmax()
-&gt;&gt;&gt; input = torch.randn(2, 3)
-&gt;&gt;&gt; output = m(input)
+<h4 id="section-2-3-1-6">RRelu</h4>
+<pre><code class="lang-python">class torch.nn.Tanh
 </code></pre>
+<p><strong>函数表达式：</strong><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200503155423852-2054842677.png" referrerpolicy="no-referrer"></p>
+<p>类似leaky relu, 但是负数部分斜率为随机均匀分布</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><strong>lower</strong>&lt;正数&gt; - 均匀分布下限 <strong>默认值为0.125</strong></li>
+<li><strong>upper</strong>&lt;正数&gt; - 均匀分布上限 <strong>默认值为0.333</strong></li>
                 <h3 id="section-2-3-2">池化函数(pooling)</h3>
                 <p>在神经网络中，池化函数(Pooling
                     Function)一般将上一层卷积函数的结果作为自己的输入。经过卷积层提取过特征之后，我们得到的通道数可能会增大很多，也就是说数据的维度会变得更高，这个时候就需要对数据进行池化操作，也就是降维操作。</p>
@@ -2051,6 +1950,21 @@ Variable containing:
                 <h1 id="section-3">说明</h1>
                 <p>本教程部分参考了<a href="https://pytorch-cn.readthedocs.io/zh/latest/">PyTorch中文手册</a>和<a
                         href="https://pytorch.org/docs/stable/index.html">PyTorch官方文档</a>，如果想要更详细深入了解的请访问该手册和文档。</p>
+                        <p>若觉得官方文档较难读懂，先看以下个人博客：</p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575928.html">Pytorch-Part1-简介&amp;张量</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575945.html">Pytorch-Part2-数据模块</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575978.html">Pytorch-Part3-模型模块</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575988.html">Pytorch-Part4-损失函数</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575993.html">Pytorch-Part5-迭代训练</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12575866.html">Pytorch-Part6-正则化</a></p>
+
+<p><a href="https://www.cnblogs.com/RyanSun17373259/p/12586378.html">Pytorch-Part7-模型使用</a></p>
             </article>
         </div>
     </div>

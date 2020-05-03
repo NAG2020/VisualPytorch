@@ -141,8 +141,6 @@
 
                     </div>
 <!--                     <div class="panel-heading">
-
-
                     </div> -->
                     <div id="collapseOne" class="panel-collapse collapse in">
 
@@ -155,7 +153,7 @@
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
+                                <div class="node lightblue" id="view_layer" name="view_layer" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
@@ -313,7 +311,7 @@
                                 </div>
                                 <hr/>
 
-
+<!-- learning_rate_scheduler start ==========================================-->
                                 <div class="form-group">
                                         <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
                                         <div class="col-sm-8">
@@ -390,6 +388,7 @@
                                     </div>
                                 </div>
                                 <hr/>
+<!-- learning_rate_scheduler end ==========================================-->
 <!-- optimizer start ==========================================-->
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
@@ -432,7 +431,7 @@
                                 <div class="form-group" id="amsgrad_form_group">
                                     <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
                                     <div class="col-sm-8 checkbox-inline">
-                                        <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
+                                        <center><input type="checkbox" id="amsgrad" name="amsgrad"></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="momentum_form_group">
@@ -450,7 +449,7 @@
                                 <div class="form-group hidden" id="nesterov_form_group">
                                     <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
                                     <div class="col-sm-8">
-                                        <center><input type="checkbox" id="nesterov" name="amsgrad" checked></center>
+                                        <center><input type="checkbox" id="nesterov" name="amsgrad"></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="lambd_form_group">
@@ -474,7 +473,7 @@
                                 <div class="form-group hidden" id="centered_form_group">
                                     <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
                                     <div class="col-sm-8 checkbox-inline">
-                                        <center><input type="checkbox" id="centered" name="centered" checked></center>
+                                        <center><input type="checkbox" id="centered" name="centered"></center>
                                     </div>
                                 </div>
                                 <hr/>
@@ -578,7 +577,6 @@
                         </div>
                     </div>
                 </form>
-
                 <form class="form-horizontal hidden" role="form">
                     <div class="form-group">
                         <label class="col-sm-5 control-label">dim</label>
@@ -587,7 +585,6 @@
                         </div>
                     </div>
                 </form>
-
                 <form class="form-horizontal hidden" role="form">
                     <div class="form-group">
                         <label class="col-sm-5 control-label">in_channels</label>
@@ -599,10 +596,7 @@
                             <input type="text" name='out_channels' class="form-control">
                         </div>
                     </div>
-
                 </form>
-
-
         </div> -->
     </div>
 </div>
@@ -812,9 +806,10 @@
         drop: function (event, ui) {
             var left = parseInt(ui.offset.left - $("#canvas").offset().left);
             var top = parseInt(ui.offset.top - $("#canvas").offset().top);
-            //alert(ui.draggable.attr("id"));//这么获取是有问题的
+            //alert("取属性获得的:"+ ui.draggable.attr("id"));//这么获取是有问题的
             //这里的ui是移动的控件，有可能有多个，ui.draggable[0]应该就是第一个，
             var name = ui.draggable[0].id;
+            //alert("【】获得的:" + ui.draggable[0].id);
             //var name = ui.draggable.attr("id");
             canvas_cnt++;
             var id = "canvas_" + canvas_cnt;
@@ -954,13 +949,10 @@
             });
             /*$("#" + id).mousedown(function (e) {
                 //右键为3
-
                 if (3 == e.which) {
-
                     if (confirm("确定要删除吗?")) {
                         jsPlumb.removeAllEndpoints($(this).attr("id"));
                         $(this).remove();
-
                     }
                 }
             });*/
@@ -1431,7 +1423,8 @@
                 success: function (net_work) {
                     console.log(net_work);
                     var name = net_work["name"];
-                    var structure = eval('(' + net_work["structure"] + ')');
+                    var temp_structure = eval('(' + net_work["structure"] + ')');
+                    var structure = eval('(' + temp_structure["structure"] + ')');
                     console.log(structure);
                     console.log(structure['canvas'][0]['nets_conn']);
                     var nets = structure['canvas'][0]['attribute']['nets'];
@@ -1446,7 +1439,7 @@
                             var ui = {
                                 'offset': {
                                     'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left ,
-                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top 
+                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
                                 },
                                 'draggable': [{
                                     "id": val['name'],
@@ -1487,10 +1480,51 @@
                     $('#batch_size').val(static_val['batch_size']);
                     $("#dataset").find("option").removeAttr("selected");
                     $("#dataset").find("[value = \"" + static_val['data'] + "\"]").attr("selected", "selected");
+
+                    $("#ifshuffle").prop("checked",static_val['ifshuffle']);
+
+                    $("#platform").find("option").removeAttr("selected");
+                    $("#platform").find("[value = \"" + static_val['platform'] + "\"]").attr("selected","selected");
+//learning_rate_scheduler start
+                    $("#learning_rate_scheduler").find("option").removeAttr("selected");
+                    $("#learning_rate_scheduler").find("[value = \"" + static_val['learning_rate_scheduler'] + "\"]").attr("selected","selected");
+                    $("#step_size").val(static_val['step_size']);
+                    $("#gamma").val(static_val['gamma']);
+                    $("#milestones").val(static_val['milestones']);
+                    $("#T_max").val(static_val['T_max']);
+                    $("#eta_min").val(static_val['eta_min']);
+                    $("#factor").val(static_val['factor']);
+                    $("#patience").val(static_val['patience']);
+                    $("#cooldown").val(static_val['cooldown']);
+                    $("#verbose").prop("checked",static_val['verbose']);
+                    $("#min_lr").val(static_val['min_lr']);
+//learning_rate_scheduler end
+//optimizer start
+
                     $("#optimzier").find("option").removeAttr("selected");
                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+                    $("#beta1").val(static_val['beta1']);
+                    $("#beta2").val(static_val['beta2']);
+                    $("#eps").val(static_val['eps']);
+                    $("#weight_decay").val(static_val['weight_decay']);
+                    $("#amsgrad").prop("checked",static_val['amsgrad']);
+                    $("#momentum").val(static_val['momentum']);
+                    $("#dampening").val(static_val['dampening']);
+                    $("#nesterov").prop("checked",static_val['nesterov']);
+                    $("#lambd").val(static_val['lambd']);
+                    $("#alpha").val(static_val['alpha']);
+                    $("#t0").val(static_val['t0']);
+                    $("#centered").prop("checked",static_val['centered']);
+//optimizer end
+//loss start
+
                     $("#loss").find("option").removeAttr("selected");
+                    $("#loss").find("[value = \"" + static_val['loss'] + "\"]").attr("selected", "selected");
+
                     $("#reduction").find("option").removeAttr("selected");
+                    $("#reduction").find("[value = \"" + static_val['reduction'] + "\"]").attr("selected", "selected");
+                    $("#weight").val(static_val['weight']);
+                    $("#ignore_index").val(static_val['ignore_index']);
 
                 }
             });

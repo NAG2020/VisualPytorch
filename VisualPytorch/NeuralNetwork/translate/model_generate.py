@@ -254,8 +254,6 @@ def norm_layer_generate(modulelist):
         if(modulelist['type'] not in GL.type):
                 raise ModelError('in norm_layer_generate %s: No such type' % modulelist['attribute']['type'])
         head+=modulelist['type']
-    else:
-        raise ModelError('in norm_layer_generate %s: No such norm layer' % modulelist['layer_type'])
     head+='('+attribute_generate(modulelist)+')'
     return head
 def dropout_layer_generate(modulelist):

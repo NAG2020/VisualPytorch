@@ -80,17 +80,41 @@ var gobalConfig = {
 //         "learning_rate": learning_rate,
 //         "batch_size": batch_size
 //     };
-    // var data = {
-    //     "name": $("#model_name").val(),
-    //     "structure": {
-    //         "nets": nets,
-    //         "nets_conn": nets_conn,
-    //         "static": static
-    //     }
-    // };
+//     var data = {
+//         "name": $("#model_name").val(),
+//         "structure": {
+//             "nets": nets,
+//             "nets_conn": nets_conn,
+//             "static": static
+//         }
+//     };
 //     return data;
 // }
 
+// {
+//   "type": "sequential",
+//   //sequential表示嵌套模型，base表示单个网络层
+//   "name": "sequential 01",
+//   //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
+//   "attribute": {
+//     "in": "canvas_%d",
+//     //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
+//     "out": "canvas_%d",
+//     //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
+//     //对于Sequential attribute的结构
+//     "nets": {
+//       "canvas_%d": "sequential1.json",
+//       //这里可以是sequential.json或者base.json,modulelist.json,moduledict.json，可以有多个
+//       "canvas_2": "base1.json"
+//     },
+//     "nets_conn": [
+//       //描述每个Sequential内部的连通情况,base层没有该属性
+//       "connection1.json",
+//       "connection2.json"
+//     ]
+//   }
+// }
+//
 
 function saveJSON(data, filename){
     if(!data) {
@@ -148,7 +172,6 @@ function get_network() {
     var startid = $("#canvas").find(".start").attr("id");
     var endid = $("#canvas").find(".end").attr("id");
 
-    //alert(endid);
     sequential.push({
       "type": "sequential",
       //sequential表示嵌套模型，base表示单个网络层
@@ -168,59 +191,37 @@ function get_network() {
 
     //
 
-    var epoch = $("#epoch").val()==""?"10":$("#epoch").val();
+    var epoch = $("#epoch").val()==""?10:$("#epoch").val();
 
-    var learning_rate = $("#learning_rate").val()==""?"0.01":$("#learning_rate").val();
-
-    var batch_size = $("#batch_size").val()==""?"1":$("#batch_size").val();
-
-
+    var learning_rate = $("#learning_rate").val()==""?0.01:$("#learning_rate").val();
+    // if (learning_rate == "") {
+    //     learning_rate = "0.01";
+    // }
+    var batch_size = $("#batch_size").val()==""?1:$("#batch_size").val();
+    // if (batch_size == "") {
+    //     batch_size = "1";
+    // }
     var learning_rate_scheduler = {
         "name": $("#learning_rate_scheduler").find("option:selected").val(),
         "attribute": {
-            "step_size" : $("#step_size").val()==""?"50":$("#step_size").val(),
-            "gramma" : $("#gamma").val()==""?"0.1":$("#gamma").val(),
-            "milestones":$("#milestones").val()==""?"50":$("#milestones").val(),
-            "T_max" : $("#T_max").val()==""?"50":$("#T_max").val(),
-            "eta_min" : $("#eta_min").val()==""?"0":$("#eta_min").val(),
-            "factor":$("#factor").val()==""?"0.1":$("#factor").val(),
-            "patience" : $("#patience").val()==""?"10":$("#patience").val(),
-            "cooldown" : $("#cooldown").val()==""?"10":$("#cooldown").val(),
-            "verbose":$("#verbose").prop("checked"),
-            "min_lr":$("#min_lr").val()==""?"0.0001":$("#min_lr").val()
+            "step_size" : $("#step_size").val()==""?50:$("#step_size").val(),
+            "gramma" : $("#gamma").val()==""?0.1:$("#gamma").val()
         }
     }
 
     var platform = $("#platform").find("option:selected").val();
     var dataset = $("#dataset").find("option:selected").val();
-
-    var ifshuffle = $("#ifshuffle").prop("checked");
-
     var optimizer = {
         "name": $("#optimizer").find("option:selected").val(),
         "attribute" :{
-            "beta1": $("#beta1").val()==""?"0.9":$("#beta1").val(),
-            "beta2": $("#beta2").val()==""?"0.999":$("#beta2").val(),
-            "eps": $("#eps").val()==""?"0.00000001":$("#eps").val(),
-            "weight_decay": $("#weight_decay").val()==""?"0":$("#weight_decay").val(),
-            "amsgrad": $("#amsgrad").prop("checked"),
-            "momentum": $("#momentum").val()==""?"0":$("#momentum").val(),
-            "dampening": $("#dampening").val()==""?"0":$("#dampening").val(),
-            "nesterov": $("#nesterov").prop("checked"),
-            "lambd": $("#lambd").val()==""?"0.0001":$("#lambd").val(),
-            "alpha": $("#alpha").val()==""?"0.75":$("#alpha").val(),
-            "t0": $("#t0").val()==""?"1000000":$("#t0").val(),
-            "centered": $("#centered").prop("checked")
+            "momentum": $("#momentum").val()==""?0:$("#momentum").val()
         }
     };
-
 
     var loss = {
         "name": $("#loss").find("option:selected").val(),
         "attribute" :{
-            "reduction": $("#reduction").find("option:selected").val(),
-            "weight": $("#weight").val()==""?"None":$("#weight").val(),
-            "ignore_index": $("#ignore_index").val()==""?"None":$("#ignore_index").val(),
+            "reduction": $("#reduction").find("option:selected").val()
         }
     };
 
@@ -235,7 +236,6 @@ function get_network() {
         "optimizer":optimizer,
         "loss":loss
     };
-
     var structure = {
         "canvas": sequential,
         "static": static
@@ -280,14 +280,14 @@ function translate_network() {
                     model = model + data_return["Model"][i] + "<br>";
                     model_print=model_print+data_return["Model"][i] + "\n";
                 }
-                // for (var i = 0; i < data_return["Ops"].length; i++) {
-                //     ops = ops + data_return["Ops"][i] + "<br>";
-                //     ops_print=ops_print+data_return["Ops"][i] + "\n";
-                // }
+                //for (var i = 0; i < data_return["Ops"].length; i++) {
+                //    ops = ops + data_return["Ops"][i] + "<br>";
+                //    ops_print=ops_print+data_return["Ops"][i] + "\n";
+                //}
                 var code = {
                     "model": model,
                     "main": main,
-                    //"ops": ops
+                //    "ops": ops
                 };
                 var code_print = {
                     "model": model_print,
@@ -306,7 +306,7 @@ function translate_network() {
 
         },
         error: function (data_return) {
-            alert(data_return["responseText"]);
+            alert(data_return["responseText"])
         }
 
 
@@ -322,7 +322,6 @@ function save_network() {
     // }
     var data = get_network();
     console.log(data);
-    //alert(window.location.href);
     var query_object = getQueryObject(window.location.href);
     if (query_object.hasOwnProperty("id")) {
         var net_id = query_object["id"];
@@ -346,7 +345,7 @@ function save_network() {
         });
     } else {
         $.ajax({
-            type: 'POST',//这个地方wf改了一下，应该是POST
+            type: 'POST',
             url: gobalConfig.base_url + 'api/NeuralNetwork/network/',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=UTF-8',
@@ -360,8 +359,7 @@ function save_network() {
                 alert("保存成功！");
             },
             error: function (data_return) {
-                alert("失败了，后端没接主post请求");
-                alert(data_return["responseText"]);
+                alert(data_return["responseText"])
             }
         });
     }

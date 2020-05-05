@@ -1488,10 +1488,51 @@
                     $('#batch_size').val(static_val['batch_size']);
                     $("#dataset").find("option").removeAttr("selected");
                     $("#dataset").find("[value = \"" + static_val['data'] + "\"]").attr("selected", "selected");
+
+                    $("#ifshuffle").prop("checked",static_val['ifshuffle']);
+
+                    $("#platform").find("option").removeAttr("selected");
+                    $("#platform").find("[value = \"" + static_val['platform'] + "\"]").attr("selected","selected");
+//learning_rate_scheduler start
+                    $("#learning_rate_scheduler").find("option").removeAttr("selected");
+                    $("#learning_rate_scheduler").find("[value = \"" + static_val['learning_rate_scheduler'] + "\"]").attr("selected","selected");
+                    $("#step_size").val(static_val['step_size']);
+                    $("#gamma").val(static_val['gamma']);
+                    $("#milestones").val(static_val['milestones']);
+                    $("#T_max").val(static_val['T_max']);
+                    $("#eta_min").val(static_val['eta_min']);
+                    $("#factor").val(static_val['factor']);
+                    $("#patience").val(static_val['patience']);
+                    $("#cooldown").val(static_val['cooldown']);
+                    $("#verbose").prop("checked",static_val['verbose']);
+                    $("#min_lr").val(static_val['min_lr']);
+//learning_rate_scheduler end
+//optimizer start
+
                     $("#optimzier").find("option").removeAttr("selected");
                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+                    $("#beta1").val(static_val['beta1']);
+                    $("#beta2").val(static_val['beta2']);
+                    $("#eps").val(static_val['eps']);
+                    $("#weight_decay").val(static_val['weight_decay']);
+                    $("#amsgrad").prop("checked",static_val['amsgrad']);
+                    $("#momentum").val(static_val['momentum']);
+                    $("#dampening").val(static_val['dampening']);
+                    $("#nesterov").prop("checked",static_val['nesterov']);
+                    $("#lambd").val(static_val['lambd']);
+                    $("#alpha").val(static_val['alpha']);
+                    $("#t0").val(static_val['t0']);
+                    $("#centered").prop("checked",static_val['centered']);
+//optimizer end
+//loss start
+
                     $("#loss").find("option").removeAttr("selected");
+                    $("#loss").find("[value = \"" + static_val['loss'] + "\"]").attr("selected", "selected");
+
                     $("#reduction").find("option").removeAttr("selected");
+                    $("#reduction").find("[value = \"" + static_val['reduction'] + "\"]").attr("selected", "selected");
+                    $("#weight").val(static_val['weight']);
+                    $("#ignore_index").val(static_val['ignore_index']);
 
                 }
             });

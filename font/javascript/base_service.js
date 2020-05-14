@@ -103,6 +103,8 @@ function logout() {
 function add_comment() {
     var title = $("#contact-info").val();
     var context = $("#question-describe").val();
+    var picname = $("#contact-info").val();
+    alert(picname);
     var data = {
         "title": title,
         "context": context,

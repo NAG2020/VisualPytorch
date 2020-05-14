@@ -2,7 +2,7 @@
 
 ### 一、测试环境配置说明
 
-1、拉取develop分支后
+1、拉取develop分支之后
 
 ```
 pip install -r requirements.txt

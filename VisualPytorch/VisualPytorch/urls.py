@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from NeuralNetwork import views
+from VisualPytorch import settings
+from django.conf.urls.static import static
 from django.conf.urls import url
 from rest_framework.documentation import include_docs_urls
 
@@ -27,4 +29,4 @@ urlpatterns = [
     path('api/journal/',include('journal.urls')),
     path('api/user/',include('user.urls')),
     path('api/', include('comments.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

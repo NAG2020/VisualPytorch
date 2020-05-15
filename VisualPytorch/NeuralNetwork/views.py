@@ -8,7 +8,7 @@ from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .translate import ops
+from .translate import all_generate
 from rest_framework import permissions
 import os
 import zipfile
@@ -36,7 +36,7 @@ class NetworkList(APIView):
         creator = request.user.id
         data = {
             "name": request.data["name"],
-            "creator": creator,
+			"creator": creator,
             "structure": json.dumps(request.data["structure"])
         }
         serializer = NetworkSerializer(data=data)
@@ -83,7 +83,7 @@ class NetworkDetail(APIView):
 def gen_code(request):
     result = {}
     try:
-        result["Main"], result["Model"], result["Ops"] = ops.main_func(request.data)
+        result["Main"], result["Model"] = all_generate.main_func(request.data)
     except Exception as e:
         return Response({str(e)}, status=status.HTTP_400_BAD_REQUEST)
     else:
@@ -124,14 +124,11 @@ def write_file(data):
         os.remove(os.path.join(settings.FILE_DIR,"project/Main.py"))
     if os.path.exists(os.path.join(settings.FILE_DIR,"project/Model.py")):
         os.remove(os.path.join(settings.FILE_DIR,"project/Model.py"))
-    if os.path.exists(os.path.join(settings.FILE_DIR,"project/Ops.py")):
-        os.remove(os.path.join(settings.FILE_DIR,"project/Ops.py"))
     if os.path.exists("project_VisualPytorch.zip"):
         os.remove("project_VisualPytorch.zip")
     root_dir = os.path.join(settings.FILE_DIR, "project")
     file_main = open(os.path.join(root_dir, "Main.py"), "w")
     file_model = open(os.path.join(root_dir, "Model.py"), "w")
-    file_ops = open(os.path.join(root_dir, "Ops.py"), "w")
     file_main.write(data['main'])
     file_model.write(data['model'])
-    file_ops.write(data['ops'])
+##

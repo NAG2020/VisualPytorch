@@ -58,6 +58,12 @@ body {
     border-radius: 50%;
 }
 
+.end {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 .radius {
     border-radius: 25em;
 }

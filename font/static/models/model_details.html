@@ -39,7 +39,7 @@
     <!-- responsive css -->
     <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
     <!--原有head-->    
-        <script type="text/javascript" src="../../resources/jquery.min.js"></script>
+        <script type="text/javascript" src="../../resources/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="../../resources/bootstrap.min.js"></script>
         <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
         <link href="../../css/layer.css" rel="stylesheet">
@@ -61,7 +61,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-7" id="canvas">
-                    <div style="height:550px;border:0.5px solid black">
+                    <div style="height:1000px;border:0.5px solid black">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-5">       
@@ -77,53 +77,118 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
         
-                                <div class="panel-body">
+                                <div class="panel-body" id="simple_network_layer">
                                     <div class="ele_in_list">
-                                        <div class="node node_little start little_green" id="start">
+                                        <div class="node start little_green" id="start">
                                             开始
                                         </div>
                                     </div>
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="view_layer" type="button"
-                                             data-container="body" data-toggle="popover">
+                                        <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
                                             reshape层
                                         </div>
                                     </div>
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="linear_layer" type="button"
-                                             data-container="body" data-toggle="popover" in_channel="" out_channel="">
+                                        <div class="node lightblue" id="linear_layer" type="button"
+                                             data-container="body" data-toggle="popover">
                                             全连接层
                                         </div>
                                     </div>
         
-                                    <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="conv1d_layer" type="button"
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv1d_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             一维卷积层
                                         </div>
                                     </div>
         
-                                    <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="conv2d_layer" type="button"
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv2d_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             二维卷积层
                                         </div>
                                     </div>
         
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="element_wise_add_layer" type="button"
+                                        <div class="node lightblue" id="element_wise_add_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             元素级相加层
                                         </div>
                                     </div>
         
                                     <div class="ele_in_list">
-                                        <div class="node node_little lightblue" id="concatenate_layer" type="button"
+                                        <div class="node lightblue" id="concatenate_layer" type="button"
                                              data-container="body" data-toggle="popover">
                                             channel维度拼接层
                                         </div>
                                     </div>
         
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="softmax_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            softmax层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="dropout_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            dropout层
+                                        </div>
+                                    </div>
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="conv_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="pool_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            池化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="activation_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            激活层
+                                        </div>
+                                    </div>
+        
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="RNN_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            递归神经网络
+                                        </div>
+                                    </div>
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="LSTM_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            长周期神经网络
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="norm_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            标准化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node start little_green" id="end">
+                                            结束
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,47 +223,264 @@
                     </div>
                     <div class="single-product-details">
                         <div style="margin-top:20px">
-                            <form class="form-horizontal" role="form">
-                                <h2 id="model_name">模型的名字</h2>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">epoch(训练轮次)</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" placeholder="1" id="epoch">
+                            <h2 id="model_name">模型的名字</h2>
+                            <div class="panel-body" id="static_form_parent">
+                                <form class="form-horizontal" role="form" id="static_form">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">epoch<br/>(训练轮次)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为10" id="epoch" name="epoch">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">optimizer(优化器)</label>
-                                    <div class="col-sm-5">
-                                        <select id="optimizer" class="form-control">
-                                            <option value="torch.optim.Adam">Adam</option>
-                                            <option value="torch.optim.Optimizer">Optimizer</option>
-                                            <option value="torch.optim.Adamax">Adamax</option>
-                                            <option value="torch.optim.ASGD">ASGD</option>
-                                        </select>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">learning_rate</br>(学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="[0-1]实数，默认为0.01" id="learning_rate" name="learning_rate">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">learning_rate(学习率)</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" id="learning_rate" class="form-control" placeholder="0.5">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">batch_size<br/>(每次训练个数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数,默认为1" id="batch_size" name="batch_size">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">batch_size</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" id="batch_size" class="form-control" placeholder="1">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">dataset<br/>(数据)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="dataset" name="data">
+                                                <option value="mnist" selected>mnist</option>
+                                                <option value="cifar10">cifar10</option>
+                                                <option value="stl10">stl10</option>
+                                                <option value="svhn">svhn</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-            
-                            </form>
-                        </div>
-                        <div class="product-attributes clearfix" style="text-align:center">
-                           <span>
-                           <a class="cart-btn btn-default" id="modify">
-                                    <i class="flaticon-arrows-1"></i>
-                                    编辑此模型
-                                </a>
-                           </span>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">ifshuffle<br/>(数据集是否打乱)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                                <center><input type="checkbox" id="ifshuffle" name="ifshuffle" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">platform<br/>(运行平台)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="platform" name="data">
+                                                <option value="cpu" selected>cpu</option>
+                                                <option value="gpu">gpu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="form-group">
+                                            <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
+                                            <div class="col-sm-8">
+                                                <select id="learning_rate_scheduler" name="learning_rate_scheduler" class="form-control">
+                                                    <option value="None" selected>None</option>
+                                                    <option value="StepLR">StepLR</option>
+                                                    <option value="MultiStepLR">MultiStepLR</option>
+                                                    <option value="ExponentialLR">ExponentialLR</option>
+                                                    <option value="CosineAnnealingLR">CosineAnnealingLR</option>
+                                                    <option value="ReduceLROnPleateau">ReduceLROnPleateau</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="step_size_form_group">
+                                        <label class="col-sm-4 control-label">step_size<br/>(衰减周期)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为50" id="step_size" name="step_size">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="gamma_form_group">
+                                        <label class="col-sm-4 control-label">gamma<br/>(衰减幅度)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认为0.1" id="gamma" name="gamma">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="milestones_form_group">
+                                        <label class="col-sm-4 control-label">milestones<br/>(衰减时间点)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="非负整数序列，默认为50" id="milestones" name="milestones">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="T_max_form_group">
+                                        <label class="col-sm-4 control-label">T_max<br/>(下降周期)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为50" id="T_max" name="T_max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="eta_min_form_group">
+                                        <label class="col-sm-4 control-label">eta_min<br/>(最小学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数，默认为0" id="eta_min" name="eta_min">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="factor_form_group">
+                                        <label class="col-sm-4 control-label">factor<br/>(调整系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.1" id="factor" name="factor">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="patience_form_group">
+                                        <label class="col-sm-4 control-label">patience<br/>(最小学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为10" id="patience" name="patience">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="cooldown_form_group">
+                                        <label class="col-sm-4 control-label">cooldown<br/>(冷却时间)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为10" id="cooldown" name="cooldown">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="verbose_form_group">
+                                        <label class="col-sm-4 control-label">verbose<br/>(打印日志)</label>
+                                            <div class="col-sm-8 checkbox-inline">
+                                                <center><input type="checkbox" id="verbose" name="verbose" checked></center>
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="min_lr_form_group">
+                                        <label class="col-sm-4 control-label">min_lr<br/>(学习率下限)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-4" id="min_lr" name="min_lr">
+                                        </div>
+                                    </div>
+                                    <hr/>
+    <!-- optimizer start ==========================================-->
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="optimizer" name="optimizer">
+                                                <option value="Adam" selected>Adam</option>
+                                                <option value="SGD">SGD</option>
+                                                <option value="RMSprop">RMSprop</option>
+                                                <option value="Adammax">Adammax</option>
+                                                <option value="ASGD">ASGD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="beta1_form_group">
+                                        <label class="col-sm-4 control-label">beta1<br/>(梯度移动平均值的系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.9" id="beta1" name="beta1">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group" id="beta2_form_group">
+                                        <label class="col-sm-4 control-label">beta2<br/>(梯度平方移动平均值的系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.999" id="beta2" name="beta2">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group" id="eps_form_group">
+                                        <label class="col-sm-4 control-label">eps<br/>(分母稳定项)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-8" id="eps" name="eps">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="weight_decay_form_group">
+                                        <label class="col-sm-4 control-label">weight_decay<br/>(L2正则项系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="weight_decay" name="weight_decay">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="amsgrad_form_group">
+                                        <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="momentum_form_group">
+                                        <label class="col-sm-4 control-label">momentum<br/>(调整系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="momentum" name="momentum">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="dampening_form_group">
+                                        <label class="col-sm-4 control-label">dampening<br/>(动量衰减)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数，默认值为10" id="dampening" name="dampening">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="nesterov_form_group">
+                                        <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
+                                        <div class="col-sm-8">
+                                            <center><input type="checkbox" id="nesterov" name="amsgrad" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="lambd_form_group">
+                                        <label class="col-sm-4 control-label">lambd<br/>(衰减项)</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" placeholder="0-1间实数，默认值为1e-4" id="lambd" name="lambd">
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="alpha_form_group">
+                                        <label class="col-sm-4 control-label">alpha<br/>(eta更新幂)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0.75" id="alpha" name="alpha">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="t0_form_group">
+                                        <label class="col-sm-4 control-label">t0<br/>(开始平均的点)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为1e6" id="t0" name="t0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="centered_form_group">
+                                        <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="centered" name="centered" checked></center>
+                                        </div>
+                                    </div>
+                                    <hr/>
+    <!-- optimizer end ==========================================-->
+    <!-- loss start ==========================================-->
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">loss<br/>(损失函数)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="loss" name="loss">
+                                                <option value="MSELoss" selected>MSELoss</option>
+                                                <option value="CrossEntropyLoss">CrossEntropyLoss</option>
+                                                <option value="L1Loss">L1Loss</option>
+                                                <option value="NLLLoss">NLLLoss</option>
+                                                <option value="BCELoss">BCELoss</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="reduction_form_group">
+                                        <label class="col-sm-4 control-label">reduction<br/>(输出的缩减)</label>
+                                        <div class="col-sm-8">
+                                            <select id="reduction" name="reduction" class="form-control">
+                                                    <option value="mean" selected>mean</option>
+                                                    <option value="sum" >sum</option>
+                                                    <option value="none" >none</option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="weight_form_group">
+                                        <label class="col-sm-4 control-label">weight<br/>(每个分类损失的权重)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数序列，默认为None" id="weight" name="weight">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="ignore_index_form_group">
+                                        <label class="col-sm-4 control-label">ignore_index<br/>(忽略的目标)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="整数，默认为None" id="ignore_index" name="ignore_index">
+                                        </div>
+                                    </div>
+                                    <div class="product-attributes clearfix" style="text-align:center">
+                                    <span>
+                                    <a class="cart-btn btn-default" id="modify">
+                                                <i class="flaticon-arrows-1"></i>
+                                                编辑此模型
+                                            </a>
+                                    </span>
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -223,7 +505,7 @@
         isSource: true,
         isTarget: true,
         maxConnections: -1,
-        connector: ["Flowchart", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
+        connector: ["StateMachine", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
         connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
         connectionsDetachable: true,
 
@@ -407,10 +689,13 @@
                     }
                 },
                 success: function (net_work) {
+                    console.log(net_work);
                     var name = net_work["name"];
                     var structure = eval('(' + net_work["structure"] + ')');
-                    var nets = structure['nets'];
-                    var nets_conn = structure['nets_conn'];
+                    console.log(structure);
+                    console.log(structure['canvas'][0]['nets_conn']);
+                    var nets = structure['canvas'][0]['attribute']['nets'];
+                    var nets_conn = structure['canvas'][0]['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
@@ -420,8 +705,8 @@
                         jsPlumb.ready(function () {
                             var ui = {
                                 'offset': {
-                                    'left': parseInt(val['left'].split('px')) * 0.6 + $("#canvas").offset().left + 10,
-                                    'top': parseInt(val['top'].split('px')) * 0.5 + $("#canvas").offset().top + 10
+                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
+                                    'top': parseInt(val['top'].split('px'))  + $("#canvas").offset().top
                                 },
                                 'draggable': [{
                                     "id": val['name'],
@@ -446,7 +731,7 @@
 
                                 },
                                 "maxConnections": -1,
-                                "connector": ["Flowchart", {
+                                "connector": ["StateMachine", {
                                     stub: [40, 60],
                                     gap: 5,
                                     cornerRadius: 5,
@@ -458,9 +743,15 @@
                         });
                     });
                     $("#epoch").val(static_val['epoch']);
-                    $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
                     $('#learning_rate').val(static_val['learning_rate']);
-                    $('#batch_size').val(static_val['batch_size'])
+                    $('#batch_size').val(static_val['batch_size']);
+                    $("#dataset").find("option").removeAttr("selected");
+                    $("#dataset").find("[value = \"" + static_val['data'] + "\"]").attr("selected", "selected");
+                    $("#optimzier").find("option").removeAttr("selected");
+                    $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+                    //$("#loss").find("option").removeAttr("selected");
+                    //$("#reduction").find("option").removeAttr("selected");
+
                 }
             });
 

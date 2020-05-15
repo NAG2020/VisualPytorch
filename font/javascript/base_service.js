@@ -35,7 +35,7 @@ function login() {
             window.sessionStorage.setItem('token', token)
         },
         error: function (data_return) {
-            alert("账号密码错误，请重新登录");
+            alert("账号密码错误或账号未激活，请重新登录");
             console.log(data_return["responseText"])
         }
     });
@@ -71,7 +71,8 @@ function register() {
     var data = {
         "username": username,
         "email": email,
-        "password": password
+        "password": password,
+        "is_active":false,
     };
 
     $.ajax({
@@ -80,10 +81,11 @@ function register() {
         data: JSON.stringify(data),
         contentType: 'application/json; charset=UTF-8',
         success: function (data_return) {
-            var token = data_return["token"];
-            window.sessionStorage.setItem('token', token);
-            window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
+            // var token = data_return["token"];
+            // window.sessionStorage.setItem('token', token);
+            // window.sessionStorage.setItem('userinfo', JSON.stringify(data_return));
             window.location.reload();
+            alert("注册成功，请前往邮箱验证后登录")
         },
         error: function (data_return) {
             alert("用户名或邮箱已被注册")

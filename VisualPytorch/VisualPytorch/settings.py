@@ -189,3 +189,13 @@ MEDIA_URL = '/media/'
 
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
+
+
+# 发送邮箱验证码
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.qq.com'  # smtp服务器地址，163是smtp.163.com
+EMAIL_PORT = 465  # 端口
+EMAIL_HOST_USER = '1009303269@qq.com'  # 帐号
+EMAIL_HOST_PASSWORD = 'ihvapexlwytgbeei'  # QQ邮箱的独立授权码,每个人不一样
+EMAIL_FROM = 'NAG2020<1009303269@qq.com>'  # 收件人看到的发件人，尖括号中的必须与上面的user一致
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

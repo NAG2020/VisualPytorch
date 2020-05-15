@@ -35,3 +35,4 @@ social-auth-core==3.3.3
 uritemplate==3.0.1
 urllib3==1.25.8
 wincertstore==0.2
+itsdangerous==1.1.0

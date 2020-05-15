@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
         token = ts_obj.dumps(validated_data).decode()
         url = 'http://127.0.0.1:8000/api/user/email/?token='+token
         # todo 发送邮件
-        url_string = '<a href=' + url + '>点击链接</a>'
+        url_string = '欢迎使用VisualPytorch,请点击<a href=' + url + '>链接</a>确认注册'
         # 邮件主题
         subject = 'VisualPytorch激活邮件'
         # 邮件信息，正文部分
@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         # 发送者，直接从配置文件中导入上面配置的发送者
         sender = settings.EMAIL_FROM
         # 接收者的邮箱，是一个列表，这里是前端用户注册时传过来的 email
-        receiver = validated_data["email"]
+        receiver = [validated_data["email"],]
         # html结构的信息，其中包含了加密后的用户信息token
         html_message = url_string
         # 调用Django发送邮件的方法，这里传了5个参数

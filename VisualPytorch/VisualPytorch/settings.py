@@ -16,9 +16,8 @@ import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FONT_DIR = os.path.dirname(BASE_DIR) + r"/font"
-STATIC_ROOT = os.path.join(FONT_DIR, 'static/')
-STATICFILES_DIR = [os.path.join(FONT_DIR,''),]
+FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -26,7 +25,7 @@ STATICFILES_DIR = [os.path.join(FONT_DIR,''),]
 SECRET_KEY = '*g#d#gg8t##7*fy^q7%=+#*6cn5#7_zzj7v&#+kj)%xj%rez=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =True
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -79,7 +78,7 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 #CSRF_TRUSTED_ORIGINS=['*',]
-#CORS_ORIGIN_WHITELIST = ('*')
+CORS_ORIGIN_WHITELIST = ()
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
@@ -185,3 +184,18 @@ AUTHENTICATION_BACKENDS = [
 JWT_AUTH = {
 	'JWT_EXPIRATION_DELTA':datetime.timedelta(hours=10),
 }
+MEDIA_ROOT = os.path.join(FONT_DIR, 'media')
+MEDIA_URL = '/media/'
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
+
+
+# 发送邮箱验证码
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.qq.com'  # smtp服务器地址，163是smtp.163.com
+EMAIL_PORT = 465  # 端口
+EMAIL_HOST_USER = '1009303269@qq.com'  # 帐号
+EMAIL_HOST_PASSWORD = 'ihvapexlwytgbeei'  # QQ邮箱的独立授权码,每个人不一样
+EMAIL_FROM = 'NAG2020<1009303269@qq.com>'  # 收件人看到的发件人，尖括号中的必须与上面的user一致
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

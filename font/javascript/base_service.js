@@ -72,7 +72,7 @@ function register() {
         "username": username,
         "email": email,
         "password": password,
-        "is_active":false,
+        "is_active": false,
     };
 
     $.ajax({
@@ -90,7 +90,7 @@ function register() {
         error: function (data_return) {
             alert("用户名或邮箱已被注册")
             //iconsole.log(data_return["responseText"])
-     	    window.location.reload();
+            window.location.reload();
         }
     })
 
@@ -130,4 +130,39 @@ function add_comment() {
             //alert("error")
         }
     });
+}
+
+
+function loadImage(img) {
+    var filePath = img.value;
+    var fileExt = filePath.substring(filePath.lastIndexOf("."))
+        .toLowerCase();
+
+    if (!checkFileExt(fileExt)) {
+        alert("您上传的文件不是jpg格式图片,请重新上传！");
+        img.value = "";
+        return;
+    }
+    if (img.files && img.files[0]) {
+//                alert(img);
+//                alert(img.files[0])
+        if(img.files[0].size / 1024 > 5120){
+            img.value="";
+            alert("您上传的图片过大，请保证图片在5M以内")
+            return;
+        }
+
+        alert('你选择的文件大小' + (img.files[0].size / 1024).toFixed(0) + "kb");
+//                var xx = img.files[0];
+//                for (var i in xx) {
+//                    alert(xx[i])
+//                }
+    }
+}
+
+function checkFileExt(ext) {
+    if (!ext.match(/.jpg/i)) {
+        return false;
+    }
+    return true;
 }

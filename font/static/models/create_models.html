@@ -41,7 +41,8 @@
         <!-- modernizr css 这个比较特殊不知道为啥 -->
         <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
 
-
+        <script type="text/javascript" src="../../resources/html2canvas.js"></script>
+        <script type="text/javascript" src="../../resources/canvas2image.js"></script>
     <link href="../../resources/bootstrap.min.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
@@ -75,6 +76,11 @@
             <button type="button" class="btn btn-primary" style="width: 180px;margin-top: 20px" id="save"
                     onclick="open_save()">保存
             </button>
+
+            <button type="button" class="btn btn-primary" style="width: 180px;margin-top: 20px" id="save"
+                onclick="canvas_gen()">测试生成canvas
+            </button>
+
 
             <div class="modal fade" id="save_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
@@ -617,12 +623,13 @@
 
 <!--     <script type="text/javascript" src="../../resources/bootstrap.min.js"></script> -->
     <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
+    
 
     <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
     <script type="text/javascript" src="../../javascript/graph_action.js"></script>
     <script type="text/javascript" src="../../javascript/layer_form.js"></script>
     <script type="text/javascript" src="../../javascript/base_service.js"></script>
-
+    
 
     <script type="text/javascript">
         function load_static(){
@@ -1658,7 +1665,17 @@
         window.sessionStorage.removeItem(layer_id);
     }
 
+</script>
 
+<script>
+    function canvas_gen() {
+        html2canvas(document.querySelector("#canvas")).then(canvas => {
+        document.body.appendChild(canvas);
+        $("canvas").attr("id", "cvs");
+        canvas = document.getElementById("cvs");
+        Canvas2Image.saveAsImage(canvas, 540, 1000, 'png');
+        });
+    }
 </script>
 
 </html>

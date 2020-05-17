@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'journal.apps.JournalConfig',
     'user.apps.UserConfig',
     'comments.apps.CommentsConfig',
+    'Inference.apps.InferenceConfig',
 ]
 
 MIDDLEWARE = [

@@ -15,10 +15,13 @@ import numpy as np
 import torchvision.transforms as transforms
 from PIL import Image
 from torch.utils.data import DataLoader
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
-from tools.common_tools import set_seed
-from tools.unet import UNet
+
+from ..tools.common_tools import set_seed
+from ..tools.unet import UNet
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -69,10 +72,9 @@ def get_model(m_path):
     return unet
 
 
-if __name__ == "__main__":
+def unet(pic_name, pkl_path):
     # 1. data
-    img = "valid/00001.png"
-    model_path = "checkpoint_399_epoch.pkl"
+    model_path = pkl_path + "checkpoint_399_epoch.pkl"
     time_tic = time.time()
     mask_thres = .5
 
@@ -83,7 +85,7 @@ if __name__ == "__main__":
 
     # path_img = "C:\\Users\\HP\\Desktop\\20190829223300.png"
     # step 1/4 : path --> img_chw
-    img_hwc = Image.open(img).convert('RGB')
+    img_hwc = Image.open(pic_name).convert('RGB')
     img_hwc = img_hwc.resize((224, 224))
     img_arr = np.array(img_hwc)
     img_chw = img_arr.transpose((2, 0, 1))
@@ -104,8 +106,15 @@ if __name__ == "__main__":
     mask_pred_gray = mask_pred.squeeze() * 255
     plt.imshow(mask_pred_gray, cmap="gray")
     plt.show()
+    pic_out = pic_name[:-4] + '_out.jpg'
+    plt.savefig(pic_out)
+
     plt.close()
 
     time_s = time.time() - time_tic
 
-    print('time: {:.3f}s '.format(time_s))
+    return {"addr": pic_out, "input_shape": img_hwc.shape, "time": round(time_s, 2)}
+
+
+if __name__ == "__main__":
+    print(unet('00001.png', './'))

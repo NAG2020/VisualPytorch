@@ -281,8 +281,8 @@
                         $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
                         $("#preview_photo").attr("src", data["addr"]);
                         $("#result").attr("style", "float: right;height:400px");
-                        $("#result-text").replaceWith("<p>" + "Input Img Shape:[" + data["input_shape"] + "]<br/>"
-                            + "Infernce Time:" + data["time"] + "s"
+                        $("#result-text").replaceWith("<p>" + "<b>Input Img Shape:</b>[" + data["input_shape"] + "]<br/>"
+                            + "<b>Infernce Time:</b>" + data["time"] + "s"
                             + "</p>");
                     },
                     error: function (data) {

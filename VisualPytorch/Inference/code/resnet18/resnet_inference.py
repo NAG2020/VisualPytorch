@@ -117,7 +117,7 @@ if __name__ == "__main__":
               format(img_rgb.size, time_s))
 
 
-def inference(pic_name,pkl_path):
+def resnet18(pic_name,pkl_path):
     # 1. data
     img = pic_name
     print(os.path)

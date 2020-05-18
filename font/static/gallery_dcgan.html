@@ -243,7 +243,7 @@
                         $("#preview_photo").attr("src", data["addr"]);
                         $("#result").attr("style", "float: right;height:400px");
                         $("#result-text").replaceWith("<p>"+"<br/>"
-                            + "Infernce Time:" + data["time"] + "s"
+                            + "<b>Infernce Time:</b>" + data["time"] + "s"
                             + "</p>");
                     },
                     error: function (data_return) {

@@ -17,16 +17,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from .code.resnet18.resnet_inference import resnet18
 from .code.dcgan.gan_inference import gcgan
-from .code.faster_rcnn.detection_demo import frcnn
-
+from .code.faster_rcnn.detection_demo import faster_rcnn
+from .code.unet.portrait_inference import unet
+from .code.resnet101.seg_demo import resnet101
 
 # Create your views here.
 
 class Resnet18(APIView):
-    def get(self, request):
-        inference_list = Inference.objects.all().values("id", "pic");
-        return Response(list(inference_list), status=status.HTTP_200_OK)
-
     @csrf_exempt
     def post(self, request):
         # print(request.POST)
@@ -37,7 +34,7 @@ class Resnet18(APIView):
             }
             save_path = "%s/inference_img/%s" % (settings.MEDIA_ROOT, pic.name,)
             pkl_path = "%s/pkls/" % (settings.MEDIA_ROOT)
-            print(save_path)
+            # print(save_path)
             with open(save_path, "wb") as f:
                 for content in pic.chunks():
                     f.write(content)
@@ -48,9 +45,8 @@ class Resnet18(APIView):
             }
         serializer = InferenceSerializer(data=data)
         if serializer.is_valid():
-
             serializer.save()
-            print(serializer.data["pic"])
+            # print(serializer.data["pic"])
             dic = resnet18(save_path, pkl_path)
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
@@ -58,10 +54,6 @@ class Resnet18(APIView):
 
 
 class Dcgan(APIView):
-    def get(self, request):
-        inference_list = Inference.objects.all().values("id", "pic")
-        return Response(list(inference_list), status=status.HTTP_200_OK)
-
     @csrf_exempt
     def post(self, request):
         # print(request.data)
@@ -82,10 +74,6 @@ class Dcgan(APIView):
 
 
 class Frcnn(APIView):
-    def get(self, request):
-        inference_list = Inference.objects.all().values("id", "pic");
-        return Response(list(inference_list), status=status.HTTP_200_OK)
-
     @csrf_exempt
     def post(self, request):
         # print(request.POST)
@@ -96,7 +84,7 @@ class Frcnn(APIView):
             }
             save_path = "%s/inference_img/%s" % (settings.MEDIA_ROOT, pic.name,)
             pkl_path = "%s/pkls/" % (settings.MEDIA_ROOT)
-            print(save_path)
+            # print(save_path)
             with open(save_path, "wb") as f:
                 for content in pic.chunks():
                     f.write(content)
@@ -107,10 +95,70 @@ class Frcnn(APIView):
             }
         serializer = InferenceSerializer(data=data)
         if serializer.is_valid():
-
             serializer.save()
-            print(serializer.data["pic"])
-            dic = frcnn(save_path, pkl_path)
+            # print(serializer.data["pic"])
+            dic = faster_rcnn(save_path, pkl_path)
+            return Response(dic, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class Unet(APIView):
+    @csrf_exempt
+    def post(self, request):
+        # print(request.POST)
+        try:
+            pic = request.FILES['pic']
+            data = {
+                "pic": pic.name,
+            }
+            save_path = "%s/inference_img/%s" % (settings.MEDIA_ROOT, pic.name,)
+            pkl_path = "%s/pkls/" % (settings.MEDIA_ROOT)
+            # print(save_path)
+            with open(save_path, "wb") as f:
+                for content in pic.chunks():
+                    f.write(content)
+            f.close()
+        except:
+            data = {
+                "pic": "nonepic.jpg",
+            }
+        serializer = InferenceSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            # print(serializer.data["pic"])
+            dic = unet(save_path, pkl_path)
+            dic["raw"] = save_path
+            return Response(dic, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class Resnet101(APIView):
+    @csrf_exempt
+    def post(self, request):
+        # print(request.POST)
+        try:
+            pic = request.FILES['pic']
+            data = {
+                "pic": pic.name,
+            }
+            save_path = "%s/inference_img/%s" % (settings.MEDIA_ROOT, pic.name,)
+            pkl_path = "%s/pkls/" % (settings.MEDIA_ROOT)
+            # print(save_path)
+            with open(save_path, "wb") as f:
+                for content in pic.chunks():
+                    f.write(content)
+            f.close()
+        except:
+            data = {
+                "pic": "nonepic.jpg",
+            }
+        serializer = InferenceSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            # print(serializer.data["pic"])
+            dic = resnet101(save_path, pkl_path)
+            dic["raw"] = save_path
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

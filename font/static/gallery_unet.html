@@ -187,10 +187,13 @@
         <br/>
         <br/>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
+                <img id="preview_photo_raw" src="" style="display: none">
+            </div>
+            <div class="col-md-4">
                 <img id="preview_photo" src="" style="display: none">
             </div>
-            <div id="result" class="alert alert-primary fade show col-md-6" style="display: none">
+            <div id="result" class="alert alert-primary fade show col-md-4" style="display: none">
                 <span class="close" data-dismiss="alert">×</span>
                 <strong>Success!</strong>
                 <br/>
@@ -223,7 +226,7 @@
                 var formData = new FormData();
                 formData.append('pic', document.getElementById('photoFile').files[0]);
                 $.ajax({
-                    url: "http://127.0.0.1:8000/api/inference/resnet18/",
+                    url: "http://127.0.0.1:8000/api/inference/unet/",
                     type: "post",
                     data: formData,
                     contentType: false,
@@ -231,6 +234,8 @@
                     success: function (data) {
                         $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
                         $("#preview_photo").attr("src", data["addr"]);
+                        $("#preview_photo_raw").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo_raw").attr("src", data["raw"]);
                         $("#result").attr("style", "float: right;height:400px");
                         $("#result-text").replaceWith("<p>" + "Input Img Shape:[" + data["input_shape"] + "]<br/>"
                             + "Infernce Time:" + data["time"] + "s"

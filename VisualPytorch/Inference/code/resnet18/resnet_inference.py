@@ -120,7 +120,7 @@ if __name__ == "__main__":
 def resnet18(pic_name,pkl_path):
     # 1. data
     img = pic_name
-    print(os.path)
+    # print(os.path)
     model_path = pkl_path + "checkpoint_14_epoch.pkl"
     time_tic = time.time()
 

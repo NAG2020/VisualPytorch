@@ -6,7 +6,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>Color Admin | Gallery V2</title>
+    <title>人像分离（Unet）</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
@@ -53,8 +53,8 @@
                         </div>
                         <div class="info">
                             <b class="caret pull-right"></b>
-                            Testuser
-                            <small>摸了</small>
+                            VisualPytorch
+                            <small>2020北航软工课设</small>
                         </div>
                     </a>
                 </li>
@@ -70,11 +70,11 @@
                         <span>Inference样例</span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="active"><a href="gallery_1.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
-                        <li><a href="gallery_1.html">人脸图像生成（DCGAN）</a></li>
-                        <li><a href="gallery.html">目标探测（faster RCNN）</a></li>
-                        <li><a href="gallery.html">人像分离（Unet）</a></li>
-                        <li><a href="gallery.html">语义分割（ResNet-101）</a></li>
+                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
+                        <li><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
+                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
+                        <li class="active"><a href="gallery_unet.html">人像分离（Unet）</a></li>
+                        <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
                     </ul>
                 </li>
                 <!-- begin sidebar minify button -->
@@ -92,13 +92,12 @@
     <div id="content" class="content">
         <!-- begin breadcrumb -->
         <ol class="breadcrumb pull-right">
-            <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:;">Gallery</a></li>
-            <li class="breadcrumb-item active">Gallery v2</li>
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="gallery_unet.html">Unet</a></li>
         </ol>
         <!-- end breadcrumb -->
         <!-- begin page-header -->
-        <h1 class="page-header">图像分类 <small style="color:black;font-size: 18px">基于ResNet-18，<a href="https://baidu.com">查看模型架构</a></small>
+        <h1 class="page-header">人像分离 <small style="color:black;font-size: 18px">基于Unet，<a href="https://baidu.com">查看模型架构</a></small>
         </h1>
         <!-- end page-header -->
         <!-- begin superbox -->
@@ -106,72 +105,23 @@
         <div class="superbox " data-offset="50">
             <div class="superbox-list">
                 <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/ant1.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/ant1-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/ant1.jpg);"></span>
+                    <img data-img="../resources/assets/img/gallery/unet1.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet1-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet1.png);"></span>
                 </a>
             </div>
             <div class="superbox-list">
                 <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/ant2.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/ant2-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/ant2.jpg);"></span>
+                    <img data-img="../resources/assets/img/gallery/unet2.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet2-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet2.png);"></span>
                 </a>
             </div>
             <div class="superbox-list">
                 <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/ant3.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/ant3-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/ant3.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/ant4.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/ant4-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/ant4.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/ant5.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/ant5-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/ant5.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/bee1.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/bee1-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/bee1.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/bee2.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/bee2-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/bee2.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/bee3.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/bee3-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/bee3.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/bee4.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/bee4-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/bee4.jpg);"></span>
-                </a>
-            </div>
-            <div class="superbox-list">
-                <a href="javascript:;" class="superbox-img">
-                    <img data-img="../resources/assets/img/gallery/bee5.jpg"
-                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/bee5-pridict.png>"/>
-                    <span style="background: url(../resources/assets/img/gallery/bee5.jpg);"></span>
+                    <img data-img="../resources/assets/img/gallery/unet3.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet3-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet3.png);"></span>
                 </a>
             </div>
 

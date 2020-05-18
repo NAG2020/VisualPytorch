@@ -76,8 +76,7 @@
                     onclick="open_save()">保存
             </button>
 
-            <div class="modal fade" id="save_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
+            <div class="modal fade" id="save_modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -96,6 +95,28 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
             </div>
+
+
+<!--             <div class="modal fade" id="save_my_layer" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">保存您的层</h4>
+                        </div>
+                        <div class="modal-body"><label class="control-label">该层的名称</label>
+                            <div>
+                                <input type="text" class="form-control" placeholder="我的模型" id="model_name">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" onclick="save_my_layer()">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
 
             <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px">
                 <div class="panel panel-info">
@@ -130,7 +151,7 @@
                             </button>
                           <ul class="dropdown-menu">
                             <li><a href="javascript:void(0);" onclick="load_simple_network_layer()">简单网络层</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <li><a href="javascript:void(0);" onclick="load_my_models()">我的中间层</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
@@ -141,8 +162,6 @@
 
                     </div>
 <!--                     <div class="panel-heading">
-
-
                     </div> -->
                     <div id="collapseOne" class="panel-collapse collapse in">
 
@@ -155,7 +174,7 @@
                                 </div>
                             </div>
                             <div class="ele_in_list">
-                                <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
+                                <div class="node lightblue" id="view_layer" name="view_layer" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
@@ -262,6 +281,9 @@
                             </div>
                         </div>
 
+                        <div class="hidden panel-body" id="my_model">
+
+                        </div>
 
 
                         <div class="panel-body" id="static_form_parent">
@@ -274,7 +296,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">learning_rate</br>(学习率)</label>
+                                    <label class="col-sm-4 control-label">learning_rate<br/>(学习率)</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" placeholder="[0-1]实数，默认为0.01" id="learning_rate" name="learning_rate">
                                     </div>
@@ -313,7 +335,7 @@
                                 </div>
                                 <hr/>
 
-
+<!-- learning_rate_scheduler start ==========================================-->
                                 <div class="form-group">
                                         <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
                                         <div class="col-sm-8">
@@ -390,6 +412,7 @@
                                     </div>
                                 </div>
                                 <hr/>
+<!-- learning_rate_scheduler end ==========================================-->
 <!-- optimizer start ==========================================-->
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
@@ -432,7 +455,7 @@
                                 <div class="form-group" id="amsgrad_form_group">
                                     <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
                                     <div class="col-sm-8 checkbox-inline">
-                                        <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
+                                        <center><input type="checkbox" id="amsgrad" name="amsgrad"></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="momentum_form_group">
@@ -450,7 +473,7 @@
                                 <div class="form-group hidden" id="nesterov_form_group">
                                     <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
                                     <div class="col-sm-8">
-                                        <center><input type="checkbox" id="nesterov" name="amsgrad" checked></center>
+                                        <center><input type="checkbox" id="nesterov" name="amsgrad"></center>
                                     </div>
                                 </div>
                                 <div class="form-group hidden" id="lambd_form_group">
@@ -474,7 +497,7 @@
                                 <div class="form-group hidden" id="centered_form_group">
                                     <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
                                     <div class="col-sm-8 checkbox-inline">
-                                        <center><input type="checkbox" id="centered" name="centered" checked></center>
+                                        <center><input type="checkbox" id="centered" name="centered"></center>
                                     </div>
                                 </div>
                                 <hr/>
@@ -578,7 +601,6 @@
                         </div>
                     </div>
                 </form>
-
                 <form class="form-horizontal hidden" role="form">
                     <div class="form-group">
                         <label class="col-sm-5 control-label">dim</label>
@@ -587,7 +609,6 @@
                         </div>
                     </div>
                 </form>
-
                 <form class="form-horizontal hidden" role="form">
                     <div class="form-group">
                         <label class="col-sm-5 control-label">in_channels</label>
@@ -599,10 +620,7 @@
                             <input type="text" name='out_channels' class="form-control">
                         </div>
                     </div>
-
                 </form>
-
-
         </div> -->
     </div>
 </div>
@@ -628,6 +646,7 @@
         function load_static(){
             $("#simple_network_layer").attr("class","hidden panel-body");
             $("#static_form_parent").attr("class","panel-body");
+            $("#my_model").attr("class","hidden panel-body");
             // alert();
             // document.getElementById("body1").class
         }
@@ -638,6 +657,13 @@
         function load_simple_network_layer(){
             $("#simple_network_layer").attr("class","panel-body");
             $("#static_form_parent").attr("class","hidden panel-body");
+            $("#my_model").attr("class","hidden panel-body");
+        }
+        function load_my_models(){
+            $("#simple_network_layer").attr("class","hidden panel-body");
+            $("#static_form_parent").attr("class","hidden panel-body");
+            $("#my_model").attr("class","panel-body");
+
         }
     </script>
     <!-- bootstrap js -->
@@ -697,321 +723,105 @@
     };
 </script>
 
+
 <script>
-    var canvas_cnt = 0;
-    $("#view_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#linear_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-
-
-    $("#conv1d_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#conv2d_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#element_wise_add_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#concatenate_layer").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#start").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-    $("#end").draggable(
-        {
-            helper: "clone",
-            scope: "ss",
-        }
-    );
-//==========================================以下是新增的
-    $("#softmax_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-    $("#dropout_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-
-    $("#conv_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-
-    $("#pool_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-    $("#activation_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-    $("#RNN_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-    $("#LSTM_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-
-    $("#norm_layer").draggable(
-        {
-            helper:"clone",
-            scope:"ss"
-        }
-    );
-
-
-
-
-    var no_popover = ["start", "element_wise_add_layer"];
-
-    $("#canvas").droppable({
-        scope: "ss",
-        drop: function (event, ui) {
-            var left = parseInt(ui.offset.left - $("#canvas").offset().left);
-            var top = parseInt(ui.offset.top - $("#canvas").offset().top);
-            //alert(ui.draggable.attr("id"));//这么获取是有问题的
-            //这里的ui是移动的控件，有可能有多个，ui.draggable[0]应该就是第一个，
-            var name = ui.draggable[0].id;
-            //var name = ui.draggable.attr("id");
-            canvas_cnt++;
-            var id = "canvas_" + canvas_cnt;
-            if (ui.hasOwnProperty('id')) {
-                id = ui['id'];
-            }
-            /*$(this).append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
-                "onclick='popover_show(\"" + id + "\",\"" + name + "\")'" + " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + $(ui.helper).html() + "</div>");*/
-            $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
-                " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
-            $("#" + id).css("left", left).css("top", top);
-            jsPlumb.draggable(id);
-            $("#" + id).draggable({containment: "parent"});
-            jsPlumb.addEndpoint(id, {anchor: 'Top'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Left'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Right'}, my_end_point);
-            jsPlumb.addEndpoint(id, {anchor: 'Bottom'}, my_end_point);
-            /*doubleclick("#" + id);*/
-            /*$("#" + id).on("click", function () {
-                if (confirm("确定要删除吗?")) {
-                    jsPlumb.removeAllEndpoints($(this).attr("id"));
-                    $(this).remove();
-                }
-            });*/
-
-
-            //先构造原始json
-
-
-
-            if (name == "start") {
-                window.sessionStorage.setItem(id, "{\"start\":\"true\"}");
-            }
-            if (name == "end") {
-                window.sessionStorage.setItem(id, "{\"end\":\"true\"}");
-            }
-            if (name == "element_wise_add_layer") {
-                window.sessionStorage.setItem(id, "{\"element_wise_add_layer\":\"true\"}");
-            }
-            if (name == "view_layer") {
-                window.sessionStorage.setItem(id, "{\"shape\":\"None\"}");
-            }
-            if (name == "linear_layer") {
-                window.sessionStorage.setItem(id, "{\"in_features\":\"1\",\"out_features\":\"1\"}");
-            }
-            if (name == "concatenate_layer") {
-                window.sessionStorage.setItem(id, "{\"dim\":\"0\"}");
-            }
-            if (name == "conv1d_layer") {
-                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
-            }
-            if (name == "conv2d_layer") {
-                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
-            }
-
-            if(name == "softmax_layer"){
-                window.sessionStorage.setItem(id,"{\"dim\":\"None\"}");
-            }
-            if(name == "dropout_layer"){
-                window.sessionStorage.setItem(id,"{\"type\":\"2d\",\"p\":\"0.5\"}");
-            }
-
-// layer_type:下拉框二选一，conv/conv_transpose 无默认值
-
-//             type:下拉框三选一，选项包括1d/2d/3d
-
-//         in_channels(int):输入通道数 非0正数 默认值0//加了个s
-
-//         out_channels(int):输出通道数 非0正数 默认值0//加了个s
-
-//         kernel_size (int) : 卷积核的尺寸 非零正数 默认值0
-
-//         stride (int) : 卷积步长 非零正数 默认值为1
-
-//         padding (int) : 补充0的层数 非负整数 默认值为0
-            if(name == "conv_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"conv\",\"type\":\"2d\",\"in_channels\":\"None\",\"out_channels\":\"None\",\"kernel_size\":\"3\",\"stride\":\"1\",\"padding\":\"0\"}");
-            }
-
-//layer_type:下拉框三选一，选项包括max_pool/avg_pool/max_unpool 无默认值
-// type:下拉框三选一，选项包括1d/2d/3d 无默认值
-
-// kernel_size (int) : 卷积核的尺寸 非0正数 无默认值
-
-// stride (int) : 卷积步长 非0正数 无默认值
-
-// padding (int) : 补充0的层数 非负整数 默认值为0
-
-// ceil_mode:下拉框二选一，ceil/floor 默认值为floor
-
-// count_include_pad:下拉框二选一,true/false 默认值为true
-            if(name == "pool_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"max_pool\",\"type\":\"2d\",\"kernel_size\":\"2\",\"stride\":\"2\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"True\"}");
-            }
-
-// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/PRelu/RRelu 默认值为relu
-
-// relu：无参数
-
-// sigmoid:无参数
-
-// tanh:无参数
-
-// leaky relu:
-
-// negative_slope<正数> 默认值为0.01
-
-// PRelu: 类似leaky relu, 但是负数部分斜率可学习
-
-// weight<正数>权重初始化 非0正实数 默认值为0.25
-// RRelu: 类似leaky relu, 但是负数部分斜率为随机均匀分布
-
-// lower<正数>：均匀分布下限 默认值为0.125
-
-// upper<正数>：均匀分布上限 默认值为0.333
-            if(name == "activation_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"relu\",\"negative_slope\":\"0.01\",\"weight\":\"0.25\",\"lower\":\"0.125\",\"upper\":\"0.333\"}");
-            }
-
-
-            if(name == "RNN_layer"){
-                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\",\"nonlinearity\":\"tanh\"}");
-            }
-
-
-
-            if(name == "LSTM_layer"){
-                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\"}");
-            }
-            if(name == "norm_layer"){
-                window.sessionStorage.setItem(id,"{\"layer_type\":\"batch_norm\",\"type\":\"2d\",\"num_features\":\"None\",\"num_groups\":\"None\",\"num_channel\":\"None\"}");
-            }
-
-
-            $("#" + id).bind("contextmenu", function () {
-                return false;
-            });
-            /*$("#" + id).mousedown(function (e) {
-                //右键为3
-
-                if (3 == e.which) {
-
-                    if (confirm("确定要删除吗?")) {
-                        jsPlumb.removeAllEndpoints($(this).attr("id"));
-                        $(this).remove();
-
-                    }
-                }
-            });*/
-
-            var has_move = false;
-            var has_down = false;
-
-                $("#" + id).bind({
-                    mousedown: function (e) {
-                        has_move = false;
-                        has_down = true;
-                        return;
-                    },
-                    mousemove: function (e) {
-                        has_move = true;
-                        return;
-                    },
-                    mouseup: function (e) {
-                        if (!has_move) {
-                            if (window.sessionStorage.hasOwnProperty("active_node")) {
-                                $("#" + window.sessionStorage.getItem("active_node")).removeClass("selected");
-                            }
-                            window.sessionStorage.setItem("active_node", id);
-                            $("#" + id).addClass("selected");
-
-                            show_form(id, name);
-                        }
-                        has_move = false;
-                        has_down = false;
-                        return;
-                    }
-                });
-
-            /*var tmp_list = searh_layer[name].split("id_anchor");
-            var popover_content= tmp_list[0]+"popover_"+id+tmp_list[1];*/
-        }
-    });
-
-    jsPlumb.bind('click', function (conn, originalEvent) {
-        jsPlumb.deleteConnection(conn);
-
-    });
-
-</script>
-<script>
+    var model_net = {};
     $(document).ready(function () {
 
         //根据解析页面传参
 
         $("#header").load("../base/header.html");
         $("#footer").load("../base/footer.html");
+
+        //先构造原始json
+        // try {
+        //     var user_info = window.sessionStorage.getItem('userinfo');
+        //     var user_id = JSON.stringify(user_info).id;
+        // } catch (e) {
+        //     alert("请登录");
+        //     window.location.href = "../index.html";
+        // }
+
+        //alert(JSON.parse(user_info).id);
+        //var query_object = getQueryObject(window.location.href)
+        //var user_id = query_object['id'];
+        //var user_id = JSON.parse(user_info).id;
+        window.sessionStorage.setItem("userinfo",{"id":1});
+        var user_info = window.sessionStorage.getItem('userinfo');
+        var user_id = JSON.stringify(user_info).id;
+
+        var data = {
+            "id": user_id
+        };
+
+        // for (var i = 0; i < 5; i++) {
+        //     var thisid = "my_model_"+ i;
+        //     $("#my_model").append(
+        //         "<div class=\"ele_in_list\">"+
+        //             "<div class=\"node lightblue model_node\" id=\"" + "my_model_"+ i + "\" name=\""+ 222 +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
+        //             i+
+        //             "</div>" +
+        //         "</div>"
+        //     );
+        //     //model_net[thisid] = {"a":1};
+        //     model_net[thisid] = {"canvas":{
+        //       "type": "sequential",
+        //       //sequential表示嵌套模型，base表示单个网络层
+        //       "name": "sequential_"+i,
+        //       //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
+        //       "attribute": {
+        //         "in": 1,
+        //         //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
+        //         "out": 2,
+        //         //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
+        //         //对于Sequential attribute的结构
+        //         "nets": 1
+        //         },
+        //         "nets_conn": 2
+        //       },"static":2};
+        // }
+
+
+
+        $.ajax({
+            type: 'GET',
+            url: gobalConfig.base_url + 'api/NeuralNetwork/network/?id=' + user_id,
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=UTF-8',
+            beforeSend: function (XMLHttpRequest) {
+                var token = window.sessionStorage.getItem('token');
+                if (token != null) {
+                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+                }
+            },
+            success: function (data_return) {
+                var thisid = "my_model_" + data_return[i]["id"];
+                for (var i = 0; i < data_return.length; i++) {
+                    $("#my_model").append(
+                        "<div class=\"ele_in_list\">"+
+                            "<div class=\"node lightblue model_node\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
+                            data_return[i]["name"]+
+                            "</div>" +
+                        "</div>"
+                    );
+                    model_net[thisid] ={"canvas":data_return[i]["structure"]["canvas"]};
+                }
+            },
+            error: function (data_return) {
+                alert("吴凡写的有问题");
+                //window.location.href = "canvas.html";
+
+            }
+        });
+
+        $(".model_node").draggable(
+            {
+                helper:"clone",
+                scope:"ss"
+            }
+        );
+
+
 
         $("#learning_rate_scheduler").change(function(event) {
             var val = $("#learning_rate_scheduler").find("option:selected").val();
@@ -1432,12 +1242,14 @@
                     console.log(net_work);
                     var name = net_work["name"];
                     var temp_structure = eval('(' + net_work["structure"] + ')');
+                    alert(temp_structure);
                     var structure = eval('(' + temp_structure["structure"] + ')');
-                    console.log(temp_structure);
-                    //console.log(temp_structure['structure']);
-                    var nets = temp_structure['canvas'][0]['attribute']['nets'];
-                    var nets_conn = temp_structure['canvas'][0]['nets_conn'];
-                    var static_val = temp_structure['static'];
+                    alert(structure);
+                    // console.log(structure);
+                    // console.log(structure['canvas'][0]['nets_conn']);
+                    var nets = structure['canvas'][0]['attribute']['nets'];
+                    var nets_conn = structure['canvas'][0]['nets_conn'];
+                    var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
                     $("#model_name").text(name);
@@ -1447,7 +1259,7 @@
                             var ui = {
                                 'offset': {
                                     'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left ,
-                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top 
+                                    'top': parseInt(val['top'].split('px')) + $("#canvas").offset().top
                                 },
                                 'draggable': [{
                                     "id": val['name'],
@@ -1554,6 +1366,220 @@
     });
 </script>
 
+
+
+<script>
+    var canvas_cnt = 0;
+    $(".node").draggable(
+        {
+            helper: "clone",
+            scope: "ss",
+        }
+    );
+
+
+    var no_popover = ["start", "element_wise_add_layer"];
+
+
+    $("#canvas").droppable({
+        scope: "ss",
+        drop: function (event, ui) {
+            var left = parseInt(ui.offset.left - $("#canvas").offset().left);
+            var top = parseInt(ui.offset.top - $("#canvas").offset().top);
+            //alert("取属性获得的:"+ ui.draggable.attr("id"));//这么获取是有问题的
+            //这里的ui是移动的控件，有可能有多个，ui.draggable[0]应该就是第一个，
+            var name = ui.draggable[0].id;
+            //alert("【】获得的:" + ui.draggable[0].id);
+            //var name = ui.draggable.attr("id");
+            canvas_cnt++;
+            var id = "canvas_" + canvas_cnt;
+            if (ui.hasOwnProperty('id')) {
+                id = ui['id'];
+            }
+            /*$(this).append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
+                "onclick='popover_show(\"" + id + "\",\"" + name + "\")'" + " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + $(ui.helper).html() + "</div>");*/
+            $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
+                " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
+            $("#" + id).css("left", left).css("top", top);
+            jsPlumb.draggable(id);
+            $("#" + id).draggable({containment: "parent"});
+            jsPlumb.addEndpoint(id, {anchor: 'Top'}, my_end_point);
+            jsPlumb.addEndpoint(id, {anchor: 'Left'}, my_end_point);
+            jsPlumb.addEndpoint(id, {anchor: 'Right'}, my_end_point);
+            jsPlumb.addEndpoint(id, {anchor: 'Bottom'}, my_end_point);
+            /*doubleclick("#" + id);*/
+            /*$("#" + id).on("click", function () {
+                if (confirm("确定要删除吗?")) {
+                    jsPlumb.removeAllEndpoints($(this).attr("id"));
+                    $(this).remove();
+                }
+            });*/
+
+
+
+
+
+            if (name == "start") {
+                window.sessionStorage.setItem(id, "{\"start\":\"true\"}");
+            }
+            else if (name == "end") {
+                window.sessionStorage.setItem(id, "{\"end\":\"true\"}");
+            }
+            else if (name == "element_wise_add_layer") {
+                window.sessionStorage.setItem(id, "{\"element_wise_add_layer\":\"true\"}");
+            }
+            else if (name == "view_layer") {
+                window.sessionStorage.setItem(id, "{\"shape\":\"None\"}");
+            }
+            else if (name == "linear_layer") {
+                window.sessionStorage.setItem(id, "{\"in_features\":\"1\",\"out_features\":\"1\"}");
+            }
+            else if (name == "concatenate_layer") {
+                window.sessionStorage.setItem(id, "{\"dim\":\"0\"}");
+            }
+            else if (name == "conv1d_layer") {
+                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
+            }
+            else if (name == "conv2d_layer") {
+                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
+            }
+
+            else if(name == "softmax_layer"){
+                window.sessionStorage.setItem(id,"{\"dim\":\"None\"}");
+            }
+            else if(name == "dropout_layer"){
+                window.sessionStorage.setItem(id,"{\"type\":\"2d\",\"p\":\"0.5\"}");
+            }
+
+// layer_type:下拉框二选一，conv/conv_transpose 无默认值
+
+//             type:下拉框三选一，选项包括1d/2d/3d
+
+//         in_channels(int):输入通道数 非0正数 默认值0//加了个s
+
+//         out_channels(int):输出通道数 非0正数 默认值0//加了个s
+
+//         kernel_size (int) : 卷积核的尺寸 非零正数 默认值0
+
+//         stride (int) : 卷积步长 非零正数 默认值为1
+
+//         padding (int) : 补充0的层数 非负整数 默认值为0
+            else if(name == "conv_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"conv\",\"type\":\"2d\",\"in_channels\":\"None\",\"out_channels\":\"None\",\"kernel_size\":\"3\",\"stride\":\"1\",\"padding\":\"0\"}");
+            }
+
+//layer_type:下拉框三选一，选项包括max_pool/avg_pool/max_unpool 无默认值
+// type:下拉框三选一，选项包括1d/2d/3d 无默认值
+
+// kernel_size (int) : 卷积核的尺寸 非0正数 无默认值
+
+// stride (int) : 卷积步长 非0正数 无默认值
+
+// padding (int) : 补充0的层数 非负整数 默认值为0
+
+// ceil_mode:下拉框二选一，ceil/floor 默认值为floor
+
+// count_include_pad:下拉框二选一,true/false 默认值为true
+            else if(name == "pool_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"max_pool\",\"type\":\"2d\",\"kernel_size\":\"2\",\"stride\":\"2\",\"padding\":\"0\",\"ceil_mode\":\"floor\",\"count_include_pad\":\"True\"}");
+            }
+
+// layer_type:下拉框，包括relu/sigmoid/tanh/leaky relu/PRelu/RRelu 默认值为relu
+
+// relu：无参数
+
+// sigmoid:无参数
+
+// tanh:无参数
+
+// leaky relu:
+
+// negative_slope<正数> 默认值为0.01
+
+// PRelu: 类似leaky relu, 但是负数部分斜率可学习
+
+// weight<正数>权重初始化 非0正实数 默认值为0.25
+// RRelu: 类似leaky relu, 但是负数部分斜率为随机均匀分布
+
+// lower<正数>：均匀分布下限 默认值为0.125
+
+// upper<正数>：均匀分布上限 默认值为0.333
+            else if(name == "activation_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"relu\",\"negative_slope\":\"0.01\",\"weight\":\"0.25\",\"lower\":\"0.125\",\"upper\":\"0.333\"}");
+            }
+
+
+            else if(name == "RNN_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\",\"nonlinearity\":\"tanh\"}");
+            }
+
+
+
+            else if(name == "LSTM_layer"){
+                window.sessionStorage.setItem(id,"{\"input_size\":\"None\",\"hidden_size\":\"None\",\"num_layers\":\"1\"}");
+            }
+            else if(name == "norm_layer"){
+                window.sessionStorage.setItem(id,"{\"layer_type\":\"batch_norm\",\"type\":\"2d\",\"num_features\":\"None\",\"num_groups\":\"None\",\"num_channel\":\"None\"}");
+            }
+            else {
+                window.sessionStorage.setItem(id,"{\"id\":"+name+"}");
+            }
+
+            $("#" + id).bind("contextmenu", function () {
+                return false;
+            });
+            /*$("#" + id).mousedown(function (e) {
+                //右键为3
+                if (3 == e.which) {
+                    if (confirm("确定要删除吗?")) {
+                        jsPlumb.removeAllEndpoints($(this).attr("id"));
+                        $(this).remove();
+                    }
+                }
+            });*/
+
+            var has_move = false;
+            var has_down = false;
+
+                $("#" + id).bind({
+                    mousedown: function (e) {
+                        has_move = false;
+                        has_down = true;
+                        return;
+                    },
+                    mousemove: function (e) {
+                        has_move = true;
+                        return;
+                    },
+                    mouseup: function (e) {
+                        if (!has_move) {
+                            if (window.sessionStorage.hasOwnProperty("active_node")) {
+                                $("#" + window.sessionStorage.getItem("active_node")).removeClass("selected");
+                            }
+                            window.sessionStorage.setItem("active_node", id);
+                            $("#" + id).addClass("selected");
+
+                            show_form(id, name);
+                        }
+                        has_move = false;
+                        has_down = false;
+                        return;
+                    }
+                });
+
+            /*var tmp_list = searh_layer[name].split("id_anchor");
+            var popover_content= tmp_list[0]+"popover_"+id+tmp_list[1];*/
+        }
+    });
+
+    jsPlumb.bind('click', function (conn, originalEvent) {
+        jsPlumb.deleteConnection(conn);
+
+    });
+
+</script>
+
+
 <script>
     function open_save() {
         $("#save_modal").modal('show');
@@ -1561,6 +1587,10 @@
         if (object.hasOwnProperty("name")) {
             $("#model_name").val(object["name"]);
         }
+    }
+
+    function open_sava_as_medium(){
+        $("#save_layer").modal('show');
     }
 </script>
 

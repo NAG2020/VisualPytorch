@@ -733,27 +733,25 @@
         $("#header").load("../base/header.html");
         $("#footer").load("../base/footer.html");
 
-        //先构造原始json
-        // try {
-        //     var user_info = window.sessionStorage.getItem('userinfo');
-        //     var user_id = JSON.stringify(user_info).id;
-        // } catch (e) {
-        //     alert("请登录");
-        //     window.location.href = "../index.html";
-        // }
+
+        try {
+            var user_info = window.sessionStorage.getItem('userinfo');
+            var user_id = JSON.parse(user_info).id;
+        } catch (e) {
+            alert("请登录");
+            window.location.href = "../index.html";
+        }
 
         //alert(JSON.parse(user_info).id);
         //var query_object = getQueryObject(window.location.href)
         //var user_id = query_object['id'];
         //var user_id = JSON.parse(user_info).id;
-        window.sessionStorage.setItem("userinfo",{"id":1});
-        var user_info = window.sessionStorage.getItem('userinfo');
-        var user_id = JSON.stringify(user_info).id;
+        // var user_info = window.sessionStorage.getItem('userinfo');
+        // var user_id = JSON.stringify(user_info).id;
 
         var data = {
             "id": user_id
         };
-
         // for (var i = 0; i < 5; i++) {
         //     var thisid = "my_model_"+ i;
         //     $("#my_model").append(
@@ -795,8 +793,13 @@
                 }
             },
             success: function (data_return) {
-                var thisid = "my_model_" + data_return[i]["id"];
+                // console.log(data_return);
+                // console.log(data_return[0]["structure"]);
+
+                // console.log(canvas);
+
                 for (var i = 0; i < data_return.length; i++) {
+                    var thisid = "my_model_" + data_return[i]["id"];
                     $("#my_model").append(
                         "<div class=\"ele_in_list\">"+
                             "<div class=\"node lightblue model_node\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
@@ -804,8 +807,15 @@
                             "</div>" +
                         "</div>"
                     );
-                    model_net[thisid] ={"canvas":data_return[i]["structure"]["canvas"]};
+                    var canvas = JSON.parse(data_return[i]["structure"]).canvas;
+                    model_net[thisid] ={"canvas":canvas};
                 }
+                $(".model_node").draggable(
+                    {
+                        helper:"clone",
+                        scope:"ss"
+                    }
+                );
             },
             error: function (data_return) {
                 alert("吴凡写的有问题");
@@ -814,12 +824,7 @@
             }
         });
 
-        $(".model_node").draggable(
-            {
-                helper:"clone",
-                scope:"ss"
-            }
-        );
+
 
 
 
@@ -1376,6 +1381,7 @@
             scope: "ss",
         }
     );
+
 
 
     var no_popover = ["start", "element_wise_add_layer"];

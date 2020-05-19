@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>人脸图像生成（DCGAN）</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/animate/animate.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style-responsive.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/theme/default.css" rel="stylesheet" id="theme1"/>
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../resources/assets/plugins/superbox/css/superbox.css" rel="stylesheet" id="theme"/>
+    <link href="../resources/assets/plugins/dropzone/min/dropzone.min.css" rel="stylesheet"/>
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../resources/assets/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="../javascript/base_service.js"></script>
+    <!-- ================== END BASE JS ================== -->
+</head>
+<body>
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #sidebar -->
+    <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+            <!-- begin sidebar user -->
+            <ul class="nav">
+                <li class="nav-profile">
+                    <a href="javascript:;" data-toggle="nav-profile">
+                        <div class="cover with-shadow"></div>
+                        <div class="image">
+                            <img src="../resources/templatesRes/img/favicon.ico" alt=""/>
+                        </div>
+                        <div class="info">
+                            <b class="caret pull-right"></b>
+                            VisualPytorch
+                            <small>2020北航软工课设</small>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- end sidebar user -->
+            <!-- begin sidebar nav -->
+            <ul class="nav">
+                <li class="nav-header"><a href="index.html">返回首页</a></li>
+                <li class="has-sub active">
+                    <a href="javascript:;">
+                        <b class="caret"></b>
+                        <i class="fa fa-image"></i>
+                        <span>Inference样例</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
+                        <li class="active"><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
+                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
+                        <li><a href="gallery_unet.html">人像分割（Unet）</a></li>
+                        <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
+                    </ul>
+                </li>
+                <!-- begin sidebar minify button -->
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                        class="fa fa-angle-double-left"></i></a></li>
+                <!-- end sidebar minify button -->
+            </ul>
+            <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+    </div>
+    <div class="sidebar-bg"></div>
+    <!-- end #sidebar -->
+    <!-- begin #content -->
+    <div id="content" class="content">
+        <!-- begin breadcrumb -->
+        <ol class="breadcrumb pull-right">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="gallery_dcgan.html">DCGAN</a></li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- begin page-header -->
+        <h1 class="page-header">人脸图像生成 <small style="color:black;font-size: 18px">基于DCGAN，<a href="https://baidu.com">查看模型架构</a></small>
+        </h1>
+        <!-- end page-header -->
+        <!-- begin superbox -->
+
+        <div class="superbox " data-offset="50">
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/dcgan1.png">
+                    <span style="background: url(../resources/assets/img/gallery/dcgan1.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/dcgan2.png">
+                    <span style="background: url(../resources/assets/img/gallery/dcgan2.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/dcgan3.png">
+                    <span style="background: url(../resources/assets/img/gallery/dcgan3.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/dcgan4.png">
+                    <span style="background: url(../resources/assets/img/gallery/dcgan4.png);"></span>
+                </a>
+            </div>
+
+
+        </div>
+        <!-- end superbox -->
+    </div>
+    <!-- end #content -->
+
+
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+            class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+</div>
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">自定义参数</h4>
+    </div>
+    <div class="panel-body text-inverse">
+        <form>
+            <div class="form-group">
+                <label>num_img</label>
+                <input type="text" class="form-control" id="num_img" placeholder="生成图片数量">
+            </div>
+            <div class="form-group">
+                <label>nrow</label>
+                <input type="text" class="form-control" id="nrow" placeholder="每行展示数量">
+            </div>
+            <div class="form-group">
+                <label>随机噪声是否连续</label>
+                <select class="form-control" id="noise">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+
+                </select>
+                <span class="help-block "> 选取时，在两个随机向量中产生等间距分布的num_img-2个向量，生成连续变化的照片，如上图例2/4所示</span>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="Upload()">Submit</button>
+        </form>
+        <div class="row">
+            <div class="col-md-5">
+                <img id="preview_photo" src="" style="display: none">
+            </div>
+            <div id="result" class="alert alert-primary fade show col-md-6" style="display: none">
+                <span class="close" data-dismiss="alert">×</span>
+                <strong>Success!</strong>
+                <br/>
+                <p id="result-text"></p>
+
+            </div>
+        </div>
+        <script>
+            function Upload() {
+                //alert($("#num_img").val() + " " + $("#nrow").val() + " " + $("#noise").val());
+                var num_img = parseInt($("#num_img").val())
+                var nrow = parseInt($("#nrow").val());
+                var noise_continue = parseInt($("#noise").val());
+                //window.location.reload()
+                var data = {
+                    "num_img": num_img,
+                    "nrow": nrow,
+                    "noise_continue": noise_continue,
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1:8000/api/inference/dcgan/',
+                    data: JSON.stringify(data),
+                    async: false,
+                    contentType: 'application/json; charset=UTF-8',
+                    success: function (data_return) {
+                        data = data_return;
+                        $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo").attr("src", data["addr"]);
+                        $("#result").attr("style", "float: right;height:400px");
+                        $("#result-text").replaceWith("<p>"+"<br/>"
+                            + "<b>Infernce Time:</b>" + data["time"] + "s"
+                            + "</p>");
+                    },
+                    error: function (data_return) {
+                        alert("Error!")
+                    }
+                });
+            }
+        </script>
+    </div>
+</div>
+<!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">DCGAN人脸图像生成简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <div  id='write'  class = 'is-node'><h4><a name="人脸图像生成dcgan）简介" class="md-header-anchor"></a><span>人脸图像生成（dcgan）简介</span></h4><h5><a name="问题描述" class="md-header-anchor"></a><span>问题描述：</span></h5><p><span>通过已有的人脸数据库，学习数据的分布，并生成大量相同分布的人脸图像。我们希望生成的图像尽可能的真实</span></p><p><a href='https://arxiv.org/abs/1406.2661'><span>《Generative Adversarial Networks》</span></a><span>，简写GAN，即生成对抗网络在2014年提出，是一种可以生成特定分布数据的模型。GAN训练模式与传统模式最大的差异在于原本的损失函数被替换为判别器（D network），而原本的模型被替换为了生成器（G network）。我们的判别器充当损失函数的角色督促生成器产生尽量令人满意的结果，由于判别器最初也是一个网络，也需要被训练，因此采用了交替训练的方式。</span></p><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093827984-1315100605.png" style="zoom:50%;" /></p><p>&nbsp;</p><h5><span>GCGAN网络结构：</span></h5><p><span>生成器（由100维随机向量生成64</span><span>*</span><span>64</span><span>*</span><span>3图片）如图所，判别器则相反（由图片卷积到单一输出，表示real/fake），详见</span><a href='https://blog.csdn.net/andrewseu/article/details/78230310'><span>DCGAN结构解读</span></a><span>，及本任务</span><a href='http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html'><span>数据项目</span></a></p><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200516231526300-2144716283.png" style="zoom:50%;" /></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5><ul><li><span>num_img = 16</span><span>	</span><span># 生成图片数量</span></li><li><span>nrow = 4  # 每行展示数量</span></li><li><span>noise_continue = False  # 随机噪声是否连续：当取True时，在两个随机向量中产生等间距分布的num_img-2个向量，生成连续变化的照片，可以清晰地看出一个人脸转换为令一个的过程。</span></li></ul><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5><p><span>通过网格图生成num_img个图像，每张图大小均为64*64 + 运行时间</span></p></div>
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
+
+
+<!-- end page container -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="../resources/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../resources/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../resources/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--[if lt IE 9]>
+<script src="../resources/assets/crossbrowserjs/html5shiv.js"></script>
+<script src="../resources/assets/crossbrowserjs/respond.min.js"></script>
+<script src="../resources/assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script src="../resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../resources/assets/plugins/js-cookie/js.cookie.js"></script>
+<script src="../resources/assets/js/theme/default.min.js"></script>
+<script src="../resources/assets/js/apps.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../resources/assets/plugins/superbox/js/jquery.superbox.js"></script>
+<script src="../resources/assets/js/demo/gallery-v2.demo.min.js"></script>
+<script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
+<script src="../resources/assets/js/demo/render.highlight.js"></script>
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+<script>
+    $(document).ready(function () {
+        App.init();
+        GalleryV2.init();
+        Highlight.init();
+    });
+</script>
+</body>
+</html>

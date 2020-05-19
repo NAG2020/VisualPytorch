@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Model Details</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="../../resources/templatesRes/img/favicon.ico">
+        <!-- Place favicon.ico in the root directory -->
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+    
+        <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <!--<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+    
+    <link rel="stylesheet" href="../../resources/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+    <!-- Font-Awesome css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
+    <!-- pe-icon-7-stroke css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+    <!-- Flaticon css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
+    <!-- nivo slider css -->
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+    <!--原有head-->    
+        <script type="text/javascript" src="../../resources/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="../../resources/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
+        <link href="../../css/layer.css" rel="stylesheet">
+        <link href="../../css/buttons.css" rel="stylesheet">
+        <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
+        <script type="text/javascript" src="../../javascript/graph_action.js"></script>
+        <script type="text/javascript" src="../../javascript/layer_form.js"></script>
+        <script type="text/javascript" src="../../javascript/base_service.js"></script>
+    </head>
+
+
+<body>
+    <nav id="header"></nav>
+    <script>
+        $("#header").load("../base/header.html");
+    </script>
+    <!--解决在ie火狐浏览器等中不兼容出现布局错误的问题，暂时性解决方案-->
+    <div class="single-product-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-7" id="canvas">
+                    <div style="height:1000px;border:0.5px solid black">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-5">       
+                    <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px; display: none;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseOne">
+                                        可选用网络层
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+        
+                                <div class="panel-body" id="simple_network_layer">
+                                    <div class="ele_in_list">
+                                        <div class="node start little_green" id="start">
+                                            开始
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="view_layer" name="这么个玩意儿" type="button" data-container="body" data-toggle="popover">
+                                            reshape层
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="linear_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            全连接层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv1d_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            一维卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list hidden">
+                                        <div class="node lightblue" id="conv2d_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            二维卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="element_wise_add_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            元素级相加层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="concatenate_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            channel维度拼接层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="softmax_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            softmax层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="dropout_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            dropout层
+                                        </div>
+                                    </div>
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="conv_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            卷积层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="pool_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            池化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="activation_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            激活层
+                                        </div>
+                                    </div>
+        
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="RNN_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            递归神经网络
+                                        </div>
+                                    </div>
+        
+        
+        
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="LSTM_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            长周期神经网络
+                                        </div>
+                                    </div>
+                                    <div class="ele_in_list">
+                                        <div class="node lightblue" id="norm_layer" type="button"
+                                             data-container="body" data-toggle="popover">
+                                            标准化层
+                                        </div>
+                                    </div>
+        
+                                    <div class="ele_in_list">
+                                        <div class="node start little_green" id="end">
+                                            结束
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseTwo">
+                                        elements_group_2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#left_ele_collapse"
+                                       href="#collapseThree">
+                                        elements_group_3
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-product-details">
+                        <div style="margin-top:20px">
+                            <h2 id="model_name">模型的名字</h2>
+                            <div class="panel-body" id="static_form_parent">
+                                <form class="form-horizontal" role="form" id="static_form">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">epoch<br/>(训练轮次)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为10" id="epoch" name="epoch">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">learning_rate</br>(学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="[0-1]实数，默认为0.01" id="learning_rate" name="learning_rate">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">batch_size<br/>(每次训练个数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数,默认为1" id="batch_size" name="batch_size">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">dataset<br/>(数据)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="dataset" name="data">
+                                                <option value="mnist" selected>mnist</option>
+                                                <option value="cifar10">cifar10</option>
+                                                <option value="stl10">stl10</option>
+                                                <option value="svhn">svhn</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">ifshuffle<br/>(数据集是否打乱)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                                <center><input type="checkbox" id="ifshuffle" name="ifshuffle" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">platform<br/>(运行平台)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="platform" name="data">
+                                                <option value="cpu" selected>cpu</option>
+                                                <option value="gpu">gpu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="form-group">
+                                            <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
+                                            <div class="col-sm-8">
+                                                <select id="learning_rate_scheduler" name="learning_rate_scheduler" class="form-control">
+                                                    <option value="None" selected>None</option>
+                                                    <option value="StepLR">StepLR</option>
+                                                    <option value="MultiStepLR">MultiStepLR</option>
+                                                    <option value="ExponentialLR">ExponentialLR</option>
+                                                    <option value="CosineAnnealingLR">CosineAnnealingLR</option>
+                                                    <option value="ReduceLROnPleateau">ReduceLROnPleateau</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="step_size_form_group">
+                                        <label class="col-sm-4 control-label">step_size<br/>(衰减周期)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为50" id="step_size" name="step_size">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="gamma_form_group">
+                                        <label class="col-sm-4 control-label">gamma<br/>(衰减幅度)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认为0.1" id="gamma" name="gamma">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="milestones_form_group">
+                                        <label class="col-sm-4 control-label">milestones<br/>(衰减时间点)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="非负整数序列，默认为50" id="milestones" name="milestones">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="T_max_form_group">
+                                        <label class="col-sm-4 control-label">T_max<br/>(下降周期)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认为50" id="T_max" name="T_max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="eta_min_form_group">
+                                        <label class="col-sm-4 control-label">eta_min<br/>(最小学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数，默认为0" id="eta_min" name="eta_min">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="factor_form_group">
+                                        <label class="col-sm-4 control-label">factor<br/>(调整系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.1" id="factor" name="factor">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="patience_form_group">
+                                        <label class="col-sm-4 control-label">patience<br/>(最小学习率)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为10" id="patience" name="patience">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="cooldown_form_group">
+                                        <label class="col-sm-4 control-label">cooldown<br/>(冷却时间)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为10" id="cooldown" name="cooldown">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="verbose_form_group">
+                                        <label class="col-sm-4 control-label">verbose<br/>(打印日志)</label>
+                                            <div class="col-sm-8 checkbox-inline">
+                                                <center><input type="checkbox" id="verbose" name="verbose" checked></center>
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="min_lr_form_group">
+                                        <label class="col-sm-4 control-label">min_lr<br/>(学习率下限)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-4" id="min_lr" name="min_lr">
+                                        </div>
+                                    </div>
+                                    <hr/>
+    <!-- optimizer start ==========================================-->
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="optimizer" name="optimizer">
+                                                <option value="Adam" selected>Adam</option>
+                                                <option value="SGD">SGD</option>
+                                                <option value="RMSprop">RMSprop</option>
+                                                <option value="Adammax">Adammax</option>
+                                                <option value="ASGD">ASGD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="beta1_form_group">
+                                        <label class="col-sm-4 control-label">beta1<br/>(梯度移动平均值的系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.9" id="beta1" name="beta1">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group" id="beta2_form_group">
+                                        <label class="col-sm-4 control-label">beta2<br/>(梯度平方移动平均值的系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为0.999" id="beta2" name="beta2">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group" id="eps_form_group">
+                                        <label class="col-sm-4 control-label">eps<br/>(分母稳定项)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1内实数，默认值为1e-8" id="eps" name="eps">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="weight_decay_form_group">
+                                        <label class="col-sm-4 control-label">weight_decay<br/>(L2正则项系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="weight_decay" name="weight_decay">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="amsgrad_form_group">
+                                        <label class="col-sm-4 control-label">amsgrad<br/>(使用AMSGrad变体)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="amsgrad" name="amsgrad" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="momentum_form_group">
+                                        <label class="col-sm-4 control-label">momentum<br/>(调整系数)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0" id="momentum" name="momentum">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="dampening_form_group">
+                                        <label class="col-sm-4 control-label">dampening<br/>(动量衰减)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数，默认值为10" id="dampening" name="dampening">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="nesterov_form_group">
+                                        <label class="col-sm-4 control-label">nesterov<br/>(冷却时间)</label>
+                                        <div class="col-sm-8">
+                                            <center><input type="checkbox" id="nesterov" name="amsgrad" checked></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="lambd_form_group">
+                                        <label class="col-sm-4 control-label">lambd<br/>(衰减项)</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" placeholder="0-1间实数，默认值为1e-4" id="lambd" name="lambd">
+                                            </div>
+                                    </div>
+                                    <div class="form-group hidden" id="alpha_form_group">
+                                        <label class="col-sm-4 control-label">alpha<br/>(eta更新幂)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="0-1间实数，默认值为0.75" id="alpha" name="alpha">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="t0_form_group">
+                                        <label class="col-sm-4 control-label">t0<br/>(开始平均的点)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正整数，默认值为1e6" id="t0" name="t0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="centered_form_group">
+                                        <label class="col-sm-4 control-label">centered<br/>(梯度通过方差归一化)</label>
+                                        <div class="col-sm-8 checkbox-inline">
+                                            <center><input type="checkbox" id="centered" name="centered" checked></center>
+                                        </div>
+                                    </div>
+                                    <hr/>
+    <!-- optimizer end ==========================================-->
+    <!-- loss start ==========================================-->
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">loss<br/>(损失函数)</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="loss" name="loss">
+                                                <option value="MSELoss" selected>MSELoss</option>
+                                                <option value="CrossEntropyLoss">CrossEntropyLoss</option>
+                                                <option value="L1Loss">L1Loss</option>
+                                                <option value="NLLLoss">NLLLoss</option>
+                                                <option value="BCELoss">BCELoss</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="reduction_form_group">
+                                        <label class="col-sm-4 control-label">reduction<br/>(输出的缩减)</label>
+                                        <div class="col-sm-8">
+                                            <select id="reduction" name="reduction" class="form-control">
+                                                    <option value="mean" selected>mean</option>
+                                                    <option value="sum" >sum</option>
+                                                    <option value="none" >none</option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group hidden" id="weight_form_group">
+                                        <label class="col-sm-4 control-label">weight<br/>(每个分类损失的权重)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="正数序列，默认为None" id="weight" name="weight">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" id="ignore_index_form_group">
+                                        <label class="col-sm-4 control-label">ignore_index<br/>(忽略的目标)</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="整数，默认为None" id="ignore_index" name="ignore_index">
+                                        </div>
+                                    </div>
+                                    <div class="product-attributes clearfix" style="text-align:center">
+                                    <span>
+                                    <a class="cart-btn btn-default" id="modify">
+                                                <i class="flaticon-arrows-1"></i>
+                                                编辑此模型
+                                            </a>
+                                    </span>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="footer"></nav>
+    <script>
+        $("#footer").load("../base/footer.html");
+    </script>
+</body>
+
+<script>
+    var my_end_point = {
+        endpoint: ["Dot", {radius: 5}],
+        connectorStyle: {
+            stroke: "#cccccc",
+            strokeWidth: 3,
+
+        },
+        isSource: true,
+        isTarget: true,
+        maxConnections: -1,
+        connector: ["StateMachine", {stub: [40, 60], gap: 5, cornerRadius: 5, alwaysRespectStubs: true}],
+        connectorOverlays: [["Arrow", {width: 10, length: 10, location: 1}]],
+        connectionsDetachable: true,
+
+    };
+</script>
+
+<script>
+    var canvas_cnt = 0;
+    // $("#view_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#linear_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#conv1d_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#conv2d_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#element_wise_add_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#concatenate_layer").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+    // $("#start").draggable(
+    //     {
+    //         helper: "clone",
+    //         scope: "ss",
+    //     }
+    // );
+
+    var no_popover = ["start", "element_wise_add_layer"];
+
+    $("#canvas").droppable({
+        scope: "ss",
+        drop: function (event, ui) {
+            var left = parseInt(ui.offset.left - $("#canvas").offset().left);
+            var top = parseInt(ui.offset.top - $("#canvas").offset().top);
+            var name = ui.draggable[0].id;
+            canvas_cnt++;
+            var id = "canvas_" + canvas_cnt;
+            if (ui.hasOwnProperty('id')) {
+                id = ui['id'];
+            }
+            /*$(this).append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
+                "onclick='popover_show(\"" + id + "\",\"" + name + "\")'" + " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + $(ui.helper).html() + "</div>");*/
+            $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
+                " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
+            $("#" + id).css("left", left).css("top", top);
+            //jsPlumb.draggable(id);
+            //$("#" + id).draggable({containment: "parent"});
+            // jsPlumb.addEndpoint(id, {anchor: 'Top'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Left'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Right'}, my_end_point);
+            // jsPlumb.addEndpoint(id, {anchor: 'Bottom'}, my_end_point);
+            /*doubleclick("#" + id);*/
+            /*$("#" + id).on("click", function () {
+                if (confirm("确定要删除吗?")) {
+                    jsPlumb.removeAllEndpoints($(this).attr("id"));
+                    $(this).remove();
+                }
+            });*/
+            if (name == "start") {
+                window.sessionStorage.setItem(id, "{\"start\":\"true\"}");
+            }
+            if (name == "element_wise_add_layer") {
+                window.sessionStorage.setItem(id, "{\"element_wise_add_layer\":\"true\"}");
+            }
+            if (name == "view_layer") {
+                window.sessionStorage.setItem(id, "{\"shape\":\"1\"}");
+            }
+            if (name == "concatenate_layer") {
+                window.sessionStorage.setItem(id, "{\"dim\":\"1\"}");
+            }
+            if (name == "linear_layer") {
+                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\"}");
+            }
+            if (name == "conv1d_layer") {
+                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
+            }
+            if (name == "conv2d_layer") {
+                window.sessionStorage.setItem(id, "{\"in_channels\":\"1\",\"out_channels\":\"1\",\"kernel_size\":\"1\",\"stride\":\"1\",\"padding\":\"0\",\"activity\":\"None\",\"pool_way\":\"None\",\"pool_kernel_size\":\"\",\"pool_stride\":\"\",\"pool_padding\":\"0\"}");
+            }
+            $("#" + id).bind("contextmenu", function () {
+                return false;
+            });
+            /*$("#" + id).mousedown(function (e) {
+                //右键为3
+
+                if (3 == e.which) {
+
+                    if (confirm("确定要删除吗?")) {
+                        jsPlumb.removeAllEndpoints($(this).attr("id"));
+                        $(this).remove();
+
+                    }
+                }
+            });*/
+
+            var has_move = false;
+            var has_down = false;
+
+                $("#" + id).bind({
+                    mousedown: function (e) {
+                        has_move = false;
+                        has_down = true;
+                        return;
+                    },
+                    mousemove: function (e) {
+                        has_move = true;
+                        return;
+                    },
+                    mouseup: function (e) {
+                        if (!has_move) {
+                            if (window.sessionStorage.hasOwnProperty("active_node")) {
+                                $("#" + window.sessionStorage.getItem("active_node")).removeClass("selected");
+                            }
+                            window.sessionStorage.setItem("active_node", id);
+                            $("#" + id).addClass("selected");
+
+                            show_form(id, name);
+                        }
+                        has_move = false;
+                        has_down = false;
+                        return;
+                    }
+                });
+
+            /*var tmp_list = searh_layer[name].split("id_anchor");
+            var popover_content= tmp_list[0]+"popover_"+id+tmp_list[1];*/
+        }
+    });
+
+    jsPlumb.bind('click', function (conn, originalEvent) {
+        jsPlumb.deleteConnection(conn);
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        var query_object = getQueryObject(window.location.href);
+        if (query_object.hasOwnProperty("id")) {
+            var net_id = query_object["id"];
+        }
+        $("#modify").attr("onclick", "open_model("+net_id+")");
+        $("input").attr("disabled", "disabled");
+        $("select").attr("disabled", "disabled");
+        //根据解析页面传参
+
+        var query_object = getQueryObject(window.location.href);
+        if (query_object.hasOwnProperty("id")) {
+            var net_id = query_object["id"];
+            $.ajax({
+                type: 'GET',
+                url: gobalConfig.base_url + 'api/NeuralNetwork/network/' + net_id + '/',
+                beforeSend: function (XMLHttpRequest) {
+                    var token = window.sessionStorage.getItem('token');
+                    if (token != null) {
+                        XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+                    }
+                },
+                success: function (net_work) {
+                    console.log(net_work);
+                    var name = net_work["name"];
+                    var structure = eval('(' + net_work["structure"] + ')');
+                    console.log(structure);
+                    console.log(structure['canvas'][0]['nets_conn']);
+                    var nets = structure['canvas'][0]['attribute']['nets'];
+                    var nets_conn = structure['canvas'][0]['nets_conn'];
+                    var static_val = structure['static'];
+                    var drop_function = $("#canvas").droppable('option', 'drop');
+                    var event;
+                    $("#model_name").text(name);
+                    jQuery.each(nets, function (id, val) {
+
+                        jsPlumb.ready(function () {
+                            var ui = {
+                                'offset': {
+                                    'left': parseInt(val['left'].split('px')) + $("#canvas").offset().left,
+                                    'top': parseInt(val['top'].split('px'))  + $("#canvas").offset().top
+                                },
+                                'draggable': [{
+                                    "id": val['name'],
+                                    "innerHTML": $("#" + val['name'])[0].innerHTML
+                                }],
+                                'id': id
+                            };
+                            drop_function(event, ui);
+                        });
+                        window.sessionStorage.setItem(id, JSON.stringify(val['attribute']));
+                    });
+                    jQuery.each(nets_conn, function (id, val) {
+                        jsPlumb.ready(function () {
+                            jsPlumb.connect({
+                                "source": val['source']['id'],
+                                "target": val['target']['id'],
+                                "anchors": [val['source']['anchor_position'], val['target']['anchor_position']],
+                                "endpoint": ["Dot", {radius: 1}],
+                                "paintStyle": {
+                                    stroke: "#cccccc",
+                                    strokeWidth: 3,
+
+                                },
+                                "maxConnections": -1,
+                                "connector": ["StateMachine", {
+                                    stub: [40, 60],
+                                    gap: 5,
+                                    cornerRadius: 5,
+                                    alwaysRespectStubs: true
+                                }],
+                                "overlays": [["Arrow", {width: 10, length: 10, location: 1}]],
+                                "connectionsDetachable": true,
+                            })
+                        });
+                    });
+                    $("#epoch").val(static_val['epoch']);
+                    $('#learning_rate').val(static_val['learning_rate']);
+                    $('#batch_size').val(static_val['batch_size']);
+                    $("#dataset").find("option").removeAttr("selected");
+                    $("#dataset").find("[value = \"" + static_val['data'] + "\"]").attr("selected", "selected");
+                    $("#optimzier").find("option").removeAttr("selected");
+                    $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
+                    //$("#loss").find("option").removeAttr("selected");
+                    //$("#reduction").find("option").removeAttr("selected");
+
+                }
+            });
+
+        }
+        $.ajax({
+            type: 'POST',
+            data: "{\"name\":\"index\"}",
+            url: gobalConfig.base_url + 'api/journal/visit/',
+            contentType: 'application/json; charset=UTF-8',
+            beforeSend: function (XMLHttpRequest) {
+                var token = window.sessionStorage.getItem('token');
+                if (token != null) {
+                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
+                }
+            },
+        })
+
+    });
+</script>
+
+<script>
+    function open_save() {
+        $("#save_modal").modal('show');
+        var object = getQueryObject(window.location.href);
+        if (object.hasOwnProperty("name")) {
+            $("#model_name").val(object["name"]);
+        }
+    }
+</script>
+
+<script>
+    function show_form(id, name) {
+
+        $("#parameters").children().remove();
+        if(no_popover.includes(name)){
+            //$("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
+            return;
+        }
+        $("#parameters").append(get_content(name, id));
+        //$("#parameters").append("<a href='javascript:void(0);' onclick='delete_layer(\"" + id + "\")' class='button button-caution button-rounded'>删除该模块</a>");
+
+        if (name == "conv1d_layer") {
+            var data = eval('(' + window.sessionStorage.getItem(id) + ')');
+            $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
+            $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
+        }
+        if (name == "conv2d_layer") {
+            var data = eval('(' + window.sessionStorage.getItem(id) + ')');
+            $("#" + id + "activity").find("[value = \"" + data["activity"] + "\"]").attr("selected", "selected");
+            $("#" + id + "pool_way").find("[value = \"" + data["pool_way"] + "\"]").attr("selected", "selected");
+        }
+        $("[name='pool_way']").bind('change', function () {
+            if ($(this).val() == 'None') {
+                $(this).parent().parent().find("[name='pool_kernel_size']").attr("disabled", true);
+                $(this).parent().parent().find("[name='pool_stride']").attr("disabled", true);
+                $(this).parent().parent().find("[name='pool_padding']").attr("disabled", true);
+            }
+            else {
+                $(this).parent().parent().find("[name='pool_kernel_size']").removeAttr("disabled");
+                $(this).parent().parent().find("[name='pool_stride']").removeAttr("disabled");
+                $(this).parent().parent().find("[name='pool_padding']").removeAttr("disabled");
+            }
+        });
+
+        $("input").attr("disabled", "disabled");
+        $("select").attr("disabled", "disabled");
+
+        $("#parameters").find("input,select").change(function () {
+            switch ($("#form" + id).attr("name")) {
+                case "view_layer":
+                    save_attr_view_layer_form(id);
+                    break;
+                case "concatenate_layer":
+                    save_attr_concatenate_layer_form(id);
+                    break;
+                case "linear_layer":
+                    save_attr_linear_layer_form(id);
+                    break;
+                case "conv1d_layer":
+                    save_attr_conv1d_layer_form(id);
+                    break;
+                case "conv2d_layer":
+                    save_attr_conv2d_layer_from(id);
+                    break;
+                default:
+                    return;
+            }
+        })
+    }
+</script>
+
+<script>
+    function delete_layer(layer_id) {
+        jsPlumb.ready(function () {
+            jsPlumb.removeAllEndpoints($("#" + layer_id).attr("id"));
+            $("#" + layer_id).remove();
+        });
+        $("#parameters").children().remove();
+    }
+</script>
+
+<script>
+    function open_model(id) {
+        window.location.href="create_models.html?id="+id;
+    }
+</script>
+</html>

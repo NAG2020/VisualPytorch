@@ -73,7 +73,7 @@
                         <li class="active"><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
                         <li ><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
                         <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
-                        <li><a href="gallery_unet.html">人像分离（Unet）</a></li>
+                        <li><a href="gallery_unet.html">人像分割（Unet）</a></li>
                         <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
                     </ul>
                 </li>
@@ -187,36 +187,6 @@
     <!-- end scroll to top btn -->
 </div>
 <!-- begin panel -->
-<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
-    <div class="panel-heading">
-        <div class="panel-heading-btn">
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
-                    class="fa fa-expand"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
-                    class="fa fa-minus"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
-                    class="fa fa-times"></i></a>
-        </div>
-        <h4 class="panel-title">ResNet-18图像分类简介</h4>
-    </div>
-    <div class="panel-body">
-        <dl>
-            <dt class="text-inverse">推理基本步骤</dt>
-            <dd>1.使用图像分类经典模型resnet18进行蜜蜂/蚂蚁图像分类</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dt class="text-inverse m-t-10">Euismod</dt>
-            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-            <dt class="text-inverse m-t-10">Malesuada porta</dt>
-            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-
-        </dl>
-    </div>
-</div>
-<!-- end panel -->
-<!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
     <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -233,8 +203,6 @@
         <input type="file" id="photoFile" style="display: none;" onchange="upload()">
         <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>
         <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>蜜蜂</strong>或<strong>蚂蚁</strong>图片！</span>
-        <br/>
-        <br/>
         <div class="row">
             <div class="col-md-5">
                 <img id="preview_photo" src="" style="display: none">
@@ -294,6 +262,29 @@
     </div>
 </div>
 <!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">ResNet-18图像分类简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+<div  id='write'  class = 'is-node'><h4><a name="图像分类resnet18）简介" class="md-header-anchor"></a><span>图像分类（resnet18）简介</span></h4><p><span>问题描述：使用图像分类经典模型resnet18进行蜜蜂/蚂蚁图像分类。</span></p><h5><a name="模型如何完成图像分类" class="md-header-anchor"></a><span>模型如何完成图像分类？</span></h5><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093845763-391328764.png" style="zoom:50%;" /></p><p>&nbsp;</p><p><span>Resnet在2015年由</span><a href='(https://blog.csdn.net/csdnldp/article/details/78313087)'><span>《Deep Residual Learning for Image Recognition》</span></a><span>提出， 网上有大量的文章讲解其原理和思路，简单来说，resnet巧妙地利用了shortcut连接，解决了深度网络中模型退化的问题。下面是不同层数resnet的网络结构：</span></p><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200516231052540-105631160.png" style="zoom:50%;" /></p><p><span>下图展示了18层resnet与50层resnet结构对比：</span></p><p><img src="https://upload-images.jianshu.io/upload_images/15074510-9020942365d29220.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img" style="zoom:50%;" /></p><h5><a name="推理基本步骤" class="md-header-anchor"></a><span>推理基本步骤：</span></h5><ol start='' ><li><span>获取数据与模型</span></li><li><span>数据变换，如RGB → 4D-Tensor</span></li><li><span>前向传播</span></li><li><span>输出保存预测结果</span></li></ol><h5><a name="inference阶段注意事项" class="md-header-anchor"></a><span>Inference阶段注意事项：</span></h5><ol start='' ><li><span>确保 model处于eval状态而非training</span></li><li><span>设置torch.no_grad()，减少内存消耗</span></li><li><span>数据预处理需保持一致，RGB o rBGR？</span></li></ol><p><span>输入：任意大小图片（含有蜜蜂或蚂蚁）</span></p><p><span>输出：分类图像+描述（包括输入尺寸，时间）</span></p><h5><a name="样例描述" class="md-header-anchor"></a><span>样例描述：</span></h5><p><span>ant1-ant5均为蚂蚁图像，bee1-bee5为蜜蜂图像。其中ant5被错分为蜜蜂，可能因为背景是花，同样bee5也被错分，由此可见，我们使用resnet18训练出来的模型的分类有点依赖背景而非主体。</span></p></div>
+
+
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->

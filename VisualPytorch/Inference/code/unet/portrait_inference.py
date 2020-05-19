@@ -105,7 +105,7 @@ def unet(pic_name, pkl_path):
     img_hwc = img_tensor.cpu().data.numpy()[0, :, :, :].transpose((1, 2, 0)).astype("uint8")
     mask_pred_gray = mask_pred.squeeze() * 255
     plt.imshow(mask_pred_gray, cmap="gray")
-    plt.show()
+    # plt.show()
     pic_out = pic_name[:-4] + '_out.jpg'
     plt.savefig(pic_out)
 

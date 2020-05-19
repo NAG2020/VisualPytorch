@@ -73,7 +73,7 @@
                         <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
                         <li><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
                         <li class="active"><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
-                        <li><a href="gallery_unet.html">人像分离（Unet）</a></li>
+                        <li><a href="gallery_unet.html">人像分割（Unet）</a></li>
                         <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
                     </ul>
                 </li>
@@ -153,36 +153,6 @@
     <!-- end scroll to top btn -->
 </div>
 <!-- begin panel -->
-<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
-    <div class="panel-heading">
-        <div class="panel-heading-btn">
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
-                    class="fa fa-expand"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
-                    class="fa fa-minus"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
-                    class="fa fa-times"></i></a>
-        </div>
-        <h4 class="panel-title">ResNet-18图像分类简介</h4>
-    </div>
-    <div class="panel-body">
-        <dl>
-            <dt class="text-inverse">推理基本步骤</dt>
-            <dd>1.使用图像分类经典模型resnet18进行蜜蜂/蚂蚁图像分类</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dt class="text-inverse m-t-10">Euismod</dt>
-            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-            <dt class="text-inverse m-t-10">Malesuada porta</dt>
-            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-
-        </dl>
-    </div>
-</div>
-<!-- end panel -->
-<!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
     <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -198,9 +168,7 @@
     <div class="panel-body text-inverse">
         <input type="file" id="photoFile" style="display: none;" onchange="upload()">
         <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>
-        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>蜜蜂</strong>或<strong>蚂蚁</strong>图片！</span>
-        <br/>
-        <br/>
+        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>人群</strong>图片！</span>
         <div class="row">
             <div class="col-md-5">
                 <img id="preview_photo" src="" style="display: none">
@@ -262,6 +230,27 @@
     </div>
 </div>
 <!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">Faster-Rcnn目标探测简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+<div  id='write'  class = 'is-node'><h4><a name="目标检测fasterrcnn）简介" class="md-header-anchor"></a><span>目标检测（faster_rcnn）简介</span></h4><h5><a name="问题描述" class="md-header-anchor"></a><span>问题描述：</span></h5><p><span>物体识别和物体定位的综合，不仅仅要识别出物体属于哪个分类，更重要的是得到物体在图片中的具体位置</span></p><h5><a name="目标检测两要素" class="md-header-anchor"></a><span>目标检测两要素</span></h5><ol><li><span>分类：分类向量[p0, …, pn]</span></li><li><span>回归：回归边界框[x1, y1, x2, y2]</span></li></ol><p><span>现阶段实现</span><a href='https://blog.csdn.net/u013510838/article/details/79947553'><span>目标检测的算法</span></a><span>一般分为one-stage与two-stage两种，multi-stage已被淘汰。one-stage直接通过主干网络给出类别和位置信息，没有使用RPN网路；而two-stage第一步是训练RPN网络，第二步是训练目标区域检测的网络，网络的准确度高、速度相对One-stage慢。</span></p><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093808149-2011493620.png" style="zoom:50%;" /></p><p>&nbsp;</p><p><h5><span>网络结构：</span></h5><a href='https://zhuanlan.zhihu.com/p/31426458'><span>Faster RCNN</span></a><span>在2015年被提出，相比于之前的two-stage算法，在速度上有较大的提升，成为了目标探测领域主流的算法。RCNN全称Regions with CNN features，从名字也可以看出，RCNN的检测算法是先找出一些可能是物体的区域（即RPN层，如图Proposal生成过程），再把该区域的尺寸归一化成卷积网络输入的尺寸（即ROI Pooling层），最后判断该区域到底是不是物体，是哪个物体，以及对是物体的区域进行进一步回归的微微调整学习，使得框的更加准确。</span></p><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200516231718884-148738639.jpg" style="zoom: 80%;" /></p><p><span>目标检测推荐github： </span><a href='https://github.com/amusi/awesome-object-detection' target='_blank' class='url'>https://github.com/amusi/awesome-object-detection</a></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5><p><span>	</span><span>任意大小图片</span></p><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5><p><span>	</span><span>探测图 + 描述（输入大小，时间，标签及得分）</span></p></div>
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->

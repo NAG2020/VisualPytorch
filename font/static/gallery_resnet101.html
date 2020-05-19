@@ -139,36 +139,6 @@
     <!-- end scroll to top btn -->
 </div>
 <!-- begin panel -->
-<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
-    <div class="panel-heading">
-        <div class="panel-heading-btn">
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
-                    class="fa fa-expand"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
-                    class="fa fa-minus"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
-                    class="fa fa-times"></i></a>
-        </div>
-        <h4 class="panel-title">ResNet-18图像分类简介</h4>
-    </div>
-    <div class="panel-body">
-        <dl>
-            <dt class="text-inverse">推理基本步骤</dt>
-            <dd>1.使用图像分类经典模型resnet18进行蜜蜂/蚂蚁图像分类</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dd>A description list is perfect for defining terms.</dd>
-            <dt class="text-inverse m-t-10">Euismod</dt>
-            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-            <dt class="text-inverse m-t-10">Malesuada porta</dt>
-            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-
-        </dl>
-    </div>
-</div>
-<!-- end panel -->
-<!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
     <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -184,9 +154,7 @@
     <div class="panel-body text-inverse">
         <input type="file" id="photoFile" style="display: none;" onchange="upload()">
         <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>
-        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>蜜蜂</strong>或<strong>蚂蚁</strong>图片！</span>
-        <br/>
-        <br/>
+        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>相关分割</strong>图片！</span>
         <div class="row">
             <div class="col-md-4">
                 <img id="preview_photo_raw" src="" style="display: none">
@@ -252,6 +220,51 @@
     </div>
 </div>
 <!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">ResNet-101语义分割简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <div id='write' class='is-node'><h4><a name="语义分割resnet101）简介" class="md-header-anchor"></a><span>语义分割（resnet101）简介</span>
+            </h4><h5><a name="问题" class="md-header-anchor"></a><span>问题：</span></h5>
+                <p>
+                    <span>将图像中每个像素分类为21类（&#39;</span><span>_</span><span>_</span><span>background</span><span>_</span><span>_</span><span>&#39;, &#39;aeroplane&#39;, &#39;bicycle&#39;, &#39;bird&#39;, &#39;boat&#39;, &#39;bottle&#39;, &#39;bus&#39;, &#39;car&#39;, &#39;cat&#39;, &#39;chair&#39;, &#39;cow&#39;, &#39;diningtable&#39;, &#39;dog&#39;, &#39;horse&#39;, &#39;motorbike&#39;, &#39;person&#39;, &#39;pottedplant&#39;, &#39;sheep&#39;, &#39;sofa&#39;, &#39;train&#39;, &#39;tvmonitor&#39;）的一种</span>
+                </p><h5><a name="网络结构" class="md-header-anchor"></a><span>网络结构：</span></h5>
+                <p><span>2017年提出的</span><a
+                        href='https://www.jianshu.com/p/755b001bfe38'><span>《deeplabv3+》</span></a><span>是一种非常先进的基于深度学习的图像语义分割方法，可对物体进行像素级分割，解决了语义分割方向的两个问题: </span><strong><span>一是 feature map 的分辨率过低导致后续在恢复为原图分辨率时不够精确，二是对多尺度物体的检测表现不好</span></strong><span>。</span>
+                </p>
+                <ul>
+                    <li><span>deeplabv1采用了</span><strong><span>1.孔洞卷积：借助孔洞卷积，增大感受野；2.CRF：采用CRF进行mask后处理</span></strong>
+                    </li>
+                    <li>
+                        <span>deeplabv2采用了</span><strong><span>ASPP（Atrous spatial pyramid pooling ）：解决多尺度问题</span></strong>
+                    </li>
+                    <li><span>deeplabv3采用了</span><strong><span>1. 孔洞卷积的串行； 2. ASPP的并行</span></strong></li>
+                    <li><span>deeplabv3+</span><strong><span>加上Encoder-Decoder思想</span></strong><span>，具体结构如下：</span>
+                    </li>
+                </ul>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200516232150622-921601675.png"
+                        style="zoom:50%;"/></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5>
+                <p><span>一张任意大小的图片</span></p><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5>
+                <p><span>语义分割图 + 描述（输入大小，输出大小，描述）</span></p><h5><a name="样例说明"
+                                                                   class="md-header-anchor"></a><span>样例说明：</span></h5>
+                <p><span>对于样例3中的小狗的头“嫁接”小猫的身体，网络会把猫的身体错分为狗的一部分。由此可见网络所提取的特征更多的是头部的特征，因为身体与头部相连才被分为一块。</span></p></div>
+
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->

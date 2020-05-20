@@ -40,6 +40,7 @@
 
         <!-- modernizr css 这个比较特殊不知道为啥 -->
         <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/canvg/1.0/canvg.min.js"></script>
 
         <script type="text/javascript" src="../../resources/html2canvas.js"></script>
         <script type="text/javascript" src="../../resources/canvas2image.js"></script>
@@ -90,10 +91,16 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">保存您的模型</h4>
                         </div>
-                        <div class="modal-body"><label class="control-label">模型名称</label>
+                        <div class="modal-body">
+                            <label class="control-label">模型名称</label>
                             <div>
                                 <input type="text" class="form-control" placeholder="我的模型" id="model_name">
                             </div>
+                            <br>
+                            <label class="control-label">模型简介</label>
+                            <textarea class="form-control" placeholder="用简短的文字对模型进行介绍，最多40字符" maxlength="40" id="model_info"></textarea>
+                            <br>
+                            <input type="checkbox" id="shared"> 开启分享，让这个模型出现在模型市场中
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -565,7 +572,7 @@
         </div>
         <div class="col-md-6" id="canvas">
             <!--<div style="height:1000px;border:0.5px solid black;background:url(../img/grid.png) no-repeat;background-size:100%;opacity: .6">-->
-            <div style="height:1000px;border:0.5px solid black">
+            <div style="height:1000px;border:0.5px solid black" id="border">
             </div>
         </div>
         <div class="col-md-2">
@@ -1668,14 +1675,7 @@
 </script>
 
 <script>
-    function canvas_gen() {
-        html2canvas(document.querySelector("#canvas")).then(canvas => {
-        document.body.appendChild(canvas);
-        $("canvas").attr("id", "cvs");
-        canvas = document.getElementById("cvs");
-        Canvas2Image.saveAsImage(canvas, 540, 1000, 'png');
-        });
-    }
+    
 </script>
 
 </html>

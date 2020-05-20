@@ -241,10 +241,17 @@ function get_network() {
         "static": static
     };
 
+    //var graph = await canvas_gen();
+    //graph.then(num =>{console.log(num)});
+    //console.log(graph);
+
     var ret = {
         "name" : $("#model_name").val(),
-        "structure":structure
+        "intro" : $("#model_info").val(),
+        "shared" : $("#shared").val(),
+        "structure" : structure
     }
+    //console.log(ret);
     //saveJSON(ret,"a.json");
     return ret;
 }
@@ -313,14 +320,103 @@ function translate_network() {
     });
 }
 
-
 function save_network() {
+    //首先生成缩略图
+    $("#save_modal").modal('hide');
+    window.pageYoffset = 0;
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    $("#" + window.sessionStorage.getItem("active_node")).removeClass("selected");
+    $("#canvas").find("#border").attr("style","height:1000px;border:0px");
+    //获取节点高度，后面为克隆节点设置高度。
+    
+    var height = $("#canvas").height()
+    //克隆节点，默认为false，不复制方法属性，为true是全部复制。
+    var cloneDom = $("#canvas").clone(true);
+    //设置克隆节点的css属性，因为之前的层级为0，我们只需要比被克隆的节点层级低即可。
+    cloneDom.css({
+        "background-color": "white",
+        "position": "absolute",
+        "top": "0px",
+        "z-index": "-1",
+        "height": height
+    });
+    $("body").append(cloneDom);
+    cloneDom.attr("id", "canvas1");
+
+    if (typeof html2canvas !== 'undefined') {
+        //以下是对svg的处理
+        var nodesToRecover = [];
+        var nodesToRemove = [];
+        var svgElem = $("#canvas1").find('svg');//divReport为需要截取成图片的dom的id
+
+        svgElem.each(function (index, node) {
+            var parentNode = node.parentNode;
+            var svg = node.outerHTML.trim();
+
+            var canvas = document.createElement('canvas');
+            canvg(canvas, svg); 
+            if (node.style.position) {
+                canvas.style.position += node.style.position;
+                canvas.style.left += node.style.left;
+                canvas.style.top += node.style.top;
+            }
+
+            nodesToRecover.push({
+                parent: parentNode,
+                child: node
+            });
+            parentNode.removeChild(node);
+
+            nodesToRemove.push({
+                parent: parentNode,
+                child: canvas
+            });
+
+            parentNode.appendChild(canvas);
+        });
+    }
+    var dataURL;
+    html2canvas(document.querySelector("#canvas1"),{
+        //Whether to allow cross-origin images to taint the canvas
+        allowTaint: true,
+        //Whether to test each image if it taints the canvas before drawing them
+        taintTest: false,
+    }
+    ).then(canvas => {
+        $("#canvas1").remove();
+        document.body.appendChild(canvas);
+        //$("body").append("<canvas id='cvs'><canvas>");
+        $("canvas").attr("id", "cvs");
+        // var cvs = document.getElementById("cvs");
+        // console.log(cvs);
+        var cvs = document.getElementById("cvs");
+        //var cvs = $("canvas");
+        //console.log(cvs);
+        dataURL = cvs.toDataURL();
+        //Canvas2Image.saveAsImage(canvas, 760, 1000, 'png');
+        $("#canvas").find("#border").attr("style","height:1000px;border:0.5px solid black");
+        $("canvas").remove();
+        var data = get_network();
+        data["graph"] = dataURL;
+        //上一版本中的save_network
+        //如果可能的话，希望使用异步回调更漂亮地解决
+        save_network_origin(data);
+    });
+    //console.log(dataURL);
+    //return Promise.resolve(dataURL);            
+}
+
+async function save_network_origin(data) {
     $("#save_modal").modal('hide');
     // if (!window.sessionStorage.hasOwnProperty("userinfo")) {
     //     jump_to_login();
     //     return
     // }
-    var data = get_network();
+    //var data = await get_network();
+    // data.then(num => {
+    //     console.log(num);
+    // })
     console.log(data);
     var query_object = getQueryObject(window.location.href);
     if (query_object.hasOwnProperty("id")) {

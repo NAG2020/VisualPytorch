@@ -40,6 +40,27 @@
             <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
             <link href="../../css/layer.css" rel="stylesheet">
             <link href="../../css/buttons.css" rel="stylesheet">
+            <style>
+                .single-model{
+                    height: 200px;
+                    border: 0.5px solid;
+                }
+                .single-model-graph{
+                    height: 200px;
+                    width: 152px;
+                    background-color: coral;
+                }
+                .single-model-right{
+                    padding-top: 10px;
+                }
+                .single-model-name{
+                    font-weight: bold;
+                }
+                .single-model-intro{
+                    padding-top: 10px;
+                    font-style: italic;
+                }
+            </style>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -262,11 +283,11 @@
                                     </ul>
                                 </div>
                             </div> -->
-                            <div class="tab-content">
+                            <div class="container">
                                 <div class="row tab-pane fade in active" id="home">
                                     <div class="shop-single-product-area">
-                                        <div class="col-md-3 col-sm-6">
-											<div class="single-banner">
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<!-- <div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
 														<img alt="" src="img/featured/1.jpg">
@@ -298,9 +319,18 @@
 														<i class="fa fa-star"></i>
 													</div>
 												</div>
-											</div>
+											</div> -->
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-md-8 single-model-graph"></div>
+                                                    <div class="col-sm-4 col-md-4  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -335,7 +365,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -370,7 +400,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -405,7 +435,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -440,7 +470,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -475,7 +505,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -510,7 +540,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-6">
+                                        <div class="col-md-3 col-sm-6 single-model">
 											<div class="single-banner">
 												<div class="product-wrapper">
 													<a href="#" class="single-banner-image-wrapper">
@@ -582,7 +612,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                <div id="menu1" class="tab-pane fade">
+                                <!-- <div id="menu1" class="tab-pane fade">
                                     <div class="row">
                                         <div class="single-shop-product">
                                             <div class="col-xs-12 col-sm-5 col-md-4">
@@ -713,7 +743,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -760,7 +790,7 @@
         $(document).ready(function() {
             $("#header").load("../base/header.html");
             $("#footer").load("../base/footer.html");
-        }
-        );
+            
+        });
     </script>
 </html>

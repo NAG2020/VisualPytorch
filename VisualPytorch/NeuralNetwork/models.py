@@ -14,6 +14,7 @@ class Network(models.Model):
     description = models.TextField(null=True)
     png = models.TextField(null=True)
     shared = models.BooleanField(default=False)
+    sharable = models.BooleanField(default=False)
 
 
 

@@ -1,0 +1,798 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="UTF-8">
+        <title>Model Market</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">        
+            <!-- all css here -->   
+            <link rel="stylesheet" href="../../resources/bootstrap.min.css">
+            <!-- animate css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+            <!-- jquery-ui.min css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+            <!-- meanmenu css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+            <!-- Font-Awesome css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
+            <!-- pe-icon-7-stroke css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+            <!-- Flaticon css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+            <!-- venobox css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
+            <!-- nivo slider css -->
+    <!--         <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
+            <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" /> -->
+            <!-- owl.carousel css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+            <!-- style css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
+            <!-- responsive css -->
+            <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+    
+            <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+    
+            <!-- modernizr css 这个比较特殊不知道为啥 -->
+            <script src="../../resources/jquery.min.js"></script>
+            <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>  
+            <script type="text/javascript" src="../../javascript/graph_action.js"></script>
+            <link href="../../resources/bootstrap.min.css" rel="stylesheet">
+            <link href="../../resources/jquery-ui.css" rel="stylesheet">
+            <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
+            <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
+            <link href="../../css/layer.css" rel="stylesheet">
+            <link href="../../css/buttons.css" rel="stylesheet">
+
+            <style>
+                .single-model{
+                    height: 200px;
+                    border: 0.5px solid;
+                }
+                .single-model-graph{
+                    height: 200px;
+                    width: 152px;
+                    background-color: coral;
+                }
+                .single-model-right{
+                    padding-top: 10px;
+                }
+                .single-model-name{
+                    font-weight: bold;
+                }
+                .single-model-intro{
+                    padding-top: 10px;
+                    font-style: italic;
+                }
+            </style>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <div id="header">
+        </div>
+
+		<!-- Mobile Menu Start -->
+		<div class="mobile-menu-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="mobile-menu">
+							<nav id="dropdown">
+								<ul>
+                                    <li><a href="index.html">HOME</a></li>
+                                    <li><a href="shop.html">FEATURED</a></li>
+                                    <li><a href="shop.html">REVIEW BOOK</a></li>
+                                    <li><a href="about.html">ABOUT AUTHOR</a></li>
+                                    <li><a href="#">pages</a>
+                                        <ul>
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="cart.html">Cart Page</a></li>
+                                            <li><a href="checkout.html">Check Out</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a href="shop.html">Shopping Page</a></li>
+                                            <li><a href="single-product.html">Single Shop Page</a></li>
+                                            <li><a href="wishlist.html">Wishlist Page</a></li>
+                                            <li><a href="404.html">404 Page</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">CONTACT</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<!-- Mobile Menu End -->   
+        <!-- Breadcrumbs Area Start -->
+        <div class="breadcrumbs-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="breadcrumbs">
+					       <h2>SHOP LEFT SIDEBAR</h2> 
+					       <ul class="breadcrumbs-list">
+						        <li>
+						            <a title="Return to Home" href="index.html">Home</a>
+						        </li>
+						        <li>SHOP LEFT SIDEBAR</li>
+						    </ul>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div> 
+        <!-- Breadcrumbs Area Start -->
+        <!-- Shop Area Start -->
+        <div class="shopping-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="shop-widget">
+                            <div class="shop-widget-top">
+                                <aside class="widget widget-categories">
+                                    <h2 class="sidebar-title text-center">CATEGORY</h2>
+                                    <ul class="sidebar-menu">
+                                        <li>
+                                            <a href="#">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                LEARNING                                          
+                                                <span>(5)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                LIGHTING                                            
+                                                <span>(8)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                              <i class="fa fa-angle-double-right"></i>
+                                               LIVING ROOMS
+                                                <span>(4)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                LAMP                                           
+                                                <span>(7)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </aside> 
+                                <aside class="widget shop-filter">
+                                    <h2 class="sidebar-title text-center">PRICE SLIDER</h2>
+                                    <div class="info-widget">
+                                        <div class="price-filter">
+                                            <div id="slider-range"></div>
+                                            <div class="price-slider-amount">
+                                                <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                                <div class="widget-buttom">
+                                                    <input type="submit"  value="Filter"/>  
+                                                    <input type="reset" value="CLEAR" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>                            
+                            </div>
+                            <div class="shop-widget-bottom">
+                                <aside class="widget widget-tag">
+                                    <h2 class="sidebar-title">POPULAR TAG</h2>
+                                    <ul class="tag-list">
+                                        <li>
+                                            <a href="#">e-book</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">writer</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">book’s</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">eassy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">nice</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">author</a>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                <aside class="widget widget-seller">
+                                    <h2 class="sidebar-title">TOP SELLERS</h2>
+                                    <div class="single-seller">
+                                        <div class="seller-img">
+                                            <img src="img/shop/1.jpg" alt="" />
+                                        </div>
+                                        <div class="seller-details">
+                                            <a href="shop.html"><h5>Cold mountain</h5></a>
+                                            <h5>$ 50.00</h5>
+                                            <ul>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="single-seller">
+                                        <div class="seller-img">
+                                            <img src="img/shop/2.jpg" alt="" />
+                                        </div>
+                                        <div class="seller-details">
+                                            <a href=""><h5>The historian</h5></a>
+                                            <h5>$ 50.00</h5>
+                                            <ul>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                                <li><i class="fa fa-star icolor"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="shop-tab-area">
+                            <!-- <div class="shop-tab-list">
+                                <div class="shop-tab-pill pull-left">
+                                    <ul>
+                                        <li class="active" id="left"><a data-toggle="pill" href="#home"><i class="fa fa-th"></i><span>Grid</span></a></li>
+                                        <li><a data-toggle="pill" href="#menu1"><i class="fa fa-th-list"></i><span>List</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="shop-tab-pill pull-right">
+                                    <ul>
+                                        <li class="product-size-deatils">
+                                            <div class="show-label">
+                                                <label>Show : </label>
+                                                <select>
+                                                    <option value="10" selected="selected">10</option>
+                                                    <option value="09">09</option>
+                                                    <option value="08">08</option>
+                                                    <option value="07">07</option>
+                                                    <option value="06">06</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li class="product-size-deatils">
+                                            <div class="show-label">
+                                                <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
+                                                <select>
+                                                    <option value="position" selected="selected">Position</option>
+                                                    <option value="Name">Name</option>
+                                                    <option value="Price">Price</option>
+                                                </select>
+                                            </div>
+                                        </li>	
+                                        <li class="shop-pagination"><a href="#">1</a></li>
+                                        <li class="shop-pagination"><a href="#">2</a></li>
+                                        <li class="shop-pagination"><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                            <div class="container">
+                                <div class="row tab-pane fade in active" id="home">
+                                    <div class="shop-single-product-area">
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<!-- <div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/1.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">East of eden</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div> -->
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-md-8 single-model-graph"></div>
+                                                    <div class="col-sm-4 col-md-4  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/2.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">People of the book</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/3.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">The secret letter</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/4.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">Lone some dove</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/5.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">The historian</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/6.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">East of eden</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/7.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">Cold mountain</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 single-model">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/8.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">Twilight</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <!-- <div class="col-md-4 hidden-sm">
+											<div class="single-banner">
+												<div class="product-wrapper">
+													<a href="#" class="single-banner-image-wrapper">
+														<img alt="" src="img/featured/1.jpg">
+														<div class="price"><span>$</span>160</div>
+													</a>
+													<div class="product-description">
+														<div class="functional-buttons">
+															<a href="#" title="Add to Cart">
+																<i class="fa fa-shopping-cart"></i>
+															</a>
+															<a href="#" title="Add to Wishlist">
+																<i class="fa fa-heart-o"></i>
+															</a>
+															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+																<i class="fa fa-compress"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title">
+														<a href="#">East of eden</a>
+													</div>
+													<div class="rating-icon">
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star icolor"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+											</div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <!-- <div id="menu1" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="single-shop-product">
+                                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                                <div class="left-item">
+                                                    <a href="single-product.html" title="East of eden">
+                                                        <img src="img/featured/1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                                <div class="deal-product-content">
+                                                    <h4>
+                                                        <a href="single-product.html" title="East of eden">East of eden</a>
+                                                    </h4>
+                                                    <div class="product-price">
+                                                        <span class="new-price">$ 140.00</span>
+                                                        <span class="old-price">$ 120.00</span>
+                                                    </div>
+                                                    <div class="list-rating-icon">
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                                    <div class="availability">
+                                                        <span>In stock</span>
+                                                        <span><a href="cart.html">Add to cart</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-shop-product">
+                                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                                <div class="left-item">
+                                                    <a href="single-product.html" title="People of the book">
+                                                        <img src="img/featured/2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                                <div class="deal-product-content">
+                                                    <h4>
+                                                        <a href="single-product.html" title="People of the book">People of the book</a>
+                                                    </h4>
+                                                    <div class="product-price">
+                                                        <span class="new-price">$ 140.00</span>
+                                                        <span class="old-price">$ 120.00</span>
+                                                    </div>
+                                                    <div class="list-rating-icon">
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                                    <div class="availability">
+                                                        <span>In stock</span>
+                                                        <span><a href="cart.html">Add to cart</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-shop-product">
+                                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                                <div class="left-item">
+                                                    <a href="single-product.html" title="The secret letter">
+                                                        <img src="img/featured/3.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                                <div class="deal-product-content">
+                                                    <h4>
+                                                        <a href="single-product.html" title="The secret letter">The secret letter</a>
+                                                    </h4>
+                                                    <div class="product-price">
+                                                        <span class="new-price">$ 140.00</span>
+                                                        <span class="old-price">$ 120.00</span>
+                                                    </div>
+                                                    <div class="list-rating-icon">
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                                    <div class="availability">
+                                                        <span>In stock</span>
+                                                        <span><a href="cart.html">Add to cart</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-shop-product">
+                                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                                <div class="left-item">
+                                                    <a href="single-product.html" title="Lone some dove">
+                                                        <img src="img/featured/4.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                                <div class="deal-product-content">
+                                                    <h4>
+                                                        <a href="single-product.html" title="Lone some dove">Lone some dove</a>
+                                                    </h4>
+                                                    <div class="product-price">
+                                                        <span class="new-price">$ 140.00</span>
+                                                        <span class="old-price">$ 120.00</span>
+                                                    </div>
+                                                    <div class="list-rating-icon">
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                                    <div class="availability">
+                                                        <span>In stock</span>
+                                                        <span><a href="cart.html">Add to cart</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-sm-offset-5 col-md-offset-5">
+                    <button class="btn btn-link" style="font-size: larger;">▼加载更多▼</button>
+                </div>             
+            </div>        
+        </div>
+        <div id="footer">
+        </div>
+        <!-- Shop Area End -->    
+		<!-- all js here -->
+		<!-- jquery latest version -->
+        <!-- <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+
+    </body>
+    <script>
+        $(document).ready(function() {
+            $("#header").load("../base/header.html");
+            $("#footer").load("../base/footer.html");
+            var page = 0;
+            const pagesize = 8; //定义每次加载多少个模型
+            load_models(page, pagesize) {
+                
+            }
+        });
+        function load_models(page, pagesize) {
+            // var data ={
+            //     "page": page,
+            //     "pagesize" : pagesize
+            // };
+            // $.ajax({
+            //     type : 'GET',
+            //     url: gobalConfig.base_url + 'api/NeuralNetwork/???/', //to be asked
+            //     data: JSON.stringify(data),
+            //     success : function (data_return) {
+            //         if () {
+
+            //         }
+            //     }
+            // });
+        }
+    </script>
+</html>

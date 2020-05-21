@@ -25,7 +25,7 @@ FONT_DIR = os.path.dirname(BASE_DIR) + r"\font"
 SECRET_KEY = '*g#d#gg8t##7*fy^q7%=+#*6cn5#7_zzj7v&#+kj)%xj%rez=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'comments.apps.CommentsConfig',
     'Inference.apps.InferenceConfig',
+    'market.apps.MarketConfig'
 ]
 
 MIDDLEWARE = [

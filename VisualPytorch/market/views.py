@@ -8,25 +8,26 @@ from BaseApiView.views import APIView
 from .permissions import ModelMarket
 from NeuralNetwork.serializers import NetworkSerializer
 from django.core.paginator import Paginator
+from django.db.models import Q
 # Create your views here.
 
 class modelList(APIView):
     permission_classes = (ModelMarket,)
 
     def get(self, request):
-        pagesize = request.GET['pagesize']
+        pagesize = request.GET.get('pagesize')
         if pagesize:
             pagesize = int(pagesize)
         else:
             pagesize = 10
         
-        page = request.GET['page']
+        page = request.GET.get('page')
         if page:
             page = int(page)
         else:
             page = 1
         
-        network_list = Network.objects.filter(and_(shared=True, sharable=True)).values('name', 'description', 'png')
+        network_list = Network.objects.filter(Q(shared=True) & Q(sharable=True)).values('name', 'description', 'png')
         paginator = Paginator(network_list, pagesize)
 
         # 获得指定页的列表

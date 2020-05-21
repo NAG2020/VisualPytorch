@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import User
 from django.core.mail import send_mail
 from VisualPytorch import settings
-from itsdangerous import TimedJSONWebSignatureSerializer as ts
+# from itsdangerous import TimedJSONWebSignatureSerializer as ts
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

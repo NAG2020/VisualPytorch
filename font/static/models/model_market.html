@@ -33,13 +33,16 @@
             <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
     
             <!-- modernizr css 这个比较特殊不知道为啥 -->
+            <script src="../../resources/jquery.min.js"></script>
             <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>  
+            <script type="text/javascript" src="../../javascript/graph_action.js"></script>
             <link href="../../resources/bootstrap.min.css" rel="stylesheet">
             <link href="../../resources/jquery-ui.css" rel="stylesheet">
             <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
             <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
             <link href="../../css/layer.css" rel="stylesheet">
             <link href="../../css/buttons.css" rel="stylesheet">
+
             <style>
                 .single-model{
                     height: 200px;
@@ -750,47 +753,46 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-sm-offset-5 col-md-offset-5">
+                    <button class="btn btn-link" style="font-size: larger;">▼加载更多▼</button>
+                </div>             
+            </div>        
+        </div>
         <div id="footer">
         </div>
         <!-- Shop Area End -->    
 		<!-- all js here -->
 		<!-- jquery latest version -->
-        <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-		<!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-		<!-- owl.carousel js -->
-        <script src="js/owl.carousel.min.js"></script>
-		<!-- jquery-ui js -->
-        <script src="js/jquery-ui.min.js"></script>
-		<!-- jquery Counterup js -->
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/waypoints.min.js"></script>	
-		<!-- jquery countdown js -->
-        <script src="js/jquery.countdown.min.js"></script>
-		<!-- jquery countdown js -->
-        <script type="text/javascript" src="venobox/venobox.min.js"></script>
-		<!-- jquery Meanmenu js -->
-        <script src="js/jquery.meanmenu.js"></script>
-		<!-- wow js -->
-        <script src="js/wow.min.js"></script>	
-		<script>
-			new WOW().init();
-		</script>
-		<!-- scrollUp JS -->		
-        <script src="js/jquery.scrollUp.min.js"></script>
-		<!-- plugins js -->
-        <script src="js/plugins.js"></script>
-		<!-- Nivo slider js -->
-		<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
-		<script src="lib/home.js" type="text/javascript"></script>
-		<!-- main js -->
-        <script src="js/main.js"></script>
+        <!-- <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+
     </body>
     <script>
         $(document).ready(function() {
             $("#header").load("../base/header.html");
             $("#footer").load("../base/footer.html");
-            
+            var page = 0;
+            const pagesize = 8; //定义每次加载多少个模型
+            load_models(page, pagesize) {
+                
+            }
         });
+        function load_models(page, pagesize) {
+            // var data ={
+            //     "page": page,
+            //     "pagesize" : pagesize
+            // };
+            // $.ajax({
+            //     type : 'GET',
+            //     url: gobalConfig.base_url + 'api/NeuralNetwork/???/', //to be asked
+            //     data: JSON.stringify(data),
+            //     success : function (data_return) {
+            //         if () {
+
+            //         }
+            //     }
+            // });
+        }
     </script>
 </html>

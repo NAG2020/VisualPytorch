@@ -8,7 +8,7 @@ from .models import User
 from rest_framework_jwt.serializers import jwt_payload_handler, jwt_encode_handler
 from rest_framework import permissions
 from VisualPytorch import settings
-# from itsdangerous import TimedJSONWebSignatureSerializer as ts
+from itsdangerous import TimedJSONWebSignatureSerializer as ts
 
 # Create your views here.
 

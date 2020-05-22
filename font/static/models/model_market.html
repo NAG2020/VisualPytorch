@@ -46,12 +46,14 @@
             <style>
                 .single-model{
                     height: 200px;
+                    margin-top: 10px;
                     border: 0.5px solid;
+                    border-color:#cecece;
                 }
                 .single-model-graph{
                     height: 200px;
                     width: 152px;
-                    background-color: coral;
+                    /* background-color: grey; */
                 }
                 .single-model-right{
                     padding-top: 10px;
@@ -62,6 +64,9 @@
                 .single-model-intro{
                     padding-top: 10px;
                     font-style: italic;
+                }
+                .single-model-link{
+                    padding-top: 5px;
                 }
             </style>
     </head>
@@ -76,7 +81,7 @@
         </div>
 
 		<!-- Mobile Menu Start -->
-		<div class="mobile-menu-area">
+		<!-- <div class="mobile-menu-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12">
@@ -108,7 +113,7 @@
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>		 -->
 		<!-- Mobile Menu End -->   
         <!-- Breadcrumbs Area Start -->
         <div class="breadcrumbs-area">
@@ -130,453 +135,108 @@
 		</div> 
         <!-- Breadcrumbs Area Start -->
         <!-- Shop Area Start -->
-        <div class="shopping-area section-padding">
+        <div>
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="shop-widget">
-                            <div class="shop-widget-top">
-                                <aside class="widget widget-categories">
-                                    <h2 class="sidebar-title text-center">CATEGORY</h2>
-                                    <ul class="sidebar-menu">
-                                        <li>
-                                            <a href="#">
-                                               <i class="fa fa-angle-double-right"></i>
-                                                LEARNING                                          
-                                                <span>(5)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                               <i class="fa fa-angle-double-right"></i>
-                                                LIGHTING                                            
-                                                <span>(8)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                              <i class="fa fa-angle-double-right"></i>
-                                               LIVING ROOMS
-                                                <span>(4)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                               <i class="fa fa-angle-double-right"></i>
-                                                LAMP                                           
-                                                <span>(7)</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </aside> 
-                                <aside class="widget shop-filter">
-                                    <h2 class="sidebar-title text-center">PRICE SLIDER</h2>
-                                    <div class="info-widget">
-                                        <div class="price-filter">
-                                            <div id="slider-range"></div>
-                                            <div class="price-slider-amount">
-                                                <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-                                                <div class="widget-buttom">
-                                                    <input type="submit"  value="Filter"/>  
-                                                    <input type="reset" value="CLEAR" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>                            
-                            </div>
-                            <div class="shop-widget-bottom">
-                                <aside class="widget widget-tag">
-                                    <h2 class="sidebar-title">POPULAR TAG</h2>
-                                    <ul class="tag-list">
-                                        <li>
-                                            <a href="#">e-book</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">writer</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">book’s</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">eassy</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">nice</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">author</a>
-                                        </li>
-                                    </ul>
-                                </aside>
-                                <aside class="widget widget-seller">
-                                    <h2 class="sidebar-title">TOP SELLERS</h2>
-                                    <div class="single-seller">
-                                        <div class="seller-img">
-                                            <img src="img/shop/1.jpg" alt="" />
-                                        </div>
-                                        <div class="seller-details">
-                                            <a href="shop.html"><h5>Cold mountain</h5></a>
-                                            <h5>$ 50.00</h5>
-                                            <ul>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="single-seller">
-                                        <div class="seller-img">
-                                            <img src="img/shop/2.jpg" alt="" />
-                                        </div>
-                                        <div class="seller-details">
-                                            <a href=""><h5>The historian</h5></a>
-                                            <h5>$ 50.00</h5>
-                                            <ul>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                                <li><i class="fa fa-star icolor"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="shop-tab-area">
-                            <!-- <div class="shop-tab-list">
-                                <div class="shop-tab-pill pull-left">
-                                    <ul>
-                                        <li class="active" id="left"><a data-toggle="pill" href="#home"><i class="fa fa-th"></i><span>Grid</span></a></li>
-                                        <li><a data-toggle="pill" href="#menu1"><i class="fa fa-th-list"></i><span>List</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="shop-tab-pill pull-right">
-                                    <ul>
-                                        <li class="product-size-deatils">
-                                            <div class="show-label">
-                                                <label>Show : </label>
-                                                <select>
-                                                    <option value="10" selected="selected">10</option>
-                                                    <option value="09">09</option>
-                                                    <option value="08">08</option>
-                                                    <option value="07">07</option>
-                                                    <option value="06">06</option>
-                                                </select>
-                                            </div>
-                                        </li>
-                                        <li class="product-size-deatils">
-                                            <div class="show-label">
-                                                <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
-                                                <select>
-                                                    <option value="position" selected="selected">Position</option>
-                                                    <option value="Name">Name</option>
-                                                    <option value="Price">Price</option>
-                                                </select>
-                                            </div>
-                                        </li>	
-                                        <li class="shop-pagination"><a href="#">1</a></li>
-                                        <li class="shop-pagination"><a href="#">2</a></li>
-                                        <li class="shop-pagination"><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
                             <div class="container">
-                                <div class="row tab-pane fade in active" id="home">
-                                    <div class="shop-single-product-area">
+                                <div class="row">
+                                    <div id="model-area">
                                         <div class="col-md-3 col-sm-6 single-model">
-											<!-- <div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/1.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">East of eden</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div> -->
                                             <div class="container-fluid">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-md-8 single-model-graph"></div>
-                                                    <div class="col-sm-4 col-md-4  single-model-right">
+                                                    <img class="col-sm-7 col-md-7 single-model-graph" src="">
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
                                                         <div class="single-model-name">歪比巴卜</div>
                                                         <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/2.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">People of the book</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/3.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">The secret letter</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/4.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">Lone some dove</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/5.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">The historian</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/6.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">East of eden</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/7.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">Cold mountain</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-6 single-model">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/8.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">Twilight</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
+                                                    <div class="col-sm-5 col-md-5  single-model-right">
+                                                        <div class="single-model-name">歪比巴卜</div>
+                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
+                                                        <div class="single-model-link"><a href="#">详细>></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- <div class="col-md-4 hidden-sm">
 											<div class="single-banner">
@@ -748,7 +408,7 @@
                                     </div>
                                 </div> -->
                             </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -756,7 +416,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-2 col-md-2 col-sm-offset-5 col-md-offset-5">
-                    <button class="btn btn-link" style="font-size: larger;">▼加载更多▼</button>
+                    <button class="btn btn-link" id="more" style="font-size: larger;">▼加载更多▼</button>
                 </div>             
             </div>        
         </div>
@@ -772,27 +432,47 @@
         $(document).ready(function() {
             $("#header").load("../base/header.html");
             $("#footer").load("../base/footer.html");
-            var page = 0;
+            var page = [1]; //引用传递
             const pagesize = 8; //定义每次加载多少个模型
-            load_models(page, pagesize) {
-                
-            }
+            $("#more").attr("onclick", "load_models(page, pagesize)");
+            load_models(page, pagesize);
+            //page = page + 1;
         });
+    </script>
+    <script>
         function load_models(page, pagesize) {
-            // var data ={
-            //     "page": page,
-            //     "pagesize" : pagesize
-            // };
-            // $.ajax({
-            //     type : 'GET',
-            //     url: gobalConfig.base_url + 'api/NeuralNetwork/???/', //to be asked
-            //     data: JSON.stringify(data),
-            //     success : function (data_return) {
-            //         if () {
-
-            //         }
-            //     }
-            // });
+            var data ={
+                "pagesize" : pagesize,
+                "page" : page[0],
+            };
+            $.ajax({
+                type : 'GET',
+                url: gobalConfig.base_url + 'api/market/market/', //to be asked
+                //data: JSON.stringify(data),
+                data: data,
+                success : function (data_return) {
+                    //alert("测试");
+                    console.log(data_return);
+                    for (var i = 0; i < data_return["networklist"].length; i++) {
+                        var cnt = (i * (page[0] - 1) + 1);
+                        $("#model-area").append('<div class="col-md-3 col-sm-6 single-model" id="model-'+ cnt +'"></div>');
+                        $('#model-' + cnt).append('<img class="img-thumbnail col-sm-7 col-md-7 single-model-graph" src="'+ data_return["networklist"][i]["png"] +'">');
+                        $('#model-' + cnt).append('<div class="col-sm-5 col-md-5  single-model-right">\
+                            <div class="single-model-name" id="model-'+ cnt + '-name"></div> \
+                            <div class="single-model-intro" id="model-'+ cnt + '-intro"></div>\
+                            <div class="single-model-link"><a href="#">详细>></a></div></div>');
+                        $('#model-' + cnt + '-name').text(data_return["networklist"][i]["name"]);
+                        $('#model-' + cnt + '-intro').text(data_return["networklist"][i]["description"]);
+                    }
+                    if (page[0]==data_return["next_page"]) {
+                        $("#more").attr("class", "btn btn-link disabled");
+                        $("#more").text("已经加载到最后一页了！");
+                        $("#more").remove("onclick");
+                    } else {
+                        page[0] = data_return["next_page"];
+                    }
+                }
+            });
         }
     </script>
 </html>

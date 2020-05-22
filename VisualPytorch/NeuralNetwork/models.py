@@ -11,6 +11,11 @@ class Network(models.Model):
     structure = models.TextField()
     name = models.TextField(null=True)
     time = models.DateTimeField(auto_now=True)
+    description = models.TextField(null=True)
+    png = models.TextField(null=True)
+    shared = models.BooleanField(default=False)
+    sharable = models.BooleanField(default=False)
+
 
 
 

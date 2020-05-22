@@ -4,4 +4,4 @@ from NeuralNetwork.models import Network
 class NetworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Network
-        fields = ('id','creator','structure','name','time')
+        fields = ('id','creator','structure','name','time', 'png', 'sharable', 'shared')

@@ -37,7 +37,11 @@ class NetworkList(APIView):
         data = {
             "name": request.data["name"],
 			"creator": creator,
-            "structure": json.dumps(request.data["structure"])
+            "structure": json.dumps(request.data["structure"]),
+            "description": request.data['description'],
+            "png": request.data["graph"],
+            "sharable": True,   # 创建的模型允许分享
+            "shared": request.data["shared"]
         }
         serializer = NetworkSerializer(data=data)
         if serializer.is_valid():
@@ -65,7 +69,10 @@ class NetworkDetail(APIView):
         net = self.get_object(pk)
         data = {
             "name": request.data["name"],
-            "structure": json.dumps(request.data["structure"])
+            "structure": json.dumps(request.data["structure"]),
+            "description": request.data['description'],
+            "png": request.data["graph"],
+            "shared": request.data["shared"]
         }
         serializer = NetworkSerializer(net, data=data)
         if serializer.is_valid():

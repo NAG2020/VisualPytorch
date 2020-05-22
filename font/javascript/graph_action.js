@@ -247,8 +247,8 @@ function get_network() {
 
     var ret = {
         "name" : $("#model_name").val(),
-        "intro" : $("#model_info").val(),
-        "shared" : $("#shared").val(),
+        "description" : $("#model_info").val(),
+        "shared" : $("#shared").is(":checked") ? true : false,
         "structure" : structure
     }
     //console.log(ret);

@@ -744,8 +744,8 @@
 
         //alert(JSON.parse(user_info).id);
         //var query_object = getQueryObject(window.location.href)
-        //var user_id = query_object['id'];
-        //var user_id = JSON.parse(user_info).id;
+        // var user_id = query_object['id'];
+        // var user_id = JSON.parse(user_info).id;
         // var user_info = window.sessionStorage.getItem('userinfo');
         // var user_id = JSON.stringify(user_info).id;
 
@@ -778,6 +778,12 @@
         //         "nets_conn": 2
         //       },"static":2};
         // }
+        // $(".model_node").draggable(
+        //     {
+        //         helper:"clone",
+        //         scope:"ss"
+        //     }
+        // );
 
 
 
@@ -807,6 +813,7 @@
                             "</div>" +
                         "</div>"
                     );
+
                     var canvas = JSON.parse(data_return[i]["structure"]).canvas;
                     model_net[thisid] ={"canvas":canvas};
                 }

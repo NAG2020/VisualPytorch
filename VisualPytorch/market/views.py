@@ -27,7 +27,7 @@ class modelList(APIView):
         else:
             page = 1
         
-        network_list = Network.objects.filter(Q(shared=True) & Q(sharable=True)).values('name', 'description', 'png')
+        network_list = Network.objects.filter(Q(shared=True) & Q(sharable=True)).values('id', 'name', 'description', 'png')
         paginator = Paginator(network_list, pagesize)
 
         # 获得指定页的列表
@@ -45,7 +45,7 @@ class modelList(APIView):
             previous_page = page
 
         data = {
-            'networklist': page_network_list,
+            'networklist': list(page_network_list),
             'page_num': range(1, page_num),
             'cur_page': page,
             'next_page': next_page,
@@ -82,6 +82,10 @@ class modelDetail(APIView):
         serializer = NetworkSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            net_id = Network.objects.latest('id').values('id')['id']
+            data = {
+                'net_id': net_id
+            }
+            return Response(data=data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -671,7 +671,7 @@
         if (query_object.hasOwnProperty("id")) {
             var net_id = query_object["id"];
         }
-        $("#modify").attr("onclick", "open_model("+net_id+")");
+        //$("#modify").attr("onclick", "open_model("+net_id+")");
         $("input").attr("disabled", "disabled");
         $("select").attr("disabled", "disabled");
         //根据解析页面传参
@@ -751,7 +751,14 @@
                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
                     //$("#loss").find("option").removeAttr("selected");
                     //$("#reduction").find("option").removeAttr("selected");
-
+                    if(JSON.parse(sessionStorage.getItem("userinfo"))["id"] != net_work["creator"]) {
+                        //alert("测试！");
+                        //console.log(JSON.parse(sessionStorage.getItem("userinfo")));
+                        $("#modify").html('<i class="flaticon-arrows-1"></i>复制并编辑此模型');
+                        $("#modify").attr("onclick", "copy_and_open_model("+net_id+")");
+                    } else {
+                        $("#modify").attr("onclick", "open_model("+net_id+")");
+                    }
                 }
             });
 
@@ -856,6 +863,22 @@
 <script>
     function open_model(id) {
         window.location.href="create_models.html?id="+id;
+    }
+
+    function copy_and_open_model(id) {
+        $.ajax({
+            type: 'POST',
+            url: gobalConfig.base_url + 'api/market/market/' + id + '/copy',
+            beforeSend: function (XMLHttpRequest) {
+                var token = window.sessionStorage.getItem('token');
+                if (token != null) {
+                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+                }
+            },
+            success: function(data_return) {
+                console.log(data_return);
+            }
+        });
     }
 </script>
 </html>

@@ -1454,6 +1454,9 @@
                     var static_val = temp_structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
+                    if (net_work["sharable"]==false) {
+                        $("#shared").attr("disabled", "disabled");
+                    }
                     $("#model_name").text(name);
                     jQuery.each(nets, function (id, val) {
 

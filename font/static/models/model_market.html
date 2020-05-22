@@ -142,7 +142,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div id="model-area">
-                                        <div class="col-md-3 col-sm-6 single-model">
+                                        <!-- <div class="col-md-3 col-sm-6 single-model">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <img class="col-sm-7 col-md-7 single-model-graph" src="">
@@ -237,7 +237,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="col-md-4 hidden-sm">
 											<div class="single-banner">
 												<div class="product-wrapper">
@@ -447,20 +447,19 @@
             };
             $.ajax({
                 type : 'GET',
-                url: gobalConfig.base_url + 'api/market/market/', //to be asked
-                //data: JSON.stringify(data),
+                url: gobalConfig.base_url + 'api/market/market/',
                 data: data,
                 success : function (data_return) {
                     //alert("测试");
                     console.log(data_return);
                     for (var i = 0; i < data_return["networklist"].length; i++) {
-                        var cnt = (i * (page[0] - 1) + 1);
+                        var cnt = (pagesize * (page[0] - 1) + i + 1);
                         $("#model-area").append('<div class="col-md-3 col-sm-6 single-model" id="model-'+ cnt +'"></div>');
                         $('#model-' + cnt).append('<img class="img-thumbnail col-sm-7 col-md-7 single-model-graph" src="'+ data_return["networklist"][i]["png"] +'">');
                         $('#model-' + cnt).append('<div class="col-sm-5 col-md-5  single-model-right">\
                             <div class="single-model-name" id="model-'+ cnt + '-name"></div> \
                             <div class="single-model-intro" id="model-'+ cnt + '-intro"></div>\
-                            <div class="single-model-link"><a href="#">详细>></a></div></div>');
+                            <div class="single-model-link"><a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')">详细>></a></div></div>');
                         $('#model-' + cnt + '-name').text(data_return["networklist"][i]["name"]);
                         $('#model-' + cnt + '-intro').text(data_return["networklist"][i]["description"]);
                     }
@@ -473,6 +472,22 @@
                     }
                 }
             });
+        }
+        function open_model_copy(id) {
+            window.location.href="../models/model_details.html?id="+id;
+            // $.ajax({
+            //     type: 'GET',
+            //     url: gobalConfig.base_url + 'api/market/market/' + id +'/',
+            //     beforeSend: function (XMLHttpRequest) {
+            //         var token = window.sessionStorage.getItem('token');
+            //         if (token != null) {
+            //             XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+            //         }
+            //     },
+            //     success: function(data_return) {
+            //         console.log(data_return);
+            //     }
+            // });
         }
     </script>
 </html>

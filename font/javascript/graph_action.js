@@ -117,7 +117,7 @@ function saveJSON(data, filename){
 function get_network() {
     var conn_list;
     var nets_conn = [];
-    var sequential = [];
+    var sequential = {};
     var nets = {};
     //console.log(model_net);
     $("#canvas").find(".node").each(function (index, element) {
@@ -167,21 +167,7 @@ function get_network() {
     var endid = $("#canvas").find(".end").attr("id");
 
     //alert(endid);
-    sequential.push({
-      "type": "sequential",
-      //sequential表示嵌套模型，base表示单个网络层
-      "name": "sequential_" + $("#model_name").val(),
-      //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
-      "attribute": {
-        "in": startid,
-        //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
-        "out": endid,
-        //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
-        //对于Sequential attribute的结构
-        "nets": nets
-        },
-        "nets_conn": nets_conn
-      });
+    // sequential.push();
 
     //
 
@@ -203,7 +189,7 @@ function get_network() {
             "factor":$("#factor").val()==""?"0.1":$("#factor").val(),
             "patience" : $("#patience").val()==""?"10":$("#patience").val(),
             "cooldown" : $("#cooldown").val()==""?"10":$("#cooldown").val(),
-            "verbose":$("#verbose").prop("checked"),
+            "verbose":$("#verbose").prop("checked")==true?"true":"false",
             "min_lr":$("#min_lr").val()==""?"0.0001":$("#min_lr").val()
         }
     }
@@ -220,14 +206,14 @@ function get_network() {
             "beta2": $("#beta2").val()==""?"0.999":$("#beta2").val(),
             "eps": $("#eps").val()==""?"0.00000001":$("#eps").val(),
             "weight_decay": $("#weight_decay").val()==""?"0":$("#weight_decay").val(),
-            "amsgrad": $("#amsgrad").prop("checked"),
+            "amsgrad": $("#amsgrad").prop("checked")==true?"true":"false",
             "momentum": $("#momentum").val()==""?"0":$("#momentum").val(),
             "dampening": $("#dampening").val()==""?"0":$("#dampening").val(),
-            "nesterov": $("#nesterov").prop("checked"),
+            "nesterov": $("#nesterov").prop("checked")==true?"true":"false",
             "lambd": $("#lambd").val()==""?"0.0001":$("#lambd").val(),
             "alpha": $("#alpha").val()==""?"0.75":$("#alpha").val(),
             "t0": $("#t0").val()==""?"1000000":$("#t0").val(),
-            "centered": $("#centered").prop("checked")
+            "centered": $("#centered").prop("checked")==true?"true":"false"
         }
     };
 
@@ -254,7 +240,21 @@ function get_network() {
     };
 
     var structure = {
-        "canvas": sequential,
+        "canvas": {
+            "type": "sequential",
+            //sequential表示嵌套模型，base表示单个网络层
+            "name": "sequential_" + $("#model_name").val(),
+            //对于Sequential为用户在保存网络层时为网络层取的名字，默认按照sequential_%d来排序
+            "attribute": {
+                "in": startid,
+                //表示每个Sequential开始节点，即入度为0的节点，该节点一定是type="base" && attribute.layer_type = "in"
+                "out": endid,
+                //表示每个Sequential结束节点，即出度为0的节点，该节点一定是type="base" && attribute.layer_type = "out"
+                //对于Sequential attribute的结构
+                "nets": nets
+            },
+            "nets_conn": nets_conn
+        },
         "static": static
     };
 

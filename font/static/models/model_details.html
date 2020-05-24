@@ -889,6 +889,7 @@
                 alert("复制成功！");
                 console.log(data_return);
                 //window.location.href="create_models.html?id="+data_return["id"];
+                window.location.href="model_details.html?id="+data_return["id"];
             },
             error: function (data_return) {
                 alert(data_return["responseText"])

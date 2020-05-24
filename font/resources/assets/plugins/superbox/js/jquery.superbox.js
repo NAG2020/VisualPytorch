@@ -33,7 +33,7 @@
         var sbIsIconShown = false,
             sbIsNavReady = false,
             sbShow = $('<div class="superbox-show"/>'),
-            sbImg = $('<div class="row"><div class="img-box col-lg-6 col-md-4"><img src="../resources/assets/plugins/superbox/img/ajax-loader.gif" class="superbox-current-img"/></div><div id="bio-content" class="biocontent col-lg-5 col-md-4"></div></div>'),
+            sbImg = $('<div class="row"><div class="img-box col-lg-6 col-md-4"><img src="../resources/assets/plugins/superbox/img/ajax-loader.gif" class="superbox-current-img"/></div><div id="bio-content" class="biocontent col-lg-5 col-md-4"></div></div><p id="para-content" class="paracontent"></p>'),
             sbClose = $('<a href="#" class="superbox-close"><i class="icon-remove-sign"></i></a>'),
             sbPrev = $('<a href="#" class="superbox-prev"><i class="icon-circle-arrow-left"></i></a>'),
             sbNext = $('<a href="#" class="superbox-next"><i class="icon-circle-arrow-right"></i></a>'),
@@ -221,6 +221,7 @@
                     if (bool === true) {
                         sbWrapper.find('.superbox-show img.superbox-current-img').animate({opacity: 1}, 750);
                         sbWrapper.find('.superbox-show #bio-content').html(elem.find('img').data('desc')).animate({opacity: 1}, 750);
+                        sbWrapper.find('.superbox-show #para-content').html(elem.find('img').data('para')).animate({opacity: 1}, 750);
                         if (sbIsIconShown === false) {
                             revealIcons(true);
                         }

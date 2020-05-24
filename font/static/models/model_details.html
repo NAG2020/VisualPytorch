@@ -754,7 +754,7 @@
                     if (JSON.parse(sessionStorage.getItem("userinfo"))["id"] != net_work["creator"]) {
                         //alert("测试！");
                         //console.log(JSON.parse(sessionStorage.getItem("userinfo")));
-                        $("#modify").html('<i class="flaticon-arrows-1"></i>复制并编辑此模型');
+                        $("#modify").html('<i class="flaticon-arrows-1"></i>复制此模型');
                         $("#modify").attr("onclick", "copy_and_open_model(" + net_id + ", " + JSON.stringify(net_work) + ")");
                     } else {
                         $("#modify").attr("onclick", "open_model("+net_id+")");

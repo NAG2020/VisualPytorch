@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>语义分割（ResNet-101）</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/animate/animate.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style-responsive.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/theme/default.css" rel="stylesheet" id="theme1"/>
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../resources/assets/plugins/superbox/css/superbox.css" rel="stylesheet" id="theme"/>
+    <link href="../resources/assets/plugins/dropzone/min/dropzone.min.css" rel="stylesheet"/>
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../resources/assets/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="../javascript/base_service.js"></script>
+    <!-- ================== END BASE JS ================== -->
+</head>
+<body>
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #sidebar -->
+    <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+            <!-- begin sidebar user -->
+            <ul class="nav">
+                <li class="nav-profile">
+                    <a href="javascript:;" data-toggle="nav-profile">
+                        <div class="cover with-shadow"></div>
+                        <div class="image">
+                            <img src="../resources/templatesRes/img/favicon.ico" alt=""/>
+                        </div>
+                        <div class="info">
+                            <b class="caret pull-right"></b>
+                            VisualPytorch
+                            <small>2020北航软工课设</small>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- end sidebar user -->
+            <!-- begin sidebar nav -->
+            <ul class="nav">
+                <li class="nav-header"><a href="index.html">返回首页</a></li>
+                <li class="has-sub active">
+                    <a href="javascript:;">
+                        <b class="caret"></b>
+                        <i class="fa fa-image"></i>
+                        <span>Inference样例</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
+                        <li><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
+                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
+                        <li><a href="gallery_unet.html">人像分离（Unet）</a></li>
+                        <li class="active"><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
+                        <li><a href="gallery_code.html">相关代码与模型下载</a></li>
+                    </ul>
+                </li>
+                <!-- begin sidebar minify button -->
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                        class="fa fa-angle-double-left"></i></a></li>
+                <!-- end sidebar minify button -->
+            </ul>
+            <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+    </div>
+    <div class="sidebar-bg"></div>
+    <!-- end #sidebar -->
+    <!-- begin #content -->
+    <div id="content" class="content">
+        <!-- begin breadcrumb -->
+        <ol class="breadcrumb pull-right">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="gallery_resnet101.html">ResNet-101</a></li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- begin page-header -->
+        <h1 class="page-header">语义分割 <small style="color:black;font-size: 18px">基于ResNet-101，<a
+                href="https://baidu.com">查看模型架构</a></small>
+        </h1>
+        <!-- end page-header -->
+        <!-- begin superbox -->
+
+        <div class="superbox " data-offset="50">
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/resnet1.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/resnet1-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/resnet1.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/resnet2.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/resnet2-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/resnet2.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/resnet3.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/resnet3-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/resnet3.png);"></span>
+                </a>
+            </div>
+
+
+        </div>
+        <!-- end superbox -->
+    </div>
+    <!-- end #content -->
+
+
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+            class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+</div>
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">上传图像文件</h4>
+    </div>
+    <div class="panel-body text-inverse">
+        <input type="file" id="photoFile" style="display: none;" onchange="upload()">
+        <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>
+        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>相关分割</strong>图片！</span>
+        <div class="row">
+            <div class="col-md-4">
+                <img id="preview_photo_raw" src="" style="display: none">
+            </div>
+            <div class="col-md-4">
+                <img id="preview_photo" src="" style="display: none">
+            </div>
+            <div id="result" class="alert alert-primary fade show col-md-4" style="display: none">
+                <span class="close" data-dismiss="alert">×</span>
+                <strong>Success!</strong>
+                <br/>
+                <p id="result-text"></p>
+
+            </div>
+        </div>
+        <script>
+            function uploadPhoto() {
+                $("#photoFile").click();
+            }
+
+            /**
+             * 上传图片
+             */
+
+            function upload() {
+                var filepath = $("#photoFile").val();
+                //检查是否为图片
+                if (!isImage(filepath)) {
+                    return false;
+                }
+                //检查文件大小，不能超过2M
+                if (!checkFileSize(filepath)) {
+                    return false;
+                }
+                if ($("#photoFile").val() == '') {
+                    return;
+                }
+                var formData = new FormData();
+                formData.append('pic', document.getElementById('photoFile').files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/inference/resnet101/",
+                    type: "post",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo").attr("src", data["addr"]);
+                        $("#preview_photo_raw").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo_raw").attr("src", data["raw"]);
+                        $("#result").attr("style", "float: right;height:400px");
+                        $("#result-text").replaceWith("<p>" + "<b>Input Img Shape:</b>[" + data["input_shape"] + "]<br/>"
+                            + "<b>Output Img Shape:</b>[" + data["output_shape"] + "]<br/>"
+                            + "<b>Infernce Time:</b>" + data["time"] + "s"
+                            + "</p>");
+                    },
+                    error: function (data) {
+                        alert("上传失败")
+                    }
+                });
+            }
+        </script>
+    </div>
+</div>
+<!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">ResNet-101语义分割简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <div id='write' class='is-node'><h4><a name="语义分割resnet101）简介" class="md-header-anchor"></a><span>语义分割（resnet101）简介</span>
+            </h4><h5><a name="问题" class="md-header-anchor"></a><span>问题：</span></h5>
+                <p>
+                    <span>将图像中每个像素分类为21类（&#39;</span><span>_</span><span>_</span><span>background</span><span>_</span><span>_</span><span>&#39;, &#39;aeroplane&#39;, &#39;bicycle&#39;, &#39;bird&#39;, &#39;boat&#39;, &#39;bottle&#39;, &#39;bus&#39;, &#39;car&#39;, &#39;cat&#39;, &#39;chair&#39;, &#39;cow&#39;, &#39;diningtable&#39;, &#39;dog&#39;, &#39;horse&#39;, &#39;motorbike&#39;, &#39;person&#39;, &#39;pottedplant&#39;, &#39;sheep&#39;, &#39;sofa&#39;, &#39;train&#39;, &#39;tvmonitor&#39;）的一种</span>
+                </p><h5><a name="网络结构" class="md-header-anchor"></a><span>网络结构：</span></h5>
+                <p><span>2017年提出的</span><a
+                        href='https://www.jianshu.com/p/755b001bfe38'><span>《deeplabv3+》</span></a><span>是一种非常先进的基于深度学习的图像语义分割方法，可对物体进行像素级分割，解决了语义分割方向的两个问题: </span><strong><span>一是 feature map 的分辨率过低导致后续在恢复为原图分辨率时不够精确，二是对多尺度物体的检测表现不好</span></strong><span>。</span>
+                </p>
+                <ul>
+                    <li><span>deeplabv1采用了</span><strong><span>1.孔洞卷积：借助孔洞卷积，增大感受野；2.CRF：采用CRF进行mask后处理</span></strong>
+                    </li>
+                    <li>
+                        <span>deeplabv2采用了</span><strong><span>ASPP（Atrous spatial pyramid pooling ）：解决多尺度问题</span></strong>
+                    </li>
+                    <li><span>deeplabv3采用了</span><strong><span>1. 孔洞卷积的串行； 2. ASPP的并行</span></strong></li>
+                    <li><span>deeplabv3+</span><strong><span>加上Encoder-Decoder思想</span></strong><span>，具体结构如下：</span>
+                    </li>
+                </ul>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200516232150622-921601675.png"
+                        style="zoom:50%;"/></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5>
+                <p><span>一张任意大小的图片</span></p><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5>
+                <p><span>语义分割图 + 描述（输入大小，输出大小，描述）</span></p><h5><a name="样例说明"
+                                                                   class="md-header-anchor"></a><span>样例说明：</span></h5>
+                <p><span>对于样例3中的小狗的头“嫁接”小猫的身体，网络会把猫的身体错分为狗的一部分。由此可见网络所提取的特征更多的是头部的特征，因为身体与头部相连才被分为一块。</span></p></div>
+
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
+<!-- end page container -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="../resources/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../resources/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../resources/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--[if lt IE 9]>
+<script src="../resources/assets/crossbrowserjs/html5shiv.js"></script>
+<script src="../resources/assets/crossbrowserjs/respond.min.js"></script>
+<script src="../resources/assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script src="../resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../resources/assets/plugins/js-cookie/js.cookie.js"></script>
+<script src="../resources/assets/js/theme/default.min.js"></script>
+<script src="../resources/assets/js/apps.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../resources/assets/plugins/superbox/js/jquery.superbox.js"></script>
+<script src="../resources/assets/js/demo/gallery-v2.demo.min.js"></script>
+<script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
+<script src="../resources/assets/js/demo/render.highlight.js"></script>
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+<script>
+    $(document).ready(function () {
+        App.init();
+        GalleryV2.init();
+        Highlight.init();
+    });
+</script>
+</body>
+</html>

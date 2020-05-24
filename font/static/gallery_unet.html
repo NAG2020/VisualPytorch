@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>人像分割（Unet）</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/animate/animate.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style-responsive.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/theme/default.css" rel="stylesheet" id="theme1"/>
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../resources/assets/plugins/superbox/css/superbox.css" rel="stylesheet" id="theme"/>
+    <link href="../resources/assets/plugins/dropzone/min/dropzone.min.css" rel="stylesheet"/>
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../resources/assets/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="../javascript/base_service.js"></script>
+    <!-- ================== END BASE JS ================== -->
+</head>
+<body>
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #sidebar -->
+    <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+            <!-- begin sidebar user -->
+            <ul class="nav">
+                <li class="nav-profile">
+                    <a href="javascript:;" data-toggle="nav-profile">
+                        <div class="cover with-shadow"></div>
+                        <div class="image">
+                            <img src="../resources/templatesRes/img/favicon.ico" alt=""/>
+                        </div>
+                        <div class="info">
+                            <b class="caret pull-right"></b>
+                            VisualPytorch
+                            <small>2020北航软工课设</small>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- end sidebar user -->
+            <!-- begin sidebar nav -->
+            <ul class="nav">
+                <li class="nav-header"><a href="index.html">返回首页</a></li>
+                <li class="has-sub active">
+                    <a href="javascript:;">
+                        <b class="caret"></b>
+                        <i class="fa fa-image"></i>
+                        <span>Inference样例</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
+                        <li><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
+                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
+                        <li class="active"><a href="gallery_unet.html">人像分割（Unet）</a></li>
+                        <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
+                        <li><a href="gallery_code.html">相关代码与模型下载</a></li>
+                    </ul>
+                </li>
+                <!-- begin sidebar minify button -->
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                        class="fa fa-angle-double-left"></i></a></li>
+                <!-- end sidebar minify button -->
+            </ul>
+            <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+    </div>
+    <div class="sidebar-bg"></div>
+    <!-- end #sidebar -->
+    <!-- begin #content -->
+    <div id="content" class="content">
+        <!-- begin breadcrumb -->
+        <ol class="breadcrumb pull-right">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="gallery_unet.html">Unet</a></li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- begin page-header -->
+        <h1 class="page-header">人像分割 <small style="color:black;font-size: 18px">基于Unet，<a href="https://baidu.com">查看模型架构</a></small>
+        </h1>
+        <!-- end page-header -->
+        <!-- begin superbox -->
+
+        <div class="superbox " data-offset="50">
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/unet1.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet1-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet1.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/unet2.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet2-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet2.png);"></span>
+                </a>
+            </div>
+            <div class="superbox-list">
+                <a href="javascript:;" class="superbox-img">
+                    <img data-img="../resources/assets/img/gallery/unet3.png"
+                         data-desc="<img class=img-pridict src=../resources/assets/img/gallery/unet3-pridict.png>"/>
+                    <span style="background: url(../resources/assets/img/gallery/unet3.png);"></span>
+                </a>
+            </div>
+
+
+        </div>
+        <!-- end superbox -->
+    </div>
+    <!-- end #content -->
+
+
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+            class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+</div>
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">上传图像文件</h4>
+    </div>
+    <div class="panel-body text-inverse">
+        <input type="file" id="photoFile" style="display: none;" onchange="upload()">
+        <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>
+        <span class="help-block ">请尝试上传<strong>5M</strong>以内的<strong>人像</strong>图片！</span>
+        <div class="row">
+            <div class="col-md-4">
+                <img id="preview_photo_raw" src="" style="display: none">
+            </div>
+            <div class="col-md-4">
+                <img id="preview_photo" src="" style="display: none">
+            </div>
+            <div id="result" class="alert alert-primary fade show col-md-4" style="display: none">
+                <span class="close" data-dismiss="alert">×</span>
+                <strong>Success!</strong>
+                <br/>
+                <p id="result-text"></p>
+
+            </div>
+        </div>
+        <script>
+            function uploadPhoto() {
+                $("#photoFile").click();
+            }
+
+            /**
+             * 上传图片
+             */
+
+            function upload() {
+                var filepath = $("#photoFile").val();
+                //检查是否为图片
+                if (!isImage(filepath)) {
+                    return false;
+                }
+                //检查文件大小，不能超过2M
+                if (!checkFileSize(filepath)) {
+                    return false;
+                }
+                if ($("#photoFile").val() == '') {
+                    return;
+                }
+                var formData = new FormData();
+                formData.append('pic', document.getElementById('photoFile').files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/inference/unet/",
+                    type: "post",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo").attr("src", data["addr"]);
+                        $("#preview_photo_raw").attr("style", "float: left;width:400px;height:400px;");
+                        $("#preview_photo_raw").attr("src", data["raw"]);
+                        $("#result").attr("style", "float: right;height:400px");
+                        $("#result-text").replaceWith("<p>" + "Input Img Shape:[" + data["input_shape"] + "]<br/>"
+                            + "Infernce Time:" + data["time"] + "s"
+                            + "</p>");
+                    },
+                    error: function (data) {
+                        alert("上传失败")
+                    }
+                });
+            }
+        </script>
+    </div>
+</div>
+<!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">Unet人像分割简介</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <div  id='write'  class = 'is-node'><h4><a name="人像分割unet）简介" class="md-header-anchor"></a><span>人像分割（unet）简介</span></h4><h5><a name="问题描述" class="md-header-anchor"></a><span>问题描述：</span></h5><p><span>将人物与背景相分离，即人物区域判定为1，其他区域判为0，逐像素的二分类，属于图像分割问题</span></p><h5><a name="图像分割分类" class="md-header-anchor"></a><span>图像分割分类：</span></h5><p><span>图像分割一般分为以下四大任务，人像分割属于其中语义分割的一种</span></p><ol><li><span>超像素分割：少量超像素代替大量像素，常用于图像预处理</span></li><li><span>语义分割：逐像素分类，无法区分个体</span></li><li><span>实例分割：对个体目标进行分割，像素级目标检测</span></li><li><span>全景分割：语义分割结合实例分割</span></li></ol><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093729302-313886760.png" style="zoom:50%;" /></p><h5><span>网络结构：</span></h5><p><span>2015年提出的</span><a href='https://blog.csdn.net/dugudaibo/article/details/82934731'><span>《U-Net: Convolutional Networks for Biomedical Image Segmentation》</span></a><span>能非常好地应对这样问题，在原本encoder-decoder的基础上加入了跳线结构，使得收缩路径和扩张路径直接能够共享部分低级信息，因此被广泛应用，</span><a href='https://blog.csdn.net/m0_37798080/article/details/103088188'><span>人像分割</span></a><span>也属于一种典型的应用。</span></p><p><img src="https://img-blog.csdn.net/20181003231448324?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1Z3VkYWlibw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述" style="zoom: 33%;" /></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5><p><span>	</span><span>任意大小图片</span></p><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5><p><span>	</span><span>分割图 + 时间</span></p><p>&nbsp;</p></div>
+
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+
+<!-- end page container -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="../resources/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../resources/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../resources/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--[if lt IE 9]>
+<script src="../resources/assets/crossbrowserjs/html5shiv.js"></script>
+<script src="../resources/assets/crossbrowserjs/respond.min.js"></script>
+<script src="../resources/assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script src="../resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../resources/assets/plugins/js-cookie/js.cookie.js"></script>
+<script src="../resources/assets/js/theme/default.min.js"></script>
+<script src="../resources/assets/js/apps.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../resources/assets/plugins/superbox/js/jquery.superbox.js"></script>
+<script src="../resources/assets/js/demo/gallery-v2.demo.min.js"></script>
+<script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
+<script src="../resources/assets/js/demo/render.highlight.js"></script>
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+<script>
+    $(document).ready(function () {
+        App.init();
+        GalleryV2.init();
+        Highlight.init();
+    });
+</script>
+</body>
+</html>

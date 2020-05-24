@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'comments.apps.CommentsConfig',
     'Inference.apps.InferenceConfig',
-    'market.apps.MarketConfig'
 ]
 
 MIDDLEWARE = [

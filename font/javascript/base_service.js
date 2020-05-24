@@ -72,7 +72,7 @@ function register() {
         "username": username,
         "email": email,
         "password": password,
-        "is_active":false,
+        "is_active": false,
     };
 
     $.ajax({
@@ -90,7 +90,7 @@ function register() {
         error: function (data_return) {
             alert("用户名或邮箱已被注册")
             //iconsole.log(data_return["responseText"])
-     	    window.location.reload();
+            window.location.reload();
         }
     })
 
@@ -130,4 +130,83 @@ function add_comment() {
             //alert("error")
         }
     });
+}
+
+
+function loadImage(img) {
+    var filePath = img.value;
+    var fileExt = filePath.substring(filePath.lastIndexOf("."))
+        .toLowerCase();
+
+    if (!checkFileExt(fileExt)) {
+        alert("您上传的文件不是jpg格式图片,请重新上传！");
+        img.value = "";
+        return;
+    }
+    if (img.files && img.files[0]) {
+//                alert(img);
+//                alert(img.files[0])
+        if (img.files[0].size / 1024 > 5120) {
+            img.value = "";
+            alert("您上传的图片过大，请保证图片在5M以内")
+            return;
+        }
+
+        alert('你选择的文件大小' + (img.files[0].size / 1024).toFixed(0) + "kb");
+//                var xx = img.files[0];
+//                for (var i in xx) {
+//                    alert(xx[i])
+//                }
+    }
+}
+
+function checkFileExt(ext) {
+    if (!ext.match(/.jpg/i)) {
+        return false;
+    }
+    return true;
+}
+
+
+function isImage(filepath) {
+    var extStart = filepath.lastIndexOf(".");
+    var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+    if (ext != ".PNG" && ext != ".JPG" && ext != ".JPEG") {
+        alert("图片只能为png,jpeg,jpg格式");
+        window.location.reload();
+        return false;
+    }
+    return true;
+}
+
+function checkFileSize(filepath) {
+    var maxsize = 5 * 1024 * 1024;//2M
+    var errMsg = "上传的待预测图片文件不能超过5M!";
+    var tipMsg = "您的浏览器暂不支持上传图片，确保上传文件不要超过5M，建议使用Chrome/New Edge/FireFox浏览器。";
+
+    try {
+        var filesize = 0;
+        var ua = window.navigator.userAgent;
+        if (ua.indexOf("MSIE") >= 1) {
+            //IE
+            var img = new Image();
+            img.src = filepath;
+            filesize = img.fileSize;
+        } else {
+            //file_size = document.getElementById("imageFile").files[0].size;
+            filesize = $("#photoFile")[0].files[0].size; //byte
+        }
+
+        if (filesize > 0 && filesize > maxsize) {
+            alert(errMsg);
+            return false;
+        } else if (filesize == -1) {
+            alert(tipMsg);
+            return false;
+        }
+    } catch (e) {
+        alert("上传失败，请重试");
+        return false;
+    }
+    return true;
 }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>代码与模型下载</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/plugins/animate/animate.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/style-responsive.min.css" rel="stylesheet"/>
+    <link href="../resources/assets/css/default/theme/default.css" rel="stylesheet" id="theme1"/>
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../resources/assets/plugins/superbox/css/superbox.css" rel="stylesheet" id="theme"/>
+    <link href="../resources/assets/plugins/dropzone/min/dropzone.min.css" rel="stylesheet"/>
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../resources/assets/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="../javascript/base_service.js"></script>
+    <!-- ================== END BASE JS ================== -->
+</head>
+
+<body>
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #sidebar -->
+    <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+            <!-- begin sidebar user -->
+            <ul class="nav">
+                <li class="nav-profile">
+                    <a href="javascript:;" data-toggle="nav-profile">
+                        <div class="cover with-shadow"></div>
+                        <div class="image">
+                            <img src="../resources/templatesRes/img/favicon.ico" alt=""/>
+                        </div>
+                        <div class="info">
+                            <b class="caret pull-right"></b>
+                            VisualPytorch
+                            <small>2020北航软工课设</small>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- end sidebar user -->
+            <!-- begin sidebar nav -->
+            <ul class="nav">
+                <li class="nav-header"><a href="index.html">返回首页</a></li>
+                <li class="has-sub active">
+                    <a href="javascript:;">
+                        <b class="caret"></b>
+                        <i class="fa fa-image"></i>
+                        <span>Inference样例</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
+                        <li ><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
+                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
+                        <li><a href="gallery_unet.html">人像分割（Unet）</a></li>
+                        <li><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
+                        <li class="active"><a href="gallery_code.html">相关代码与模型下载</a></li>
+                    </ul>
+                </li>
+                <!-- begin sidebar minify button -->
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                        class="fa fa-angle-double-left"></i></a></li>
+                <!-- end sidebar minify button -->
+            </ul>
+            <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+    </div>
+    <div class="sidebar-bg"></div>
+    <!-- end #sidebar -->
+
+
+
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+            class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+</div>
+<!-- begin panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">下载地址</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            代码下载：<a href="https://bhpan.buaa.edu.cn/#/link/05D068269E4652579A25059592B01B09%20Valid%20Until:%202022-06-30%2023:59">北航网盘</a>
+            <p>需安装python+pytorch环境：<a href="https://www.cnblogs.com/zhouzhiyao/p/11784055.html">相关教程</a></p>
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="../resources/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../resources/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../resources/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--[if lt IE 9]>
+<script src="../resources/assets/crossbrowserjs/html5shiv.js"></script>
+<script src="../resources/assets/crossbrowserjs/respond.min.js"></script>
+<script src="../resources/assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script src="../resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../resources/assets/plugins/js-cookie/js.cookie.js"></script>
+<script src="../resources/assets/js/theme/default.min.js"></script>
+<script src="../resources/assets/js/apps.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../resources/assets/plugins/superbox/js/jquery.superbox.js"></script>
+<script src="../resources/assets/js/demo/gallery-v2.demo.min.js"></script>
+<script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
+<script src="../resources/assets/js/demo/render.highlight.js"></script>
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+<script>
+    $(document).ready(function () {
+        App.init();
+        GalleryV2.init();
+        Highlight.init();
+    });
+</script>
+</body>
+</html>

@@ -56,7 +56,8 @@ docs/_build/
 
 #config
 db.py
-
+*.pkl
+*.pth
 #test
 .pytest_cache
 

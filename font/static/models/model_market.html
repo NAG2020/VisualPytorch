@@ -121,12 +121,9 @@
 				<div class="row">
 					<div class="col-md-12">
 					    <div class="breadcrumbs">
-					       <h2>SHOP LEFT SIDEBAR</h2> 
+					       <h2>模型市场</h2> 
 					       <ul class="breadcrumbs-list">
-						        <li>
-						            <a title="Return to Home" href="index.html">Home</a>
-						        </li>
-						        <li>SHOP LEFT SIDEBAR</li>
+						        <li>点击“详细”可进入模型详细描述页</li>
 						    </ul>
 					    </div>
 					</div>
@@ -433,7 +430,7 @@
             $("#header").load("../base/header.html");
             $("#footer").load("../base/footer.html");
             var page = [1]; //引用传递
-            const pagesize = 8; //定义每次加载多少个模型
+            const pagesize = 10000; //定义每次加载多少个模型
             $("#more").attr("onclick", "load_models(page, pagesize)");
             load_models(page, pagesize);
             //page = page + 1;
@@ -466,7 +463,7 @@
                     if (page[0]==data_return["next_page"]) {
                         $("#more").attr("class", "btn btn-link disabled");
                         $("#more").text("已经加载到最后一页了！");
-                        $("#more").remove("onclick");
+                        $("#more").removeAttr("onclick");
                     } else {
                         page[0] = data_return["next_page"];
                     }

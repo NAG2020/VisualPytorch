@@ -751,11 +751,11 @@
                     $("#optimzier").find("[value = \"" + static_val['optimizer'] + "\"]").attr("selected", "selected");
                     //$("#loss").find("option").removeAttr("selected");
                     //$("#reduction").find("option").removeAttr("selected");
-                    if(JSON.parse(sessionStorage.getItem("userinfo"))["id"] != net_work["creator"]) {
+                    if (JSON.parse(sessionStorage.getItem("userinfo"))["id"] != net_work["creator"]) {
                         //alert("测试！");
                         //console.log(JSON.parse(sessionStorage.getItem("userinfo")));
                         $("#modify").html('<i class="flaticon-arrows-1"></i>复制并编辑此模型');
-                        $("#modify").attr("onclick", "copy_and_open_model("+net_id+")");
+                        $("#modify").attr("onclick", "copy_and_open_model(" + net_id + ", " + JSON.stringify(net_work) + ")");
                     } else {
                         $("#modify").attr("onclick", "open_model("+net_id+")");
                     }
@@ -865,20 +865,53 @@
         window.location.href="create_models.html?id="+id;
     }
 
-    function copy_and_open_model(id) {
+    function copy_and_open_model(id, net_work) {
+        net_work["graph"] = net_work["png"];
+        delete net_work.png;
+        net_work["creator"] = id;
+        net_work["name"] = net_work["name"] + "-copy"; 
+        net_work["sharable"] = false;
+        net_work["shared"] = false;
+        net_work["structure"] = JSON.parse(net_work["structure"]);
+        console.log(net_work);
         $.ajax({
             type: 'POST',
-            url: gobalConfig.base_url + 'api/market/market/' + id + '/copy',
+            url: gobalConfig.base_url + 'api/NeuralNetwork/network/',
+            data: JSON.stringify(net_work),
+            contentType: 'application/json; charset=UTF-8',
             beforeSend: function (XMLHttpRequest) {
                 var token = window.sessionStorage.getItem('token');
                 if (token != null) {
-                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+                    XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token)
                 }
             },
-            success: function(data_return) {
+            success: function (data_return) {
+                alert("复制成功！");
                 console.log(data_return);
+                //window.location.href="create_models.html?id="+data_return["id"];
+            },
+            error: function (data_return) {
+                alert(data_return["responseText"])
             }
         });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: gobalConfig.base_url + 'api/market/market/copy/' + id,
+        //     //data: window.sessionStorage.getItem('userinfo'),
+        //     contentType: 'application/json; charset=UTF-8',
+        //     beforeSend: function (XMLHttpRequest) {
+        //         var token = window.sessionStorage.getItem('token');
+        //         if (token != null) {
+        //             XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
+        //         }
+        //     },
+        //     success: function(data_return) {
+        //         console.log(data_return);
+        //     },
+        //     error: function(data_return) {
+        //         console.log(data_return);
+        //     }
+        // });
     }
 </script>
 </html>

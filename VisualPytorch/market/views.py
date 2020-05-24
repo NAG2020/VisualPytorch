@@ -9,6 +9,8 @@ from .permissions import ModelMarket
 from NeuralNetwork.serializers import NetworkSerializer
 from django.core.paginator import Paginator
 from django.db.models import Q
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.csrf import ensure_csrf_cookie
 # Create your views here.
 
 class modelList(APIView):
@@ -68,6 +70,7 @@ class modelDetail(APIView):
         serializer = NetworkSerializer(network)
         return Response(serializer.data)
 
+    # @method_decorator(ensure_csrf_cookie)
     def post(self, request, pk):
         network = self.get_object(pk)
         data = {

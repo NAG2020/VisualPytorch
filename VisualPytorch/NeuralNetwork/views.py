@@ -34,15 +34,35 @@ class NetworkList(APIView):
     def post(self, request):
 
         creator = request.user.id
-        data = {
-            "name": request.data["name"],
-			"creator": creator,
-            "structure": json.dumps(request.data["structure"]),
-            "description": request.data['description'],
-            "png": request.data["graph"],
-            "sharable": True,   # 创建的模型允许分享
-            "shared": request.data["shared"]
-        }
+        # data = {
+        #     "name": request.data["name"],
+		# 	"creator": creator,
+        #     "structure": json.dumps(request.data["structure"]),
+        #     "description": request.data['description'],
+        #     "png": request.data["graph"],
+        #     "sharable": True,   # 创建的模型允许分享
+        #     "shared": request.data["shared"]
+        # }
+        if request.data["sharable"] == False:
+            data = {
+                "name": request.data["name"],
+			    "creator": creator,
+                "structure": json.dumps(request.data["structure"]),
+                "description": request.data['description'],
+                "png": request.data["graph"],
+                "sharable": False,   # 复制的模型不允许分享
+                "shared": request.data["shared"]
+            }
+        else:
+            data = {
+                "name": request.data["name"],
+			    "creator": creator,
+                "structure": json.dumps(request.data["structure"]),
+                "description": request.data['description'],
+                "png": request.data["graph"],
+                "sharable": True,   # 创建的模型允许分享
+                "shared": request.data["shared"]
+            }
         serializer = NetworkSerializer(data=data)
         if serializer.is_valid():
             serializer.save()

@@ -245,9 +245,12 @@ function get_network() {
     //graph.then(num =>{console.log(num)});
     //console.log(graph);
 
+    var sharable = $("#shared").attr("disabled") == "disabled" ? false : true;
+
     var ret = {
         "name" : $("#model_name").val(),
         "description" : $("#model_info").val(),
+        "sharable" : sharable,
         "shared" : $("#shared").is(":checked") ? true : false,
         "structure" : structure
     }
@@ -453,6 +456,7 @@ async function save_network_origin(data) {
             },
             success: function (data_return) {
                 alert("保存成功！");
+                console.log(data_return);
             },
             error: function (data_return) {
                 alert(data_return["responseText"])

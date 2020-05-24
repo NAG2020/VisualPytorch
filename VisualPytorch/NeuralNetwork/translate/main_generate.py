@@ -151,7 +151,7 @@ def add_main_info(load_dict):
     else:
         lr_scheduler = load_dict['learning_rate_scheduler']['name']
         lr_scheduler_attr = load_dict['learning_rate_scheduler']['attribute']
-    if lr_scheduler == 'stepLR':
+    if lr_scheduler == 'stepLR' or lr_scheduler == 'StepLR':
         temp_str=''
         temp_str+='scheduler = torch.optim.lr_scheduler.%s' % lr_scheduler
         if('step_size' in lr_scheduler_attr.keys() and lr_scheduler_attr['step_size']!='None'):

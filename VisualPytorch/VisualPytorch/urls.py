@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/NeuralNetwork/',include('NeuralNetwork.urls')),
     path('api/journal/',include('journal.urls')),
     path('api/user/',include('user.urls')),
+    path('api/market/', include('market.urls')),
     path('api/inference/',include('Inference.urls')),
     path('api/', include('comments.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

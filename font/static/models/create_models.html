@@ -822,9 +822,10 @@
                             "</div>" +
                         "</div>"
                     );
-
-                    var canvas = JSON.parse(data_return[i]["structure"]).canvas;
-                    model_net[thisid] ={"canvas":canvas};
+                    
+                    // console.log(data_return[i]);
+                    // var canvas = JSON.parse(data_return[i]["structure"]).canvas;
+                    // model_net[thisid] ={"canvas":canvas};
                 }
                 $(".model_node").draggable(
                     {
@@ -1262,14 +1263,17 @@
                 success: function (net_work) {
                     console.log(net_work);
                     var name = net_work["name"];
-                    var temp_structure = eval('(' + net_work["structure"] + ')');
-                    alert(temp_structure);
-                    var structure = eval('(' + temp_structure["structure"] + ')');
-                    alert(structure);
+                    var structure = eval('(' + net_work["structure"] + ')');
+                    //alert(temp_structure);
+                    //console.log(temp_structure);
+                    //var structure = eval('(' + temp_structure["structure"] + ')');
+                    //alert(structure);
+                    
                     // console.log(structure);
                     // console.log(structure['canvas'][0]['nets_conn']);
-                    var nets = structure['canvas'][0]['attribute']['nets'];
-                    var nets_conn = structure['canvas'][0]['nets_conn'];
+                    // console.log(JSON.parse(structure));
+                    var nets = structure['canvas']['attribute']['nets'];
+                    var nets_conn = structure['canvas']['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;

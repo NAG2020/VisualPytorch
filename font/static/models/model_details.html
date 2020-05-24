@@ -693,9 +693,9 @@
                     var name = net_work["name"];
                     var structure = eval('(' + net_work["structure"] + ')');
                     console.log(structure);
-                    console.log(structure['canvas'][0]['nets_conn']);
-                    var nets = structure['canvas'][0]['attribute']['nets'];
-                    var nets_conn = structure['canvas'][0]['nets_conn'];
+                    console.log(structure['canvas']['nets_conn']);
+                    var nets = structure['canvas']['attribute']['nets'];
+                    var nets_conn = structure['canvas']['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;

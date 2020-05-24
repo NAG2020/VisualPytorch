@@ -45,6 +45,7 @@
 
             <style>
                 .single-model{
+                    display: flex;
                     height: 200px;
                     margin-top: 10px;
                     border: 0.5px solid;
@@ -56,6 +57,7 @@
                     /* background-color: grey; */
                 }
                 .single-model-right{
+                    margin-left: 15px;
                     padding-top: 10px;
                 }
                 .single-model-name{
@@ -452,8 +454,8 @@
                     for (var i = 0; i < data_return["networklist"].length; i++) {
                         var cnt = (pagesize * (page[0] - 1) + i + 1);
                         $("#model-area").append('<div class="col-md-3 col-sm-6 single-model" id="model-'+ cnt +'"></div>');
-                        $('#model-' + cnt).append('<img class="img-thumbnail col-sm-7 col-md-7 single-model-graph" src="'+ data_return["networklist"][i]["png"] +'">');
-                        $('#model-' + cnt).append('<div class="col-sm-5 col-md-5  single-model-right">\
+                        $('#model-' + cnt).append('<img class="img-thumbnail single-model-graph" src="'+ data_return["networklist"][i]["png"] +'">');
+                        $('#model-' + cnt).append('<div class=" single-model-right">\
                             <div class="single-model-name" id="model-'+ cnt + '-name"></div> \
                             <div class="single-model-intro" id="model-'+ cnt + '-intro"></div>\
                             <div class="single-model-link"><a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')">详细>></a></div></div>');

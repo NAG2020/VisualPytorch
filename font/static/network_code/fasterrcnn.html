@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>unet</title></head>
+<body><pre><code>import os
+import time
+import torch.nn as nn
+import torch
+import numpy as np
+import torchvision.transforms as transforms
+import torchvision
+from PIL import Image
+from matplotlib import pyplot as plt
+
+device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+
+# appendix
+classes_pascal_voc = [&#39;__background__&#39;,
+                      &#39;aeroplane&#39;, &#39;bicycle&#39;, &#39;bird&#39;, &#39;boat&#39;,
+                      &#39;bottle&#39;, &#39;bus&#39;, &#39;car&#39;, &#39;cat&#39;, &#39;chair&#39;,
+                      &#39;cow&#39;, &#39;diningtable&#39;, &#39;dog&#39;, &#39;horse&#39;,
+                      &#39;motorbike&#39;, &#39;person&#39;, &#39;pottedplant&#39;,
+                      &#39;sheep&#39;, &#39;sofa&#39;, &#39;train&#39;, &#39;tvmonitor&#39;]
+
+# classes_coco
+COCO_INSTANCE_CATEGORY_NAMES = [
+    &#39;__background__&#39;, &#39;person&#39;, &#39;bicycle&#39;, &#39;car&#39;, &#39;motorcycle&#39;, &#39;airplane&#39;, &#39;bus&#39;,
+    &#39;train&#39;, &#39;truck&#39;, &#39;boat&#39;, &#39;traffic light&#39;, &#39;fire hydrant&#39;, &#39;N/A&#39;, &#39;stop sign&#39;,
+    &#39;parking meter&#39;, &#39;bench&#39;, &#39;bird&#39;, &#39;cat&#39;, &#39;dog&#39;, &#39;horse&#39;, &#39;sheep&#39;, &#39;cow&#39;,
+    &#39;elephant&#39;, &#39;bear&#39;, &#39;zebra&#39;, &#39;giraffe&#39;, &#39;N/A&#39;, &#39;backpack&#39;, &#39;umbrella&#39;, &#39;N/A&#39;, &#39;N/A&#39;,
+    &#39;handbag&#39;, &#39;tie&#39;, &#39;suitcase&#39;, &#39;frisbee&#39;, &#39;skis&#39;, &#39;snowboard&#39;, &#39;sports ball&#39;,
+    &#39;kite&#39;, &#39;baseball bat&#39;, &#39;baseball glove&#39;, &#39;skateboard&#39;, &#39;surfboard&#39;, &#39;tennis racket&#39;,
+    &#39;bottle&#39;, &#39;N/A&#39;, &#39;wine glass&#39;, &#39;cup&#39;, &#39;fork&#39;, &#39;knife&#39;, &#39;spoon&#39;, &#39;bowl&#39;,
+    &#39;banana&#39;, &#39;apple&#39;, &#39;sandwich&#39;, &#39;orange&#39;, &#39;broccoli&#39;, &#39;carrot&#39;, &#39;hot dog&#39;, &#39;pizza&#39;,
+    &#39;donut&#39;, &#39;cake&#39;, &#39;chair&#39;, &#39;couch&#39;, &#39;potted plant&#39;, &#39;bed&#39;, &#39;N/A&#39;, &#39;dining table&#39;,
+    &#39;N/A&#39;, &#39;N/A&#39;, &#39;toilet&#39;, &#39;N/A&#39;, &#39;tv&#39;, &#39;laptop&#39;, &#39;mouse&#39;, &#39;remote&#39;, &#39;keyboard&#39;, &#39;cell phone&#39;,
+    &#39;microwave&#39;, &#39;oven&#39;, &#39;toaster&#39;, &#39;sink&#39;, &#39;refrigerator&#39;, &#39;N/A&#39;, &#39;book&#39;,
+    &#39;clock&#39;, &#39;vase&#39;, &#39;scissors&#39;, &#39;teddy bear&#39;, &#39;hair drier&#39;, &#39;toothbrush&#39;
+]
+
+
+def faster_rcnn(pic_name, pkl_path):
+    tic = time.time()
+    # config
+    preprocess = transforms.Compose([
+        transforms.ToTensor(),
+    ])
+
+    # 1. load data &amp; model
+    input_image = Image.open(pic_name).convert(&quot;RGB&quot;)
+    model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=False, pretrained_backbone=False)
+    model.load_state_dict(torch.load(pkl_path + &#39;fasterrcnn_resnet50_fpn_coco-258fb6c6.pth&#39;))
+    model.eval()
+
+    # 2. preprocess
+    img_chw = preprocess(input_image)
+
+    # 3. to device
+    if torch.cuda.is_available():
+        img_chw = img_chw.to(&#39;cuda&#39;)
+        model.to(&#39;cuda&#39;)
+
+    # 4. forward
+    input_list = [img_chw]
+    with torch.no_grad():
+
+        print(&quot;input img tensor shape:{}&quot;.format(input_list[0].shape))
+        output_list = model(input_list)
+        output_dict = output_list[0]
+        labels = &quot;{}&quot;.format(list(map(lambda x: COCO_INSTANCE_CATEGORY_NAMES[int(x)], output_dict[&#39;labels&#39;].numpy())))
+        scores = &quot;{}&quot;.format(list(map(lambda x: int(x * 1000) / 1000, output_dict[&#39;scores&#39;].numpy())))
+
+    # 5. visualization
+    out_boxes = output_dict[&quot;boxes&quot;].cpu()
+    out_scores = output_dict[&quot;scores&quot;].cpu()
+    out_labels = output_dict[&quot;labels&quot;].cpu()
+
+    fig, ax = plt.subplots(figsize=(16, 12))
+    ax.imshow(input_image, aspect=&#39;equal&#39;)
+
+    num_boxes = out_boxes.shape[0]
+    max_vis = 40
+    thres = 0.5
+
+    for idx in range(0, min(num_boxes, max_vis)):
+
+        score = out_scores[idx].numpy()
+        bbox = out_boxes[idx].numpy()
+        class_name = COCO_INSTANCE_CATEGORY_NAMES[out_labels[idx]]
+
+        if score &lt; thres:
+            continue
+
+        ax.add_patch(plt.Rectangle((bbox[0], bbox[1]), bbox[2] - bbox[0], bbox[3] - bbox[1], fill=False,
+                                   edgecolor=&#39;red&#39;, linewidth=3.5))
+        ax.text(bbox[0], bbox[1] - 2, &#39;{:s} {:.3f}&#39;.format(class_name, score), bbox=dict(facecolor=&#39;blue&#39;, alpha=0.5),
+                fontsize=14, color=&#39;white&#39;)
+    # plt.show()
+    pic_out = pic_name[:-4] + &#39;_out.jpg&#39;
+    plt.savefig(pic_out)
+
+    plt.close()
+
+    return {&quot;addr&quot;: pic_out, &quot;input_shape&quot;: input_image.size, &quot;time&quot;: round(time.time() - tic, 2), &quot;labels&quot;: labels,
+            &quot;scores&quot;: scores}
+
+
+if __name__ == &quot;__main__&quot;:
+    print(faster_rcnn(&quot;PennPed00016.png&quot;, &#39;./&#39;))
+
+</code></pre>
+<p>&nbsp;</p>
+</body>
+</html>

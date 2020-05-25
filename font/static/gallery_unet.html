@@ -93,7 +93,7 @@
     <div id="content" class="content">
         <!-- begin breadcrumb -->
         <ol class="breadcrumb pull-right">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.html">返回首页</a></li>
             <li class="breadcrumb-item"><a href="gallery_unet.html">Unet</a></li>
         </ol>
         <!-- end breadcrumb -->
@@ -234,13 +234,59 @@
     </div>
     <div class="panel-body">
         <dl>
-            <div  id='write'  class = 'is-node'><h4><a name="人像分割unet）简介" class="md-header-anchor"></a><span>人像分割（unet）简介</span></h4><h5><a name="问题描述" class="md-header-anchor"></a><span>问题描述：</span></h5><p><span>将人物与背景相分离，即人物区域判定为1，其他区域判为0，逐像素的二分类，属于图像分割问题</span></p><h5><a name="图像分割分类" class="md-header-anchor"></a><span>图像分割分类：</span></h5><p><span>图像分割一般分为以下四大任务，人像分割属于其中语义分割的一种</span></p><ol><li><span>超像素分割：少量超像素代替大量像素，常用于图像预处理</span></li><li><span>语义分割：逐像素分类，无法区分个体</span></li><li><span>实例分割：对个体目标进行分割，像素级目标检测</span></li><li><span>全景分割：语义分割结合实例分割</span></li></ol><p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093729302-313886760.png" style="zoom:50%;" /></p><h5><span>网络结构：</span></h5><p><span>2015年提出的</span><a href='https://blog.csdn.net/dugudaibo/article/details/82934731'><span>《U-Net: Convolutional Networks for Biomedical Image Segmentation》</span></a><span>能非常好地应对这样问题，在原本encoder-decoder的基础上加入了跳线结构，使得收缩路径和扩张路径直接能够共享部分低级信息，因此被广泛应用，</span><a href='https://blog.csdn.net/m0_37798080/article/details/103088188'><span>人像分割</span></a><span>也属于一种典型的应用。</span></p><p><img src="https://img-blog.csdn.net/20181003231448324?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1Z3VkYWlibw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述" style="zoom: 33%;" /></p><h5><a name="输入" class="md-header-anchor"></a><span>输入：</span></h5><p><span>	</span><span>任意大小图片</span></p><h5><a name="输出" class="md-header-anchor"></a><span>输出：</span></h5><p><span>	</span><span>分割图 + 时间</span></p><p>&nbsp;</p></div>
+            <div id='write' class='is-node'><h4><a name="人像分割unet）简介"
+                                                   class="md-header-anchor"></a><span>人像分割（unet）简介</span></h4><h5><a
+                    name="问题描述" class="md-header-anchor"></a><span>问题描述：</span></h5>
+                <p><span>将人物与背景相分离，即人物区域判定为1，其他区域判为0，逐像素的二分类，属于图像分割问题</span></p><h5><a name="图像分割分类"
+                                                                                       class="md-header-anchor"></a><span>图像分割分类：</span>
+                </h5>
+                <p><span>图像分割一般分为以下四大任务，人像分割属于其中语义分割的一种</span></p>
+                <ol>
+                    <li><span>超像素分割：少量超像素代替大量像素，常用于图像预处理</span></li>
+                    <li><span>语义分割：逐像素分类，无法区分个体</span></li>
+                    <li><span>实例分割：对个体目标进行分割，像素级目标检测</span></li>
+                    <li><span>全景分割：语义分割结合实例分割</span></li>
+                </ol>
+                <p><img src="https://img2020.cnblogs.com/blog/1972898/202005/1972898-20200519093729302-313886760.png"
+                        style="zoom:50%;"/></p><h5><span>网络结构：</span></h5>
+                <p><span>2015年提出的</span><a href='https://blog.csdn.net/dugudaibo/article/details/82934731'><span>《U-Net: Convolutional Networks for Biomedical Image Segmentation》</span></a><span>能非常好地应对这样问题，在原本encoder-decoder的基础上加入了跳线结构，使得收缩路径和扩张路径直接能够共享部分低级信息，因此被广泛应用，</span><a
+                        href='https://blog.csdn.net/m0_37798080/article/details/103088188'><span>人像分割</span></a><span>也属于一种典型的应用。</span>
+                </p>
+                <p>
+                    <img src="https://img-blog.csdn.net/20181003231448324?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1Z3VkYWlibw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"
+                         alt="在这里插入图片描述" style="zoom: 33%;"/></p><h5><a name="输入"
+                                                                        class="md-header-anchor"></a><span>输入：</span>
+                </h5>
+                <p><span>	</span><span>任意大小图片</span></p><h5><a name="输出"
+                                                                  class="md-header-anchor"></a><span>输出：</span></h5>
+                <p><span>	</span><span>分割图 + 时间</span></p>
+                <p>&nbsp;</p></div>
 
         </dl>
     </div>
 </div>
 <!-- end panel -->
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">相关代码</h4>
+    </div>
 
+    <div class="panel-body">
+        <dl>
+            <div id="code"></div>
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->
@@ -271,6 +317,7 @@
         App.init();
         GalleryV2.init();
         Highlight.init();
+        $("#code").load("network_code/unet.html");
     });
 </script>
 </body>

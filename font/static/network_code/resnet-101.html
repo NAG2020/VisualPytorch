@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>unet</title></head>
+<body><pre><code>import os
+import time
+import torch.nn as nn
+import torch
+import numpy as np
+import torchvision.transforms as transforms
+from PIL import Image
+from matplotlib import pyplot as plt
+
+# appendix
+classes = [&#39;__background__&#39;,
+           &#39;aeroplane&#39;, &#39;bicycle&#39;, &#39;bird&#39;, &#39;boat&#39;,
+           &#39;bottle&#39;, &#39;bus&#39;, &#39;car&#39;, &#39;cat&#39;, &#39;chair&#39;,
+           &#39;cow&#39;, &#39;diningtable&#39;, &#39;dog&#39;, &#39;horse&#39;,
+           &#39;motorbike&#39;, &#39;person&#39;, &#39;pottedplant&#39;,
+           &#39;sheep&#39;, &#39;sofa&#39;, &#39;train&#39;, &#39;tvmonitor&#39;]
+
+
+def resnet101(pic_name, pkl_path):
+    # config
+    preprocess = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+
+    # 1. load data &amp; model
+    tic = time.time()
+    device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+    input_image = Image.open(pic_name).convert(&quot;RGB&quot;)
+    model = torch.hub.load(&#39;pytorch/vision&#39;, &#39;deeplabv3_resnet101&#39;, pretrained=False)
+    dict_ = torch.load(pkl_path + &#39;deeplabv3_resnet101_coco-586e9e4e.pth&#39;)
+    list_ = []
+    for t in dict_.keys():
+        if t[:4] == &#39;aux_&#39;:
+            list_.append(t)
+    for t in list_:
+        dict_.pop(t)
+    model.load_state_dict(dict_)
+    model.eval()
+
+    # 2. preprocess
+    input_tensor = preprocess(input_image)
+    input_bchw = input_tensor.unsqueeze(0)
+
+    # 3. to device
+    if torch.cuda.is_available():
+        input_bchw = input_bchw.to(&#39;cuda&#39;)
+        model.to(&#39;cuda&#39;)
+
+    # 4. forward
+    with torch.no_grad():
+        output_4d = model(input_bchw)[&#39;out&#39;]
+        output = output_4d[0]
+    output_predictions = output.argmax(0)
+
+    # 5. visualization
+    palette = torch.tensor([2 ** 25 - 1, 2 ** 15 - 1, 2 ** 21 - 1])
+    colors = torch.as_tensor([i for i in range(21)])[:, None] * palette
+    colors = (colors % 255).numpy().astype(&quot;uint8&quot;)
+
+    # plot the semantic segmentation predictions of 21 classes in each color
+    r = Image.fromarray(output_predictions.byte().cpu().numpy()).resize(input_image.size)
+    r.putpalette(colors)
+    plt.imshow(r)
+    pic_out = pic_name[:-4] + &#39;_out.jpg&#39;
+    plt.savefig(pic_out)
+
+    plt.close()
+
+    return {&quot;addr&quot;: pic_out, &quot;input_shape&quot;: str(input_bchw.shape)[11:-1],
+            &quot;output_shape&quot;: str(output.shape)[11:-1], &quot;time&quot;: round(time.time() - tic, 2)}
+
+
+if __name__ == &quot;__main__&quot;:
+    print(resnet101(&#39;demo_img1.png&#39;, &#39;./&#39;))
+</code></pre>
+<p>&nbsp;</p>
+</body>
+</html>

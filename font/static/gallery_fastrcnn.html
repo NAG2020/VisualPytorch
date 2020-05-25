@@ -93,7 +93,7 @@
     <div id="content" class="content">
         <!-- begin breadcrumb -->
         <ol class="breadcrumb pull-right">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.html">返回首页</a></li>
             <li class="breadcrumb-item active"><a href="gallery_fastrcnn.html">Faster-Rcnn</a></li>
         </ol>
         <!-- end breadcrumb -->
@@ -251,7 +251,26 @@
     </div>
 </div>
 <!-- end panel -->
-
+<!-- begin panel -->
+<div class="panel panel-inverse" data-sortable-id="ui-typography-13">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i
+                    class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">相关代码</h4>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <div id="code"></div>
+        </dl>
+    </div>
+</div>
+<!-- end panel -->
 <!-- end page container -->
 
 <!-- ================== BEGIN BASE JS ================== -->
@@ -282,6 +301,7 @@
         App.init();
         GalleryV2.init();
         Highlight.init();
+        $("#code").load("network_code/fasterrcnn.html");
     });
 </script>
 </body>

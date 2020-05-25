@@ -218,7 +218,8 @@
                 };
                 $.ajax({
                     type: 'POST',
-                    url: 'http://127.0.0.1:8000/api/inference/dcgan/',
+                    // url: 'http://127.0.0.1:8000/api/inference/dcgan/',
+                    url: gobalConfig.base_url + 'api/inference/dcgan/',
                     data: JSON.stringify(data),
                     async: false,
                     contentType: 'application/json; charset=UTF-8',
@@ -324,6 +325,7 @@
 <script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
 <script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
 <script src="../resources/assets/js/demo/render.highlight.js"></script>
+<script src="../javascript/graph_action.js"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>

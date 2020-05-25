@@ -195,7 +195,8 @@
                 var formData = new FormData();
                 formData.append('pic', document.getElementById('photoFile').files[0]);
                 $.ajax({
-                    url: "http://127.0.0.1:8000/api/inference/unet/",
+                    // url: "http://127.0.0.1:8000/api/inference/unet/",
+                    url: gobalConfig.base_url + 'api/inference/unet/',
                     type: "post",
                     data: formData,
                     contentType: false,
@@ -310,6 +311,7 @@
 <script src="../resources/assets/plugins/dropzone/min/dropzone.min.js"></script>
 <script src="../resources/assets/plugins/highlight/highlight.common.js"></script>
 <script src="../resources/assets/js/demo/render.highlight.js"></script>
+<script src="../javascript/graph_action.js"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>

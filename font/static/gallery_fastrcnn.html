@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
-
+    <meta name="referrer" content="no-referrer"/>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <link href="../resources/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
@@ -215,7 +215,7 @@
                     processData: false,
                     success: function (data) {
                         $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
-                        $("#preview_photo").attr("src", data["addr"]);
+                        $("#preview_photo").attr("src", "../media/inference_img/" +data["addr"]);
                         $("#result").attr("style", "float: right;height:400px");
                         $("#result-text").replaceWith("<p>" + "<b>Input Img Shape:</b>[" + data["input_shape"] + "]<br/>"
                             + "<b>Infernce Time:</b>" + data["time"] + "s" + "<br/>"

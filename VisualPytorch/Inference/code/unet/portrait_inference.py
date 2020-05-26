@@ -112,7 +112,6 @@ def unet(pic_name, pkl_path):
     plt.close()
 
     time_s = time.time() - time_tic
-
     return {"addr": pic_out, "input_shape": img_hwc.shape, "time": round(time_s, 2)}
 
 

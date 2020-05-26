@@ -22,6 +22,14 @@ from .code.unet.portrait_inference import unet
 from .code.resnet101.seg_demo import resnet101
 
 # Create your views here.
+def cut(str):
+    end = 0
+    count = 0
+    for i in str:
+        if (i == '\\' or i == '/'):
+            end = count
+        count += 1
+    return str[end+1:]
 
 class Resnet18(APIView):
     @csrf_exempt
@@ -48,6 +56,7 @@ class Resnet18(APIView):
             serializer.save()
             # print(serializer.data["pic"])
             dic = resnet18(save_path, pkl_path)
+            dic["addr"] = cut(dic["addr"])
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -67,6 +76,7 @@ class Dcgan(APIView):
             pkl_path = "%s/pkls/" % (settings.MEDIA_ROOT)
             print(save_path)
             dic = gcgan(save_path, pkl_path, num_img, nrow, noise_continue)
+            dic["addr"] = cut(dic["addr"])
             return Response(dic, status=status.HTTP_200_OK)
 
         except:
@@ -98,6 +108,7 @@ class Frcnn(APIView):
             serializer.save()
             # print(serializer.data["pic"])
             dic = faster_rcnn(save_path, pkl_path)
+            dic["addr"] = cut(dic["addr"])
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -128,7 +139,9 @@ class Unet(APIView):
             serializer.save()
             # print(serializer.data["pic"])
             dic = unet(save_path, pkl_path)
-            dic["raw"] = save_path
+
+            dic["raw"] = cut(save_path)
+            dic["addr"] = cut(dic["addr"])
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -158,7 +171,8 @@ class Resnet101(APIView):
             serializer.save()
             # print(serializer.data["pic"])
             dic = resnet101(save_path, pkl_path)
-            dic["raw"] = save_path
+            dic["raw"] = cut(save_path)
+            dic["addr"] = cut(dic["addr"])
             return Response(dic, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

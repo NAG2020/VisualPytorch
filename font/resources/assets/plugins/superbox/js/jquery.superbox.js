@@ -33,7 +33,7 @@
         var sbIsIconShown = false,
             sbIsNavReady = false,
             sbShow = $('<div class="superbox-show"/>'),
-            sbImg = $('<div class="row"><div class="img-box col-lg-6 col-md-4"><img src="../resources/assets/plugins/superbox/img/ajax-loader.gif" class="superbox-current-img"/></div><div id="bio-content" class="biocontent col-lg-5 col-md-4"></div></div><p id="para-content" class="paracontent"></p>'),
+            sbImg = $('<div class="row"><div class="img-box col-lg-6 col-md-4"><img src="../resources/assets/plugins/superbox/img/ajax-loader.gif" class="superbox-current-img"/></div><div id="bio-content" class="biocontent col-lg-5 col-md-4"></div></div><p id="para-content" style="color: white" class="paracontent"></p>'),
             sbClose = $('<a href="#" class="superbox-close"><i class="icon-remove-sign"></i></a>'),
             sbPrev = $('<a href="#" class="superbox-prev"><i class="icon-circle-arrow-left"></i></a>'),
             sbNext = $('<a href="#" class="superbox-next"><i class="icon-circle-arrow-right"></i></a>'),

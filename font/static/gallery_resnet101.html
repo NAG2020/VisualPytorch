@@ -31,72 +31,41 @@
     <script src="../resources/assets/plugins/pace/pace.min.js"></script>
     <script type="text/javascript" src="../javascript/base_service.js"></script>
     <!-- ================== END BASE JS ================== -->
+    <link id="icon" rel="shortcut icon" type="image/x-icon" href="../resources/templatesRes/img/favicon.ico">
+    <link rel="stylesheet" href="../resources/templatesRes/css/style.css">
+    <link href="../resources/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- begin #page-loader -->
-<div id="page-loader" class="fade show"><span class="spinner"></span></div>
-<!-- end #page-loader -->
-
-<!-- begin #page-container -->
-<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
-    <!-- begin #sidebar -->
-    <div id="sidebar" class="sidebar">
-        <!-- begin sidebar scrollbar -->
-        <div data-scrollbar="true" data-height="100%">
-            <!-- begin sidebar user -->
-            <ul class="nav">
-                <li class="nav-profile">
-                    <a href="javascript:;" data-toggle="nav-profile">
-                        <div class="cover with-shadow"></div>
-                        <div class="image">
-                            <img src="../resources/templatesRes/img/favicon.ico" alt=""/>
-                        </div>
-                        <div class="info">
-                            <b class="caret pull-right"></b>
-                            VisualPytorch
-                            <small>2020北航软工课设</small>
-                        </div>
+<div class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="header-logo">
+                    <a href="index.html">
+                        <img id="png1" src="../resources/templatesRes/img/logo.png" alt="">
                     </a>
-                </li>
-            </ul>
-            <!-- end sidebar user -->
-            <!-- begin sidebar nav -->
-            <ul class="nav">
-                <li class="nav-header"><a href="index.html">返回首页</a></li>
-                <li class="has-sub active">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-image"></i>
-                        <span>Inference样例</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="gallery_resnet18.html">蚂蚁/蜜蜂图像二分类(ResNet-18)</a></li>
-                        <li><a href="gallery_dcgan.html">人脸图像生成（DCGAN）</a></li>
-                        <li><a href="gallery_fastrcnn.html">目标探测（faster RCNN）</a></li>
-                        <li><a href="gallery_unet.html">人像分离（Unet）</a></li>
-                        <li class="active"><a href="gallery_resnet101.html">语义分割（ResNet-101）</a></li>
-                        <li><a href="gallery_code.html">相关代码与模型下载</a></li>
-                    </ul>
-                </li>
-                <!-- begin sidebar minify button -->
-                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
-                        class="fa fa-angle-double-left"></i></a></li>
-                <!-- end sidebar minify button -->
-            </ul>
-            <!-- end sidebar nav -->
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <div class="mainmenu text-center">
+                    <nav>
+                        <ul id="nav">
+                            <li><a id="header_index" href="index.html">主 页</a></li>
+                            <li><a id="resnet18" href="gallery_resnet18.html">简单二分类</a></li>
+                            <li><a id="dcgan" href="gallery_dcgan.html">人脸图像生成</a></li>
+                            <li><a id="faster_rcnn" href="gallery_fastrcnn.html">目标探测</a></li>
+                            <li><a id="unet" href="gallery_unet.html">人像分割</a></li>
+                            <li><a id="resnet101" href="gallery_resnet101.html">语义分割</a></li>
+                            <li><a id="dlcode" href="gallery_code.html">相关代码下载</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
-        <!-- end sidebar scrollbar -->
     </div>
-    <div class="sidebar-bg"></div>
-    <!-- end #sidebar -->
-    <!-- begin #content -->
-    <div id="content" class="content">
-        <!-- begin breadcrumb -->
-        <ol class="breadcrumb pull-right">
-            <li class="breadcrumb-item"><a href="index.html">返回首页</a></li>
-            <li class="breadcrumb-item"><a href="gallery_resnet101.html">ResNet-101</a></li>
-        </ol>
-        <!-- end breadcrumb -->
+</div>
+ <div id="content" class="content">
+
         <!-- begin page-header -->
         <h1 class="page-header">语义分割 <small style="color:black;font-size: 18px">基于ResNet-101，<a
                 href="https://baidu.com">查看模型架构</a></small>
@@ -131,14 +100,7 @@
         </div>
         <!-- end superbox -->
     </div>
-    <!-- end #content -->
 
-
-    <!-- begin scroll to top btn -->
-    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
-            class="fa fa-angle-up"></i></a>
-    <!-- end scroll to top btn -->
-</div>
 <!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="form-dropzone-1">
     <div class="panel-heading">
@@ -163,7 +125,7 @@
             <div class="col-md-4">
                 <img id="preview_photo" src="" style="display: none">
             </div>
-            <div id="result" class="alert alert-primary fade show col-md-4" style="display: none">
+            <div id="result" class="alert alert-primary fade show col-md-4" style="display: none!important;">
                 <span class="close" data-dismiss="alert">×</span>
                 <strong>Success!</strong>
                 <br/>
@@ -204,9 +166,9 @@
                     processData: false,
                     success: function (data) {
                         $("#preview_photo").attr("style", "float: left;width:400px;height:400px;");
-                        $("#preview_photo").attr("src", "../media/inference_img/" +data["addr"]);
+                        $("#preview_photo").attr("src", "../media/inference_img/" + data["addr"]);
                         $("#preview_photo_raw").attr("style", "float: left;width:400px;height:400px;");
-                        $("#preview_photo_raw").attr("src", "../media/inference_img/" +data["raw"]);
+                        $("#preview_photo_raw").attr("src", "../media/inference_img/" + data["raw"]);
                         $("#result").attr("style", "float: right;height:400px");
                         $("#result-text").replaceWith("<p>" + "<b>Input Img Shape:</b>[" + data["input_shape"] + "]<br/>"
                             + "<b>Output Img Shape:</b>[" + data["output_shape"] + "]<br/>"
@@ -287,7 +249,47 @@
 </div>
 <!-- end panel -->
 <!-- end page container -->
-
+<div class=" footer-top-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-8">
+                <div class="footer-left">
+                    <a href="index.html">
+                        <img id="png2" src="../resources/templatesRes/img/logo-2.png" alt="">
+                    </a>
+                    <br>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="flaticon-location"></i>
+                            <a style="color: white" href="http://scse.buaa.edu.cn/">北京航空航天大学-计算机学院</a>
+                        </li>
+                        <li>
+                            <i class="flaticon-people"></i>
+                            <a style="color: white" href="https://www.cnblogs.com/NAG2020/">团队主页</a>
+                        </li>
+                        <li>
+                            <i class="flaticon-web"></i>
+                            NAG2020@163.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="footer-bottom-left pull-left">
+                    <p>北航计算机学院2017级软件工程课程设计：<span><a href="#">Visual Pytorch</a></span>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="../resources/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="../resources/assets/plugins/jquery-ui/jquery-ui.min.js"></script>

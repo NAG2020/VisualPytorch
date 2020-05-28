@@ -1547,8 +1547,8 @@ hr {
 }
 
 .content {
-    margin-left: 220px;
-    padding: 20px 30px
+    margin-left: 150px;
+    padding: 0px 0px
 }
 
 .content.content-full-width {
@@ -14988,6 +14988,8 @@ a.text-green:focus, a.text-green:hover {
 }
 
 .panel {
-    padding-left: 245px;
+    padding-left: 150px;
+    padding-right:150px ;
     background-color: #d9e0e7;
 }
+

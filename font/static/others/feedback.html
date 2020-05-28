@@ -113,8 +113,13 @@
                     var data = [];
                     for (var i = data_return.length - 1; i >= 0; i--) {
                         //alert(data_return[i]["pic"]);
-                        // data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"] + "<br/>" +  data_return[i]["pic"]);
-                        data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"] + "<br/>" + "<img src=\'../../media/usr_img/" + data_return[i]["pic"] + "\'>");
+                        if(data_return[i]["pic"] == "default.jpg"){
+                            data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"]);
+                        }
+                        else{
+                            data.push(data_return[i]["title"] + "<br/>" + data_return[i]["context"] + "<br/>" + "<img width=\'200px\'  src=\'../../media/usr_img/" + data_return[i]["pic"] + "\'>");
+                        }
+
                     }
                     $('#pagination-container').pagination({
                         dataSource: data,
@@ -147,10 +152,10 @@
     $("#header").load("../base/header.html")
 </script>
 
-<div class="container" style="margin-top:30px">
+<div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6" style="background-color:white;margin-right:15px;margin-left:-30px">
-            <div class="panel panel-default" style="margin-top:15px">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 clas="panel-title">
                         问题列表
@@ -164,7 +169,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-6" style="background-color:white;margin-left:15px;margin-right:-30px">
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="panel panel-default" style="margin-top:15px">
                 <div class="panel-heading">
                     <h1 class="panel-title">
@@ -177,25 +182,28 @@
                         <div class="form-group">
                             <iframe name="form" id="form" style="display:none"></iframe>
                             <form target="form" method="post" enctype="multipart/form-data"
-                                  action='127.0.0.1:8000/api/comments/'>
-                                <label for="contact-info" class="col-sm-4 control-label">标题：</label>
-                                <div class="col-sm-8">
+                                  action='http://127.0.0.1:8000/api/comments/' >
+                                <label for="contact-info" class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
                                     <input type="text" class="form-control" id="contact-info"
                                            placeholder="请填写标题" name="title">
                                 </div>
-                                <label for="question-describe" class="col-sm-4 control-label">问题描述：</label>
-                                <div class="col-sm-8">
+                                <br/>
+                                <label for="question-describe" class="col-sm-2 control-label">问题描述：</label>
+                                <div class="col-sm-10">
                                     <textarea class="form-control" rows="4" id="question-describe"
                                               placeholder="请输入问题描述" name="context"></textarea><br/>
                                     <input type="file" name="pic" onchange="loadImage(this)"><br/>
-                                    <input type="submit" class="btn btn-primary" name="上传"><br/>
+                                    <span class="help-block ">  请上传5M内的jpg格式图片 </span>
+                                    <input type="submit" class="btn btn-primary" name="上传""><br/>
                                     <span class="help-block ">  帮助您更好的解决问题！</span>
                                 </div>
                                 <br/>
                             </form>
                             <script>
                                 $("#form").on("load",function () {
-                                    window.location.reload();
+                                    alert("上传成功！")
+                                    window.location.replace("feedback.html")
                                 });
                             </script>
                         </div>

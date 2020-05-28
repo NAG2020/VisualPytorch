@@ -152,7 +152,7 @@ function loadImage(img) {
             return;
         }
 
-        alert('你选择的文件大小' + (img.files[0].size / 1024).toFixed(0) + "kb");
+        // alert('你选择的文件大小' + (img.files[0].size / 1024).toFixed(0) + "kb");
 //                var xx = img.files[0];
 //                for (var i in xx) {
 //                    alert(xx[i])

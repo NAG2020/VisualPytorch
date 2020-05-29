@@ -11,7 +11,7 @@ from .model_generate import  add_main_net_info
 from .main_generate import add_main_info
 def main_func(dict_input):
     main=None
-    module=add_main_net_info(dict_input["canvas"][0])
+    module=add_main_net_info(dict_input["canvas"])
     main=add_main_info(dict_input["static"])
     return main,module
 '''

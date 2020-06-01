@@ -99,7 +99,16 @@ function register() {
 function logout() {
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('userinfo');
-    window.location.reload();
+    // if (window.location.includes("statistics")) {
+    //     window.location.href = "index.html";
+    // } else {
+    //     window.location.href = "../index.html";
+    // }
+    if (window.location.href.indexOf("statistics") == -1 && window.location.href.indexOf("index") == -1) {
+        window.location.href = "../index.html";
+    } else {
+        window.location.replace("index.html");
+    }
 }
 
 function add_comment() {

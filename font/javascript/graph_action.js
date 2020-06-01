@@ -792,7 +792,7 @@ function save_attr_dropout_layer_form(id){
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
     //console.log(type);
     form.find("[name='input_error']").remove();
-    var reg = /^\s*\d+\s*$/;
+    var reg = /^\s*0.\d+\s*$/;
     if (!reg.test(p.val())) {
         p.after("<p name='input_error' class='alert_font'>输入不合法</p>");
         return;

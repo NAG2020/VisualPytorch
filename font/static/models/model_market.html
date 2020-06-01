@@ -1,123 +1,57 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Model Market</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">        
-            <!-- all css here -->   
-            <link rel="stylesheet" href="../../resources/bootstrap.min.css">
-            <!-- animate css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
-            <!-- jquery-ui.min css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
-            <!-- meanmenu css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
-            <!-- Font-Awesome css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/font-awesome.min.css">
-            <!-- pe-icon-7-stroke css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
-            <!-- Flaticon css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
-            <!-- venobox css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css " type="text/css" media="screen" />
-            <!-- nivo slider css -->
-    <!--         <link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css " type="text/css" />
-            <link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css " type="text/css" media="screen" /> -->
-            <!-- owl.carousel css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
-            <!-- style css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/style.css">
-            <!-- responsive css -->
-            <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
-    
-            <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
-    
-            <!-- modernizr css 这个比较特殊不知道为啥 -->
-            <script src="../../resources/jquery.min.js"></script>
-            <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>  
-            <script type="text/javascript" src="../../javascript/graph_action.js"></script>
-        <script type="text/javascript" src="../../javascript/base_service.js"></script>
-            <link href="../../resources/bootstrap.min.css" rel="stylesheet">
-            <link href="../../resources/jquery-ui.css" rel="stylesheet">
-            <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
-            <link href="../../resources/jquery-ui.theme.css" rel="stylesheet">
-            <link href="../../css/layer.css" rel="stylesheet">
-            <link href="../../css/buttons.css" rel="stylesheet">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon -->
+        <link id="icon" rel="shortcut icon" type="image/x-icon" href="../../resources/templatesRes/img/favicon.ico">
+        <!-- Place favicon.ico in the root directory -->
+        <!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
 
-            <style>
-                .single-model{
-                    display: flex;
-                    height: 200px;
-                    margin-top: 10px;
-                    border: 0.5px solid;
-                    border-color:#cecece;
-                }
-                .single-model-graph{
-                    height: 200px;
-                    width: 152px;
-                    /* background-color: grey; */
-                }
-                .single-model-right{
-                    margin-left: 15px;
-                    padding-top: 10px;
-                }
-                .single-model-name{
-                    font-weight: bold;
-                }
-                .single-model-intro{
-                    padding-top: 10px;
-                    font-style: italic;
-                }
-                .single-model-link{
-                    padding-top: 5px;
-                }
-            </style>
+		<!-- all css here -->
+		<!-- bootstrap v3.3.6 css -->
+        <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+		<!-- animate css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/animate.css">
+		<!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/jquery-ui.min.css">
+		<!-- meanmenu css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/meanmenu.min.css">
+		<!-- Font-Awesome css -->
+        <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+		<!-- pe-icon-7-stroke css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/pe-icon-7-stroke.css">
+		<!-- Flaticon css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/flaticon.css">
+		<!-- venobox css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/venobox/venobox.css" type="text/css" media="screen" />
+		<!-- nivo slider css -->
+		<link rel="stylesheet" href="../../resources/templatesRes/lib/css/nivo-slider.css" type="text/css" />
+		<link rel="stylesheet" href="../../resources/templatesRes/lib/css/preview.css" type="text/css" media="screen" />
+		<!-- owl.carousel css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/owl.carousel.css">
+		<!-- style css -->
+		<link rel="stylesheet" href="../../resources/templatesRes/style.css">
+		<!-- responsive css -->
+        <link rel="stylesheet" href="../../resources/templatesRes/css/responsive.css">
+		<!-- modernizr css -->
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href="../../resources/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="../../javascript/graph_action.js"></script>
+        <script type="text/javascript" src="../../javascript/base_service.js"></script>
+        <!-- <link href="../resources/jquery-ui.css" rel="stylesheet">
+        <link href="../resources/jquery-ui.structure.css" rel="stylesheet">
+        <link href="../resources/jquery-ui.theme.css" rel="stylesheet">
+        <link href="../css/buttons.css" rel="stylesheet">
+        <link href="../css/login.css" rel="stylesheet"> -->
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-
-        <div id="header">
-        </div>
-
-		<!-- Mobile Menu Start -->
-		<!-- <div class="mobile-menu-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div class="mobile-menu">
-							<nav id="dropdown">
-								<ul>
-                                    <li><a href="index.html">HOME</a></li>
-                                    <li><a href="shop.html">FEATURED</a></li>
-                                    <li><a href="shop.html">REVIEW BOOK</a></li>
-                                    <li><a href="about.html">ABOUT AUTHOR</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Check Out</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="shop.html">Shopping Page</a></li>
-                                            <li><a href="single-product.html">Single Shop Page</a></li>
-                                            <li><a href="wishlist.html">Wishlist Page</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">CONTACT</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>		 -->
-		<!-- Mobile Menu End -->   
+        <!--Header Area Start-->
+        <div id="header"></div>  
         <!-- Breadcrumbs Area Start -->
         <div class="breadcrumbs-area">
 			<div class="container">
@@ -126,306 +60,82 @@
 					    <div class="breadcrumbs">
 					       <h2>模型市场</h2> 
 					       <ul class="breadcrumbs-list">
-						        <li>点击“详细”可进入模型详细描述页</li>
+						        <li>
+						            <a title="Return to Home" href="../index.html">返回主页</a>
+						        </li>
 						    </ul>
 					    </div>
 					</div>
 				</div>
 			</div>
 		</div> 
-        <!-- Breadcrumbs Area Start -->
+		<!-- Breadcrumbs Area Start --> 
         <!-- Shop Area Start -->
-        <div>
+        <div class="shopping-area section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="container">
-                                <div class="row">
-                                    <div id="model-area">
-                                        <!-- <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <img class="col-sm-7 col-md-7 single-model-graph" src="">
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 single-model">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-7 col-md-7 single-model-graph"><img src=""></div>
-                                                    <div class="col-sm-5 col-md-5  single-model-right">
-                                                        <div class="single-model-name">歪比巴卜</div>
-                                                        <div class="single-model-intro">这波是运气不好，这波是配合不行，这波是思想出了问题</div>
-                                                        <div class="single-model-link"><a href="#">详细>></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="col-md-4 hidden-sm">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a href="#" class="single-banner-image-wrapper">
-														<img alt="" src="img/featured/1.jpg">
-														<div class="price"><span>$</span>160</div>
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a href="#" title="Add to Cart">
-																<i class="fa fa-shopping-cart"></i>
-															</a>
-															<a href="#" title="Add to Wishlist">
-																<i class="fa fa-heart-o"></i>
-															</a>
-															<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-																<i class="fa fa-compress"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title">
-														<a href="#">East of eden</a>
-													</div>
-													<div class="rating-icon">
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star icolor"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-												</div>
-											</div>
-                                        </div> -->
+                        <div class="shop-tab-area">
+                            <div class="shop-tab-list">
+                                <div class="shop-tab-pill pull-left">
+                                    <ul>
+                                        <li class="active" id="left"><a data-toggle="pill" href="#home"><i class="fa fa-th"></i><span>Grid</span></a></li>
+                                        <li><a data-toggle="pill" href="#menu1"><i class="fa fa-th-list"></i><span>List</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="row tab-pane fade in active" id="home">
+                                    <div class="shop-single-product-area" id="single-model-grid">
                                     </div>
                                 </div>
-                                <!-- <div id="menu1" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="single-shop-product">
-                                            <div class="col-xs-12 col-sm-5 col-md-4">
-                                                <div class="left-item">
-                                                    <a href="single-product.html" title="East of eden">
-                                                        <img src="img/featured/1.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-7 col-md-8">
-                                                <div class="deal-product-content">
-                                                    <h4>
-                                                        <a href="single-product.html" title="East of eden">East of eden</a>
-                                                    </h4>
-                                                    <div class="product-price">
-                                                        <span class="new-price">$ 140.00</span>
-                                                        <span class="old-price">$ 120.00</span>
-                                                    </div>
-                                                    <div class="list-rating-icon">
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
-                                                    <div class="availability">
-                                                        <span>In stock</span>
-                                                        <span><a href="cart.html">Add to cart</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-shop-product">
-                                            <div class="col-xs-12 col-sm-5 col-md-4">
-                                                <div class="left-item">
-                                                    <a href="single-product.html" title="People of the book">
-                                                        <img src="img/featured/2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-7 col-md-8">
-                                                <div class="deal-product-content">
-                                                    <h4>
-                                                        <a href="single-product.html" title="People of the book">People of the book</a>
-                                                    </h4>
-                                                    <div class="product-price">
-                                                        <span class="new-price">$ 140.00</span>
-                                                        <span class="old-price">$ 120.00</span>
-                                                    </div>
-                                                    <div class="list-rating-icon">
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
-                                                    <div class="availability">
-                                                        <span>In stock</span>
-                                                        <span><a href="cart.html">Add to cart</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-shop-product">
-                                            <div class="col-xs-12 col-sm-5 col-md-4">
-                                                <div class="left-item">
-                                                    <a href="single-product.html" title="The secret letter">
-                                                        <img src="img/featured/3.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-7 col-md-8">
-                                                <div class="deal-product-content">
-                                                    <h4>
-                                                        <a href="single-product.html" title="The secret letter">The secret letter</a>
-                                                    </h4>
-                                                    <div class="product-price">
-                                                        <span class="new-price">$ 140.00</span>
-                                                        <span class="old-price">$ 120.00</span>
-                                                    </div>
-                                                    <div class="list-rating-icon">
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
-                                                    <div class="availability">
-                                                        <span>In stock</span>
-                                                        <span><a href="cart.html">Add to cart</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-shop-product">
-                                            <div class="col-xs-12 col-sm-5 col-md-4">
-                                                <div class="left-item">
-                                                    <a href="single-product.html" title="Lone some dove">
-                                                        <img src="img/featured/4.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-7 col-md-8">
-                                                <div class="deal-product-content">
-                                                    <h4>
-                                                        <a href="single-product.html" title="Lone some dove">Lone some dove</a>
-                                                    </h4>
-                                                    <div class="product-price">
-                                                        <span class="new-price">$ 140.00</span>
-                                                        <span class="old-price">$ 120.00</span>
-                                                    </div>
-                                                    <div class="list-rating-icon">
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star icolor"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
-                                                    <div class="availability">
-                                                        <span>In stock</span>
-                                                        <span><a href="cart.html">Add to cart</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div id="menu1" class="tab-pane fade">
+                                    <div class="row" id="single-model-list">
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
-
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2 col-md-2 col-sm-offset-5 col-md-offset-5">
-                    <button class="btn btn-link" id="more" style="font-size: larger;">▼加载更多▼</button>
-                </div>             
-            </div>        
-        </div>
-        <div id="footer">
-        </div>
-        <!-- Shop Area End -->    
+        <!-- Shop Area End -->
+        <!-- Footer Area Start -->
+        <div id="footer"></div>
+		<!-- Footer Area End -->     
+        <!--End of Quickview Product-->	
 		<!-- all js here -->
 		<!-- jquery latest version -->
-        <!-- <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+        <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<!-- bootstrap js -->
+        <script src="../../resources/templatesRes/js/bootstrap.min.js"></script>
+		<!-- owl.carousel js -->
+        <script src="../../resources/templatesRes/js/owl.carousel.min.js"></script>
+		<!-- jquery-ui js -->
+        <script src="../../resources/templatesRes/js/jquery-ui.min.js"></script>
+		<!-- jquery Counterup js -->
+        <script src="../../resources/templatesRes/js/jquery.counterup.min.js"></script>
+        <script src="../../resources/templatesRes/js/waypoints.min.js"></script>	
+		<!-- jquery countdown js -->
+        <script src="../../resources/templatesRes/js/jquery.countdown.min.js"></script>
+		<!-- jquery countdown js -->
+        <script type="text/javascript" src="../../resources/templatesRes/venobox/venobox.min.js"></script>
+		<!-- jquery Meanmenu js -->
+        <script src="../../resources/templatesRes/js/jquery.meanmenu.js"></script>
+		<!-- wow js -->
+        <script src="../../resources/templatesRes/js/wow.min.js"></script>	
+		<script>
+			new WOW().init();
+		</script>
+		<!-- scrollUp JS -->		
+        <script src="../../resources/templatesRes/js/jquery.scrollUp.min.js"></script>
+		<!-- plugins js -->
+        <script src="../../resources/templatesRes/js/plugins.js"></script>
+		<!-- Nivo slider js -->
+		<script src="../../resources/templatesRes/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+		<script src="../../resources/templatesRes/lib/home.js" type="text/javascript"></script>
+		<!-- main js -->
+        <script src="../../resources/templatesRes/js/main.js"></script>
 
     </body>
     <script>
@@ -439,55 +149,69 @@
             //page = page + 1;
         });
     </script>
-    <script>
-        function load_models(page, pagesize) {
-            var data ={
-                "pagesize" : pagesize,
-                "page" : page[0],
-            };
-            $.ajax({
-                type : 'GET',
-                url: gobalConfig.base_url + 'api/market/market/',
-                data: data,
-                success : function (data_return) {
-                    //alert("测试");
-                    console.log(data_return);
-                    for (var i = 0; i < data_return["networklist"].length; i++) {
-                        var cnt = (pagesize * (page[0] - 1) + i + 1);
-                        $("#model-area").append('<div class="col-md-3 col-sm-6 single-model" id="model-'+ cnt +'"></div>');
-                        $('#model-' + cnt).append('<img class="img-thumbnail single-model-graph" src="'+ data_return["networklist"][i]["png"] +'">');
-                        $('#model-' + cnt).append('<div class=" single-model-right">\
-                            <div class="single-model-name" id="model-'+ cnt + '-name"></div> \
-                            <div class="single-model-intro" id="model-'+ cnt + '-intro"></div>\
-                            <div class="single-model-link"><a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')">详细>></a></div></div>');
-                        $('#model-' + cnt + '-name').text(data_return["networklist"][i]["name"]);
-                        $('#model-' + cnt + '-intro').text(data_return["networklist"][i]["description"]);
+        <script>
+            function load_models(page, pagesize) {
+                var data ={
+                    "pagesize" : pagesize,
+                    "page" : page[0],
+                };
+                $.ajax({
+                    type : 'GET',
+                    url: gobalConfig.base_url + 'api/market/market/',
+                    data: data,
+                    success : function (data_return) {
+                        //alert("测试");
+                        console.log(data_return);
+                        for (var i = 0; i < data_return["networklist"].length; i++) {
+                            var cnt = (pagesize * (page[0] - 1) + i + 1);
+                            $("#single-model-grid").append('<div class="col-md-4 col-sm-6"><div class="single-banner" id="model-'+ cnt +'"></div></div>');
+                            // $("#single-model-grid").append('<div class="col-md-6 col-sm-12 single-model" id="model-'+ cnt +'"></div>');
+                            $('#model-' + cnt).append('<div class="product-wrapper">\
+                                <a href="#" class="single-banner-image-wrapper">\
+                                    <img alt="" src="'+ data_return["networklist"][i]["png"] +'"></a>\
+                                    <div class="product-description"><div class="functional-buttons">\
+                                        <a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')" title="点击查看模型详细" data-toggle="modal" data-target="#productModal">\
+											<i class="fa fa-compress"></i>\
+										</a></div></div></div>\
+                            <div class="banner-bottom text-center">\
+                                <div class="banner-bottom-title">\
+                                    <a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')" id="model-'+ cnt + '-name"></a></div></div>');
+                            $('#model-' + cnt + '-name').text(data_return["networklist"][i]["name"]);
+                            $("#single-model-list").append('<div class="single-shop-product">\
+                                            <div class="col-xs-12 col-sm-5 col-md-4">\
+                                                <div class="left-item">\
+                                                    <a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')" title="点击查看模型详细">\
+                                                        <img src="'+ data_return["networklist"][i]["png"] +'" alt="">\
+                                                    </a>\
+                                                </div>\
+                                            </div>\
+                                            <div class="col-xs-12 col-sm-7 col-md-8">\
+                                                <div class="deal-product-content">\
+                                                    <h4>\
+                                                        <a id="list-model-'+ cnt + '-name"></a>\
+                                                    </h4>\
+                                                    <p id="list-model-'+ cnt + '-info"></p>\
+                                                    <div class="availability">\
+                                                        <span><a href="#" onclick="open_model_copy('+ data_return["networklist"][i]["id"] +')">详细>></a></span>\
+                                                    </div>\
+                                                </div>\
+                                            </div>\
+                                        </div>');
+                            $('#list-model-' + cnt + '-name').text(data_return["networklist"][i]["name"]);
+                            $('#list-model-' + cnt + '-info').text(data_return["networklist"][i]["description"]);
+                        }
+                        // if (page[0]==data_return["next_page"]) {
+                        //     $("#more").attr("class", "btn btn-link disabled");
+                        //     $("#more").text("已经加载到最后一页了！");
+                        //     $("#more").removeAttr("onclick");
+                        // } else {
+                        //     page[0] = data_return["next_page"];
+                        // }
                     }
-                    if (page[0]==data_return["next_page"]) {
-                        $("#more").attr("class", "btn btn-link disabled");
-                        $("#more").text("已经加载到最后一页了！");
-                        $("#more").removeAttr("onclick");
-                    } else {
-                        page[0] = data_return["next_page"];
-                    }
-                }
-            });
-        }
-        function open_model_copy(id) {
-            window.location.href="../models/model_details.html?id="+id;
-            // $.ajax({
-            //     type: 'GET',
-            //     url: gobalConfig.base_url + 'api/market/market/' + id +'/',
-            //     beforeSend: function (XMLHttpRequest) {
-            //         var token = window.sessionStorage.getItem('token');
-            //         if (token != null) {
-            //             XMLHttpRequest.setRequestHeader("Authorization", "JWT " + token);
-            //         }
-            //     },
-            //     success: function(data_return) {
-            //         console.log(data_return);
-            //     }
-            // });
-        }
-    </script>
+                });
+            }
+            function open_model_copy(id) {
+                window.location.href="../models/model_details.html?id="+id;
+            }
+        </script>
 </html>

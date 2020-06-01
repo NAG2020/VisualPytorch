@@ -667,6 +667,13 @@
 </script>
 <script>
     $(document).ready(function () {
+        try {
+            var user_info = window.sessionStorage.getItem('userinfo');
+            var user_id = JSON.parse(user_info).id;
+        } catch (e) {
+            alert("请登录");
+            window.location.href = "../index.html";
+        }
         var query_object = getQueryObject(window.location.href);
         if (query_object.hasOwnProperty("id")) {
             var net_id = query_object["id"];

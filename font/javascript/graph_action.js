@@ -272,7 +272,7 @@ function get_network() {
         "shared" : $("#shared").is(":checked") ? true : false,
         "structure" : structure
     }
-    saveJSON(ret,"a.json");
+    //saveJSON(ret,"a.json");
     return ret;
 }
 

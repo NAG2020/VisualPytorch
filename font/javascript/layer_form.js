@@ -1,189 +1,73 @@
 function get_content(name, parid) {
+    var data = eval('(' + window.sessionStorage.getItem(parid) + ')');
     if (name == "view_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'view_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">shape</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='shape' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["shape"] + "\" placeholder=\"1\">" +
-            "                    </div>" +
-            "                </form>";
+        return "<form class=\"form-horizontal\" role=\"form\" id = \"form" + parid + "\" name = 'view_layer'> "+
+            "   <div class=\"form-group\">" +
+            "       <label class=\"col-sm-4 control-label\">shape</label>" +
+            "       <div class=\"col-sm-8\">" +
+            "           <input type=\"text\" name='shape' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["shape"] + "\" placeholder=\"1\">" +
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_view_layer_form(" + parid + ")\">确认</button>"+
+            "   </div>" +
+            "   </form>";
     }
 
     if (name == "linear_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'linear_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">in_features</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='in_features' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["in_features"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">out_features</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='out_features' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["out_features"] + "\">" +
-            "                    </div>" +
-            "                </div>" +
-            "                </form>";
+        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'linear_layer'>"+
+            "       <div class=\"form-group\">" +
+            "           <label class=\"col-sm-4 control-label\">in_features</label>" +
+            "           <div class=\"col-sm-8\">" +
+            "               <input type=\"text\" name='in_features' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["in_features"] + "\">" +
+            "           </div>" +
+            "           <label class=\"col-sm-4 control-label\">out_features</label>" +
+            "           <div class=\"col-sm-8\">" +
+            "                   <input type=\"text\" name='out_features' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["out_features"] + "\">" +
+            "           </div>" +
+            "           <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_linear_layer_form(" + parid + ")\">确认</button>"+
+            "       </div>" +
+            "   </form>";
     }
 
     if (name == "concatenate_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'concatenate_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">dim</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='dim' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["dim"] + "\" placeholder=\"0\">" +
-            "                    </div>" +
-            "                </div>" +
-            "                </form>";
+        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'concatenate_layer'>"+
+            "       <div class=\"form-group\">" +
+            "           <label class=\"col-sm-4 control-label\">dim</label>" +
+            "           <div class=\"col-sm-8\">" +
+            "               <input type=\"text\" name='dim' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["dim"] + "\" placeholder=\"0\">" +
+            "           </div>" +
+            "           <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_concatenate_layer_form(" + parid + ")\">确认</button>"+
+            "       </div>" +
+            "   </form>";
     }
-
-
-
-
-    if (name == "conv1d_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'conv1d_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">in_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='in_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["in_channels"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">out_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='out_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["out_channels"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">kernel_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='kernel_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["kernel_size"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">stride</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='stride' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["stride"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">padding</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='padding' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["padding"] + "\">" +
-            "                    </div></div>" +
-            "                    <div class=\"form-group\">" +
-            "                    <label class=\"control-label\">activity</label>" +
-
-            "                        <select id=\"" + parid + "activity\" class=\"form-control\">\n" +
-            "                            <option value=\"None\">None</option>\n" +
-    "                            <option value=\"torch.nn.Relu\">relu</option>\n" +
-    "                            <option value=\"torch.nn.LeakyRelu\">leaky_relu</option>\n" +
-    "                            <option value=\"torch.nn.Sigmoid\">sigmoid</option>\n" +
-    "                            <option value=\"torch.nn.Tanh\">tanh</option>\n" +
-            "                        </select>" +
-
-            "                    <label class=\"control-label\">pool_way</label>" +
-
-            "                        <select id=\"" + parid + "pool_way\" name='pool_way' class=\"form-control\">\n" +
-    "                            <option value=\"None\">None</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool1d\">max_pool1d</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool2d\">max_pool2d</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool3d\">max_pool3d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool1d\">AvgPool1d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool2d\">AvgPool2d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool3d\">AvgPool3d</option>\n" +
-            "                        </select>" +
-
-            "                    <label class=\"col-sm-6 control-label\">pool_kernel_size</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_kernel_size\" name='pool_kernel_size' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_kernel_size"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-6 control-label\">pool_stride</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_stride\" name='pool_stride' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_stride"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-6 control-label\">pool_padding</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_padding\" name='pool_padding' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_padding"] + "\">" +
-            "                    </div>" +
-            "                </div>" +
-            "                </form>";
-    }
-
-    if (name == "conv2d_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'conv2d_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">in_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='in_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["in_channels"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">out_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='out_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["out_channels"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">kernel_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='kernel_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["kernel_size"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">stride</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='stride' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["stride"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">padding</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='padding' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["padding"] + "\">" +
-            "                    </div></div><div class=\"form-group\">" +
-            "                    <label class=\"control-label\">activity</label>" +
-
-            "                        <select id=\"" + parid + "activity\" class=\"form-control\">\n" +
-            "                            <option value=\"None\">None</option>\n" +
-    "                            <option value=\"torch.nn.Relu\">relu</option>\n" +
-    "                            <option value=\"torch.nn.LeakyRelu\">leaky_relu</option>\n" +
-    "                            <option value=\"torch.nn.Sigmoid\">sigmoid</option>\n" +
-    "                            <option value=\"torch.nn.Tanh\">tanh</option>\n" +
-            "                        </select>" +
-
-            "                    <label class=\"control-label\">pool_way</label>" +
-
-            "                        <select id=\"" + parid + "pool_way\" name='pool_way' class=\"form-control\">\n" +
-            "                            <option value=\"None\">None</option>\n" +
-"                            <option value=\"None\">None</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool1d\">max_pool1d</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool2d\">max_pool2d</option>\n" +
-    "                            <option value=\"torch.nn.MaxPool3d\">max_pool3d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool1d\">AvgPool1d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool2d\">AvgPool2d</option>\n" +
-    "                            <option value=\"torch.nn.AvgPool3d\">AvgPool3d</option>\n" +
-            "                        </select>" +
-            "                    <label class=\"col-sm-6 control-label\">pool_kernel_size</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_kernel_size\" name='pool_kernel_size' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_kernel_size"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-6 control-label\">pool_stride</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_stride\" name='pool_stride' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_stride"] + "\">" +
-            "                    </div>" +
-            "                    <label class=\"col-sm-6 control-label\">pool_padding</label>" +
-            "                            <div class=\"col-sm-6\">" +
-            "                        <input type=\"text\" id=\"" + parid + "pool_padding\" name='pool_padding' disabled=true class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["pool_padding"] + "\">" +
-            "                    </div>" +
-            "                </div>" +
-            "                </form>";
-    }
-
-
 
     if (name == "softmax_layer") {
-        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'softmax_layer'><div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">dim</label>" +
-            "                            <div class=\"col-sm-7\">" +
-            "                        <input type=\"text\" name='dim' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["dim"] + "\" placeholder=\"0\">" +
-            "                    </div>" +
-            "                </div>" +
-            "                </form>";
+        return "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'softmax_layer'>"+
+            "   <div class=\"form-group\">" +
+            "       <label class=\"col-sm-4 control-label\">dim</label>" +
+            "       <div class=\"col-sm-8\">" +
+            "           <input type=\"text\" name='dim' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["dim"] + "\" placeholder=\"0\">" +
+            "       </div>" +
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_softmax_layer_form(" + parid + ")\">确认</button>"+
+            "   </div>" +
+            "</form>";
     }
 
 
     if (name == "dropout_layer") {
         return  "<form action=\" form-horizontal \" role=\"form\" id = 'form" + parid + "' name = 'dropout_layer'> " +
-                "    <div class=\"form-group\"> " +
-                "       <label class=\"control-label\">type</label> " +
-                "           <select id=\"" + parid + "type\" class=\"form-control\">\n"+
-                "               <option value=\"1d\">1d</option>\n"+
-                "               <option value=\"2d\">2d</option>\n"+
-                "               <option value=\"3d\">3d</option>\n"+
-                "           </select> "+
-                "    </div> "+
-                "    <div class=\"form-group\"> "+
-                "        <label class=\"col-sm-5 control-label\">p</label> "+
-                "        <div class=\"col-sm-7\"> "+
-                "            <input type=\"text\" name='p' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["p"] + "\" placeholder=\"0.5\"> "+
-                "        </div> "+
+                "   <div class=\"form-group\"> " +
+                "   <label class=\"control-label\">type</label> " +
+                "       <select id=\"" + parid + "type\" class=\"form-control\">\n"+
+                "           <option value=\"1d\""+ eval(data['type']=="1d"?"selected=\"selected\"":"") +">1d</option>\n"+
+                "           <option value=\"2d\""+ eval(data['type']=="2d"?"selected=\"selected\"":"") +">2d</option>\n"+
+                "           <option value=\"3d\""+ eval(data['type']=="3d"?"selected=\"selected\"":"") +">3d</option>\n"+
+                "       </select> "+
+                "   </div> "+
+                "   <div class=\"form-group\"> "+
+                "       <label class=\"col-sm-4 control-label\">p</label> "+
+                "       <div class=\"col-sm-8\"> "+
+                "           <input type=\"text\" name='p' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["p"] + "\"> "+
+                "       </div> "+
+                "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_dropout_layer_form(" + parid + ")\">确认</button>"+
                 "    </div> "+
                 "</form>";
 
@@ -194,37 +78,39 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"conv\" selected >conv</option>\n" +
-            "               <option value=\"conv_transpose\">conv_transpose</option>\n" +
+            "               <option value=\"conv\""+ eval(data['layer_type']=="conv"?"selected=\"selected\"":"") +">conv</option>\n" +
+            "               <option value=\"conv_transpose\""+ eval(data['layer_type']=="conv_transpose"?"selected=\"selected\"":"") +">conv_transpose</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">type</label> " +
             "               <select id=\"" + parid + "type\" class=\"form-control\">\n"+
-            "                   <option value=\"1d\">1d</option>\n"+
-            "                   <option value=\"2d\">2d</option>\n"+
-            "                   <option value=\"3d\">3d</option>\n"+
+            "                   <option value=\"1d\""+ eval(data['type']=="1d"?"selected=\"selected\"":"") +">1d</option>\n"+
+            "                   <option value=\"2d\""+ eval(data['type']=="2d"?"selected=\"selected\"":"") +">2d</option>\n"+
+            "                   <option value=\"3d\""+ eval(data['type']=="3d"?"selected=\"selected\"":"") +">3d</option>\n"+
             "               </select> "+
             "       </div> "+
             "       <div class=\"form-group\">" +
-            "           <label class=\"col-sm-5 control-label\">in_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "           <label class=\"col-sm-4 control-label\">in_channels</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='in_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["in_channels"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">out_channels</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">out_channels</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='out_channels' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["out_channels"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">kernel_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">kernel_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='kernel_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["kernel_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">stride</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">stride</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='stride' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["stride"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">padding</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">padding</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='padding' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["padding"] + "\">" +
             "                    </div> "+
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_conv_layer_form(" + parid + ")\">确认</button>"+
+            "   </div>" +
             "       </div>" +
             "     </form>";
     }
@@ -245,42 +131,43 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"max_pool\">max_pool</option>\n" +
-            "               <option value=\"avg_pool\">avg_pool</option>\n" +
-            "               <option value=\"max_unpool\">max_unpool</option>\n" +
+            "               <option value=\"max_pool\""+ eval(data['layer_type']=="max_pool"?"selected=\"selected\"":"") +">max_pool</option>\n" +
+            "               <option value=\"avg_pool\""+ eval(data['layer_type']=="avg_pool"?"selected=\"selected\"":"") +">avg_pool</option>\n" +
+            "               <option value=\"max_unpool\""+ eval(data['layer_type']=="max_unpool"?"selected=\"selected\"":"") +">max_unpool</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">type</label> " +
             "               <select id=\"" + parid + "type\" class=\"form-control\">\n"+
-            "                   <option value=\"1d\">1d</option>\n"+
-            "                   <option value=\"2d\">2d</option>\n"+
-            "                   <option value=\"3d\">3d</option>\n"+
+            "                   <option value=\"1d\""+ eval(data['type']=="1d"?"selected=\"selected\"":"") +">1d</option>\n"+
+            "                   <option value=\"2d\""+ eval(data['type']=="2d"?"selected=\"selected\"":"") +">2d</option>\n"+
+            "                   <option value=\"3d\""+ eval(data['type']=="3d"?"selected=\"selected\"":"") +">3d</option>\n"+
             "               </select> "+
             "       </div> "+
             "       <div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">kernel_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">kernel_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='kernel_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["kernel_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">stride</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">stride</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='stride' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["stride"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">padding</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">padding</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='padding' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["padding"] + "\">" +
             "                    </div> "+
             "       </div>" +
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">ceil_mode</label>" +
             "           <select id=\"" + parid + "ceil_mode\" class=\"form-control\">\n" +
-            "               <option value=\"floor\">floor</option>\n" +
-            "               <option value=\"ceil\">ceil</option>\n" +
+            "               <option value=\"floor\""+ eval(data['ceil_mode']=="floor"?"selected=\"selected\"":"") +">floor</option>\n" +
+            "               <option value=\"ceil\""+ eval(data['ceil_mode']=="ceil"?"selected=\"selected\"":"") +">ceil</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">count_include_pad</label> " +
             "               <select id=\"" + parid + "count_include_pad\" class=\"form-control\">\n"+
-            "                   <option value=\"true\">true</option>\n"+
-            "                   <option value=\"false\">false</option>\n"+
+            "                   <option value=\"true\""+ eval(data['count_include_pad']=="true"?"selected=\"selected\"":"") +">true</option>\n"+
+            "                   <option value=\"false\""+ eval(data['count_include_pad']=="false"?"selected=\"selected\"":"") +">false</option>\n"+
             "               </select> "+
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_pool_layer_form(" + parid + ")\">确认</button>"+
             "       </div> "+
             "     </form>";
     }
@@ -311,31 +198,33 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"relu\" >relu</option>\n" +
-            "               <option value=\"sigmoid\">sigmoid</option>\n" +
-            "               <option value=\"tanh\">tanh</option>\n" +
-            "               <option value=\"leaky relu\">leaky relu</option>\n" +
-            "               <option value=\"PRelu\">PRelu</option>\n" +
-            "               <option value=\"RRelu\">RRelu</option>\n" +
+            "               <option value=\"relu\""+ eval(data['layer_type']=="relu"?"selected=\"selected\"":"") +">relu</option>\n" +
+            "               <option value=\"sigmoid\""+ eval(data['layer_type']=="sigmoid"?"selected=\"selected\"":"") +">sigmoid</option>\n" +
+            "               <option value=\"tanh\""+ eval(data['layer_type']=="tanh"?"selected=\"selected\"":"") +">tanh</option>\n" +
+            "               <option value=\"leaky relu\""+ eval(data['layer_type']=="leaky relu"?"selected=\"selected\"":"") +">leaky relu</option>\n" +
+            "               <option value=\"PRelu\""+ eval(data['layer_type']=="PRelu"?"selected=\"selected\"":"") +">PRelu</option>\n" +
+            "               <option value=\"RRelu\""+ eval(data['layer_type']=="RRelu"?"selected=\"selected\"":"") +">RRelu</option>\n" +
             "           </select>" +
             "       </div> "+
             "       <div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">negative_slope</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">negative_slope</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='negative_slope' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["negative_slope"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">weight</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">weight</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='weight' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["weight"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">lower</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">lower</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='lower' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["lower"] + "\">" +
             "                    </div> "+
-            "                    <label class=\"col-sm-5 control-label\">upper</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">upper</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='upper' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["upper"] + "\">" +
             "                    </div> "+
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_activation_layer_form(" + parid + ")\">确认</button>"+
+            "       </div> "+
             "       </div>" +
             "     </form>";
     }
@@ -353,25 +242,27 @@ function get_content(name, parid) {
     if(name == "RNN_layer"){
         return  "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'RNN_layer'> "+
             "       <div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">input_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">input_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='input_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["input_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">hidden_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">hidden_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='hidden_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["hidden_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">num_layers</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">num_layers</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='num_layers' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["num_layers"] + "\">" +
             "                    </div> "+
             "       </div>" +
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">nonlinearity</label>" +
             "           <select id=\"" + parid + "nonlinearity\" class=\"form-control\">\n" +
-            "               <option value=\"tanh\">tanh</option>\n" +
-            "               <option value=\"relu\">relu</option>\n" +
+            "               <option value=\"relu\""+ eval(data['nonlinearity']=="relu"?"selected=\"selected\"":"") +">relu</option>\n" +
+            "               <option value=\"tanh\""+ eval(data['nonlinearity']=="tanh"?"selected=\"selected\"":"") +">tanh</option>\n" +
             "           </select>" +
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_RNN_layer_form(" + parid + ")\">确认</button>"+
+            "       </div> "+
             "       </div> "+
             "     </form>";
     }
@@ -381,18 +272,20 @@ function get_content(name, parid) {
     if(name == "LSTM_layer"){
         return  "<form class=\"form-horizontal\" role=\"form\" id = 'form" + parid + "' name = 'LSTM_layer'> "+
             "       <div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">input_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">input_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='input_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["input_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">hidden_size</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">hidden_size</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='hidden_size' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["hidden_size"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">num_layers</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">num_layers</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='num_layers' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["num_layers"] + "\">" +
             "                    </div> "+
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_LSTM_layer_form(" + parid + ")\">确认</button>"+
+            "       </div> "+
             "       </div>" +
             "     </form>";
     }
@@ -402,30 +295,32 @@ function get_content(name, parid) {
             "       <div class=\"form-group\">" +
             "           <label class=\"control-label\">layer_type</label>" +
             "           <select id=\"" + parid + "layer_type\" class=\"form-control\">\n" +
-            "               <option value=\"batch_norm\">batch_norm</option>\n" +
-            "               <option value=\"group_norm\">group_norm</option>\n" +
-            "               <option value=\"instance_norm\">instance_norm</option>\n" +
+            "               <option value=\"batch_norm\""+ eval(data['layer_type']=="batch_norm"?"selected=\"selected\"":"") +">batch_norm</option>\n" +
+            "               <option value=\"group_norm\""+ eval(data['layer_type']=="group_norm"?"selected=\"selected\"":"") +">group_norm</option>\n" +
+            "               <option value=\"instance_norm\""+ eval(data['layer_type']=="instance_norm"?"selected=\"selected\"":"") +">instance_norm</option>\n" +
             "           </select>" +
             "           <label class=\"control-label\">type</label>" +
             "           <select id=\"" + parid + "type\" class=\"form-control\">\n" +
-            "               <option value=\"1d\">1d</option>\n" +
-            "               <option value=\"2d\">2d</option>\n" +
-            "               <option value=\"3d\">3d</option>\n" +
+            "               <option value=\"1d\""+ eval(data['type']=="1d"?"selected=\"selected\"":"") +">1d</option>\n"+
+            "               <option value=\"2d\""+ eval(data['type']=="2d"?"selected=\"selected\"":"") +">2d</option>\n"+
+            "               <option value=\"3d\""+ eval(data['type']=="3d"?"selected=\"selected\"":"") +">3d</option>\n"+
             "           </select>" +
             "       </div> "+
             "       <div class=\"form-group\">" +
-            "                    <label class=\"col-sm-5 control-label\">num_features</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">num_features</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='num_features' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["num_features"] + "\">" +
             "                    </div> "+
-            "                    <label class=\"col-sm-5 control-label\">num_groups</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">num_groups</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='num_groups' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["num_groups"] + "\">" +
             "                    </div>" +
-            "                    <label class=\"col-sm-5 control-label\">num_channel</label>" +
-            "                            <div class=\"col-sm-7\">" +
+            "                    <label class=\"col-sm-4 control-label\">num_channel</label>" +
+            "                            <div class=\"col-sm-8\">" +
             "                        <input type=\"text\" name='num_channel' class=\"form-control\" value=\"" + eval('(' + window.sessionStorage.getItem(parid) + ')')["num_channel"] + "\">" +
             "                    </div>" +
+            "       <button type=\"button\" class=\"btn btn-success \" style=\"width: 150px\" onclick=\"save_attr_norm_layer_form(" + parid + ")\">确认</button>"+
+            "       </div> "+
             "       </div>" +
             "     </form>";
     }
@@ -434,11 +329,12 @@ function get_content(name, parid) {
 
 function set_content(name, parid) {
     var data = eval('(' + window.sessionStorage.getItem(parid) + ')');
+    console.log(data);
     if (name == "conv1d_layer") {
-        $("#"+parid+"activity").find("option").removeAttr("selected");
-        $("#"+parid+"activity").find("option[value=\""+ data['activity'] + "\"]").attr("selected", "selected");
-        $("#"+parid+"pool_way").find("option").removeAttr("selected");
-        $("#"+parid+"pool_way").find("option[value=\""+ data['pool_way'] + "\"]").attr("selected", "selected");
+        $("#form"+parid+"activity").find("option").removeAttr("selected");
+        $("#form"+parid+"activity").find("option[value=\""+ data['activity'] + "\"]").attr("selected", "selected");
+        $("#form"+parid+"pool_way").find("option").removeAttr("selected");
+        $("#form"+parid+"pool_way").find("option[value=\""+ data['pool_way'] + "\"]").attr("selected", "selected");
     }
 
     if (name == "conv2d_layer") {
@@ -449,8 +345,8 @@ function set_content(name, parid) {
     }
 
     if (name == "dropout_layer") {
-        $("#"+parid+"type").find("option").removeAttr("selected");
-        $("#"+parid+"type").find("option[value=\""+ data['type'] + "\"]").attr("selected", "selected");
+        $("#form"+parid+"type").find("option").removeAttr("selected");
+        $("#form"+parid+"type").find("option[value=\""+ data['type'] + "\"]").attr("selected", "selected");
     }
 
     if(name == "conv_layer"){

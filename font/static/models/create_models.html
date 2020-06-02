@@ -1002,8 +1002,8 @@
                 for (var i = 0; i < data_return.length; i++) {
                     var thisid = "my_model_" + data_return[i]["id"];
                     $("#my_model").append(
-                        "<div class=\"ele_in_list\">"+
-                            "<div class=\"model_node col-md-6\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
+                        "<div class=\"ele_in_list col-md-6\">"+
+                            "<div class=\"node model_node\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
                             data_return[i]["name"]+
                             "</div>" +
                         "</div>"

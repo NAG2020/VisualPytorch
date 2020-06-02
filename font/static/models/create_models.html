@@ -40,10 +40,8 @@
 
         <!-- modernizr css 这个比较特殊不知道为啥 -->
         <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="https://cdn.bootcdn.net/ajax/libs/canvg/1.0/canvg.min.js"></script>
 
-        <script type="text/javascript" src="../../resources/html2canvas.js"></script>
-        <!-- <script type="text/javascript" src="../../resources/canvas2image.js"></script> -->
+
     <link href="../../resources/bootstrap.min.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
@@ -128,20 +126,7 @@
 
             <div class="panel-group" id="left_ele_collapse" style="margin-top: 20px">
                 <div class="panel panel-info">
-
-                        <!-- <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#left_ele_collapse"
-                               href="#collapseOne">
-                                可选用网络层
-                            </a>
-                        </h4> -->
-
-
-
-
                     <div class="panel-title dropdown" data-parent="#left_ele_collapse">
-
-
                         <div class="btn-group">
 
                             <button type="button" class="btn btn-danger" onclick="load_static()">
@@ -149,8 +134,8 @@
                             </button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-success">
-                                <span class="glyphicon glyphicon-eur">&nbsp;经典模型</span>
+                            <button type="button" class="btn btn-success" onclick="load_image_enhancement()">
+                                <span class="glyphicon glyphicon-eur">&nbsp;图像处理层</span>
                             </button>
                         </div>
                         <div class="btn-group">
@@ -159,10 +144,10 @@
                             </button>
                           <ul class="dropdown-menu">
                             <li><a href="javascript:void(0);" onclick="load_simple_network_layer()">简单网络层</a></li>
-                            <li><a href="javascript:void(0);" onclick="load_my_models()">我的中间层</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="javascript:void(0);" onclick="load_my_models()">我的模型</a></li>
+<!--                             <li><a href="javascript:void(0);" onclick="load_image_enhancement()">图像处理层</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Separated link</a></li> -->
                           </ul>
                         </div>
 
@@ -176,23 +161,27 @@
 
 
                         <div class="hidden panel-body" id="simple_network_layer">
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node start little_green" id="start">
                                     开始
                                 </div>
                             </div>
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
+                                <div class="node end little_green" id="end">
+                                    结束
+                                </div>
+                            </div>
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="view_layer" name="view_layer" type="button" data-container="body" data-toggle="popover">
                                     reshape层
                                 </div>
                             </div>
-                            <div class="ele_in_list">
-                                <div class="node lightblue" id="linear_layer" type="button"
-                                     data-container="body" data-toggle="popover">
+                            <div class="ele_in_list col-md-6">
+                                <div class="node lightblue" id="linear_layer" type="button" data-container="body" data-toggle="popover">
                                     全连接层
                                 </div>
                             </div>
-
+<!--
                             <div class="ele_in_list hidden">
                                 <div class="node lightblue" id="conv1d_layer" type="button"
                                      data-container="body" data-toggle="popover">
@@ -205,30 +194,30 @@
                                      data-container="body" data-toggle="popover">
                                     二维卷积层
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="element_wise_add_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     元素级相加层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="concatenate_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     channel维度拼接层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="softmax_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     softmax层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="dropout_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     dropout层
@@ -236,21 +225,21 @@
                             </div>
 
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="conv_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     卷积层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="pool_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     池化层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="activation_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     激活层
@@ -260,7 +249,7 @@
 
 
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="RNN_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     递归神经网络
@@ -269,29 +258,213 @@
 
 
 
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6">
                                 <div class="node lightblue" id="LSTM_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     长周期神经网络
                                 </div>
                             </div>
-                            <div class="ele_in_list">
+                            <div class="ele_in_list col-md-6" >
                                 <div class="node lightblue" id="norm_layer" type="button"
                                      data-container="body" data-toggle="popover">
                                     标准化层
                                 </div>
                             </div>
 
-                            <div class="ele_in_list">
-                                <div class="node end little_green" id="end">
-                                    结束
-                                </div>
-                            </div>
+
                         </div>
 
                         <div class="hidden panel-body" id="my_model">
 
                         </div>
+
+
+                        <div class="hidden panel-body" id="image_enhancement_form_parent">
+                            <h4>图像增强--参数配置</h4>
+                            <form class="form-horizontal" id="image_enhancement_form">
+                                <h5>ColorJitter(颜色变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">brightness<br/>(亮度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负浮点数，默认值为0" id="ColorJitter_brightness" name="brightness">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">contrast<br/>(对比度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负浮点数，默认值为0" id="ColorJitter_contrast" name="contrast">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">saturation<br/>(饱和度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负浮点数，默认值为0" id="ColorJitter_saturation" name="saturation">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">hue<br/>(色调)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负浮点数且在0-0.5之间，默认值为0" id="ColorJitter_hue" name="hue">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>Pad(边界填充)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">padding<br/>(亮度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，不能为空" id="Pad_padding" name="Pad_padding">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">padding_mode</label>
+                                    <div class="col-sm-8">
+                                        <select id="Pad_padding_mode" name="Pad_padding_mode" class="form-control">
+                                            <option value="constant" selected>constant</option>
+                                            <option value="edge">edge</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomCrop(随机切割)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">size<br/>(亮度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数" id="RandomCrop_size" name="RandomCrop_size">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">padding</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="正整数，不能为空" id="RandomCrop_padding" name="RandomCrop_padding">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">pad_if_needed<br/>(打印日志)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="RandomCrop_pad_if_needed" name="RandomCrop_pad_if_needed" checked></center>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">padding_mode</label>
+                                    <div class="col-sm-8">
+                                        <select id="RandomCrop_padding_mode" name="RandomCrop_padding_mode" class="form-control">
+                                            <option value="constant" selected>constant</option>
+                                            <option value="edge">edge</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <hr/>
+                                <h5>Grayscale(黑白变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">num_output_channels<br/>(只能为1或3)</label>
+                                    <div class="col-sm-8">
+                                        <select id="Grayscale_num_output_channels" name="Grayscale_num_output_channels" class="form-control">
+                                            <option value="1" selected>1</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomAffine(随机变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">degrees<br/>(图片旋转度数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="非负浮点数" id="RandomAffine_degrees" name="RandomAffine_degrees">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">translate<br/>(图像在水平和垂直方向上的变化范围)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="格式为a,b,其中a、b皆为非负浮点数,默认值为None" id="RandomAffine_translate" name="RandomAffine_translate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">scale<br/>(图片的随机取样范围)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="格式为a,b,其中a、b皆为非负浮点数,默认值为None" id="RandomAffine_scale" name="RandomAffine_scale">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomGrayscale(随机灰度变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">p<br/>(表示变换的概率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0,1]浮点数，默认值为0.1" id="RandomGrayscale_p" name="RandomGrayscale_p">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomPerspective(透视变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">p<br/>(表示变换的概率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0,1]浮点数，默认值为0.5" id="RandomPerspective_p" name="RandomPerspective_p">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">scale<br/>(表示透视变形的程度)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0,1]浮点数，默认值为0.5" id="RandomPerspective_distortion_scale" name="RandomPerspective_distortion_scale">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomRotation(随机旋转)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">degrees<br/>(旋转度数)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="默认为0" id="RandomRotation_degrees" name="RandomRotation_degrees">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">expand<br/>(是否对旋转的图像进行扩展)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="RandomRotation_expand" name="RandomRotation_expand"></center>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomVerticalFlip(垂直变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">p<br/>(表示变换的概率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0,1]浮点数，默认值为0.5" id="RandomVerticalFlip_p" name="RandomVerticalFlip_p">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>RandomErasing(随机消除)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">p<br/>(删除的概率)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="[0,1]浮点数，默认值为0.5" id="RandomErasing_p" name="RandomErasing_p">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">scale<br/>(矩形区域相较于原图片大小)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="格式为a,b 其中a,b均为(>=0 <=1浮点数),默认值0.02, 0.33" id="RandomErasing_scale" name="RandomErasing_scale">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">ratio<br/>(所擦除区域的纵横比范围)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="格式为a,b 其中a,b均为(>=0 <=1浮点数),默认值0.3, 3.3" id="RandomErasing_ratio" name="RandomErasing_ratio">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h5>TenCrop(角变换)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">size<br/>(变换后的图片尺寸)</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="格式为a,b 其中a和b都为正整数" id="TenCrop_size" name="TenCrop_size">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">vertical_flip<br/>(是否进行垂直变换)</label>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="TenCrop_vertical_flip" name="TenCrop_vertical_flip" checked></center>
+                                    </div>
+                                </div> -->
+                            </form>
+                        </div>
+
 
 
                         <div class="panel-body" id="static_form_parent">
@@ -342,7 +515,7 @@
                                     </div>
                                 </div>
                                 <hr/>
-
+                                <h3>学习速率调节器</h3>
 <!-- learning_rate_scheduler start ==========================================-->
                                 <div class="form-group">
                                         <label class="col-sm-4 control-label">learning_rate_scheduler<br/>(学习速率调节器)</label>
@@ -409,9 +582,9 @@
                                 </div>
                                 <div class="form-group hidden" id="verbose_form_group">
                                     <label class="col-sm-4 control-label">verbose<br/>(打印日志)</label>
-                                        <div class="col-sm-8 checkbox-inline">
-                                            <center><input type="checkbox" id="verbose" name="verbose" checked></center>
-                                        </div>
+                                    <div class="col-sm-8 checkbox-inline">
+                                        <center><input type="checkbox" id="verbose" name="verbose" checked></center>
+                                    </div>
                                 </div>
                                 <div class="form-group hidden" id="min_lr_form_group">
                                     <label class="col-sm-4 control-label">min_lr<br/>(学习率下限)</label>
@@ -422,6 +595,7 @@
                                 <hr/>
 <!-- learning_rate_scheduler end ==========================================-->
 <!-- optimizer start ==========================================-->
+                                <h3>优化器</h3>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">optimizer<br/>(优化器)</label>
                                     <div class="col-sm-8">
@@ -512,7 +686,7 @@
 <!-- optimizer end ==========================================-->
 <!-- loss start ==========================================-->
 
-
+                                <h3>损失函数</h3>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">loss<br/>(损失函数)</label>
                                     <div class="col-sm-8">
@@ -588,12 +762,13 @@
 
 
         </div>
-        <div class="col-md-6" id="canvas">
+        <div class="col-md-8" id="canvas">
             <!--<div style="height:1000px;border:0.5px solid black;background:url(../img/grid.png) no-repeat;background-size:100%;opacity: .6">-->
-            <div style="height:1000px;border:0.5px solid black" id="border">
+            <div style="height:1000px;border:0.5px solid black">
             </div>
         </div>
-        <div class="col-md-2">
+<!--         <div class="hidden col-md-2"> -->
+        <div class="hidden">
             <div id="parameters" style="white-space: nowrap; color: rgb(112, 112, 112); text-align: left; cursor: default;">
 
 
@@ -643,19 +818,19 @@
 
 <!--     <script type="text/javascript" src="../../resources/bootstrap.min.js"></script> -->
     <script type="text/javascript" src="../../resources/jquery-ui.js"></script>
-    
 
     <script type="text/javascript" src="../../resources/jsplumb.min.js"></script>
     <script type="text/javascript" src="../../javascript/graph_action.js"></script>
     <script type="text/javascript" src="../../javascript/layer_form.js"></script>
     <script type="text/javascript" src="../../javascript/base_service.js"></script>
-    
+
 
     <script type="text/javascript">
         function load_static(){
             $("#simple_network_layer").attr("class","hidden panel-body");
             $("#static_form_parent").attr("class","panel-body");
             $("#my_model").attr("class","hidden panel-body");
+            $("#image_enhancement_form_parent").attr("class","hidden panel-body");
             // alert();
             // document.getElementById("body1").class
         }
@@ -667,12 +842,21 @@
             $("#simple_network_layer").attr("class","panel-body");
             $("#static_form_parent").attr("class","hidden panel-body");
             $("#my_model").attr("class","hidden panel-body");
+            $("#image_enhancement_form_parent").attr("class","hidden panel-body");
         }
         function load_my_models(){
             $("#simple_network_layer").attr("class","hidden panel-body");
             $("#static_form_parent").attr("class","hidden panel-body");
             $("#my_model").attr("class","panel-body");
+            $("#image_enhancement_form_parent").attr("class","hidden panel-body");
 
+        }
+
+        function load_image_enhancement(){
+            $("#simple_network_layer").attr("class","hidden panel-body");
+            $("#static_form_parent").attr("class","hidden panel-body");
+            $("#my_model").attr("class","hidden panel-body");
+            $("#image_enhancement_form_parent").attr("class","panel-body");
         }
     </script>
     <!-- bootstrap js -->
@@ -752,11 +936,12 @@
         }
 
         //alert(JSON.parse(user_info).id);
-        //var query_object = getQueryObject(window.location.href)
-        // var user_id = query_object['id'];
+
+
+        // window.sessionStorage.setItem("userinfo", "{\"id\":1}");
         // var user_id = JSON.parse(user_info).id;
-        // var user_info = window.sessionStorage.getItem('userinfo');
-        // var user_id = JSON.stringify(user_info).id;
+        var user_info = window.sessionStorage.getItem('userinfo');
+        var user_id = JSON.stringify(user_info).id;
 
         var data = {
             "id": user_id
@@ -764,8 +949,8 @@
         // for (var i = 0; i < 5; i++) {
         //     var thisid = "my_model_"+ i;
         //     $("#my_model").append(
-        //         "<div class=\"ele_in_list\">"+
-        //             "<div class=\"node lightblue model_node\" id=\"" + "my_model_"+ i + "\" name=\""+ 222 +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
+        //         "<div class=\"ele_in_list col-md-6\">"+
+        //             "<div class=\"model_node\" id=\"" + "my_model_"+ i + "\" name=\""+ 222 +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
         //             i+
         //             "</div>" +
         //         "</div>"
@@ -817,15 +1002,14 @@
                     var thisid = "my_model_" + data_return[i]["id"];
                     $("#my_model").append(
                         "<div class=\"ele_in_list\">"+
-                            "<div class=\"node lightblue model_node\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
+                            "<div class=\"model_node col-md-6\" id=\"" + "my_model_" + data_return[i]["id"] + "\" name=\""+ data_return[i]["name"] +"\" type=\"button\" data-container=\"body\" data-toggle=\"popover\">"+
                             data_return[i]["name"]+
                             "</div>" +
                         "</div>"
                     );
-                    
-                    // console.log(data_return[i]);
-                     var canvas = JSON.parse(data_return[i]["structure"]).canvas;
-                     model_net[thisid] ={"canvas":canvas};
+
+                    var canvas = JSON.parse(data_return[i]["structure"]).canvas;
+                    model_net[thisid] ={"canvas":canvas};
                 }
                 $(".model_node").draggable(
                     {
@@ -1263,24 +1447,17 @@
                 success: function (net_work) {
                     console.log(net_work);
                     var name = net_work["name"];
-                    var structure = eval('(' + net_work["structure"] + ')');
-                    //alert(temp_structure);
-                    //console.log(temp_structure);
-                    //var structure = eval('(' + temp_structure["structure"] + ')');
-                    //alert(structure);
-                    
+                    var temp_structure = eval('(' + net_work["structure"] + ')');
+                    alert(temp_structure);
+                    var structure = eval('(' + temp_structure["structure"] + ')');
+                    alert(structure);
                     // console.log(structure);
                     // console.log(structure['canvas'][0]['nets_conn']);
-                    // console.log(JSON.parse(structure));
-                    var nets = structure['canvas']['attribute']['nets'];
-                    var nets_conn = structure['canvas']['nets_conn'];
+                    var nets = structure['canvas'][0]['attribute']['nets'];
+                    var nets_conn = structure['canvas'][0]['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
-                    if (net_work["sharable"]==false) {
-                        $("#shared").attr("disabled", "disabled");
-                        $("#shareWord").text("这个模型是复制来的，所以不能共享");
-                    }
                     $("#model_name").text(name);
                     jQuery.each(nets, function (id, val) {
 
@@ -1313,7 +1490,7 @@
 
                                 },
                                 "maxConnections": -1,
-                                "connector": ["StateMachine", {
+                                "connector": ["Flowchart", {
                                     stub: [40, 60],
                                     gap: 5,
                                     cornerRadius: 5,
@@ -1428,8 +1605,10 @@
             }
             /*$(this).append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
                 "onclick='popover_show(\"" + id + "\",\"" + name + "\")'" + " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + $(ui.helper).html() + "</div>");*/
-            $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " +
-                " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
+            $("#canvas").append("<div class='" + $("#" + name).attr("class") + "' id='" + id + "' name='" + name + "' type='" + $("#" + name).attr("type") + "' " + " data-container='" + $("#" + name).attr("data-container") + "' data-toggle='" + $("#" + name).attr("data-toggle") + "' " + ">" + ui.draggable[0].innerHTML + "</div>");
+
+
+
             $("#" + id).css("left", left).css("top", top);
             jsPlumb.draggable(id);
             $("#" + id).draggable({containment: "parent"});
@@ -1445,7 +1624,19 @@
                 }
             });*/
 
+            $("#" + id).mousedown(function (e) {
+                //右键为3
 
+                if (3 == e.which) {
+
+                    if (confirm("确定要删除吗?")) {
+                        jsPlumb.removeAllEndpoints($(this).attr("id"));
+                        $("#" + id).popover('destroy');
+                        $(this).remove();
+
+                    }
+                }
+            });
 
 
 
@@ -1567,7 +1758,11 @@
                     }
                 }
             });*/
-
+            // $("#" + id).popover({
+            //     placement: "right",
+            //     content: get_content(name, id),
+            //     html: true
+            // });
             var has_move = false;
             var has_down = false;
 
@@ -1579,6 +1774,7 @@
                     },
                     mousemove: function (e) {
                         has_move = true;
+
                         return;
                     },
                     mouseup: function (e) {
@@ -1589,7 +1785,9 @@
                             window.sessionStorage.setItem("active_node", id);
                             $("#" + id).addClass("selected");
 
-                            show_form(id, name);
+                            popover_show(id,name);
+                            //set_content(name, id);
+                            //show_form(id, name);
                         }
                         has_move = false;
                         has_down = false;
@@ -1601,6 +1799,23 @@
             var popover_content= tmp_list[0]+"popover_"+id+tmp_list[1];*/
         }
     });
+
+    function popover_show(id, name) {
+        // alert(id);
+        // alert(name);
+        $('#'+id).popover('destroy');
+        $("#" + id).popover({
+            placement: "right",
+            content: get_content(name, id),
+            html: true
+        });
+        // $("#" + id).on('hidden.bs.popover', function () {
+        //     $("#" + id).popover('destroy');
+        // });
+        $("#" + id).popover('show');
+    }
+
+
 
     jsPlumb.bind('click', function (conn, originalEvent) {
         jsPlumb.deleteConnection(conn);
@@ -1660,51 +1875,51 @@
         //     }
         // });
 
-        $("#parameters").find("input,select").change(function () {
-            switch ($("#form" + id).attr("name")) {
-                case "view_layer":
-                    save_attr_view_layer_form(id);
-                    break;
-                case "concatenate_layer":
-                    save_attr_concatenate_layer_form(id);
-                    break;
-                case "linear_layer":
-                    save_attr_linear_layer_form(id);
-                    break;
-                case "conv1d_layer":
-                    save_attr_conv1d_layer_form(id);
-                    break;
-                case "conv2d_layer":
-                    save_attr_conv2d_layer_from(id);
-                    break;
-                case "softmax_layer":
-                    save_attr_softmax_layer_form(id);
-                    break;
-                case "dropout_layer":
-                    save_attr_dropout_layer_form(id);
-                    break;
-                case "conv_layer":
-                    save_attr_conv_layer_form(id);
-                    break;
-                case "pool_layer":
-                    save_attr_pool_layer_form(id);
-                    break;
-                case "activation_layer":
-                    save_attr_activation_layer_form(id);
-                    break;
-                case "RNN_layer":
-                    save_attr_RNN_layer_form(id);
-                    break;
-                case "LSTM_layer":
-                    save_attr_LSTM_layer_form(id);
-                    break;
-                case "norm_layer":
-                    save_attr_norm_layer_form(id);
-                    break;
-                default:
-                    return;
-            }
-        })
+        // $("#parameters").find("input,select").change(function () {
+        //     switch ($("#form" + id).attr("name")) {
+        //         case "view_layer":
+        //             save_attr_view_layer_form(id);
+        //             break;
+        //         case "concatenate_layer":
+        //             save_attr_concatenate_layer_form(id);
+        //             break;
+        //         case "linear_layer":
+        //             save_attr_linear_layer_form(id);
+        //             break;
+        //         case "conv1d_layer":
+        //             save_attr_conv1d_layer_form(id);
+        //             break;
+        //         case "conv2d_layer":
+        //             save_attr_conv2d_layer_from(id);
+        //             break;
+        //         case "softmax_layer":
+        //             save_attr_softmax_layer_form(id);
+        //             break;
+        //         case "dropout_layer":
+        //             save_attr_dropout_layer_form(id);
+        //             break;
+        //         case "conv_layer":
+        //             save_attr_conv_layer_form(id);
+        //             break;
+        //         case "pool_layer":
+        //             save_attr_pool_layer_form(id);
+        //             break;
+        //         case "activation_layer":
+        //             save_attr_activation_layer_form(id);
+        //             break;
+        //         case "RNN_layer":
+        //             save_attr_RNN_layer_form(id);
+        //             break;
+        //         case "LSTM_layer":
+        //             save_attr_LSTM_layer_form(id);
+        //             break;
+        //         case "norm_layer":
+        //             save_attr_norm_layer_form(id);
+        //             break;
+        //         default:
+        //             return;
+        //     }
+        // })
     }
 </script>
 
@@ -1718,10 +1933,7 @@
         window.sessionStorage.removeItem(layer_id);
     }
 
-</script>
 
-<script>
-    
 </script>
 
 </html>

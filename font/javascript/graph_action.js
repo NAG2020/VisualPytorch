@@ -1,97 +1,7 @@
 var gobalConfig = {
-    // "base_url": "http://114.115.148.27:80/"
+    //"base_url": "http://114.115.148.27:80/"
     "base_url": "http://127.0.0.1:8000/"
-    // "base_url": "http://39.97.209.22:80/"
 };
-
-/*$(function () {
-    $('#submit').click( function (e) {
-        var conn_list;
-        var network = [];
-        conn_list = jsPlumb.getAllConnections();
-        console.log(conn_list);
-        for (var i = 0; i < conn_list.length; i++) {
-            var source_id = conn_list[i]["sourceId"];
-            var target_id = conn_list[i]["targetId"];
-            var conn = {
-                "source": $("#" + source_id).attr("name"),
-                "target": $("#" + target_id).attr("name")
-            }
-            network.push(conn);
-        }
-
-       $.ajax({
-            type: 'POST',
-            url: gobalConfig.base_url + 'NeuralNetwork/network/',
-            data: JSON.stringify(network),
-            contentType: 'application/json; charset=UTF-8',
-            success: function (data_return) {
-                alert(data_return);
-            }
-        });
-    });
-});*/
-// function get_network() {
-//     var conn_list;
-//     var nets_conn = [];
-//     var nets = {};
-//     $("#canvas").find(".node").each(function (index, element) {
-//         var id = $(element).attr('id');
-//         nets[id] = {
-//             "type": 'base',
-//             "name": $(element).attr('name'),
-//             "attribute": eval('(' + window.sessionStorage.getItem(id) + ')'),
-//             "left": $(element).css('left'),
-//             "top": $(element).css('top')
-//         }
-//     });
-//     conn_list = jsPlumb.getAllConnections();
-//     console.log(conn_list);
-
-//     for (var i = 0; i < conn_list.length; i++) {
-//         var source_id = conn_list[i]["sourceId"];
-//         var target_id = conn_list[i]["targetId"];
-//         var conn = {
-//             "source": {
-//                 "id": source_id,
-//                 "anchor_position": conn_list[i]["endpoints"][0]["anchor"]["type"]
-//             },
-//             "target": {
-//                 "id": target_id,
-//                 "anchor_position": conn_list[i]["endpoints"][1]["anchor"]["type"]
-//             }
-//         };
-//         nets_conn.push(conn);
-//     }
-//     var epoch = $("#epoch").val();
-//     if (epoch == "") {
-//         epoch = "1";
-//     }
-//     var learning_rate = $("#learning_rate").val();
-//     if (learning_rate == "") {
-//         learning_rate = "0.5";
-//     }
-//     var batch_size = $("#batch_size").val();
-//     if (batch_size == "") {
-//         batch_size = "1";
-//     }
-//     var static = {
-//         "epoch": epoch,
-//         "optimizer": $("#optimzier").find("option:selected").val(),
-//         "learning_rate": learning_rate,
-//         "batch_size": batch_size
-//     };
-    // var data = {
-    //     "name": $("#model_name").val(),
-    //     "structure": {
-    //         "nets": nets,
-    //         "nets_conn": nets_conn,
-    //         "static": static
-    //     }
-    // };
-//     return data;
-// }
-
 
 function saveJSON(data, filename){
     if(!data) {
@@ -112,8 +22,6 @@ function saveJSON(data, filename){
     e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
     a.dispatchEvent(e)
 }
-
-
 
 function get_network() {
     var conn_list;
@@ -259,12 +167,6 @@ function get_network() {
         "static": static
     };
 
-    //var graph = await canvas_gen();
-    //graph.then(num =>{console.log(num)});
-    //console.log(graph);
-
-    var sharable = $("#shared").attr("disabled") == "disabled" ? false : true;
-
     var ret = {
         "name" : $("#model_name").val(),
         "description" : $("#model_info").val(),
@@ -340,103 +242,14 @@ function translate_network() {
     });
 }
 
+
 function save_network() {
-    //首先生成缩略图
-    $("#save_modal").modal('hide');
-    window.pageYoffset = 0;
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    $("#" + window.sessionStorage.getItem("active_node")).removeClass("selected");
-    $("#canvas").find("#border").attr("style","height:1000px;border:0px");
-    //获取节点高度，后面为克隆节点设置高度。
-    
-    var height = $("#canvas").height()
-    //克隆节点，默认为false，不复制方法属性，为true是全部复制。
-    var cloneDom = $("#canvas").clone(true);
-    //设置克隆节点的css属性，因为之前的层级为0，我们只需要比被克隆的节点层级低即可。
-    cloneDom.css({
-        "background-color": "white",
-        "position": "absolute",
-        "top": "0px",
-        "z-index": "-1",
-        "height": height
-    });
-    $("body").append(cloneDom);
-    cloneDom.attr("id", "canvas1");
-
-    if (typeof html2canvas !== 'undefined') {
-        //以下是对svg的处理
-        var nodesToRecover = [];
-        var nodesToRemove = [];
-        var svgElem = $("#canvas1").find('svg');//divReport为需要截取成图片的dom的id
-
-        svgElem.each(function (index, node) {
-            var parentNode = node.parentNode;
-            var svg = node.outerHTML.trim();
-
-            var canvas = document.createElement('canvas');
-            canvg(canvas, svg); 
-            if (node.style.position) {
-                canvas.style.position += node.style.position;
-                canvas.style.left += node.style.left;
-                canvas.style.top += node.style.top;
-            }
-
-            nodesToRecover.push({
-                parent: parentNode,
-                child: node
-            });
-            parentNode.removeChild(node);
-
-            nodesToRemove.push({
-                parent: parentNode,
-                child: canvas
-            });
-
-            parentNode.appendChild(canvas);
-        });
-    }
-    var dataURL;
-    html2canvas(document.querySelector("#canvas1"),{
-        //Whether to allow cross-origin images to taint the canvas
-        allowTaint: true,
-        //Whether to test each image if it taints the canvas before drawing them
-        taintTest: false,
-    }
-    ).then(canvas => {
-        $("#canvas1").remove();
-        document.body.appendChild(canvas);
-        //$("body").append("<canvas id='cvs'><canvas>");
-        $("canvas").attr("id", "cvs");
-        // var cvs = document.getElementById("cvs");
-        // console.log(cvs);
-        var cvs = document.getElementById("cvs");
-        //var cvs = $("canvas");
-        //console.log(cvs);
-        dataURL = cvs.toDataURL();
-        //Canvas2Image.saveAsImage(canvas, 760, 1000, 'png');
-        $("#canvas").find("#border").attr("style","height:1000px;border:0.5px solid black");
-        $("canvas").remove();
-        var data = get_network();
-        data["graph"] = dataURL;
-        //上一版本中的save_network
-        //如果可能的话，希望使用异步回调更漂亮地解决
-        save_network_origin(data);
-    });
-    //console.log(dataURL);
-    //return Promise.resolve(dataURL);            
-}
-
-async function save_network_origin(data) {
     $("#save_modal").modal('hide');
     // if (!window.sessionStorage.hasOwnProperty("userinfo")) {
     //     jump_to_login();
     //     return
     // }
-    //var data = await get_network();
-    // data.then(num => {
-    //     console.log(num);
-    // })
+    var data = get_network();
     console.log(data);
     //alert(window.location.href);
     var query_object = getQueryObject(window.location.href);
@@ -474,7 +287,6 @@ async function save_network_origin(data) {
             },
             success: function (data_return) {
                 alert("保存成功！");
-                console.log(data_return);
             },
             error: function (data_return) {
                 alert("失败了，后端没接主post请求");
@@ -484,12 +296,27 @@ async function save_network_origin(data) {
     }
 }
 
-
+function save_attr_view_layer(button) {
+    //这里是硬编码，考虑在b版本优化
+    var id = button.id
+    var form = $("#form" + id);
+    var shape = form.find("[name = \"shape\"]");
+    form.find("[name='input_error']").remove();
+    //匹配符合要求的数组
+    var reg = /^(\s*[1-9]\d*\s*)+(,\s*[1-9]\d*\s*)*$/;
+    if (!reg.test(shape.val())) {
+        shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+        return;
+    }
+    window.sessionStorage.setItem(id, "{\"shape\":\"" + shape.val() + "\"}");
+    $("#" + id).popover('hide');
+}
 
 function save_attr_linear_layer(button) {
     //这里是硬编码，考虑在b版本优化
-    var id = button["id"].split("popover_")[1];
-    var form = $("#" + button["id"]).parent();
+    var id = button.id;
+    var form = $("#form" + id);
+    console.log(form);
     var in_features = form.find("[name = \"in_features\"]");
     var out_features = form.find("[name = \"out_features\"]");
     //todo:加入更精确的正则判断
@@ -511,26 +338,11 @@ function save_attr_linear_layer(button) {
     $("#" + id).popover('hide');
 }
 
-function save_attr_view_layer(button) {
-    //这里是硬编码，考虑在b版本优化
-    var id = button["id"].split("popover_")[1];
-    var form = $("#" + button["id"]).parent();
-    var shape = form.find("[name = \"shape\"]");
-    form.find("[name='input_error']").remove();
-    //匹配符合要求的数组
-    var reg = /^(\s*[1-9]\d*\s*)+(,\s*[1-9]\d*\s*)*$/;
-    if (!reg.test(shape.val())) {
-        shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
-        return;
 
-    }
-    window.sessionStorage.setItem(id, "{\"shape\":\"" + shape.val() + "\"}");
-    $("#" + id).popover('hide');
-}
 
 function save_attr_concatenate_layer(button) {
-    var id = button["id"].split("popover_")[1];
-    var form = $("#" + button["id"]).parent();
+    var id = button.id;
+    var form = $("#form" + id);
     var dim = form.find("[name = \"dim\"]");
     form.find("[name='input_error']").remove();
     var reg = /^\s*\d+\s*$/;
@@ -632,11 +444,27 @@ function save_attr_conv2d_layer(button) {
 }
 
 
-
-
-function save_attr_linear_layer_form(id) {
+function save_attr_view_layer_form(button) {
     //这里是硬编码，考虑在b版本优化
+    var id = button.id;
+    var form = $("#form" + id).parent();
+    var shape = form.find("[name = \"shape\"]");
+    form.find("[name='input_error']").remove();
+    //匹配符合要求的数组
+    //var reg = /^((\s*[1-9]\d*\s*)|(\-1))+((,\s*[1-9]\d*\s*)|(,\-1))*$/;
+    var reg = /^(\+?\d+|\-1)(\s*,\s*(\+?\d+|\-1))*$/;
+    if (!reg.test(shape.val())) {
+        shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
+        return;
 
+    }
+    window.sessionStorage.setItem(id, "{\"shape\":\"" + shape.val() + "\"}");
+    $("#" + id).popover('hide');
+}
+
+function save_attr_linear_layer_form(button) {
+    //这里是硬编码，考虑在b版本优化
+    var id = button.id;
     var form = $("#form" + id).parent();
     var in_features = form.find("[name = \"in_features\"]");
     var out_features = form.find("[name = \"out_features\"]");
@@ -659,24 +487,10 @@ function save_attr_linear_layer_form(id) {
     $("#" + id).popover('hide');
 }
 
-function save_attr_view_layer_form(id) {
-    //这里是硬编码，考虑在b版本优化
-    var form = $("#form" + id).parent();
-    var shape = form.find("[name = \"shape\"]");
-    form.find("[name='input_error']").remove();
-    //匹配符合要求的数组
-    //var reg = /^((\s*[1-9]\d*\s*)|(\-1))+((,\s*[1-9]\d*\s*)|(,\-1))*$/;
-    var reg = /^(\+?\d+|\-1)(\s*,\s*(\+?\d+|\-1))*$/;
-    if (!reg.test(shape.val())) {
-        shape.after("<p name='input_error' class='alert_font'>输入不合法</p>");
-        return;
 
-    }
-    window.sessionStorage.setItem(id, "{\"shape\":\"" + shape.val() + "\"}");
-    $("#" + id).popover('hide');
-}
 
-function save_attr_concatenate_layer_form(id) {
+function save_attr_concatenate_layer_form(button) {
+    var id = button.id;
     var form = $("#form" + id).parent();
     var dim = form.find("[name = \"dim\"]");
     form.find("[name='input_error']").remove();
@@ -689,8 +503,9 @@ function save_attr_concatenate_layer_form(id) {
     $("#" + id).popover('hide');
 }
 
-function save_attr_conv1d_layer_form(id) {
+function save_attr_conv1d_layer_form(button) {
     //这里是硬编码，考虑在b版本优化
+    var id = button.id;
     var form = $("#form" + id).parent();
     var in_channels = form.find("[name = \"in_channels\"]");
     var out_channels = form.find("[name = \"out_channels\"]");
@@ -733,8 +548,9 @@ function save_attr_conv1d_layer_form(id) {
     $("#" + id).popover('hide');
 }
 
-function save_attr_conv2d_layer_from(id) {
+function save_attr_conv2d_layer_from(button) {
     //这里是硬编码，考虑在b版本优化
+    var id = button.id;
     var form = $("#form" + id).parent();
     var in_channels = form.find("[name = \"in_channels\"]");
     var out_channels = form.find("[name = \"out_channels\"]");
@@ -773,7 +589,8 @@ function save_attr_conv2d_layer_from(id) {
     $("#" + id).popover('hide');
 }
 
-function save_attr_softmax_layer_form(id){
+function save_attr_softmax_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var dim = form.find("[name = \"dim\"]");
     form.find("[name='input_error']").remove();
@@ -786,7 +603,8 @@ function save_attr_softmax_layer_form(id){
     $("#" + id).popover('hide');
 }
 
-function save_attr_dropout_layer_form(id){
+function save_attr_dropout_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var p = form.find("[name = \"p\"]");
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
@@ -798,12 +616,13 @@ function save_attr_dropout_layer_form(id){
         return;
     }
 
-    window.sessionStorage.setItem(id, "{\"type\":\"" + type +" \",\"p\":\"" + p.val() + "\"}");
+    window.sessionStorage.setItem(id, "{\"type\":\"" + type +"\",\"p\":\"" + p.val() + "\"}");
     $("#" + id).popover('hide');
 }
 
-function save_attr_conv_layer_form(id){
+function save_attr_conv_layer_form(button){
     //这里是硬编码，考虑在b版本优化
+    var id = button.id;
     var form = $("#form" + id).parent();
     var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
@@ -851,7 +670,8 @@ function save_attr_conv_layer_form(id){
     $("#" + id).popover('hide');
 }
 
-function save_attr_pool_layer_form(id){
+function save_attr_pool_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();
@@ -901,7 +721,8 @@ function save_attr_pool_layer_form(id){
 
 }
 
-function save_attr_activation_layer_form(id){
+function save_attr_activation_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
     var negative_slope = form.find("[name = \"negative_slope\"]");
@@ -947,7 +768,8 @@ function save_attr_activation_layer_form(id){
     $("#" + id).popover('hide');
 
 }
-function save_attr_RNN_layer_form(id){
+function save_attr_RNN_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var input_size = form.find("[name = \"input_size\"]");
     var hidden_size = form.find("[name = \"hidden_size\"]");
@@ -979,7 +801,8 @@ function save_attr_RNN_layer_form(id){
     $("#" + id).popover('hide');
 }
 
-function save_attr_LSTM_layer_form(id){
+function save_attr_LSTM_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var input_size = form.find("[name = \"input_size\"]");
     var hidden_size = form.find("[name = \"hidden_size\"]");
@@ -1008,7 +831,8 @@ function save_attr_LSTM_layer_form(id){
 }
 
 
-function save_attr_norm_layer_form(id){
+function save_attr_norm_layer_form(button){
+    var id = button.id;
     var form = $("#form" + id).parent();
     var layer_type = form.find("[id=\"" + id + "layer_type\"]").find("option:selected").val();
     var type = form.find("[id=\"" + id + "type\"]").find("option:selected").val();

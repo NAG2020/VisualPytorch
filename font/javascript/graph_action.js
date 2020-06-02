@@ -166,7 +166,7 @@ function get_network() {
         },
         "static": static
     };
-
+    var sharable = $("#shared").attr("disabled") == "disabled" ? false : true;
     var ret = {
         "name" : $("#model_name").val(),
         "description" : $("#model_info").val(),

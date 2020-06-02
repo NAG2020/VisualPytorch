@@ -41,7 +41,8 @@
         <!-- modernizr css 这个比较特殊不知道为啥 -->
         <script src="../../resources/templatesRes/js/vendor/modernizr-2.8.3.min.js"></script>
 
-
+	<script src="https://cdn.bootcdn.net/ajax/libs/canvg/1.0/canvg.min.js"></script>
+	<script type="text/javascript" src="../../resources/html2canvas.js"></script>
     <link href="../../resources/bootstrap.min.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.css" rel="stylesheet">
     <link href="../../resources/jquery-ui.structure.css" rel="stylesheet">
@@ -940,8 +941,8 @@
 
         // window.sessionStorage.setItem("userinfo", "{\"id\":1}");
         // var user_id = JSON.parse(user_info).id;
-        var user_info = window.sessionStorage.getItem('userinfo');
-        var user_id = JSON.stringify(user_info).id;
+        //var user_info = window.sessionStorage.getItem('userinfo');
+        //var user_id = JSON.stringify(user_info).id;
 
         var data = {
             "id": user_id
@@ -1447,17 +1448,21 @@
                 success: function (net_work) {
                     console.log(net_work);
                     var name = net_work["name"];
-                    var temp_structure = eval('(' + net_work["structure"] + ')');
-                    alert(temp_structure);
-                    var structure = eval('(' + temp_structure["structure"] + ')');
-                    alert(structure);
+                    var structure = eval('(' + net_work["structure"] + ')');
+                    //alert(temp_structure);
+                    //var structure = eval('(' + temp_structure["structure"] + ')');
+                    //alert(structure);
                     // console.log(structure);
                     // console.log(structure['canvas'][0]['nets_conn']);
-                    var nets = structure['canvas'][0]['attribute']['nets'];
-                    var nets_conn = structure['canvas'][0]['nets_conn'];
+                    var nets = structure['canvas']['attribute']['nets'];
+                    var nets_conn = structure['canvas']['nets_conn'];
                     var static_val = structure['static'];
                     var drop_function = $("#canvas").droppable('option', 'drop');
                     var event;
+                    if (net_work["sharable"]==false) {
+                        $("#shared").attr("disabled", "disabled");
+                        $("#shareWord").text("这个模型是复制来的，所以不能共享");
+                    }
                     $("#model_name").text(name);
                     jQuery.each(nets, function (id, val) {
 

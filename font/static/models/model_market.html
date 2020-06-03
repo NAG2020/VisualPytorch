@@ -58,13 +58,12 @@
 				<div class="row">
 					<div class="col-md-12">
 					    <div class="breadcrumbs">
-					       <h2>模型市场</h2> 
-					       <ul class="breadcrumbs-list">
-						        <li>
-						            <a title="Return to Home" href="../index.html">返回主页</a>
-						        </li>
-						    </ul>
-					    </div>
+					       <p><center><small style="color:white;font-size: 48px">MODEL MARKET</small></center><br></br></p>
+                           <p>&nbsp;</p>
+                           <p>&nbsp;</p>
+                           <p><center><small style="color:white;font-size: 18px">please wait 10s to load the model</small></center>
+					    
+                        </p></div>
 					</div>
 				</div>
 			</div>
@@ -143,7 +142,7 @@
             $("#header").load("../base/header.html");
             $("#footer").load("../base/footer.html");
             var page = [1]; //引用传递
-            const pagesize = 10000; //定义每次加载多少个模型
+            const pagesize = 1000; //定义每次加载多少个模型
             $("#more").attr("onclick", "load_models(page, pagesize)");
             load_models(page, pagesize);
             //page = page + 1;

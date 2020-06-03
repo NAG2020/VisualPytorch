@@ -72,7 +72,7 @@ function register() {
         "username": username,
         "email": email,
         "password": password,
-        "is_active": false,
+        "is_active": true,
     };
 
     $.ajax({

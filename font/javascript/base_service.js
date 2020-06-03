@@ -188,6 +188,18 @@ function isImage(filepath) {
     return true;
 }
 
+function isImage_comments(filepath) {
+    var extStart = filepath.lastIndexOf(".");
+    var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+    if (ext != ".JPG") {
+        alert("图片只能为jpg格式");
+        window.location.reload();
+        return false;
+    }
+    return true;
+}
+
 function checkFileSize(filepath) {
     var maxsize = 5 * 1024 * 1024;//2M
     var errMsg = "上传的待预测图片文件不能超过5M!";

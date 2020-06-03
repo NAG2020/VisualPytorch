@@ -114,9 +114,9 @@
                     for (var i = data_return.length - 1; i >= 0; i--) {
                         //alert(data_return[i]["pic"]);
                         if (data_return[i]["pic"] == "default.jpg") {
-                            data.push("<h4>" + data_return[i]["title"] + "</h4>"+ "<br/><p>" + data_return[i]["context"] + "</p><br/>");
+                            data.push("<h4>" + data_return[i]["title"] + "</h4>" + "<br/><p>" + data_return[i]["context"] + "</p><br/>");
                         } else {
-                            data.push("<h4>" + data_return[i]["title"] + "</h4>"+ "<br/><p>" + data_return[i]["context"] + "</p><br/>" + "<img width=\'200px\'  src=\'../../media/usr_img/" + data_return[i]["pic"] + "\'>");
+                            data.push("<h4>" + data_return[i]["title"] + "</h4>" + "<br/><p>" + data_return[i]["context"] + "</p><br/>" + "<img width=\'200px\'  src=\'../../media/usr_img/" + data_return[i]["pic"] + "\'>");
                         }
 
                     }
@@ -179,9 +179,8 @@
 
                     <div class="form-horizontal" role="form">
                         <div class="form-group">
-                            <iframe name="form" id="form" style="display:none"></iframe>
-                            <form target="form" method="post" enctype="multipart/form-data"
-                                  action='http://127.0.0.1:8000/api/comments/'>
+
+                            <form>
                                 <!--                                <label for="contact-info" class="col-sm-2 control-label">标题：</label>-->
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" id="contact-info"
@@ -195,11 +194,11 @@
                                     <textarea class="form-control" rows="8" id="question-describe"
                                               placeholder="请输入问题描述" name="context"></textarea><br/>
 
-                                    <input type="file" name="pic" onchange="loadImage(this)">
-                                    <br/>
+                                    <input type="file" id="photoFile">
+                                    <!--                                    <button class="btn btn-primary" onclick="uploadPhoto()">选择图片</button>-->
                                     <span class="help-block ">请上传5M内的jpg格式图片! </span>
-                                    <br/>
-                                    <input type="submit" class="btn btn-primary" name="上传"><br/>
+
+                                    <input type="submit" class="btn btn-primary" name="上传" onclick="upload()"><br/>
                                     <!--                                    <span class="help-block ">  帮助您更好的解决问题！</span>-->
 
 
@@ -207,10 +206,51 @@
                                 <br/>
                             </form>
                             <script>
-                                $("#form").on("load", function () {
-                                    alert("上传成功！")
-                                    window.location.replace("feedback.html")
-                                });
+                                function uploadPhoto() {
+                                    $("#photoFile").click();
+                                }
+
+                                /**
+                                 * 上传图片
+                                 */
+                                function upload() {
+                                    var filepath = $("#photoFile").val();
+                                    if (filepath.length == 0) {
+
+                                    } else {
+                                        //检查是否为图片
+                                        if (!isImage_comments(filepath)) {
+                                            return false;
+                                        }
+                                        //检查文件大小，不能超过2M
+                                        if (!checkFileSize(filepath)) {
+                                            return false;
+                                        }
+                                        if ($("#photoFile").val() == '') {
+                                            return;
+                                        }
+                                    }
+
+                                    var formData = new FormData();
+                                    formData.append('pic', document.getElementById('photoFile').files[0]);
+                                    formData.append("title", $("#contact-info").val());
+                                    formData.append("context", $("#question-describe").val());
+                                    // alert(formData["title"])
+                                    $.ajax({
+                                        url: gobalConfig.base_url + 'api/comments/',
+                                        type: "post",
+                                        data: formData,
+                                        contentType: false,
+                                        processData: false,
+                                        success: function (data) {
+                                            alert("上传成功");
+                                            window.location.reload()
+                                        },
+                                        error: function (data) {
+                                            alert("上传失败")
+                                        }
+                                    });
+                                }
                             </script>
                         </div>
                     </div>

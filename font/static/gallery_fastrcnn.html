@@ -169,7 +169,7 @@
                 var formData = new FormData();
                 formData.append('pic', document.getElementById('photoFile').files[0]);
                 $.ajax({
-                    // url: "http://127.0.0.1:8000/api/inference/frcnn/",
+                    // url: "http://39.97.209.22/api/inference/frcnn/",
                     url: gobalConfig.base_url + 'api/inference/frcnn/',
                     type: "post",
                     data: formData,

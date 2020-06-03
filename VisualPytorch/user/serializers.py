@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
     #     ts_obj = ts(settings.SECRET_KEY)
     #     # 加密
     #     token = ts_obj.dumps(validated_data).decode()
-    #     url = 'http://127.0.0.1:8000/api/user/email/?token=' + token
+    #     url = 'http://39.97.209.22/api/user/email/?token=' + token
     #     # todo 发送邮件
     #     url_string = '欢迎使用VisualPytorch,请点击<a href=' + url + '>链接</a>确认注册'
     #     # 邮件主题
@@ -39,7 +39,7 @@ def send(validated_data):
     ts_obj = ts(settings.SECRET_KEY)
     # 加密
     token = ts_obj.dumps(validated_data).decode()
-    url = 'http://127.0.0.1:8000/api/user/email/?token=' + token
+    url = 'http://39.97.209.22/api/user/email/?token=' + token
     # todo 发送邮件
     url_string = '欢迎使用VisualPytorch,请点击<a href=' + url + '>链接</a>确认注册'
     # 邮件主题

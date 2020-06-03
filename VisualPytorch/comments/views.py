@@ -28,9 +28,9 @@ class CommentList(APIView):
         try:
             pic = request.FILES['pic']
             data = {
-                "title": request.POST["title"],
-                "context": request.POST["context"],
-                "pic": request.POST["title"] + pic.name,
+                "title": request.POST.get('title'),
+                "context": request.POST.get('context'),
+                "pic": request.POST.get('title') + pic.name,
             }
             save_path = "%s/usr_img/%s" % (settings.MEDIA_ROOT, request.POST["title"] + pic.name,)
             print(save_path)
@@ -40,8 +40,8 @@ class CommentList(APIView):
             f.close()
         except:
             data = {
-                "title": request.POST["title"],
-                "context": request.POST["context"],
+                "title": request.POST.get('title'),
+                "context": request.POST.get('context'),
                 "pic": "default.jpg",
             }
 

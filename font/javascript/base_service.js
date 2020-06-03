@@ -72,7 +72,7 @@ function register() {
         "username": username,
         "email": email,
         "password": password,
-        "is_active": false,
+        "is_active": true,
     };
 
     $.ajax({
@@ -182,6 +182,18 @@ function isImage(filepath) {
     var ext = filepath.substring(extStart, filepath.length).toUpperCase();
     if (ext != ".PNG" && ext != ".JPG" && ext != ".JPEG") {
         alert("图片只能为png,jpeg,jpg格式");
+        window.location.reload();
+        return false;
+    }
+    return true;
+}
+
+function isImage_comments(filepath) {
+    var extStart = filepath.lastIndexOf(".");
+    var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+    if (ext != ".JPG") {
+        alert("图片只能为jpg格式");
         window.location.reload();
         return false;
     }

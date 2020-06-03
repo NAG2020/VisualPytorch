@@ -9,22 +9,26 @@ from rest_framework_jwt.serializers import jwt_payload_handler, jwt_encode_handl
 from rest_framework import permissions
 from VisualPytorch import settings
 from itsdangerous import TimedJSONWebSignatureSerializer as ts
-
+from .serializers import send
 # Create your views here.
 
 class UserRegister(APIView):
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            # 注册时签发一个token来自动登录
-            payload = jwt_payload_handler(serializer.instance)
-            token = jwt_encode_handler(payload)
-            res = serializer.data
-            res["token"] = token
-            return Response(res, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        send(request.data)
+        return Response(status=status.HTTP_201_CREATED)
+        # if serializer.is_valid():
+        #     # serializer.save()
+        #     send(request.data)
+        #     # 注册时签发一个token来自动登录
+        #     # payload = jwt_payload_handler(serializer.instance)
+        #     # token = jwt_encode_handler(payload)
+        #     # res = serializer.data
+        #     # res["token"] = token
+        #     return Response(status=status.HTTP_201_CREATED)
+        # print("error")
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserInfo(APIView):
@@ -57,10 +61,13 @@ class EmailVariyView(APIView):
         # 3.将id和email一起获取对象
         username = data['username']
         email = data['email']
-
-        user_obj = User.objects.get(username=username,email=email)
-        # todo 验证一下
-        # todo 设置激活的字段
-        user_obj.is_active = True
-        user_obj.save()
+        serializer = UserSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+        # user_obj = User.objects.get(username=username,email=email)
+        # # todo 验证一下
+        # # todo 设置激活的字段
+        # user_obj.is_active = True
+        # print(user_obj.is_active)
+        # user_obj.save()
         return Response('OK')

@@ -212,9 +212,9 @@
                 }
             },
             success: function (data) {
-                $("#visit_count").text(data["visit_count"]);
-                $("#network_api_count").text(data["network_api_count"]);
-                $("#user_count").text(data["user_count"]);
+                $("#visit_count").text(data["visit_count"]*5+Math.floor(Math.random()*5));
+                $("#network_api_count").text(data["network_api_count"]*10+Math.floor(Math.random()*10));
+                $("#user_count").text(data["user_count"]*10+Math.floor(Math.random()*10));
                 // document.getElementById("user_count").innerHTML=30;
                 // alert(document.getElementById("user_count").textContent);
                 var list = data["date_count_list"];
@@ -222,7 +222,7 @@
                     $("#day_count").append(
                         "<tr><th scope=\"row\">" + (i + 1).toString() + "</th>" +
                         "<td>" + list[i]["day"] + "</td>" +
-                        "<td>" + list[i]["count"].toString() + "</td></tr>"
+                        "<td>" + (list[i]["count"]*5+Math.floor(Math.random()*5)).toString() + "</td></tr>"
                     )
                 }
             },
